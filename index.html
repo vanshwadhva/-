@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>स्वशासन - EV OS</title>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DV98W7K8XY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-DV98W7K8XY');
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+        }
+        header {
+            background: #004aad; /* Original blue color */
+            color: #fff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #002a6c 3px solid; /* Original darker blue border */
+            text-align: center;
+            position: relative; /* For positioning tagline generator button */
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        .tagline {
+            font-size: 1.2em;
+            margin-top: 5px;
+            color: #ccc;
+        }
+        nav {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            font-size: 1.1em;
+        }
+        nav a:hover {
+            background: #555;
+        }
+        .section {
+            padding: 30px 0;
+            border-bottom: 1px #ddd solid;
+        }
+        .section:last-child {
+            border-bottom: none;
+        }
+        .section h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #004aad; /* Original blue for section headings */
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+        .feature-item {
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .feature-item h3 {
+            color: #004aad; /* Original blue for feature item headings */
+            margin-top: 0;
+        }
+        .feature-item p {
+            flex-grow: 1;
+        }
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        /* Gemini API Feature Styles */
+
+        .gemini-button {
+            background-color: #ff8c00; /* Dark Orange */
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 0.9em;
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        .gemini-button:hover {
+            background-color: #e07b00; /* Darker Orange on hover */
+        }
+        .gemini-button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        #tagline-generator-button {
+            margin-top: 15px;
+        }
+        #generated-taglines-container {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #003b8f;
+            border-radius: 4px;
+            font-size: 0.9em;
+            color: #e0e0e0;
+        }
+        #generated-taglines-container p {
+            margin: 5px 0;
+        }
+        #generated-taglines-container strong {
+            color: #fff;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1000; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto; /* 10% from the top and centered */
+            padding: 25px;
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+            max-width: 600px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            position: relative;
+        }
+        .modal-close-button {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+        }
+        .modal-close-button:hover,
+        .modal-close-button:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .modal-title {
+            color: #004aad;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+        .modal-body {
+            font-size: 0.95em;
+            line-height: 1.7;
+        }
+        .loading-spinner {
+            border: 4px solid #f3f3f3; /* Light grey */
+            border-top: 4px solid #004aad; /* Blue */
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Basic Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+            }
+            header h1 {
+                font-size: 2em;
+            }
+            nav a {
+                display: block;
+                padding: 10px;
+            }
+            .modal-content {
+                width: 90%;
+                margin: 15% auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>स्वशासन</h1>
+            <p class="tagline">The Future of Electric Vehicle Operating Systems</p>
+                <div id="tagline-list"></div>
+                <div id="tagline-loader" class="loading-spinner" style="display: none;"></div>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <a href="#about">About Us</a>
+            <a href="#features">Features</a>
+            <a href="#contact">Contact</a>
+            <a href="https://svashasan.shop/onboarding" target="_blank">Onboarding</a>
+        </div>
+    </nav>
+
+    <section id="about" class="section">
+        <div class="container">
+            <h2>About स्वशासन</h2>
+            <p>स्वशासन (Swa-shaasan) is pioneering the next generation of operating systems for electric vehicles. Our mission is to create an intuitive, efficient, and secure platform that enhances the driving experience and empowers users with seamless control over their vehicle's ecosystem. We believe in self-reliance and innovation to drive the future of mobility.</p>
+        </div>
+    </section>
+
+    <section id="features" class="section">
+        <div class="container">
+            <h2>Key Features</h2>
+            <div class="features-grid">
+                <div class="feature-item" data-feature-name="Intuitive Interface" data-feature-desc="User-friendly design for effortless control and navigation.">
+                    <h3>Intuitive Interface</h3>
+                    <p>User-friendly design for effortless control and navigation.</p>
+                    <button class="gemini-button explain-feature-button">✨ Explain Feature</button>
+                </div>
+                <div class="feature-item" data-feature-name="Smart Energy Management" data-feature-desc="Optimize battery usage and charging for maximum range.">
+                    <h3>Smart Energy Management</h3>
+                    <p>Optimize battery usage and charging for maximum range.</p>
+                    <button class="gemini-button explain-feature-button">✨ Explain Feature</button>
+                </div>
+                <div class="feature-item" data-feature-name="Robust Security" data-feature-desc="Advanced security protocols to protect your vehicle and data.">
+                    <h3>Robust Security</h3>
+                    <p>Advanced security protocols to protect your vehicle and data.</p>
+                    <button class="gemini-button explain-feature-button">✨ Explain Feature</button>
+                </div>
+                <div class="feature-item" data-feature-name="Seamless Connectivity" data-feature-desc="Integrate with your favorite apps and services on the go.">
+                    <h3>Seamless Connectivity</h3>
+                    <p>Integrate with your favorite apps and services on the go.</p>
+                    <button class="gemini-button explain-feature-button">✨ Explain Feature</button>
+                </div>
+                <div class="feature-item" data-feature-name="Over-the-Air Updates" data-feature-desc="Keep your OS up-to-date with the latest features and improvements.">
+                    <h3>Over-the-Air Updates</h3>
+                    <p>Keep your OS up-to-date with the latest features and improvements.</p>
+                    <button class="gemini-button explain-feature-button">✨ Explain Feature</button>
+                </div>
+                 <div class="feature-item" data-feature-name="Developer Friendly" data-feature-desc="Open APIs for third-party app development and customization.">
+                    <h3>Developer Friendly</h3>
+                    <p>Open APIs for third-party app development and customization.</p>
+                    <button class="gemini-button explain-feature-button">✨ Explain Feature</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <p>Interested in learning more about स्वशासन or exploring partnership opportunities? Reach out to us!</p>
+            <p>Email: <a href="mailto:vansh@svashasan.shop">vansh@svashasan.shop</a></p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 स्वशासन. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Modal for Feature Explanations -->
+    <div id="feature-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close-button">&times;</span>
+            <h3 id="modal-title" class="modal-title">Feature Explanation</h3>
+            <div id="modal-body" class="modal-body">
+                <!-- Explanation will be loaded here -->
+            </div>
+            <div id="modal-loader" class="loading-spinner" style="display: none;"></div>
+        </div>
+    </div>
+
+    <script>
+        // Modal elements
+        const featureModal = document.getElementById('feature-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalBody = document.getElementById('modal-body');
+        const modalLoader = document.getElementById('modal-loader');
+        const closeModalButton = document.querySelector('.modal-close-button');
+
+
+        // Gemini API Configuration
+        const API_KEY = ""; // Per instructions, leave empty.
+        const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`;
+
+        /**
+         * Calls the Gemini API to generate content.
+         * @param {string} prompt - The prompt to send to the API.
+         * @returns {Promise<string|null>} The generated text or null if an error occurs.
+         */
+        async function callGeminiAPI(prompt) {
+            const payload = {
+                contents: [{ role: "user", parts: [{ text: prompt }] }]
+            };
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                if (!response.ok) {
+                    console.error("API Error Response:", await response.text());
+                    return `Error: Could not fetch response from AI (Status: ${response.status}). Please try again later.`;
+                }
+                const result = await response.json();
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    return result.candidates[0].content.parts[0].text;
+                } else {
+                    console.error("Unexpected API response structure:", result);
+                    return "Error: Received an unexpected response from the AI. Please check console for details.";
+                }
+            } catch (error) {
+                console.error("Error calling Gemini API:", error);
+                return "Error: Could not connect to the AI service. Please check your internet connection or try again later.";
+            }
+        }
+
+        // --- Feature Explanation Modal Logic ---
+        document.querySelectorAll('.explain-feature-button').forEach(button => {
+            button.addEventListener('click', async function() {
+                const featureItem = this.closest('.feature-item');
+                const featureName = featureItem.dataset.featureName;
+                const featureDesc = featureItem.dataset.featureDesc;
+
+                modalTitle.textContent = `Explaining: ${featureName}`;
+                modalBody.innerHTML = ''; // Clear previous content
+                modalLoader.style.display = 'block';
+                featureModal.style.display = 'block';
+                this.disabled = true; // Disable button while loading
+
+                const prompt = `Explain the Electric Vehicle OS feature "${featureName}" in more detail (around 2-3 concise sentences). The current short description is: "${featureDesc}". Focus on its benefits for an EV user and the innovative aspects.`;
+                
+                const explanation = await callGeminiAPI(prompt);
+                
+                modalLoader.style.display = 'none';
+                modalBody.innerHTML = explanation.replace(/\n/g, '<br>'); // Replace newlines with <br> for HTML display
+                this.disabled = false; // Re-enable button
+            });
+        });
+
+        closeModalButton.onclick = function() {
+            featureModal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == featureModal) {
+                featureModal.style.display = "none";
+            }
+        }
+
+
+    </script>
+</body>
+</html>

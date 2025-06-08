@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Survey - स्वशासन</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      padding: 2rem;
+    }
+    iframe {
+      width: 100%;
+      height: 700px;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Help us improve</h1>
+  <p>Please fill out this short survey to share your feedback with the team.</p>
+  <iframe data-tally-src="https://tally.so/r/your-form-id" loading="lazy" width="100%" height="700" frameborder="0" marginheight="0" marginwidth="0" title="Survey Form"></iframe>
+  <script>
+    let d = document, w = "https://tally.so/forms/np6V2b/edit", v = function() {
+      "undefined" !== typeof Tally ? Tally.loadEmbeds() : d.querySelector("script[src='" + w + "']") || ((v = d.createElement("script")).src = w, (v.onload = function() {
+        Tally.loadEmbeds()
+      }), d.body.appendChild(v))
+    };
+    v();
+  </script>
+</body>
+</html>
+

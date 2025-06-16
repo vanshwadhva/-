@@ -30,7 +30,7 @@
         }
         /* Custom CSS for hero background image */
         .hero-background {
-            background-image: url('futuristic-self-driving-car-on-an-open-road-surrounded-by-digital-interfaces-photo.jpeg');
+            background-image: url('image.jpeg'); /* Changed background image here */
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -124,13 +124,6 @@
             }
         }
     </style>
-    <!-- Twitter Card metadata -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="स्वशासन - The Future of EV OS" />
-    <meta name="twitter:description" content="Experience the future of electric vehicle operating systems with स्वशासन OS – secure, connected, and intelligently designed." />
-    <meta name="twitter:image" content="https://svashasan.shop/image.jpeg" />
-    <meta name="twitter:url" content="https://svashasan.shop" />
-    <meta name="twitter:site" content="@svashasan" />
 </head>
 <body class="font-sans text-gray-800">
 
@@ -138,8 +131,8 @@
     <header class="fixed top-0 left-0 right-0 z-50 bg-white bg-opacity-80 backdrop-blur-md py-4 shadow-sm">
         <div class="container mx-auto flex items-center justify-between px-4 md:px-6">
             <div class="text-3xl font-semibold text-gray-800 font-calibri flex-shrink-0">स्वशासन</div> <!-- Changed font to Calibri -->
-            <nav class="flex-grow flex justify-center"> <!-- Center align navigation tabs -->
-                <ul class="flex space-x-6 text-gray-600 font-medium header-nav-items">
+            <nav class="hidden md:flex flex-grow justify-center">
+                <ul class="flex space-x-6 text-gray-600 font-medium">
                     <li><a href="#about" class="hover:text-gray-900 hover:font-bold transition-all duration-200">About Us</a></li>
                     <li><a href="#features" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Features</a></li>
                     <li><a href="#contact" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Contact</a></li>
@@ -178,7 +171,6 @@
 
     <!-- Hero Section -->
     <section class="hero-background relative h-screen flex items-center justify-center text-white text-center">
-        <img src="image.jpeg" alt="Hero background" class="absolute inset-0 w-full h-full object-cover z-0" />
         <div class="absolute inset-0 bg-black bg-opacity-40"></div> <!-- Dark overlay -->
         <div class="relative z-10 p-4">
             <h1 class="text-5xl md:text-7xl font-bold mb-4">Svashasan OS</h1> <!-- Changed text here -->
@@ -212,32 +204,26 @@
                 <div class="feature-item bg-gray-50 p-6 rounded-lg shadow-md flex flex-col justify-between items-center text-center">
                     <h3 class="text-2xl font-semibold text-gray-800 mb-3">Intuitive Interface</h3> <!-- Decreased font size by 2 (from text-3xl to text-2xl) -->
                     <p class="text-gray-600 mb-4">User-friendly design for effortless control and navigation.</p>
-                    <!-- Removed Details button -->
                 </div>
                 <div class="feature-item bg-gray-50 p-6 rounded-lg shadow-md flex flex-col justify-between items-center text-center">
                     <h3 class="text-2xl font-semibold text-gray-800 mb-3">Smart Energy Management</h3> <!-- Decreased font size by 2 -->
                     <p>Optimize battery usage and charging for maximum range.</p>
-                    <!-- Removed Details button -->
                 </div>
                 <div class="feature-item bg-gray-50 p-6 rounded-lg shadow-md flex flex-col justify-between items-center text-center">
                     <h3 class="text-2xl font-semibold text-gray-800 mb-3">Robust Security</h3> <!-- Decreased font size by 2 -->
                     <p>Advanced security protocols to protect your vehicle and data.</p>
-                    <!-- Removed Details button -->
                 </div>
                 <div class="feature-item bg-gray-50 p-6 rounded-lg shadow-md flex flex-col justify-between items-center text-center">
                     <h3 class="text-2xl font-semibold text-gray-800 mb-3">Seamless Connectivity</h3> <!-- Decreased font size by 2 -->
                     <p>Integrate with your favorite apps and services on the go.</p>
-                    <!-- Removed Details button -->
                 </div>
                 <div class="feature-item bg-gray-50 p-6 rounded-lg shadow-md flex flex-col justify-between items-center text-center">
                     <h3 class="text-2xl font-semibold text-gray-800 mb-3">Over-the-Air Updates</h3> <!-- Decreased font size by 2 -->
                     <p>Keep your OS up-to-date with the latest features and improvements.</p>
-                    <!-- Removed Details button -->
                 </div>
                  <div class="feature-item bg-gray-50 p-6 rounded-lg shadow-md flex flex-col justify-between items-center text-center">
                     <h3 class="text-2xl font-semibold text-gray-800 mb-3">Developer Friendly</h3> <!-- Decreased font size by 2 -->
                     <p>Open APIs for third-party app development and customization.</p>
-                    <!-- Removed Details button -->
                 </div>
             </div>
         </div>

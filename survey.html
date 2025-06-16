@@ -55,8 +55,10 @@
                 align-items: center;
                 gap: 10px;
             }
-            .header-right-icons {
+            .header-right-group {
                 margin-left: auto;
+                display: flex;
+                align-items: center;
             }
         }
     </style>
@@ -65,17 +67,17 @@
 
     <!-- Header Section (Consistent with Main Page) -->
     <header class="fixed top-0 left-0 right-0 z-50 bg-white bg-opacity-80 backdrop-blur-md py-4 shadow-sm">
-        <div class="container mx-auto flex justify-between items-center px-4 md:px-6">
-            <div class="text-3xl font-semibold text-gray-800 font-calibri">स्वशासन</div>
-            <nav class="flex-grow flex justify-center">
-                <ul class="flex space-x-6 text-gray-600 font-medium header-nav-items">
+        <div class="container mx-auto flex items-center justify-between px-4 md:px-6">
+            <div class="text-3xl font-semibold text-gray-800 font-calibri flex-shrink-0">स्वशासन</div>
+            <nav class="hidden md:flex flex-grow justify-center">
+                <ul class="flex space-x-6 text-gray-600 font-medium">
                     <li><a href="index.html#about" class="hover:text-gray-900 hover:font-bold transition-all duration-200">About Us</a></li>
                     <li><a href="index.html#features" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Features</a></li>
                     <li><a href="index.html#contact" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Contact</a></li>
                     <li><a href="survey.html" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Survey</a></li>
                 </ul>
             </nav>
-            <div class="flex items-center space-x-4 header-right-icons">
+            <div class="flex items-center space-x-4 header-right-group ml-auto">
                 <!-- Profile Icon (SVG) -->
                 <a href="onboarding.html" class="text-gray-600 hover:text-gray-900 transition-colors duration-200 cursor-pointer">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-circle">
@@ -84,7 +86,23 @@
                         <path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662"/>
                     </svg>
                 </a>
+                <button id="menu-button" class="md:hidden text-gray-600 hover:text-gray-900 focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu">
+                        <line x1="4" x2="20" y1="12" y2="12"></line>
+                        <line x1="4" x2="20" y1="6" y2="6"></line>
+                        <line x1="4" x2="20" y1="18" y2="18"></line>
+                    </svg>
+                </button>
             </div>
+        </div>
+        <!-- Mobile Navigation Overlay -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 right-0 bg-white bg-opacity-95 backdrop-blur-md shadow-md py-4">
+            <ul class="flex flex-col items-center space-y-4 text-gray-800 font-medium">
+                <li><a href="index.html#about" class="block py-2 hover:bg-gray-100 w-full text-center">About Us</a></li>
+                <li><a href="index.html#features" class="block py-2 hover:bg-gray-100 w-full text-center">Features</a></li>
+                <li><a href="index.html#contact" class="block py-2 hover:bg-gray-100 w-full text-center">Contact</a></li>
+                <li><a href="survey.html" class="block py-2 hover:bg-gray-100 w-full text-center">Survey</a></li>
+            </ul>
         </div>
     </header>
 

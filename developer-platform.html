@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>स्वशासन - Developer Platform</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DV98W7K8XY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-DV98W7K8XY');
+    </script>
+    <style>
+        /* Custom Tailwind configuration for responsive fonts and shadows */
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'],
+                        calibri: ['Calibri', 'sans-serif'],
+                    },
+                }
+            }
+        }
+        /* Styling for code blocks to match dark theme */
+        pre {
+            background-color: #1a1a1a; /* Darker background for code */
+            color: #f8f8f2;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        code {
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+            background-color: #333; /* Darker background for inline code */
+            color: #f8f8f2;
+            padding: 0.2em 0.4em;
+            border-radius: 0.3em;
+        }
+        pre code {
+            background-color: transparent;
+            padding: 0;
+            border-radius: 0;
+            color: inherit;
+        }
+
+        /* Responsive adjustments for header and nav */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 10px;
+            }
+            .header-nav-items {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+            .header-right-group {
+                margin-left: auto;
+                display: flex;
+                align-items: center;
+            }
+            /* Adjust main content for mobile to stack sidebar and content */
+            .developer-layout {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                position: static; /* Remove fixed position on mobile */
+                height: auto; /* Allow height to adjust to content */
+                padding-bottom: 1rem; /* Add some padding at bottom */
+            }
+            .main-content-area {
+                width: 100%;
+                padding-left: 1rem; /* Adjust padding */
+                padding-right: 1rem; /* Adjust padding */
+            }
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-100 bg-gray-900 min-h-screen flex flex-col">
+
+    <!-- Header Section (Consistent with Main Pages - Light Theme) -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white bg-opacity-80 backdrop-blur-md py-4 shadow-sm">
+        <div class="container mx-auto flex items-center justify-between px-4 md:px-6">
+            <!-- "स्वशासन" text as a link to home -->
+            <a href="index.html" class="text-3xl font-semibold text-gray-800 font-calibri flex-shrink-0 hover:text-gray-900 transition-colors duration-200">स्वशासन</a>
+            <nav class="hidden md:flex flex-grow justify-center">
+                <ul class="flex space-x-6 text-gray-600 font-medium">
+                    <li><a href="index.html#about" class="hover:text-gray-900 hover:font-bold transition-all duration-200">About Us</a></li>
+                    <li><a href="index.html#features" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Features</a></li>
+                    <li><a href="index.html#contact" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Contact</a></li>
+                    <li><a href="blog.html" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Blog</a></li>
+                    <li><a href="survey.html" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Survey</a></li>
+                </ul>
+            </nav>
+            <div class="flex items-center space-x-4 header-right-group ml-auto">
+                <!-- Profile Icon (SVG) -->
+                <a href="onboarding.html" class="text-gray-600 hover:text-gray-900 transition-colors duration-200 cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-circle">
+                        <circle cx="12" cy="12" r="10"/>
+                        <circle cx="12" cy="10" r="3"/>
+                        <path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662"/>
+                    </svg>
+                </a>
+                <!-- Hamburger menu for mobile -->
+                <button id="menu-button" class="md:hidden text-gray-600 hover:text-gray-900 focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu">
+                        <line x1="4" x2="20" y1="12" y2="12"></line>
+                        <line x1="4" x2="20" y1="6" y2="6"></line>
+                        <line x1="4" x2="20" y1="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Navigation Overlay -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 right-0 bg-white bg-opacity-95 backdrop-blur-md shadow-md py-4">
+            <ul class="flex flex-col items-center space-y-4 text-gray-800 font-medium">
+                <li><a href="index.html#about" class="block py-2 hover:bg-gray-100 w-full text-center">About Us</a></li>
+                <li><a href="index.html#features" class="block py-2 hover:bg-gray-100 w-full text-center">Features</a></li>
+                <li><a href="index.html#contact" class="block py-2 hover:bg-gray-100 w-full text-center">Contact</a></li>
+                <li><a href="blog.html" class="block py-2 hover:bg-gray-100 w-full text-center">Blog</a></li>
+                <li><a href="survey.html" class="block py-2 hover:bg-gray-100 w-full text-center">Survey</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Main Content Area with Sidebar -->
+    <div class="flex flex-grow mt-16 developer-layout">
+        <!-- Left Sidebar (Fixed and Dark) -->
+        <aside class="sidebar w-64 bg-gray-800 text-gray-300 p-6 flex-shrink-0 md:fixed md:top-16 md:bottom-0 overflow-y-auto">
+            <h2 class="text-xl font-bold text-white mb-6">Developer Platform</h2>
+            <nav>
+                <ul class="space-y-2">
+                    <li><a href="#overview" class="block py-2 px-3 rounded-md hover:bg-gray-700 hover:text-white transition-colors duration-200">Overview</a></li>
+                    <li><a href="#api-features" class="block py-2 px-3 rounded-md hover:bg-gray-700 hover:text-white transition-colors duration-200">API Features</a></li>
+                    <li><a href="#get-api-key" class="block py-2 px-3 rounded-md hover:bg-gray-700 hover:text-white transition-colors duration-200">Get API Key</a></li>
+                    <li><a href="#quick-start" class="block py-2 px-3 rounded-md hover:bg-gray-700 hover:text-white transition-colors duration-200">Quick Start</a></li>
+                    <li><a href="api-docs.html" class="block py-2 px-3 rounded-md hover:bg-gray-700 hover:text-white transition-colors duration-200 font-semibold">API Docs <span class="text-xs text-gray-500">(External)</span></a></li>
+                    <li class="pt-4"><h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider">Resources</h3></li>
+                    <li><a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-700 hover:text-white transition-colors duration-200">Support</a></li>
+                    <li><a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-700 hover:text-white transition-colors duration-200">Community Forum</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Right Main Content Area (Scrollable and Dark) -->
+        <main class="main-content-area flex-grow md:ml-64 p-8 bg-gray-900 text-gray-100">
+            <h1 class="text-4xl font-bold mb-8 text-white" id="overview">Svashasan developer platform</h1>
+
+            <!-- Developer to Developer Section -->
+            <section class="mb-12 p-6 bg-gray-800 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-semibold mb-4 text-white">Developer to Developer</h2>
+                <p class="text-lg text-gray-300 leading-relaxed mb-4">
+                    Unlock the full potential of Svashasan OS by integrating with our robust APIs. Build custom applications, enhance vehicle functionality, and create new experiences for EV users. Our platform is designed for seamless development and innovation.
+                </p>
+                <div class="mt-6">
+                    <h3 class="text-xl font-semibold mb-3 text-white">Example API Call:</h3>
+                    <pre><code class="language-python">
+import requests
+
+api_key = "svasha_live_d8ae1f9a2c1e4b649a2f5a0e12345678"
+headers = {
+    "Authorization": f"Bearer {api_key}",
+    "Content-Type": "application/json"
+}
+
+response = requests.get("https://api.svashasan.shop/telemetry", headers=headers)
+
+if response.status_code == 200:
+    data = response.json()
+    print(f"Current Speed: {data['speed']} kmph")
+    print(f"Battery Level: {data['battery']}%")
+else:
+    print(f"Error: {response.status_code} - {response.text}")
+                    </code></pre>
+                </div>
+            </section>
+
+            <!-- Dynamic Models Section -->
+            <section class="mb-12">
+                <h2 class="text-3xl font-bold text-white mb-6">Dynamic Models</h2>
+                <p class="text-lg text-gray-300 leading-relaxed mb-6">
+                    Our platform supports various models for different use cases, allowing you to choose the best fit for your application.
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="p-6 rounded-lg shadow-md text-center cursor-pointer
+                                bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800
+                                text-white font-semibold transition-all duration-300">
+                        <h3 class="text-xl mb-2">Telemetry API</h3>
+                        <p class="text-sm opacity-90">Real-time vehicle data.</p>
+                    </div>
+                    <div class="p-6 rounded-lg shadow-md text-center cursor-pointer
+                                bg-gradient-to-r from-green-500 to-green-700 hover:from-green-600 hover:to-green-800
+                                text-white font-semibold transition-all duration-300">
+                        <h3 class="text-xl mb-2">Navigation API</h3>
+                        <p class="text-sm opacity-90">Advanced routing & POI.</p>
+                    </div>
+                    <div class="p-6 rounded-lg shadow-md text-center cursor-pointer
+                                bg-gradient-to-r from-purple-500 to-purple-700 hover:from-purple-600 hover:to-purple-800
+                                text-white font-semibold transition-all duration-300">
+                        <h3 class="text-xl mb-2">Control API</h3>
+                        <p class="text-sm opacity-90">Remote vehicle commands.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- API Features Section -->
+            <section id="api-features" class="mb-12">
+                <h2 class="text-3xl font-bold text-white mb-6">API Features & Capabilities</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="p-6 bg-gray-800 rounded-lg shadow-sm text-center">
+                        <h3 class="text-xl font-semibold text-white mb-3">Vehicle Data Access</h3>
+                        <p class="text-gray-300">Securely retrieve real-time vehicle diagnostics, battery status, and location data.</p>
+                    </div>
+                    <div class="p-6 bg-gray-800 rounded-lg shadow-sm text-center">
+                        <h3 class="text-xl font-semibold text-white mb-3">Navigation & Routing</h3>
+                        <p class="text-gray-300">Integrate smart routing, charging station finder, and traffic information.</p>
+                    </div>
+                    <div class="p-6 bg-gray-800 rounded-lg shadow-sm text-center">
+                        <h3 class="text-xl font-semibold text-white mb-3">Remote Control</h3>
+                        <p class="text-gray-300">Develop apps for remote locking/unlocking, climate control, and charging management.</p>
+                    </div>
+                    <div class="p-6 bg-gray-800 rounded-lg shadow-sm text-center">
+                        <h3 class="text-xl font-semibold text-white mb-3">User & Profile Management</h3>
+                        <p class="text-gray-300">Access and manage user profiles and preferences securely.</p>
+                    </div>
+                    <div class="p-6 bg-gray-800 rounded-lg shadow-sm text-center">
+                        <h3 class="text-xl font-semibold text-white mb-3">OTA Integration</h3>
+                        <p class="text-gray-300">Prepare your applications for seamless over-the-air updates.</p>
+                    </div>
+                    <div class="p-6 bg-gray-800 rounded-lg shadow-sm text-center">
+                        <h3 class="text-xl font-semibold text-white mb-3">Custom Notifications</h3>
+                        <p class="text-gray-300">Create custom alerts and notifications based on vehicle events.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Get Your API Key Section -->
+            <section id="get-api-key" class="mb-12 p-8 bg-gray-800 rounded-lg shadow-md text-center">
+                <h2 class="text-3xl font-bold text-white mb-6">Get Your API Key</h2>
+                <p class="text-lg text-gray-300 mb-6">
+                    Generate your unique API key to start building. Keep your key secure and do not share it publicly.
+                </p>
+                <div class="flex flex-col items-center space-y-4">
+                    <button id="generateApiKeyBtn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-xl transition-all duration-300 shadow-lg">
+                        Generate New API Key
+                    </button>
+                    <div id="apiKeyDisplay" class="bg-gray-700 text-white p-4 rounded-md text-lg font-mono break-all w-full max-w-xl hidden">
+                        <span id="apiKeyText"></span>
+                        <button id="copyApiKeyBtn" class="ml-4 bg-gray-600 hover:bg-gray-700 text-white text-sm py-1 px-3 rounded-md transition-colors duration-200">Copy</button>
+                    </div>
+                    <p id="copyMessage" class="text-sm text-green-400 hidden mt-2">Copied to clipboard!</p>
+                </div>
+            </section>
+
+            <!-- Quick Start Section -->
+            <section id="quick-start" class="mb-12">
+                <h2 class="text-3xl font-bold text-white mb-6">Quick Start Guide</h2>
+                <p class="text-lg text-gray-300 leading-relaxed mb-6">
+                    Follow these simple steps to make your first API call.
+                </p>
+                <div class="bg-gray-800 text-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-semibold mb-4">1. Make an authenticated request</h3>
+                    <p class="text-gray-300 mb-4">
+                        Replace <code>YOUR_API_KEY</code> with the key you generated.
+                    </p>
+                    <pre><code class="language-javascript">
+// Example using JavaScript Fetch API
+async function getVehicleStatus(apiKey) {
+    try {
+        const response = await fetch('https://api.svashasan.shop/v1/vehicle/status', {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${apiKey}`,
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log('Vehicle Status:', data);
+        return data;
+    } catch (error) {
+        console.error('Error fetching vehicle status:', error);
+        // Display error message to the user (e.g., in a UI element)
+        document.getElementById('apiResponse').textContent = 'Error: ' + error.message;
+        return null;
+    }
+}
+
+// Call the function with your API key
+// const myApiKey = document.getElementById('apiKeyText').textContent; // Get generated key
+// if (myApiKey) {
+//     getVehicleStatus(myApiKey);
+// } else {
+//     document.getElementById('apiResponse').textContent = 'Please generate an API key first.';
+// }
+                    </code></pre>
+                    <div class="mt-6 p-4 bg-gray-700 rounded-md">
+                        <h3 class="text-xl font-semibold mb-2">API Response (Mock)</h3>
+                        <pre id="apiResponse" class="text-gray-300"><code>
+{
+    "status": "online",
+    "batteryLevel": 85,
+    "charging": false,
+    "location": {
+        "latitude": 19.0760,
+        "longitude": 72.8777
+    },
+    "lastUpdated": "2025-07-08T10:30:00Z"
+}
+                        </code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Documentation Link -->
+            <section class="text-center mt-12">
+                <h2 class="text-3xl font-bold text-white mb-6">Need More?</h2>
+                <p class="text-lg text-gray-300 mb-6">
+                    Dive deeper into our API capabilities with comprehensive documentation.
+                </p>
+                <a href="api-docs.html" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-10 rounded-xl transition-all duration-300 shadow-lg">
+                    View Full Documentation
+                </a>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer (Consistent with Main Page - Light Theme) -->
+    <footer class="bg-gray-800 text-white py-6 text-center">
+        <div class="container mx-auto px-4 md:px-6">
+            <p>&copy; 2025 स्वशासन. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuButton = document.getElementById('menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (menuButton && mobileMenu) {
+                menuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+
+                mobileMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.add('hidden');
+                    });
+                });
+            }
+
+            // API Key Generation Logic
+            const generateApiKeyBtn = document.getElementById('generateApiKeyBtn');
+            const apiKeyDisplay = document.getElementById('apiKeyDisplay');
+            const apiKeyText = document.getElementById('apiKeyText');
+            const copyApiKeyBtn = document.getElementById('copyApiKeyBtn');
+            const copyMessage = document.getElementById('copyMessage');
+
+            generateApiKeyBtn.addEventListener('click', () => {
+                // Generate a simple mock API key
+                const newApiKey = 'sk-' + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+                apiKeyText.textContent = newApiKey;
+                apiKeyDisplay.classList.remove('hidden');
+                copyMessage.classList.add('hidden'); // Hide previous copy message
+            });
+
+            copyApiKeyBtn.addEventListener('click', () => {
+                const textToCopy = apiKeyText.textContent;
+                // Use document.execCommand('copy') for better iframe compatibility
+                const textArea = document.createElement("textarea");
+                textArea.value = textToCopy;
+                document.body.appendChild(textArea);
+                textArea.select();
+                try {
+                    document.execCommand('copy');
+                    copyMessage.textContent = 'Copied to clipboard!';
+                    copyMessage.classList.remove('hidden');
+                } catch (err) {
+                    console.error('Failed to copy text: ', err);
+                    copyMessage.textContent = 'Failed to copy. Please copy manually.';
+                    copyMessage.classList.remove('hidden');
+                    copyMessage.style.color = 'red';
+                }
+                document.body.removeChild(textArea);
+
+                // Hide message after a few seconds
+                setTimeout(() => {
+                    copyMessage.classList.add('hidden');
+                }, 3000);
+            });
+        });
+    </script>
+</body>
+</html>

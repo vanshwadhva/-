@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>स्वशासन - API Features</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DV98W7K8XY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-DV98W7K8XY');
+    </script>
+    <style>
+        /* Custom Tailwind configuration for responsive fonts and shadows */
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'],
+                        calibri: ['Calibri', 'sans-serif'],
+                    },
+                }
+            }
+        }
+        /* Styling for code blocks to match dark theme */
+        pre {
+            background-color: #1a1a1a; /* Darker background for code */
+            color: #f8f8f2;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        code {
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+            background-color: #333; /* Darker background for inline code */
+            color: #f8f8f2;
+            padding: 0.2em 0.4em;
+            border-radius: 0.3em;
+        }
+        pre code {
+            background-color: transparent;
+            padding: 0;
+            border-radius: 0;
+            color: inherit;
+        }
+
+        /* Responsive adjustments for header and nav */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 10px;
+            }
+            .header-nav-items {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+            .header-right-group {
+                margin-left: auto;
+                display: flex;
+                align-items: center;
+            }
+            /* Adjust main content for mobile to stack sidebar and content */
+            .developer-layout {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                position: static; /* Remove fixed position on mobile */
+                height: auto; /* Allow height to adjust to content */
+                padding-bottom: 1rem; /* Add some padding at bottom */
+            }
+            .main-content-area {
+                width: 100%;
+                padding-left: 1rem; /* Adjust padding */
+                padding-right: 1rem; /* Adjust padding */
+            }
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-100 bg-gray-900 min-h-screen flex flex-col">
+
+    <!-- Header Section (Consistent with Main Pages - Light Theme) -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white bg-opacity-80 backdrop-blur-md py-4 shadow-sm">
+        <div class="container mx-auto flex items-center justify-between px-4 md:px-6">
+            <!-- "स्वशासन" text as a link to home -->
+            <a href="index.html" class="text-3xl font-semibold text-gray-800 font-calibri flex-shrink-0 hover:text-gray-900 transition-colors duration-200">स्वशासन</a>
+            <nav class="hidden md:flex flex-grow justify-center">
+                <ul class="flex space-x-6 text-gray-600 font-medium">
+                    <li><a href="index.html#about" class="hover:text-gray-900 hover:font-bold transition-all duration-200">About Us</a></li>
+                    <li><a href="index.html#features" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Features</a></li>
+                    <li><a href="index.html#contact" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Contact</a></li>
+                    <li><a href="blog.html" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Blog</a></li>
+                    <li><a href="survey.html" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Survey</a></li>
+                </ul>
+            </nav>
+            <div class="flex items-center space-x-4 header-right-group ml-auto">
+                <!-- Profile Icon (SVG) -->
+                <a href="onboarding.html" class="text-gray-600 hover:text-gray-900 transition-colors duration-200 cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-circle">
+                        <circle cx="12" cy="12" r="10"/>
+                        <circle cx="12" cy="10" r="3"/>
+                        <path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662"/>
+                    </svg>
+                </a>
+                <!-- Hamburger menu for mobile -->
+                <button id="menu-button" class="md:hidden text-gray-600 hover:text-gray-900 focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu">
+                        <line x1="4" x2="20" y1="12" y2="12"></line>
+                        <line x1="4" x2="20" y1="6" y2="6"></line>
+                        <line x1="4" x2="20" y1="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Navigation Overlay -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 right-0 bg-white bg-opacity-95 backdrop-blur-md shadow-md py-4">
+            <ul class="flex flex-col items-center space-y-4 text-gray-800 font-medium">
+                <li><a href="index.html#about" class="block py-2 hover:bg-gray-100 w-full text-center">About Us</a></li>
+                <li><a href="index.html#features" class="block py-2 hover:bg-gray-100 w-full text-center">Features</a></li>
+                <li><a href="index.html#contact" class="block py-2 hover:bg-gray-100 w-full text-center">Contact</a></li>
+                <li><a href="blog.html" class="block py-2 hover:bg-gray-100 w-full text-center">Blog</a></li>
+                <li><a href="survey.html" class="block py-2 hover:bg-gray-100 w-full text-center">Survey</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Main Content Area with Sidebar -->
+    <div class="flex flex-grow mt-16 developer-layout">
+        <!-- Left Sidebar (Fixed and Dark) -->
+        <aside class="sidebar w-64 bg-gray-800 text-gray-300 p-6 flex-shrink-0 md:fixed md:top-16 md:bottom-0 overflow-y-auto">
+            <h2 class="text-xl font-bold text-white mb-6">API Features</h2>
+            <nav>
+                <ul class="space-y-2">
+                    <li><a href="#overview" class="block py-2 px-3 rounded-md hover:bg-gray-700 hover:text-white transition-colors duration-200">Overview</a></li>
+                    <li><a href="#vehicle-data" class="block py-2 px-3 rounded-md hover:bg-gray-700 hover:text-white transition-colors duration-200">Vehicle Data Access</a></li>
+                    <li><a href="#navigation-routing" class="block py-2 px-3 rounded-md hover:bg-gray-700 hover:text-white transition-colors duration-200">Navigation & Routing</a></li>
+                    <li><a href="#remote-control" class="block py-2 px-3 rounded-md hover:bg-gray-700 hover:text-white transition-colors duration-200">Remote Control</a></li>
+                    <li><a href="#user-profile" class="block py-2 px-3 rounded-md hover:bg-gray-700 hover:text-white transition-colors duration-200">User & Profile Management</a></li>
+                    <li><a href="#ota-integration" class="block py-2 px-3 rounded-md hover:bg-gray-700 hover:text-white transition-colors duration-200">OTA Integration</a></li>
+                    <li><a href="#custom-notifications" class="block py-2 px-3 rounded-md hover:bg-gray-700 hover:text-white transition-colors duration-200">Custom Notifications</a></li>
+                    <li class="pt-4"><h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider">Related</h3></li>
+                    <li><a href="developer-platform.html" class="block py-2 px-3 rounded-md hover:bg-gray-700 hover:text-white transition-colors duration-200">Developer Platform</a></li>
+                    <li><a href="api-docs.html" class="block py-2 px-3 rounded-md hover:bg-gray-700 hover:text-white transition-colors duration-200">API Documentation</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Right Main Content Area (Scrollable and Dark) -->
+        <main class="main-content-area flex-grow md:ml-64 p-8 bg-gray-900 text-gray-100">
+            <h1 class="text-4xl font-bold mb-8 text-white" id="overview">Svashasan OS API Features</h1>
+
+            <section class="mb-12">
+                <p class="text-lg text-gray-300 leading-relaxed">
+                    Explore the comprehensive suite of APIs offered by Svashasan OS, designed to empower developers to build rich, interactive, and intelligent applications for electric vehicles. Our APIs provide secure and efficient access to core vehicle functionalities and data.
+                </p>
+            </section>
+
+            <section id="vehicle-data" class="mb-12 p-6 bg-gray-800 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-semibold mb-4 text-white">Vehicle Data Access</h2>
+                <p class="text-lg text-gray-300 leading-relaxed mb-4">
+                    Access real-time and historical data from the vehicle's sensors and systems. This includes critical metrics like speed, battery charge, range, tire pressure, and diagnostic codes. Build applications that monitor vehicle health, track performance, or provide personalized driving insights.
+                </p>
+                <h3 class="text-xl font-semibold mb-3 text-white">Key Data Points:</h3>
+                <ul class="list-disc list-inside text-lg text-gray-300 space-y-1 ml-4">
+                    <li>Current Speed (kmph)</li>
+                    <li>Battery State of Charge (SoC) and Health</li>
+                    <li>Estimated Range (km)</li>
+                    <li>Tire Pressure Monitoring System (TPMS) data</li>
+                    <li>Engine/Motor Diagnostics (error codes, temperature)</li>
+                    <li>Odometer readings</li>
+                </ul>
+                <pre class="mt-4"><code class="language-json">
+// Example: Fetching live vehicle status
+GET /v1/vehicle/status
+Authorization: Bearer YOUR_API_KEY
+
+// Response example
+{
+  "speed": 60,
+  "batteryLevel": 75,
+  "range": 250,
+  "tirePressure": {"frontLeft": 35, "frontRight": 35, "rearLeft": 36, "rearRight": 36},
+  "lastUpdated": "2025-07-12T10:00:00Z"
+}
+                </code></pre>
+            </section>
+
+            <section id="navigation-routing" class="mb-12 p-6 bg-gray-800 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-semibold mb-4 text-white">Navigation & Routing</h2>
+                <p class="text-lg text-gray-300 leading-relaxed mb-4">
+                    Integrate advanced navigation features into your applications. Our APIs provide access to optimal routing algorithms, real-time traffic updates, points of interest (POIs) including charging stations, and voice-assisted navigation prompts. Create smart travel planners or location-based services tailored for EV drivers.
+                </p>
+                <h3 class="text-xl font-semibold mb-3 text-white">Capabilities:</h3>
+                <ul class="list-disc list-inside text-lg text-gray-300 space-y-1 ml-4">
+                    <li>Route Calculation (shortest, fastest, most energy-efficient)</li>
+                    <li>Real-time Traffic Information</li>
+                    <li>Charging Station Discovery and Availability</li>
+                    <li>Turn-by-Turn Navigation Prompts</li>
+                    <li>Geocoding and Reverse Geocoding</li>
+                </ul>
+                <pre class="mt-4"><code class="language-json">
+// Example: Finding nearby charging stations
+GET /v1/navigation/charging-stations?latitude=19.0760&longitude=72.8777&radius=5
+Authorization: Bearer YOUR_API_KEY
+
+// Response example
+{
+  "stations": [
+    {"name": "EV Charge Point A", "distance": "2 km", "availability": "3/5 chargers free"},
+    {"name": "Green Energy Hub", "distance": "5 km", "availability": "fully occupied"}
+  ]
+}
+                </code></pre>
+            </section>
+
+            <section id="remote-control" class="mb-12 p-6 bg-gray-800 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-semibold mb-4 text-white">Remote Control</h2>
+                <p class="text-lg text-gray-300 leading-relaxed mb-4">
+                    Empower users with remote control capabilities over their vehicles. Our secure APIs allow for actions such as remote locking/unlocking, pre-conditioning the cabin climate, initiating or scheduling charging sessions, and flashing lights or honking for location.
+                </p>
+                <h3 class="text-xl font-semibold mb-3 text-white">Available Actions:</h3>
+                <ul class="list-disc list-inside text-lg text-gray-300 space-y-1 ml-4">
+                    <li>Lock/Unlock Doors</li>
+                    <li>Start/Stop Charging</li>
+                    <li>Set Cabin Temperature</li>
+                    <li>Flash Lights / Honk Horn</li>
+                    <li>Open/Close Windows (selected models)</li>
+                </ul>
+                <pre class="mt-4"><code class="language-json">
+// Example: Locking the vehicle remotely
+POST /v1/vehicle/lock
+Authorization: Bearer YOUR_API_KEY
+Content-Type: application/json
+
+// Request Body (empty or with vehicle ID if managing multiple)
+{}
+
+// Response example
+{
+  "status": "success",
+  "message": "Vehicle locked successfully."
+}
+                </code></pre>
+            </section>
+
+            <section id="user-profile" class="mb-12 p-6 bg-gray-800 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-semibold mb-4 text-white">User & Profile Management</h2>
+                <p class="text-lg text-gray-300 leading-relaxed mb-4">
+                    Integrate user authentication and manage driver profiles and preferences. This API allows for secure access to user settings, preferred charging networks, driving modes, and personalized vehicle configurations. Build seamless, personalized experiences for each driver.
+                </p>
+                <h3 class="text-xl font-semibold mb-3 text-white">Features:</h3>
+                <ul class="list-disc list-inside text-lg text-gray-300 space-y-1 ml-4">
+                    <li>Retrieve User Profile Information</li>
+                    <li>Update User Preferences (e.g., driving mode, climate presets)</li>
+                    <li>Manage Linked Vehicles</li>
+                    <li>Secure User Authentication (via Svashasan OS)</li>
+                </ul>
+                <pre class="mt-4"><code class="language-json">
+// Example: Fetching user preferences
+GET /v1/user/preferences
+Authorization: Bearer YOUR_API_KEY
+
+// Response example
+{
+  "drivingMode": "eco",
+  "preferredChargingNetwork": "ChargePoint",
+  "climatePreset": "comfortable",
+  "notificationSettings": {"lowBattery": true, "chargingComplete": true}
+}
+                </code></pre>
+            </section>
+
+            <section id="ota-integration" class="mb-12 p-6 bg-gray-800 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-semibold mb-4 text-white">OTA Integration</h2>
+                <p class="text-lg text-gray-300 leading-relaxed mb-4">
+                    Prepare your applications for seamless Over-the-Air (OTA) updates. This API provides mechanisms to check for OS and application updates, manage download progress, and schedule installations. Ensure your integrated solutions remain compatible and up-to-date with the latest Svashasan OS features.
+                </p>
+                <h3 class="text-xl font-semibold mb-3 text-white">Capabilities:</h3>
+                <ul class="list-disc list-inside text-lg text-gray-300 space-y-1 ml-4">
+                    <li>Check for Available Updates</li>
+                    <li>Monitor Update Download Progress</li>
+                    <li>Schedule Update Installation</li>
+                    <li>Receive Update Status Notifications</li>
+                </ul>
+                <pre class="mt-4"><code class="language-json">
+// Example: Checking for available updates
+GET /v1/ota/updates
+Authorization: Bearer YOUR_API_KEY
+
+// Response example
+{
+  "availableUpdates": [
+    {"version": "2.1.0", "type": "OS", "sizeMB": 800, "releaseNotes": "Improved battery management."},
+    {"version": "1.5.2", "type": "App", "appName": "Svashasan Maps", "sizeMB": 50}
+  ]
+}
+                </code></pre>
+            </section>
+
+            <section id="custom-notifications" class="mb-12 p-6 bg-gray-800 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-semibold mb-4 text-white">Custom Notifications</h2>
+                <p class="text-lg text-gray-300 leading-relaxed mb-4">
+                    Create and manage custom alerts and notifications based on specific vehicle events or user-defined conditions. This allows your applications to proactively inform users about critical events, maintenance needs, or personalized reminders directly through the Svashasan OS interface.
+                </p>
+                <h3 class="text-xl font-semibold mb-3 text-white">Notification Triggers:</h3>
+                <ul class="list-disc list-inside text-lg text-gray-300 space-y-1 ml-4">
+                    <li>Low Battery Threshold</li>
+                    <li>Charging Complete</li>
+                    <li>Vehicle Security Alerts (e.g., unauthorized access)</li>
+                    <li>Geofence Entry/Exit</li>
+                    <li>Scheduled Maintenance Reminders</li>
+                </ul>
+                <pre class="mt-4"><code class="language-json">
+// Example: Setting up a low battery notification
+POST /v1/notifications/create
+Authorization: Bearer YOUR_API_KEY
+Content-Type: application/json
+
+// Request Body
+{
+  "type": "battery_alert",
+  "threshold": 20, // percentage
+  "message": "Battery level is critically low. Please find a charging station.",
+  "deliveryMethod": ["in_car_display", "mobile_app"]
+}
+
+// Response example
+{
+  "status": "success",
+  "notificationId": "noti_123abc"
+}
+                </code></pre>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer (Consistent with Main Page - Light Theme) -->
+    <footer class="bg-gray-800 text-white py-6 text-center">
+        <div class="container mx-auto px-4 md:px-6">
+            <p>&copy; 2025 स्वशासन. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuButton = document.getElementById('menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (menuButton && mobileMenu) {
+                menuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+
+                mobileMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.add('hidden');
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>

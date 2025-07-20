@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>स्वशासन - Blog</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DV98W7K8XY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-DV98W7K8XY');
+    </script>
+    <style>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'],
+                        calibri: ['Calibri', 'sans-serif'],
+                    },
+                }
+            }
+        }
+        /* Responsive adjustments for header and nav */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 10px;
+            }
+            .header-nav-items {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+            .header-right-group {
+                margin-left: auto;
+                display: flex;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-gray-100 min-h-screen flex flex-col">
+
+    <!-- Header Section (Consistent with Main Page) -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white bg-opacity-80 backdrop-blur-md py-4 shadow-sm">
+        <div class="container mx-auto flex items-center justify-between px-4 md:px-6">
+            <!-- "स्वशासन" text as a link to home -->
+            <a href="index.html" class="text-3xl font-semibold text-gray-800 font-calibri flex-shrink-0 hover:text-gray-900 transition-colors duration-200">स्वशासन</a>
+            <nav class="hidden md:flex flex-grow justify-center">
+                <ul class="flex space-x-6 text-gray-600 font-medium">
+                    <li><a href="index.html#about" class="hover:text-gray-900 hover:font-bold transition-all duration-200">About Us</a></li>
+                    <li><a href="index.html#features" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Features</a></li>
+                    <li><a href="index.html#contact" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Contact</a></li>
+                    <li><a href="blog.html" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Blog</a></li>
+                    <li><a href="survey.html" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Survey</a></li>
+                    <li><a href="api-features.html" class="hover:text-gray-900 hover:font-bold transition-all duration-200">API Features</a></li> <!-- New link -->
+                </ul>
+            </nav>
+            <div class="flex items-center space-x-4 header-right-group ml-auto">
+                <!-- Profile Icon (SVG) -->
+                <a href="onboarding.html" class="text-gray-600 hover:text-gray-900 transition-colors duration-200 cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-circle">
+                        <circle cx="12" cy="12" r="10"/>
+                        <circle cx="12" cy="10" r="3"/>
+                        <path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662"/>
+                    </svg>
+                </a>
+                <button id="menu-button" class="md:hidden text-gray-600 hover:text-gray-900 focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu">
+                        <line x1="4" x2="20" y1="12" y2="12"></line>
+                        <line x1="4" x2="20" y1="6" y2="6"></line>
+                        <line x1="4" x2="20" y1="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Navigation Overlay -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 right-0 bg-white bg-opacity-95 backdrop-blur-md shadow-md py-4">
+            <ul class="flex flex-col items-center space-y-4 text-gray-800 font-medium">
+                <li><a href="index.html#about" class="block py-2 hover:bg-gray-100 w-full text-center">About Us</a></li>
+                <li><a href="index.html#features" class="block py-2 hover:bg-gray-100 w-full text-center">Features</a></li>
+                <li><a href="index.html#contact" class="block py-2 hover:bg-gray-100 w-full text-center">Contact</a></li>
+                <li><a href="blog.html" class="block py-2 hover:bg-gray-100 w-full text-center">Blog</a></li>
+                <li><a href="survey.html" class="block py-2 hover:bg-gray-100 w-full text-center">Survey</a></li>
+                <li><a href="api-features.html" class="block py-2 hover:bg-gray-100 w-full text-center">API Features</a></li> <!-- New link -->
+            </ul>
+        </div>
+    </header>
+
+    <main class="flex-grow py-20 mt-16 px-4 md:px-6">
+        <div class="container mx-auto max-w-4xl bg-white p-8 rounded-lg shadow-md">
+            <h1 class="text-4xl font-bold text-gray-800 text-center mb-8">Our Latest Insights</h1>
+
+            <div class="mb-8">
+                <h2 class="text-3xl font-semibold text-gray-800 mb-4">The Future of Autonomous Driving with Svashasan OS</h2>
+                <p class="text-gray-600 text-sm mb-4">Published on July 4, 2025</p>
+                <div class="w-full h-auto rounded-lg overflow-hidden mb-6">
+                    <!-- Example Image Media -->
+                    <img src="https://placehold.co/800x450/E0E7FF/3B82F6?text=Blog+Post+Image" alt="Future of Autonomous Driving" class="w-full h-auto object-cover">
+                    <!-- Or if you prefer a video: -->
+                    <!-- <div class="relative" style="padding-top: 56.25%;">
+                        <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/your-video-id" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div> -->
+                </div>
+                <p class="text-lg text-gray-700 leading-relaxed mb-4">
+                    Svashasan OS is at the forefront of integrating advanced AI and machine learning into electric vehicles, paving the way for truly autonomous driving experiences. Our innovative architecture allows for real-time data processing and decision-making, significantly enhancing safety and efficiency on the road.
+                </p>
+                <p class="text-lg text-gray-700 leading-relaxed mb-4">
+                    We believe that the future of mobility lies in intelligent systems that not only assist the driver but can also take full control when necessary, providing a seamless and stress-free journey. Our ongoing research and development focus on predictive analytics and robust sensor fusion to ensure unparalleled reliability.
+                </p>
+                <p class="text-lg text-gray-700 leading-relaxed">
+                    Stay tuned for more updates as we continue to push the boundaries of what's possible in EV technology.
+                </p>
+            </div>
+
+            <div class="border-t border-gray-200 pt-8 mt-8">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-4">Previous Posts</h2>
+                <ul class="list-disc list-inside text-lg text-gray-700 space-y-2">
+                    <li><a href="#" class="text-blue-600 hover:underline">Optimizing EV Battery Life with Svashasan OS</a> - June 28, 2025</li>
+                    <li><a href="#" class="text-blue-600 hover:underline">The Role of Connectivity in Modern EVs</a> - June 20, 2025</li>
+                    <li><a href="#" class="text-blue-600 hover:underline">Introducing Svashasan OS: A New Era</a> - June 10, 2025</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer (Consistent with Main Page) -->
+    <footer class="bg-gray-800 text-white py-6 text-center">
+        <div class="container mx-auto px-4 md:px-6">
+            <p>&copy; 2025 स्वशासन. All Rights Reserved.</p>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuButton = document.getElementById('menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (menuButton && mobileMenu) {
+                menuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+
+                mobileMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.add('hidden');
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>

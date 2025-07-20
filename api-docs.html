@@ -81,6 +81,14 @@
                 padding-left: 1rem; /* Adjust padding */
                 padding-right: 1rem; /* Adjust padding */
             }
+            .support-links {
+                flex-direction: column; /* Stack vertically on small screens */
+                align-items: center;
+                gap: 0.5rem; /* Add gap for vertical stacking */
+            }
+            .support-links span {
+                display: none; /* Hide pipe separators on mobile when stacked */
+            }
         }
     </style>
 </head>
@@ -98,6 +106,7 @@
                     <li><a href="index.html#contact" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Contact</a></li>
                     <li><a href="blog.html" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Blog</a></li>
                     <li><a href="survey.html" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Survey</a></li>
+                    <li><a href="api-features.html" class="hover:text-gray-900 hover:font-bold transition-all duration-200">API Features</a></li>
                 </ul>
             </nav>
             <div class="flex items-center space-x-4 header-right-group ml-auto">
@@ -127,6 +136,7 @@
                 <li><a href="index.html#contact" class="block py-2 hover:bg-gray-100 w-full text-center">Contact</a></li>
                 <li><a href="blog.html" class="block py-2 hover:bg-gray-100 w-full text-center">Blog</a></li>
                 <li><a href="survey.html" class="block py-2 hover:bg-gray-100 w-full text-center">Survey</a></li>
+                <li><a href="api-features.html" class="block py-2 hover:bg-gray-100 w-full text-center">API Features</a></li>
             </ul>
         </div>
     </header>
@@ -151,7 +161,8 @@
                     <li><a href="#support" class="block py-2 px-3 rounded-md hover:bg-gray-700 hover:text-white transition-colors duration-200">Support</a></li>
                     <li><a href="#coming-soon" class="block py-2 px-3 rounded-md hover:bg-gray-700 hover:text-white transition-colors duration-200">Coming Soon</a></li>
                     <li class="pt-4"><h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider">Related</h3></li>
-                    <li><a href="developer-platform.html" class="block py-2 px-3 rounded-md hover:bg-gray-700 hover:text-white transition-colors duration-200 font-semibold">Developer Platform</a></li>
+                    <li><a href="developer-platform.html" class="block py-2 px-3 rounded-md hover:bg-gray-700 hover:text-white transition-colors duration-200">Developer Platform</a></li>
+                    <li><a href="api-features.html" class="block py-2 px-3 rounded-md hover:bg-gray-700 hover:text-white transition-colors duration-200">API Features</a></li>
                 </ul>
             </nav>
         </aside>
@@ -175,14 +186,14 @@
             </section>
 
             <section class="mb-8" id="what-is-api-key">
-                <h2 class="text-3xl font-bold text-white mb-4">🔐 What is an API Key?</h2>
+                <h2 class="text-3xl font-bold text-white mb-4">What is an API Key?</h2>
                 <p class="text-lg text-gray-300 leading-relaxed">
                     An API key is a unique identifier used to authenticate your app or device with the Svashasan API Gateway. Every request made to a protected endpoint must include your API key.
                 </p>
             </section>
 
             <section class="mb-8" id="getting-api-key">
-                <h2 class="text-3xl font-bold text-white mb-4">🔑 Getting Your API Key</h2>
+                <h2 class="text-3xl font-bold text-white mb-4">Getting Your API Key</h2>
                 <p class="text-lg text-gray-300 leading-relaxed">
                     To request your API key, follow these steps:
                 </p>
@@ -197,7 +208,7 @@
             </section>
 
             <section class="mb-8" id="authenticated-requests">
-                <h2 class="text-3xl font-bold text-white mb-4">✅ Making Authenticated Requests</h2>
+                <h2 class="text-3xl font-bold text-white mb-4">Making Authenticated Requests</h2>
                 <p class="text-lg text-gray-300 leading-relaxed mb-4">
                     All authenticated requests must include your API key in the request header:
                 </p>
@@ -212,9 +223,9 @@ https://api.svashasan.shop/telemetry
             </section>
 
             <section class="mb-8" id="sample-api-usage">
-                <h2 class="text-3xl font-bold text-white mb-4">📡 Sample API Usage</h2>
+                <h2 class="text-3xl font-bold text-white mb-4">Sample API Usage</h2>
 
-                <h3 class="text-2xl font-bold text-white mb-3">🚘 Endpoint: <code class="bg-gray-700 text-gray-100">/telemetry</code></h3>
+                <h3 class="text-2xl font-bold text-white mb-3">Endpoint: <code class="bg-gray-700 text-gray-100">/telemetry</code></h3>
                 <p class="text-lg text-gray-300 leading-relaxed mb-4">
                     Returns live vehicle metrics.
                 </p>
@@ -254,12 +265,12 @@ Authorization: Bearer YOUR_API_KEY
                             </tr>
                             <tr>
                                 <td class="border-b border-gray-700 px-4 py-2 text-sm text-gray-300">battery</td>
-                                <td class="border-b border-gray-700 px-4 py-2 text-sm text-gray-300">number</td>
-                                <td class="border-b border-gray-700 px-4 py-2 text-sm text-gray-300">Remaining battery in kWh</td>
+                                <td class="border-b px-4 py-2 text-sm text-gray-300">number</td>
+                                <td class="border-b px-4 py-2 text-sm text-gray-300">Remaining battery in kWh</td>
                             </tr>
                             <tr>
                                 <td class="border-b border-gray-700 px-4 py-2 text-sm text-gray-300">navigation</td>
-                                <td class="border-b border-gray-700 px-4 py-2 text-sm text-gray-300">string</td>
+                                <td class="border-b px-4 py-2 text-sm text-gray-300">string</td>
                                 <td class="border-b px-4 py-2 text-sm text-gray-300">Voice-assisted navigation prompt</td>
                             </tr>
                         </tbody>
@@ -268,7 +279,7 @@ Authorization: Bearer YOUR_API_KEY
             </section>
 
             <section class="mb-8" id="test-api-key">
-                <h2 class="text-3xl font-bold text-white mb-4">🧪 Test API Key (Sandbox Mode)</h2>
+                <h2 class="text-3xl font-bold text-white mb-4">Test API Key (Sandbox Mode)</h2>
                 <p class="text-lg text-gray-300 leading-relaxed mb-4">
                     You can use our test key for sandbox access:
                 </p>
@@ -279,7 +290,7 @@ Authorization: Bearer YOUR_API_KEY
             </section>
 
             <section class="mb-8" id="rate-limits">
-                <h2 class="text-3xl font-bold text-white mb-4">⚠️ Rate Limits</h2>
+                <h2 class="text-3xl font-bold text-white mb-4">Rate Limits</h2>
                 <table class="min-w-full bg-gray-800 border border-gray-700 rounded-lg shadow-sm mt-4">
                     <thead>
                         <tr class="bg-gray-700 border-b border-gray-600">
@@ -312,7 +323,7 @@ Authorization: Bearer YOUR_API_KEY
             </section>
 
             <section class="mb-8" id="security-best-practices">
-                <h2 class="text-3xl font-bold text-white mb-4">🛡️ Security & Best Practices</h2>
+                <h2 class="text-3xl font-bold text-white mb-4">Security & Best Practices</h2>
                 <ul class="list-disc list-inside text-lg text-gray-300 space-y-1 ml-4">
                     <li>Never expose your API key in frontend (HTML/JS).</li>
                     <li>Rotate keys regularly for security.</li>
@@ -322,7 +333,7 @@ Authorization: Bearer YOUR_API_KEY
             </section>
 
             <section class="mb-8" id="key-rotation">
-                <h2 class="text-3xl font-bold text-white mb-4">🔄 Key Rotation</h2>
+                <h2 class="text-3xl font-bold text-white mb-4">Key Rotation</h2>
                 <p class="text-lg text-gray-300 leading-relaxed mb-4">
                     To regenerate or revoke your key:
                 </p>
@@ -333,7 +344,7 @@ Authorization: Bearer YOUR_API_KEY
             </section>
 
             <section class="mb-8" id="faq">
-                <h2 class="text-3xl font-bold text-white mb-4">❓ FAQ</h2>
+                <h2 class="text-3xl font-bold text-white mb-4">FAQ</h2>
                 <ul class="list-disc list-inside text-lg text-gray-300 space-y-4 ml-4">
                     <li>
                         <p class="font-semibold">Q: Is authentication required for all endpoints?</p>
@@ -355,16 +366,18 @@ Authorization: Bearer YOUR_API_KEY
             </section>
 
             <section class="mb-8" id="support">
-                <h2 class="text-3xl font-bold text-white mb-4">📞 Support</h2>
-                <ul class="list-disc list-inside text-lg text-gray-300 space-y-1 ml-4">
-                    <li>📧 Email: <a href="mailto:contact@svashasan.shop" class="text-blue-400 hover:underline">contact@svashasan.shop</a></li>
-                    <li>🌐 Website: <a href="https://svashasan.shop" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline">https://svashasan.shop</a></li>
-                    <li>🛠 Dev Page: <a href="developer-platform.html" class="text-blue-400 hover:underline">https://svashasan.shop/developer.html</a></li>
-                </ul>
+                <h2 class="text-3xl font-bold text-white mb-4">Support</h2>
+                <div class="flex flex-wrap items-center text-lg text-gray-300 space-x-2 md:space-x-4 support-links">
+                    <a href="mailto:contact@svashasan.shop" class="text-blue-400 hover:underline">contact@svashasan.shop</a>
+                    <span class="hidden md:inline">|</span>
+                    <a href="https://svashasan.shop" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline">Website</a>
+                    <span class="hidden md:inline">|</span>
+                    <a href="developer-platform.html" class="text-blue-400 hover:underline">Dev Platform</a>
+                </div>
             </section>
 
             <section id="coming-soon">
-                <h2 class="text-3xl font-bold text-white mb-4">🧩 Coming Soon</h2>
+                <h2 class="text-3xl font-bold text-white mb-4">Coming Soon</h2>
                 <ul class="list-disc list-inside text-lg text-gray-300 space-y-1 ml-4">
                     <li>WebSocket support for real-time streaming.</li>
                     <li>Developer dashboard & analytics.</li>

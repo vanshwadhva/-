@@ -20,9 +20,7 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        // Using system-ui as a generic modern sans-serif that often maps to SF Pro Display on Apple devices
                         sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'],
-                        // Added Calibri specifically for 'स्वशासन' heading
                         calibri: ['Calibri', 'sans-serif'],
                     },
                 }
@@ -30,82 +28,11 @@
         }
         /* Custom CSS for hero background image */
         .hero-background {
-            background-image: url('image.jpeg'); /* Changed background image here */
+            background-image: url('image.jpeg'); /* Original background image */
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             background-attachment: fixed; /* Makes the background fixed while scrolling */
-        }
-
-        /* Modal specific styles - Kept for consistency, though 'Explain Feature' buttons are removed */
-        .modal {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 1000; /* Sit on top */
-            left: 0;
-            top: 0;
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgba(0,0,0,0.7); /* Darker overlay */
-            display: flex; /* Use flex to center content */
-            align-items: center;
-            justify-content: center;
-        }
-        .modal-content {
-            background-color: #fefefe;
-            margin: auto;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-            width: 90%;
-            max-width: 700px;
-            position: relative;
-            color: #333; /* Ensure text is readable */
-        }
-        .modal-close-button {
-            color: #aaa;
-            float: right;
-            font-size: 32px;
-            font-weight: bold;
-            position: absolute;
-            top: 15px;
-            right: 25px;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-        .modal-close-button:hover,
-        .modal-close-button:focus {
-            color: #666;
-        }
-        .modal-title {
-            font-size: 1.8em;
-            margin-top: 0;
-            margin-bottom: 20px;
-            color: #004aad;
-            text-align: center;
-        }
-        .modal-body {
-            font-size: 1.05em;
-            line-height: 1.8;
-            max-height: 400px; /* Limit height for scrollability */
-            overflow-y: auto;
-            padding-right: 10px; /* Space for scrollbar */
-        }
-
-        /* Loading spinner for modal */
-        .loading-spinner {
-            border: 4px solid #f3f3f3; /* Light grey */
-            border-top: 4px solid #004aad; /* Blue */
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            animation: spin 1s linear infinite;
-            margin: 20px auto;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
         }
 
         /* Responsive adjustments for grids and sections */
@@ -122,30 +49,31 @@
             .header-right-icons {
                 margin-left: auto; /* Push icons to the right on small screens if nav stacks */
             }
+            .footer-links {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
         }
     </style>
-    <!-- Twitter Card metadata -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="स्वशासन - The Future of Electric Vehicle Operating Systems">
-    <meta name="twitter:description" content="Experience Svashasan OS: Intuitive, Secure, and Connected. Powering the next generation of electric vehicles for a smarter, more efficient future.">
-    <meta name="twitter:image" content="https://6855afaf0d0426e5d7755276--helpful-clafoutis-e639ae.netlify.app/image.jpeg"> <!-- IMPORTANT: Replace with the absolute URL to your hero image -->
-    <meta name="twitter:image:alt" content="Futuristic electric car with digital interfaces on an open road">
 </head>
 <body class="font-sans text-gray-800">
 
     <!-- Header Section -->
     <header class="fixed top-0 left-0 right-0 z-50 bg-white bg-opacity-80 backdrop-blur-md py-4 shadow-sm">
         <div class="container mx-auto flex items-center justify-between px-4 md:px-6">
-            <div class="text-3xl font-semibold text-gray-800 font-calibri flex-shrink-0">स्वशासन</div> <!-- Changed font to Calibri -->
+            <!-- "स्वशासन" text as a link to home -->
+            <a href="index.html" class="text-3xl font-semibold text-gray-800 font-calibri flex-shrink-0 hover:text-gray-900 transition-colors duration-200">स्वशासन</a>
             <nav class="hidden md:flex flex-grow justify-center">
                 <ul class="flex space-x-6 text-gray-600 font-medium">
                     <li><a href="#about" class="hover:text-gray-900 hover:font-bold transition-all duration-200">About Us</a></li>
                     <li><a href="#features" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Features</a></li>
                     <li><a href="#contact" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Contact</a></li>
+                    <li><a href="blog.html" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Blog</a></li>
                     <li><a href="survey.html" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Survey</a></li>
+                    <li><a href="developer-platform.html" class="hover:text-gray-900 hover:font-bold transition-all duration-200">API</a></li> <!-- New link -->
                 </ul>
             </nav>
-            <div class="flex items-center space-x-4 header-right-group ml-auto"> <!-- ml-auto pushes it to the right, flex and items-center for children alignment -->
+            <div class="flex items-center space-x-4 header-right-group ml-auto">
                 <!-- Profile Icon (SVG) - Opens Onboarding -->
                 <a href="onboarding.html" class="text-gray-600 hover:text-gray-900 transition-colors duration-200 cursor-pointer">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-circle">
@@ -170,7 +98,9 @@
                 <li><a href="#about" class="block py-2 hover:bg-gray-100 w-full text-center">About Us</a></li>
                 <li><a href="#features" class="block py-2 hover:bg-gray-100 w-full text-center">Features</a></li>
                 <li><a href="#contact" class="block py-2 hover:bg-gray-100 w-full text-center">Contact</a></li>
+                <li><a href="blog.html" class="block py-2 hover:bg-gray-100 w-full text-center">Blog</a></li>
                 <li><a href="survey.html" class="block py-2 hover:bg-gray-100 w-full text-center">Survey</a></li>
+                <li><a href="api-features.html" class="block py-2 hover:bg-gray-100 w-full text-center">API Features</a></li> <!-- New link -->
             </ul>
         </div>
     </header>
@@ -179,16 +109,16 @@
     <section class="hero-background relative h-screen flex items-center justify-center text-white text-center">
         <div class="absolute inset-0 bg-black bg-opacity-40"></div> <!-- Dark overlay -->
         <div class="relative z-10 p-4">
-            <h1 class="text-5xl md:text-7xl font-bold mb-4">Svashasan OS</h1> <!-- Changed text here -->
+            <h1 class="text-5xl md:text-7xl font-bold mb-4">Svashasan OS</h1>
             <p class="text-xl md:text-2xl mb-8">The Future of Electric Vehicle Operating Systems</p>
             <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 justify-center">
-    <a href="request-demo.html" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-10 rounded-xl transition-all duration-300 shadow-lg text-center">
-        Request Demo
-    </a>
-    <a href="learn-more.html" class="bg-white bg-opacity-20 hover:bg-opacity-30 text-white font-bold py-3 px-10 rounded-xl transition-all duration-300 shadow-lg border border-white border-opacity-30 text-center">
-        Learn More
-    </a>
-</div>
+                <a href="request-demo.html" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-10 rounded-xl transition-all duration-300 shadow-lg">
+                    Request Demo
+                </a>
+                <a href="learn-more.html" class="inline-block bg-white bg-opacity-20 hover:bg-opacity-30 text-white font-bold py-3 px-10 rounded-xl transition-all duration-300 shadow-lg border border-white border-opacity-30">
+                    Learn More
+                </a>
+            </div>
         </div>
     </section>
 
@@ -208,27 +138,27 @@
             <h2 class="text-4xl font-bold text-gray-800 mb-12">Key Features</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="feature-item bg-gray-50 p-6 rounded-lg shadow-md flex flex-col justify-between items-center text-center">
-                    <h3 class="text-2xl font-semibold text-gray-800 mb-3">Intuitive Interface</h3> <!-- Decreased font size by 2 (from text-3xl to text-2xl) -->
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-3">Intuitive Interface</h3>
                     <p class="text-gray-600 mb-4">User-friendly design for effortless control and navigation.</p>
                 </div>
                 <div class="feature-item bg-gray-50 p-6 rounded-lg shadow-md flex flex-col justify-between items-center text-center">
-                    <h3 class="text-2xl font-semibold text-gray-800 mb-3">Smart Energy Management</h3> <!-- Decreased font size by 2 -->
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-3">Smart Energy Management</h3>
                     <p>Optimize battery usage and charging for maximum range.</p>
                 </div>
                 <div class="feature-item bg-gray-50 p-6 rounded-lg shadow-md flex flex-col justify-between items-center text-center">
-                    <h3 class="text-2xl font-semibold text-gray-800 mb-3">Robust Security</h3> <!-- Decreased font size by 2 -->
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-3">Robust Security</h3>
                     <p>Advanced security protocols to protect your vehicle and data.</p>
                 </div>
                 <div class="feature-item bg-gray-50 p-6 rounded-lg shadow-md flex flex-col justify-between items-center text-center">
-                    <h3 class="text-2xl font-semibold text-gray-800 mb-3">Seamless Connectivity</h3> <!-- Decreased font size by 2 -->
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-3">Seamless Connectivity</h3>
                     <p>Integrate with your favorite apps and services on the go.</p>
                 </div>
                 <div class="feature-item bg-gray-50 p-6 rounded-lg shadow-md flex flex-col justify-between items-center text-center">
-                    <h3 class="text-2xl font-semibold text-gray-800 mb-3">Over-the-Air Updates</h3> <!-- Decreased font size by 2 -->
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-3">Over-the-Air Updates</h3>
                     <p>Keep your OS up-to-date with the latest features and improvements.</p>
                 </div>
                  <div class="feature-item bg-gray-50 p-6 rounded-lg shadow-md flex flex-col justify-between items-center text-center">
-                    <h3 class="text-2xl font-semibold text-gray-800 mb-3">Developer Friendly</h3> <!-- Decreased font size by 2 -->
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-3">Developer Friendly</h3>
                     <p>Open APIs for third-party app development and customization.</p>
                 </div>
             </div>
@@ -242,7 +172,7 @@
             <p class="text-lg text-gray-700 max-w-2xl mx-auto leading-relaxed mb-6">
                 Interested in learning more about स्वशासन or exploring partnership opportunities? Reach out to us!
             </p>
-            <p class="text-xl font-semibold text-blue-700">Email: <a href="mailto:contact@svashasan.shop" class="hover:underline">contact@svashasan.shop</a></p> <!-- Changed email -->
+            <p class="text-xl font-semibold text-blue-700">Email: <a href="mailto:contact@svashasan.shop" class="hover:underline">contact@svashasan.shop</a></p>
         </div>
     </section>
 
@@ -253,7 +183,6 @@
         </div>
     </footer>
 
-    <!-- No modal scripts needed anymore as "Explain Feature" buttons are removed -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const menuButton = document.getElementById('menu-button');

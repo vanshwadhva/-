@@ -1,108 +1,206 @@
-/Users/vanshwadhwa/iCloud Drive (Archive)/Documents/स्वशासन/Documents/website-docs/un-deployed/scripts/email-login.js
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('[data-action="signup"]').forEach(button => {
-    button.addEventListener('click', async () => {
-      const email = document.getElementById('signup-email').value;
-      const password = document.getElementById('signup-password').value;
-      const { data: signUpData, error } = await supabase.auth.signUp({ email, password });
-      if (error) return alert(error.message);
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>स्वशासन - The Future of EV OS</title>
+    <link rel="icon" type="image/png" href="2.png" sizes="32x32">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DV98W7K8XY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-DV98W7K8XY');
+    </script>
+    <style>
+        /* Custom Tailwind configuration for responsive fonts and shadows */
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'],
+                        calibri: ['Calibri', 'sans-serif'],
+                    },
+                }
+            }
+        }
+        /* Custom CSS for hero background image */
+        .hero-background {
+            background-image: url('image.jpeg'); /* Original background image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed; /* Makes the background fixed while scrolling */
+        }
 
-      alert('Signup successful. Check your email to confirm.');
-    });
-  });
+        /* Responsive adjustments for grids and sections */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 10px;
+            }
+            .header-nav-items {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+            .header-right-icons {
+                margin-left: auto; /* Push icons to the right on small screens if nav stacks */
+            }
+            .footer-links {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800">
 
-  document.querySelectorAll('[data-action="login"]').forEach(button => {
-    button.addEventListener('click', async () => {
-      const email = document.getElementById('login-email').value;
-      const password = document.getElementById('login-password').value;
-      const { data, error } = await supabase.auth.signInWithPassword({ email, password });
-      if (error) return alert(error.message);
+    <!-- Header Section -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white bg-opacity-80 backdrop-blur-md py-4 shadow-sm">
+        <div class="container mx-auto flex items-center justify-between px-4 md:px-6">
+            <!-- "स्वशासन" text as a link to home -->
+            <a href="index.html" class="text-3xl font-semibold text-gray-800 font-calibri flex-shrink-0 hover:text-gray-900 transition-colors duration-200">स्वशासन</a>
+            <nav class="hidden md:flex flex-grow justify-center">
+                <ul class="flex space-x-6 text-gray-600 font-medium">
+                    <li><a href="#about" class="hover:text-gray-900 hover:font-bold transition-all duration-200">About Us</a></li>
+                    <li><a href="#features" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Features</a></li>
+                    <li><a href="#contact" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Contact</a></li>
+                    <li><a href="blog.html" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Blog</a></li>
+                    <li><a href="survey.html" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Survey</a></li>
+                    <li><a href="developer-platform.html" class="hover:text-gray-900 hover:font-bold transition-all duration-200">API</a></li> <!-- New link -->
+                </ul>
+            </nav>
+            <div class="flex items-center space-x-4 header-right-group ml-auto">
+                <!-- Profile Icon (SVG) - Opens Onboarding -->
+                <a href="onboarding.html" class="text-gray-600 hover:text-gray-900 transition-colors duration-200 cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-circle">
+                        <circle cx="12" cy="12" r="10"/>
+                        <circle cx="12" cy="10" r="3"/>
+                        <path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662"/>
+                    </svg>
+                </a>
+                <!-- Hamburger menu for mobile -->
+                <button id="menu-button" class="md:hidden text-gray-600 hover:text-gray-900 focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu">
+                        <line x1="4" x2="20" y1="12" y2="12"></line>
+                        <line x1="4" x2="20" y1="6" y2="6"></line>
+                        <line x1="4" x2="20" y1="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Navigation Overlay -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 right-0 bg-white bg-opacity-95 backdrop-blur-md shadow-md py-4">
+            <ul class="flex flex-col items-center space-y-4 text-gray-800 font-medium">
+                <li><a href="#about" class="block py-2 hover:bg-gray-100 w-full text-center">About Us</a></li>
+                <li><a href="#features" class="block py-2 hover:bg-gray-100 w-full text-center">Features</a></li>
+                <li><a href="#contact" class="block py-2 hover:bg-gray-100 w-full text-center">Contact</a></li>
+                <li><a href="blog.html" class="block py-2 hover:bg-gray-100 w-full text-center">Blog</a></li>
+                <li><a href="survey.html" class="block py-2 hover:bg-gray-100 w-full text-center">Survey</a></li>
+                <li><a href="api-features.html" class="block py-2 hover:bg-gray-100 w-full text-center">API Features</a></li> <!-- New link -->
+            </ul>
+        </div>
+    </header>
 
-      alert('Login successful!');
-      window.location.href = "/dashboard";
-    });
-  });
-});
+    <!-- Hero Section -->
+    <section class="hero-background relative h-screen flex items-center justify-center text-white text-center">
+        <div class="absolute inset-0 bg-black bg-opacity-40"></div> <!-- Dark overlay -->
+        <div class="relative z-10 p-4">
+            <h1 class="text-5xl md:text-7xl font-bold mb-4">Svashasan OS</h1>
+            <p class="text-xl md:text-2xl mb-8">The Future of Electric Vehicle Operating Systems</p>
+            <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 justify-center">
+                <a href="request-demo.html" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-10 rounded-xl transition-all duration-300 shadow-lg">
+                    Request Demo
+                </a>
+                <a href="learn-more.html" class="inline-block bg-white bg-opacity-20 hover:bg-opacity-30 text-white font-bold py-3 px-10 rounded-xl transition-all duration-300 shadow-lg border border-white border-opacity-30">
+                    Learn More
+                </a>
+            </div>
+        </div>
+    </section>
 
-/Users/vanshwadhwa/iCloud Drive (Archive)/Documents/स्वशासन/Documents/website-docs/un-deployed/scripts/phone-otp-login.js
-document.addEventListener('DOMContentLoaded', () => {
-  const otpBtn = document.getElementById('otp-login-btn');
-  const phoneInput = document.getElementById('phone-number');
+    <!-- About Us Section -->
+    <section id="about" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4 md:px-6 text-center">
+            <h2 class="text-4xl font-bold text-gray-800 mb-8">About स्वशासन</h2>
+            <p class="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
+                स्वशासन (Swa-shaasan) is pioneering the next generation of operating systems for electric vehicles. Our mission is to create an intuitive, efficient, and secure platform that enhances the driving experience and empowers users with seamless control over their vehicle's ecosystem. We believe in self-reliance and innovation to drive the future of mobility.
+            </p>
+        </div>
+    </section>
 
-  if (otpBtn && phoneInput) {
-    otpBtn.addEventListener('click', async () => {
-      const phone = phoneInput.value;
-      const { error } = await supabase.auth.signInWithOtp({ phone });
-      if (error) return alert(error.message);
+    <!-- Key Features Section -->
+    <section id="features" class="py-20 bg-white">
+        <div class="container mx-auto px-4 md:px-6 text-center">
+            <h2 class="text-4xl font-bold text-gray-800 mb-12">Key Features</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="feature-item bg-gray-50 p-6 rounded-lg shadow-md flex flex-col justify-between items-center text-center">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-3">Intuitive Interface</h3>
+                    <p class="text-gray-600 mb-4">User-friendly design for effortless control and navigation.</p>
+                </div>
+                <div class="feature-item bg-gray-50 p-6 rounded-lg shadow-md flex flex-col justify-between items-center text-center">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-3">Smart Energy Management</h3>
+                    <p>Optimize battery usage and charging for maximum range.</p>
+                </div>
+                <div class="feature-item bg-gray-50 p-6 rounded-lg shadow-md flex flex-col justify-between items-center text-center">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-3">Robust Security</h3>
+                    <p>Advanced security protocols to protect your vehicle and data.</p>
+                </div>
+                <div class="feature-item bg-gray-50 p-6 rounded-lg shadow-md flex flex-col justify-between items-center text-center">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-3">Seamless Connectivity</h3>
+                    <p>Integrate with your favorite apps and services on the go.</p>
+                </div>
+                <div class="feature-item bg-gray-50 p-6 rounded-lg shadow-md flex flex-col justify-between items-center text-center">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-3">Over-the-Air Updates</h3>
+                    <p>Keep your OS up-to-date with the latest features and improvements.</p>
+                </div>
+                 <div class="feature-item bg-gray-50 p-6 rounded-lg shadow-md flex flex-col justify-between items-center text-center">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-3">Developer Friendly</h3>
+                    <p>Open APIs for third-party app development and customization.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-      alert('OTP sent to your phone.');
-    });
-  }
+    <!-- Contact Us Section -->
+    <section id="contact" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4 md:px-6 text-center">
+            <h2 class="text-4xl font-bold text-gray-800 mb-8">Contact Us</h2>
+            <p class="text-lg text-gray-700 max-w-2xl mx-auto leading-relaxed mb-6">
+                Interested in learning more about स्वशासन or exploring partnership opportunities? Reach out to us!
+            </p>
+            <p class="text-xl font-semibold text-blue-700">Email: <a href="mailto:contact@svashasan.shop" class="hover:underline">contact@svashasan.shop</a></p>
+        </div>
+    </section>
 
-  const verifyBtn = document.getElementById('verify-otp-btn');
-  const otpInput = document.getElementById('otp-code');
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6 text-center">
+        <div class="container mx-auto px-4 md:px-6">
+            <p>&copy; 2025 स्वशासन. All Rights Reserved.</p>
+        </div>
+    </footer>
 
-  if (verifyBtn && otpInput) {
-    verifyBtn.addEventListener('click', async () => {
-      const phone = phoneInput.value;
-      const token = otpInput.value;
-      const { error } = await supabase.auth.verifyOtp({ phone, token, type: 'sms' });
-      if (error) return alert(error.message);
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuButton = document.getElementById('menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
 
-      alert('Login successful!');
-      window.location.href = "/dashboard";
-    });
-  }
-});
+            if (menuButton && mobileMenu) {
+                menuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
 
-/Users/vanshwadhwa/iCloud Drive (Archive)/Documents/स्वशासन/Documents/website-docs/un-deployed/scripts/guest-login.js
-document.addEventListener('DOMContentLoaded', () => {
-  const guestBtn = document.getElementById('guest-pin-btn');
-  const pinInput = document.getElementById('guest-pin');
-
-  if (guestBtn && pinInput) {
-    guestBtn.addEventListener('click', () => {
-      const pin = pinInput.value;
-      localStorage.setItem('guest_pin', pin);
-      alert('Guest access granted.');
-      window.location.href = "/dashboard";
-    });
-  }
-});
-
-/Users/vanshwadhwa/iCloud Drive (Archive)/Documents/स्वशासन/Documents/website-docs/un-deployed/scripts/qr-login.js
-document.addEventListener('DOMContentLoaded', async () => {
-  const qrContainer = document.getElementById('qr-container');
-  const { data, error } = await supabase.from('device_sessions').insert({ scanned: false }).select().single();
-  const sessionId = data.id;
-
-  // Replace with your own QR generation logic
-  const qrUrl = `${window.location.origin}/scan.html?token=${sessionId}`;
-  qrContainer.innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(qrUrl)}&size=200x200" alt="Scan QR">`;
-
-  const interval = setInterval(async () => {
-    const { data: check, error: pollError } = await supabase.from('device_sessions').select('*').eq('id', sessionId).single();
-    if (check?.scanned) {
-      clearInterval(interval);
-      alert("Device linked successfully.");
-      window.location.href = "/dashboard";
-    }
-  }, 3000);
-});
-
-
-<!-- Supabase Client -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-<script>
-  const supabase = supabase.createClient(
-    "https://pxxwuguhhkenbzhfqjsp.supabase.co",
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB4eHd1Z3VoaGtlbmJ6aGZxanNwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTM0NDc5NjMsImV4cCI6MjA2OTAyMzk2M30.DSHT0Yoc70Lg8ekv6PFIs2I54e9sT-1iJz662C4VndI"
-  );
-</script>
-
-<!-- Login Scripts -->
-<script src="./scripts/email-login.js"></script>
-<script src="./scripts/phone-otp-login.js"></script>
-<script src="./scripts/guest-login.js"></script>
-<script src="./scripts/bluetooth-login.js"></script>
-<script src="./scripts/qr-login.js"></script>
+                mobileMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.add('hidden');
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>

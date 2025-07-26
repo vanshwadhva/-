@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>स्वशासन OS Lanscape</title>
+    <!-- Favicon -->
+    <link rel="icon" href="https://placehold.co/32x32/FFFFFF/000000?text=Idea" type="image/png">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Google Fonts (Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+            color: #2C3E50;
+        }
+        .card {
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            padding: 1.5rem;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 350px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .status-pass {
+            background-color: #48B6A4;
+            color: white;
+        }
+        .status-warn {
+            background-color: #FFD166;
+            color: #2C3E50;
+        }
+        .status-fail {
+             background-color: #FF6B6B;
+             color: white;
+        }
+        .tab-button {
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+            border: 2px solid transparent;
+        }
+        .tab-button.active {
+            background-color: #48B6A4;
+            color: white;
+            border-color: #48B6A4;
+        }
+        .tab-button:not(.active):hover {
+            background-color: #E2E8F0;
+            color: #2C3E50;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        /* Responsive adjustments for header and nav */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 10px;
+            }
+            .header-nav-items {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+            .header-right-group {
+                margin-left: auto;
+                display: flex;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section (Consistent with Main Pages) -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white bg-opacity-80 backdrop-blur-md py-4 shadow-sm">
+        <div class="container mx-auto flex items-center justify-between px-4 md:px-6">
+            <!-- "स्वशासन" text as a link to home -->
+            <a href="index.html" class="text-3xl font-semibold text-gray-800 font-calibri flex-shrink-0 hover:text-gray-900 transition-colors duration-200">स्वशासन</a>
+            <nav class="hidden md:flex flex-grow justify-center">
+                <ul class="flex space-x-6 text-gray-600 font-medium">
+                    <li><a href="index.html#about" class="hover:text-gray-900 hover:font-bold transition-all duration-200">About Us</a></li>
+                    <li><a href="index.html#features" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Features</a></li>
+                    <li><a href="index.html#contact" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Contact</a></li>
+                    <li><a href="blog.html" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Blog</a></li>
+                    <li><a href="survey.html" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Survey</a></li>
+                    <li><a href="developer-platform.html" class="hover:text-gray-900 hover:font-bold transition-all duration-200">API</a></li>
+                    <li><a href="model-performance.html" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Models</a></li>
+                </ul>
+            </nav>
+            <div class="flex items-center space-x-4 header-right-group ml-auto">
+                <!-- Profile Icon (SVG) -->
+                <a href="onboarding.html" class="text-gray-600 hover:text-gray-900 transition-colors duration-200 cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-circle">
+                        <circle cx="12" cy="12" r="10"/>
+                        <circle cx="12" cy="10" r="3"/>
+                        <path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662"/>
+                    </svg>
+                </a>
+                <!-- Hamburger menu for mobile -->
+                <button id="menu-button" class="md:hidden text-gray-600 hover:text-gray-900 focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu">
+                        <line x1="4" x2="20" y1="12" y2="12"></line>
+                        <line x1="4" x2="20" y1="6" y2="6"></line>
+                        <line x1="4" x2="20" y1="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Navigation Overlay -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 right-0 bg-white bg-opacity-95 backdrop-blur-md shadow-md py-4">
+            <ul class="flex flex-col items-center space-y-4 text-gray-800 font-medium">
+                <li><a href="index.html#about" class="block py-2 hover:bg-gray-100 w-full text-center">About Us</a></li>
+                <li><a href="index.html#features" class="block py-2 hover:bg-gray-100 w-full text-center">Features</a></li>
+                <li><a href="index.html#contact" class="block py-2 hover:bg-gray-100 w-full text-center">Contact</a></li>
+                <li><a href="blog.html" class="block py-2 hover:bg-gray-100 w-full text-center">Blog</a></li>
+                <li><a href="survey.html" class="block py-2 hover:bg-gray-100 w-full text-center">Survey</a></li>
+                <li><a href="api-features.html" class="block py-2 hover:bg-gray-100 w-full text-center">API Features</a></li>
+                <li><a href="developer-platform.html" class="block py-2 hover:bg-gray-100 w-full text-center">Developer Platform</a></li>
+                <li><a href="model-performance.html" class="block py-2 hover:bg-gray-100 w-full text-center">Models</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12 mt-16"> <!-- Added mt-16 to account for fixed header -->
+
+        <section id="model-performance" class="mb-16">
+            <h2 class="text-4xl font-bold text-center mb-8 text-[#2C3E50]">Model Performance</h2>
+            <p class="text-center text-gray-600 mb-10 max-w-3xl mx-auto">Dive into the performance of each core autonomous vehicle model layer, comparing their current observations against defined target capabilities.</p>
+
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button class="tab-button active" data-tab="localization">Localization Layer</button>
+                <button class="tab-button" data-tab="perception">Perception Layer</button>
+                <button class="tab-button" data-tab="trajectory-behavior">Trajectory & Behavior</button>
+            </div>
+
+            <div id="localization" class="tab-content active">
+                <h3 class="text-3xl font-bold text-center mb-8 text-[#00A1B4]">Localization Layer: Precision & Robustness</h3>
+                <p class="text-center text-gray-600 mb-10 max-w-3xl mx-auto">The localization system is the vehicle's compass. We evaluate its ability to maintain precise position and orientation, even under challenging conditions, by comparing target goals with current performance.</p>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
+                    <div class="card">
+                        <h4 class="text-2xl font-bold text-center mb-4 text-[#2C3E50]">Pose Accuracy: Gaps Identified</h4>
+                        <p class="text-center text-gray-600 mb-6">Our model currently shows higher error rates than targeted for accurate positioning and heading. Lower values are better for these metrics.</p>
+                        <div class="chart-container">
+                            <canvas id="localizationPoseAccuracyChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h4 class="text-2xl font-bold text-center mb-4 text-[#2C3E50]">Update & Latency: Room for Improvement</h4>
+                        <p class="text-center text-gray-600 mb-6">Real-time responsiveness is key. While the update rate is close, latency exceeds the target, impacting system reactivity. Higher update rate is better, lower latency is better.</p>
+                        <div class="chart-container">
+                            <canvas id="localizationSpeedLatencyChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="perception" class="tab-content">
+                <h3 class="text-3xl font-bold text-center mb-8 text-[#48B6A4]">Perception Layer: Understanding the World</h3>
+                <p class="text-center text-gray-600 mb-10 max-w-3xl mx-auto">The perception system is the vehicle's eyes and ears, detecting objects, lanes, and semantic elements. We analyze its accuracy and speed against the MVP targets for campus environments.</p>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
+                    <div class="card">
+                        <h4 class="text-2xl font-bold text-center mb-4 text-[#2C3E50]">Object Detection & Tracking Performance</h4>
+                        <p class="text-center text-gray-600 mb-6">Critical for identifying and following dynamic elements. The model shows areas for improvement in inference speed and tracking stability. Higher values for mAP & MOTA are better, lower for latency & ID Switches.</p>
+                        <div class="chart-container">
+                            <canvas id="perceptionObjectTrackingChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h4 class="text-2xl font-bold text-center mb-4 text-[#2C3E50]">Lane & Semantic Segmentation Accuracy</h4>
+                        <p class="text-center text-gray-600 mb-6">Understanding the drivable path and environment is vital. The model shows a gap in both lane detection accuracy and overall semantic segmentation. Higher values are better, lower for offset error.</p>
+                        <div class="chart-container">
+                            <canvas id="perceptionLaneSemanticChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="trajectory-behavior" class="tab-content">
+                <h3 class="text-3xl font-bold text-center mb-8 text-[#FFD166]">Trajectory & Behavior: Predicting the Future</h3>
+                <p class="text-center text-gray-600 mb-10 max-w-3xl mx-auto">Predicting the future movements and intentions of other agents is a complex but essential task for safe autonomous driving. We assess the model's accuracy, speed, and readiness for complex scenarios.</p>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
+                    <div class="card">
+                        <h4 class="text-2xl font-bold text-center mb-4 text-[#2C3E50]">Trajectory Accuracy: Needs Improvement</h4>
+                        <p class="text-center text-gray-600 mb-6">The model's predicted trajectories show higher displacement errors than targeted, impacting the safety and smoothness of planned paths. Lower values are better.</p>
+                        <div class="chart-container">
+                            <canvas id="trajectoryAccuracyChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h4 class="text-2xl font-bold text-center mb-4 text-[#2C3E50]">Behavioral Prediction: Progress Made</h4>
+                        <p class="text-center text-gray-600 mb-6">While the F1 score is close to target and the prediction horizon is met, continued refinement is needed for robust behavioral understanding. Higher F1 score is better.</p>
+                        <div class="chart-container">
+                            <canvas id="behaviorPredictionChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <footer class="text-center py-8 px-6 bg-gray-800 text-white">
+        <h2 class="text-3xl font-bold mb-4">Overall Conclusion & Strategic Focus</h2>
+        <p class="text-gray-300 max-w-4xl mx-auto mt-4">While the current models demonstrate foundational capabilities and some areas of strength (e.g., perception speed, trajectory timing), significant gaps exist across all layers, particularly in accuracy, robustness, and multi-agent handling. The immediate strategic focus must be on closing these critical performance gaps and ensuring full integration readiness to achieve a production-ready autonomous system.</p>
+        <p class="text-gray-300 max-w-4xl mx-auto mt-4">
+            Visit our <a href="https://svashasan.shop" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline">Website</a>.
+        </p>
+    </footer>
+
+    <script>
+        const chartInstances = {};
+
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            }
+            return label;
+        };
+
+        const commonChartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'top',
+                    labels: {
+                        color: '#2C3E50',
+                        font: { size: 14, weight: 'bold' }
+                    }
+                },
+                tooltip: {
+                    callbacks: { title: tooltipTitleCallback },
+                    backgroundColor: '#2C3E50',
+                    titleFont: { size: 16 },
+                    bodyFont: { size: 14 },
+                    padding: 12,
+                    cornerRadius: 6,
+                    boxPadding: 4
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    grid: { color: 'rgba(44, 62, 80, 0.1)' },
+                    ticks: { color: '#2C3E50' }
+                },
+                x: {
+                    grid: { display: false },
+                    ticks: { color: '#2C3E50', font: { size: 12 } }
+                }
+            }
+        };
+        
+        const wrapLabel = (label) => {
+            if (label.length > 16) {
+                const words = label.split(' ');
+                const lines = [];
+                let currentLine = '';
+                words.forEach(word => {
+                    if ((currentLine + word).length > 16) {
+                        lines.push(currentLine.trim());
+                        currentLine = '';
+                    }
+                    currentLine += word + ' ';
+                });
+                lines.push(currentLine.trim());
+                return lines;
+            }
+            return label;
+        };
+
+        const TARGET_COLOR = 'rgba(72, 182, 164, 0.7)';
+        const OBSERVATION_GOOD_COLOR = 'rgba(104, 211, 145, 0.7)';
+        const OBSERVATION_WARN_COLOR = 'rgba(255, 209, 102, 0.7)';
+        const OBSERVATION_FAIL_COLOR = 'rgba(255, 107, 107, 0.7)';
+
+        const TARGET_BORDER_COLOR = '#48B6A4';
+        const OBSERVATION_GOOD_BORDER_COLOR = '#68D391';
+        const OBSERVATION_WARN_BORDER_COLOR = '#FFD166';
+        const OBSERVATION_FAIL_BORDER_COLOR = '#FF6B6B';
+
+
+        function createCharts() {
+            for (const chartId in chartInstances) {
+                if (chartInstances[chartId]) {
+                    chartInstances[chartId].destroy();
+                }
+            }
+
+            const localizationPoseAccuracyCtx = document.getElementById('localizationPoseAccuracyChart');
+            if (localizationPoseAccuracyCtx) {
+                chartInstances.localizationPoseAccuracyChart = new Chart(localizationPoseAccuracyCtx.getContext('2d'), {
+                    type: 'bar',
+                    data: {
+                        labels: [wrapLabel('Lateral Error (cm)'), wrapLabel('Heading Error (°)'), wrapLabel('Z-Axis Drift (cm/100m)')],
+                        datasets: [
+                            {
+                                label: 'Target (Max)',
+                                data: [20, 1, 10],
+                                backgroundColor: TARGET_COLOR,
+                                borderColor: TARGET_BORDER_COLOR,
+                                borderWidth: 2
+                            },
+                            {
+                                label: 'Observation',
+                                data: [42.5, 2.75, 20],
+                                backgroundColor: OBSERVATION_FAIL_COLOR,
+                                borderColor: OBSERVATION_FAIL_BORDER_COLOR,
+                                borderWidth: 2
+                            }
+                        ]
+                    },
+                    options: { ...commonChartOptions }
+                });
+            }
+
+            const localizationSpeedLatencyCtx = document.getElementById('localizationSpeedLatencyChart');
+            if (localizationSpeedLatencyCtx) {
+                chartInstances.localizationSpeedLatencyChart = new Chart(localizationSpeedLatencyCtx.getContext('2d'), {
+                    type: 'bar',
+                    data: {
+                        labels: [wrapLabel('Update Rate (Hz)'), wrapLabel('Latency (ms)')],
+                        datasets: [
+                            {
+                                label: 'Target',
+                                data: [10, 100],
+                                backgroundColor: TARGET_COLOR,
+                                borderColor: TARGET_BORDER_COLOR,
+                                borderWidth: 2
+                            },
+                            {
+                                label: 'Observation',
+                                data: [9, 135],
+                                backgroundColor: [OBSERVATION_FAIL_COLOR, OBSERVATION_FAIL_COLOR],
+                                borderColor: [OBSERVATION_FAIL_BORDER_COLOR, OBSERVATION_FAIL_BORDER_COLOR],
+                                borderWidth: 2
+                            }
+                        ]
+                    },
+                    options: { 
+                        ...commonChartOptions,
+                        plugins: {
+                            ...commonChartOptions.plugins,
+                            tooltip: {
+                                ...commonChartOptions.plugins.tooltip,
+                                callbacks: {
+                                    ...commonChartOptions.plugins.tooltip.callbacks,
+                                    footer: (tooltipItems) => {
+                                        let footerText = '';
+                                        tooltipItems.forEach(function(tooltipItem) {
+                                            if (tooltipItem.datasetIndex === 1) { 
+                                                if (tooltipItem.dataIndex === 0) {
+                                                    footerText = 'Note: Target is ≥10 Hz (higher is better).';
+                                                } else if (tooltipItem.dataIndex === 1) {
+                                                    footerText = 'Note: Target is ≤100 ms (lower is better).';
+                                                }
+                                            }
+                                        });
+                                        return footerText;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            const perceptionObjectTrackingCtx = document.getElementById('perceptionObjectTrackingChart');
+            if (perceptionObjectTrackingCtx) {
+                chartInstances.perceptionObjectTrackingChart = new Chart(perceptionObjectTrackingCtx.getContext('2d'), {
+                    type: 'bar',
+                    data: {
+                        labels: [wrapLabel('mAP @ IoU 0.5 (%)'), wrapLabel('Inference Speed (FPS)'), wrapLabel('Detection Latency (ms)'), wrapLabel('MOTA (%)'), wrapLabel('ID Switches (per min)')],
+                        datasets: [
+                            {
+                                label: 'Target',
+                                data: [60, 10, 150, 65, 3],
+                                backgroundColor: TARGET_COLOR,
+                                borderColor: TARGET_BORDER_COLOR,
+                                borderWidth: 2
+                            },
+                            {
+                                label: 'Observation',
+                                data: [58, 8, 160, 62, 4],
+                                backgroundColor: [OBSERVATION_FAIL_COLOR, OBSERVATION_FAIL_COLOR, OBSERVATION_FAIL_COLOR, OBSERVATION_FAIL_COLOR, OBSERVATION_FAIL_COLOR],
+                                borderColor: [OBSERVATION_FAIL_BORDER_COLOR, OBSERVATION_FAIL_BORDER_COLOR, OBSERVATION_FAIL_BORDER_COLOR, OBSERVATION_FAIL_BORDER_COLOR, OBSERVATION_FAIL_BORDER_COLOR],
+                                borderWidth: 2
+                            }
+                        ]
+                    },
+                    options: { 
+                        ...commonChartOptions,
+                        plugins: {
+                            ...commonChartOptions.plugins,
+                            tooltip: {
+                                ...commonChartOptions.plugins.tooltip,
+                                callbacks: {
+                                    ...commonChartOptions.plugins.tooltip.callbacks,
+                                    footer: (tooltipItems) => {
+                                        let footerText = '';
+                                        tooltipItems.forEach(function(tooltipItem) {
+                                            if (tooltipItem.datasetIndex === 1) { 
+                                                if (tooltipItem.dataIndex === 0 || tooltipItem.dataIndex === 1 || tooltipItem.dataIndex === 3) {
+                                                    footerText = 'Note: Higher is better.';
+                                                } else if (tooltipItem.dataIndex === 2 || tooltipItem.dataIndex === 4) {
+                                                    footerText = 'Note: Lower is better.';
+                                                }
+                                            }
+                                        });
+                                        return footerText;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            const perceptionLaneSemanticCtx = document.getElementById('perceptionLaneSemanticChart');
+            if (perceptionLaneSemanticCtx) {
+                chartInstances.perceptionLaneSemanticChart = new Chart(perceptionLaneSemanticCtx.getContext('2d'), {
+                    type: 'bar',
+                    data: {
+                        labels: [wrapLabel('Lane IoU (%)'), wrapLabel('Lane Offset Error (cm)'), wrapLabel('mIoU (%)'), wrapLabel('Road/Non-Road Acc. (%)')],
+                        datasets: [
+                            {
+                                label: 'Target',
+                                data: [65, 15, 50, 80],
+                                backgroundColor: TARGET_COLOR,
+                                borderColor: TARGET_BORDER_COLOR,
+                                borderWidth: 2
+                            },
+                            {
+                                label: 'Observation',
+                                data: [60, 18, 48, 78],
+                                backgroundColor: [OBSERVATION_FAIL_COLOR, OBSERVATION_FAIL_COLOR, OBSERVATION_FAIL_COLOR, OBSERVATION_FAIL_COLOR],
+                                borderColor: [OBSERVATION_FAIL_BORDER_COLOR, OBSERVATION_FAIL_BORDER_COLOR, OBSERVATION_FAIL_BORDER_COLOR, OBSERVATION_FAIL_BORDER_COLOR],
+                                borderWidth: 2
+                            }
+                        ]
+                    },
+                    options: { 
+                        ...commonChartOptions,
+                        plugins: {
+                            ...commonChartOptions.plugins,
+                            tooltip: {
+                                ...commonChartOptions.plugins.tooltip,
+                                callbacks: {
+                                    ...commonChartOptions.plugins.tooltip.callbacks,
+                                    footer: (tooltipItems) => {
+                                        let footerText = '';
+                                        tooltipItems.forEach(function(tooltipItem) {
+                                            if (tooltipItem.datasetIndex === 1) { 
+                                                if (tooltipItem.dataIndex === 0 || tooltipItem.dataIndex === 2 || tooltipItem.dataIndex === 3) {
+                                                    footerText = 'Note: Higher is better.';
+                                                } else if (tooltipItem.dataIndex === 1) {
+                                                    footerText = 'Note: Lower is better.';
+                                                }
+                                            }
+                                        });
+                                        return footerText;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            const trajectoryAccuracyCtx = document.getElementById('trajectoryAccuracyChart');
+            if (trajectoryAccuracyCtx) {
+                chartInstances.trajectoryAccuracyChart = new Chart(trajectoryAccuracyCtx.getContext('2d'), {
+                    type: 'bar',
+                    data: {
+                        labels: [wrapLabel('Avg Displacement Error (m)'), wrapLabel('Final Displacement Error (m)')],
+                        datasets: [
+                            {
+                                label: 'Target (Max)',
+                                data: [0.20, 0.40],
+                                backgroundColor: TARGET_COLOR,
+                                borderColor: TARGET_BORDER_COLOR,
+                                borderWidth: 2
+                            },
+                            {
+                                label: 'Observation',
+                                data: [0.24, 0.51],
+                                backgroundColor: OBSERVATION_FAIL_COLOR,
+                                borderColor: OBSERVATION_FAIL_BORDER_COLOR,
+                                borderWidth: 2
+                            }
+                        ]
+                    },
+                    options: { ...commonChartOptions }
+                });
+            }
+
+            const behaviorPredictionCtx = document.getElementById('behaviorPredictionChart');
+            if (behaviorPredictionCtx) {
+                chartInstances.behaviorPredictionChart = new Chart(behaviorPredictionCtx.getContext('2d'), {
+                    type: 'bar',
+                    data: {
+                        labels: [wrapLabel('Behavioral F1 Score (%)'), wrapLabel('Prediction Horizon (s)')],
+                        datasets: [
+                            {
+                                label: 'Target',
+                                data: [90, 3],
+                                backgroundColor: TARGET_COLOR,
+                                borderColor: TARGET_BORDER_COLOR,
+                                borderWidth: 2
+                            },
+                            {
+                                label: 'Observation',
+                                data: [87, 3],
+                                backgroundColor: [OBSERVATION_FAIL_COLOR, OBSERVATION_GOOD_COLOR],
+                                borderColor: [OBSERVATION_FAIL_BORDER_COLOR, OBSERVATION_GOOD_BORDER_COLOR],
+                                borderWidth: 2
+                            }
+                        ]
+                    },
+                    options: { 
+                        ...commonChartOptions,
+                        plugins: {
+                            ...commonChartOptions.plugins,
+                            tooltip: {
+                                ...commonChartOptions.plugins.tooltip,
+                                callbacks: {
+                                    ...commonChartOptions.plugins.tooltip.callbacks,
+                                    footer: (tooltipItems) => {
+                                        let footerText = '';
+                                        tooltipItems.forEach(function(tooltipItem) {
+                                            if (tooltipItem.datasetIndex === 1) { 
+                                                if (tooltipItem.dataIndex === 0) {
+                                                    footerText = 'Note: Higher is better.';
+                                                } else if (tooltipItem.dataIndex === 1) {
+                                                    footerText = 'Note: Target is 3-5s (within range).';
+                                                }
+                                            }
+                                        });
+                                        return footerText;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            function showTab(tabId) {
+                tabContents.forEach(content => {
+                    content.classList.remove('active');
+                });
+                tabButtons.forEach(button => {
+                    button.classList.remove('active');
+                });
+
+                document.getElementById(tabId).classList.add('active');
+                document.querySelector(`.tab-button[data-tab="${tabId}"]`).classList.add('active');
+                createCharts();
+            }
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const tabId = button.dataset.tab;
+                    showTab(tabId);
+                });
+            });
+
+            showTab('localization');
+
+            // Mobile menu toggle logic
+            const menuButton = document.getElementById('menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (menuButton && mobileMenu) {
+                menuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+
+                mobileMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.add('hidden');
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>

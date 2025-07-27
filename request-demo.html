@@ -14,6 +14,14 @@
       gtag('js', new Date());
       gtag('config', 'G-DV98W7K8XY');
     </script>
+    <!-- Superbase Database -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script>
+  const SUPABASE_URL = 'https://snmmmvotgnkmjtcbhlnv.supabase.co'; // replace with your Supabase URL
+  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNubW1tdm90Z25rbWp0Y2JobG52Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTM2NDQ0MDcsImV4cCI6MjA2OTIyMDQwN30.17OOdwY23Ja_7mfUvTXChngFcNJxLIIe6R1dZvj-dfQ'; // replace with your Supabase anon public key
+
+  const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+</script>
     <style>
         tailwind.config = {
             theme: {

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>स्वशासन - Privacy Policy</title>
+    <!-- Favicon -->
+    <link rel="icon" href="https://placehold.co/32x32/FFFFFF/000000?text=Idea" type="image/png">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DV98W7K8XY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-DV98W7K8XY');
+    </script>
+    <style>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'],
+                        calibri: ['Calibri', 'sans-serif'],
+                    },
+                }
+            }
+        }
+        /* Responsive adjustments for header and nav */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 10px;
+            }
+            .header-nav-items {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+            .header-right-group {
+                margin-left: auto;
+                display: flex;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-gray-100 min-h-screen flex flex-col">
+
+    <!-- Header Section (Consistent with Main Pages) -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white bg-opacity-80 backdrop-blur-md py-4 shadow-sm">
+        <div class="container mx-auto flex items-center justify-between px-4 md:px-6">
+            <!-- "स्वशासन" text as a link to home -->
+            <a href="index.html" class="text-3xl font-semibold text-gray-800 font-calibri flex-shrink-0 hover:text-gray-900 transition-colors duration-200">स्वशासन</a>
+            <nav class="hidden md:flex flex-grow justify-center">
+                <ul class="flex space-x-6 text-gray-600 font-medium">
+                    <li><a href="index.html#about" class="hover:text-gray-900 hover:font-bold transition-all duration-200">About Us</a></li>
+                    <li><a href="index.html#features" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Features</a></li>
+                    <li><a href="index.html#contact" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Contact</a></li>
+                    <li><a href="blog.html" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Blog</a></li>
+                    <li><a href="survey.html" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Survey</a></li>
+                    <li><a href="developer-platform.html" class="hover:text-gray-900 hover:font-bold transition-all duration-200">API</a></li>
+                    <li><a href="model-performance.html" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Models</a></li>
+                    <li><a href="privacy-policy.html" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Privacy Policy</a></li>
+                </ul>
+            </nav>
+            <div class="flex items-center space-x-4 header-right-group ml-auto">
+                <!-- Profile Icon (SVG) -->
+                <a href="onboarding.html" class="text-gray-600 hover:text-gray-900 transition-colors duration-200 cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-circle">
+                        <circle cx="12" cy="12" r="10"/>
+                        <circle cx="12" cy="10" r="3"/>
+                        <path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662"/>
+                    </svg>
+                </a>
+                <button id="menu-button" class="md:hidden text-gray-600 hover:text-gray-900 focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu">
+                        <line x1="4" x2="20" y1="12" y2="12"></line>
+                        <line x1="4" x2="20" y1="6" y2="6"></line>
+                        <line x1="4" x2="20" y1="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Navigation Overlay -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 right-0 bg-white bg-opacity-95 backdrop-blur-md shadow-md py-4">
+            <ul class="flex flex-col items-center space-y-4 text-gray-800 font-medium">
+                <li><a href="index.html#about" class="block py-2 hover:bg-gray-100 w-full text-center">About Us</a></li>
+                <li><a href="index.html#features" class="block py-2 hover:bg-gray-100 w-full text-center">Features</a></li>
+                <li><a href="index.html#contact" class="block py-2 hover:bg-gray-100 w-full text-center">Contact</a></li>
+                <li><a href="blog.html" class="block py-2 hover:bg-gray-100 w-full text-center">Blog</a></li>
+                <li><a href="survey.html" class="block py-2 hover:bg-gray-100 w-full text-center">Survey</a></li>
+                <li><a href="developer-platform.html" class="block py-2 hover:bg-gray-100 w-full text-center">API</a></li>
+                <li><a href="model-performance.html" class="block py-2 hover:bg-gray-100 w-full text-center">Models</a></li>
+                <li><a href="privacy-policy.html" class="block py-2 hover:bg-gray-100 w-full text-center">Privacy Policy</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main class="flex-grow py-20 mt-16 px-4 md:px-6">
+        <div class="container mx-auto max-w-4xl bg-white p-8 rounded-lg shadow-md text-gray-700">
+            <h1 class="text-4xl font-bold text-gray-800 text-center mb-8">Privacy Policy</h1>
+
+            <p class="text-lg mb-4">
+                Date of Effectiveness: July 27, 2025<br>
+                Last Updated: July 27, 2025
+            </p>
+
+            <p class="text-lg mb-4 leading-relaxed">
+                We at स्वशासन are dedicated to protecting and honoring the privacy of each and every person who uses our services and visits our website. This Privacy Policy describes your rights and options regarding your data, as well as how we gather, use, store, and safeguard personal information. You agree to the following practices by using our website going forward.
+            </p>
+
+            <h2 class="text-2xl font-semibold text-gray-800 mb-3 mt-6">Information We Collect</h2>
+            <p class="text-lg mb-4 leading-relaxed">
+                Your name, email address, and phone number are just a few examples of the personal information we might gather when you use our website. This typically occurs when you submit a form to get in touch with us, ask for updates, express interest in joining our waitlist, or offer feedback.
+            </p>
+            <p class="text-lg mb-4 leading-relaxed">
+                Additionally, we automatically collect limited technical data, such as your IP address, browser type, device information, and browsing habits, using cookies or comparable technologies. This facilitates user experience improvement and traffic analysis.
+            </p>
+
+            <h2 class="text-2xl font-semibold text-gray-800 mb-3 mt-6">How We Use Your Information</h2>
+            <p class="text-lg mb-4 leading-relaxed">
+                This information is only collected and used to operate and improve our services. We may use your information to respond to your inquiries, provide you with details about our EV OS product, examine usage trends, and enhance the functionality of our website. We may occasionally send you emails with announcements, product updates, or early access opportunities if you consent. Opting out of such communications will always be possible.
+            </p>
+
+            <h2 class="text-2xl font-semibold text-gray-800 mb-3 mt-6">Data Sharing and Disclosure</h2>
+            <p class="text-lg mb-4 leading-relaxed">
+                We never sell your personal information to third parties. We put in place appropriate organizational, technical, and administrative safeguards against misuse, disclosure, and illegal access. No online transmission method is completely risk-free, even though we work hard to guarantee the highest levels of data security.
+            </p>
+
+            <h2 class="text-2xl font-semibold text-gray-800 mb-3 mt-6">Your Rights and Choices</h2>
+            <p class="text-lg mb-4 leading-relaxed">
+                You have the right to access, update, correct, or request the deletion of your personal data at any time in compliance with the General Data Protection Regulation (GDPR), the Digital Personal Data Protection Act (DPDP) of India, and other applicable frameworks.
+            </p>
+
+            <h2 class="text-2xl font-semibold text-gray-800 mb-3 mt-6">Links to Third-Party Websites</h2>
+            <p class="text-lg mb-4 leading-relaxed">
+                Links to external websites or services may be found on our website. We urge users to check those external websites on their own as we have no control over their content or privacy policies.
+            </p>
+
+            <h2 class="text-2xl font-semibold text-gray-800 mb-3 mt-6">Children's Privacy</h2>
+            <p class="text-lg mb-4 leading-relaxed">
+                We don't intentionally gather data from kids younger than thirteen. We will act quickly to remove such data if we learn that it was gathered without parental consent.
+            </p>
+
+            <h2 class="text-2xl font-semibold text-gray-800 mb-3 mt-6">Changes to This Privacy Policy</h2>
+            <p class="text-lg mb-4 leading-relaxed">
+                This Privacy Policy may be updated from time to time to reflect modifications to our procedures, regulatory requirements, or service offerings. This page will be updated with the new date as soon as we do. Your continued use of our website following such modifications indicates that you agree to the updated policy.
+            </p>
+
+            <h2 class="text-2xl font-semibold text-gray-800 mb-3 mt-6">Contact Us</h2>
+            <p class="text-lg mb-4 leading-relaxed">
+                Please send an email to <a href="mailto:contact@svashasan.shop" class="text-blue-600 hover:underline">contact@svashasan.shop</a> with any queries, requests, or clarifications pertaining to your personal information. We pledge to promptly and politely address any privacy concerns.
+            </p>
+        </div>
+    </main>
+
+    <!-- Footer (Consistent with Main Page) -->
+    <footer class="bg-gray-800 text-white py-6 text-center">
+        <div class="container mx-auto px-4 md:px-6">
+            <p>&copy; 2025 स्वशासन. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuButton = document.getElementById('menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (menuButton && mobileMenu) {
+                menuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+
+                mobileMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.add('hidden');
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>

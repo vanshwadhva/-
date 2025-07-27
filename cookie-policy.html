@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>स्वशासन - Cookie Policy</title>
+    <!-- Favicon -->
+    <link rel="icon" href="https://placehold.co/32x32/FFFFFF/000000?text=Idea" type="image/png">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DV98W7K8XY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-DV98W7K8XY');
+    </script>
+    <style>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'],
+                        calibri: ['Calibri', 'sans-serif'],
+                    },
+                }
+            }
+        }
+        /* Responsive adjustments for header and nav */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 10px;
+            }
+            .header-nav-items {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+            .header-right-group {
+                margin-left: auto;
+                display: flex;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-gray-100 min-h-screen flex flex-col">
+
+    <!-- Header Section (Consistent with Main Pages) -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white bg-opacity-80 backdrop-blur-md py-4 shadow-sm">
+        <div class="container mx-auto flex items-center justify-between px-4 md:px-6">
+            <!-- "स्वशासन" text as a link to home -->
+            <a href="index.html" class="text-3xl font-semibold text-gray-800 font-calibri flex-shrink-0 hover:text-gray-900 transition-colors duration-200">स्वशासन</a>
+            <nav class="hidden md:flex flex-grow justify-center">
+                <ul class="flex space-x-6 text-gray-600 font-medium">
+                    <li><a href="index.html#about" class="hover:text-gray-900 hover:font-bold transition-all duration-200">About Us</a></li>
+                    <li><a href="index.html#features" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Features</a></li>
+                    <li><a href="index.html#contact" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Contact</a></li>
+                    <li><a href="blog.html" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Blog</a></li>
+                    <li><a href="survey.html" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Survey</a></li>
+                    <li><a href="developer-platform.html" class="hover:text-gray-900 hover:font-bold transition-all duration-200">API</a></li>
+                    <li><a href="model-performance.html" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Models</a></li>
+                </ul>
+            </nav>
+            <div class="flex items-center space-x-4 header-right-group ml-auto">
+                <!-- Profile Icon (SVG) -->
+                <a href="onboarding.html" class="text-gray-600 hover:text-gray-900 transition-colors duration-200 cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-circle">
+                        <circle cx="12" cy="12" r="10"/>
+                        <circle cx="12" cy="10" r="3"/>
+                        <path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662"/>
+                    </svg>
+                </a>
+                <button id="menu-button" class="md:hidden text-gray-600 hover:text-gray-900 focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu">
+                        <line x1="4" x2="20" y1="12" y2="12"></line>
+                        <line x1="4" x2="20" y1="6" y2="6"></line>
+                        <line x1="4" x2="20" y1="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Navigation Overlay -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 right-0 bg-white bg-opacity-95 backdrop-blur-md shadow-md py-4">
+            <ul class="flex flex-col items-center space-y-4 text-gray-800 font-medium">
+                <li><a href="index.html#about" class="block py-2 hover:bg-gray-100 w-full text-center">About Us</a></li>
+                <li><a href="index.html#features" class="block py-2 hover:bg-gray-100 w-full text-center">Features</a></li>
+                <li><a href="index.html#contact" class="block py-2 hover:bg-gray-100 w-full text-center">Contact</a></li>
+                <li><a href="blog.html" class="block py-2 hover:bg-gray-100 w-full text-center">Blog</a></li>
+                <li><a href="survey.html" class="block py-2 hover:bg-gray-100 w-full text-center">Survey</a></li>
+                <li><a href="developer-platform.html" class="block py-2 hover:bg-gray-100 w-full text-center">API</a></li>
+                <li><a href="model-performance.html" class="block py-2 hover:bg-gray-100 w-full text-center">Models</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main class="flex-grow py-20 mt-16 px-4 md:px-6">
+        <div class="container mx-auto max-w-4xl bg-white p-8 rounded-lg shadow-md text-gray-700">
+            <h1 class="text-4xl font-bold text-gray-800 text-center mb-8">Cookie Policy</h1>
+
+            <p class="text-lg mb-4">
+                Effective Date: July 27, 2025<br>
+                Last Updated: July 27, 2025
+            </p>
+
+            <p class="text-lg mb-4 leading-relaxed">
+                At वशासन, we use cookies and similar tracking technologies on our website <a href="https://svashasan.shop" class="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">https://svashasan.shop</a> to enhance your browsing experience, analyze site traffic, and understand user behavior. This Cookie Policy explains what cookies are, how we use them, and your choices regarding their use. By continuing to use our website, you consent to our use of cookies as outlined in this policy, unless you choose to disable them through your browser settings.
+            </p>
+
+            <h2 class="text-2xl font-semibold text-gray-800 mb-3 mt-6">What Are Cookies?</h2>
+            <p class="text-lg mb-4 leading-relaxed">
+                Cookies are small text files that are placed on your device when you visit a website. These files store certain data that help websites recognize your device and remember information about your visit, such as your preferred language or the pages you viewed. Cookies are commonly used to improve functionality, security, and performance, as well as to provide insights that help us enhance our services.
+            </p>
+
+            <h2 class="text-2xl font-semibold text-gray-800 mb-3 mt-6">How We Use Cookies</h2>
+            <p class="text-lg mb-4 leading-relaxed">
+                We may use different types of cookies for various purposes. Essential cookies are required for the basic functionality of the website and cannot be disabled. These include cookies that allow you to navigate the site, submit forms, or access secure areas. Performance cookies help us understand how visitors interact with the site by collecting anonymous usage statistics. Functional cookies remember your preferences and choices to offer a more personalized experience. Lastly, in the future, we may use analytical or third-party cookies to gain deeper insights or improve integrations—for example, with tools like Google Analytics or social media plugins.
+            </p>
+
+            <h2 class="text-2xl font-semibold text-gray-800 mb-3 mt-6">Your Choices Regarding Cookies</h2>
+            <p class="text-lg mb-4 leading-relaxed">
+                Most web browsers are set to accept cookies by default. However, you can control and manage cookies directly through your browser settings. You may choose to block or delete cookies at any time. Please note that if you disable certain types of cookies, some features of the website may not function as intended or may be unavailable.
+            </p>
+            <p class="text-lg mb-4 leading-relaxed">
+                To manage cookies in your browser, refer to the help documentation provided by the browser you use (e.g., Chrome, Firefox, Safari, Edge). Additionally, third-party analytics providers like Google offer their own opt-out mechanisms if you do not wish your data to be tracked for analytical purposes.
+            </p>
+
+            <h2 class="text-2xl font-semibold text-gray-800 mb-3 mt-6">Data Privacy</h2>
+            <p class="text-lg mb-4 leading-relaxed">
+                We do not use cookies to collect sensitive personal information, nor do we sell or share cookie-related data with third parties for advertising or profiling. Any data collected through cookies is handled in accordance with our broader <a href="privacy-policy.html" class="text-blue-600 hover:underline">Privacy Policy</a>, and is used solely for improving your experience with our services.
+            </p>
+
+            <h2 class="text-2xl font-semibold text-gray-800 mb-3 mt-6">Changes to This Cookie Policy</h2>
+            <p class="text-lg mb-4 leading-relaxed">
+                We may update this Cookie Policy from time to time to reflect changes in technology, legal requirements, or our own data practices. When we make changes, we will revise the “Last Updated” date above. We recommend that you review this policy periodically to stay informed.
+            </p>
+
+            <h2 class="text-2xl font-semibold text-gray-800 mb-3 mt-6">Contact Us</h2>
+            <p class="text-lg mb-4 leading-relaxed">
+                If you have any questions about our use of cookies or other tracking technologies, please contact us at <a href="mailto:contact@svashasan.shop" class="text-blue-600 hover:underline">contact@svashasan.shop</a>. We are committed to ensuring your browsing experience on **स्वशासन** remains transparent, secure, and respectful of your privacy.
+            </p>
+        </div>
+    </main>
+
+    <!-- Footer (Consistent with Main Page) -->
+    <footer class="bg-gray-800 text-white py-6 text-center">
+        <div class="container mx-auto px-4 md:px-6">
+            <p>&copy; 2025 स्वशासन. All Rights Reserved.</p>
+            <p class="mt-2 text-sm space-x-2">
+                <a href="privacy-policy.html" class="hover:underline">Privacy Policy</a>
+                <span>|</span>
+                <a href="terms.html" class="hover:underline">Terms & Conditions</a>
+                <span>|</span>
+                <a href="cookies.html" class="hover:underline">Cookie Policy</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuButton = document.getElementById('menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (menuButton && mobileMenu) {
+                menuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+
+                mobileMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.add('hidden');
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>

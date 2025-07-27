@@ -163,21 +163,22 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
   <script>
     const SUPABASE_URL = 'https://snmmmvotgnkmjtcbhlnv.supabase.co';
-    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNubW1tdm90Z25rbWp0Y2JobG52Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTM2NDQ0MDcsImV4cCI6MjA2OTIyMDQwN30.17OOdwY23Ja_7mfUvTXChngFcNJxLIIe6R1dZvj-dfQ';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNubW1tdm90Z25rbWp0Y2JobG52Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTM2NDQ0MDcsImV4cCI6MjA2OTIyMDQwN30.17OOdwY23Ja_7mfUvTXChngFcNJxLIIe6R1dZvj-dfQ'; // <- Replace this
     const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
+  
     const form = document.querySelector('#demo-form');
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const name = form.name.value;
-      const email = form.email.value;
-      const company = form.company.value;
-      const message = form.message.value;
-
+  
+      const name = form.querySelector('[name="name"]').value;
+      const email = form.querySelector('[name="email"]').value;
+      const company = form.querySelector('[name="company"]').value;
+      const message = form.querySelector('[name="message"]').value;
+  
       const { error } = await supabase
         .from('demo_requests')
         .insert([{ name, email, company, message }]);
-
+  
       if (error) {
         alert('❌ Submission failed: ' + error.message);
       } else {

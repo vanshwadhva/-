@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autonomous Vehicle Telemetry</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827;
+            color: #e5e7eb;
+        }
+        .card {
+            background-color: #1f2937;
+            border: 1px solid #374151;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .bg-green-500 { background-color: #22c55e; }
+        .bg-yellow-500 { background-color: #eab308; }
+        .bg-red-500 { background-color: #ef4444; }
+
+        /* Custom styles for radar */
+        #radar-canvas {
+            background-color: #111827;
+            border-radius: 50%;
+            border: 2px solid #374151;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-6 lg:p-8">
+    <div class="max-w-7xl mx-auto">
+        <!-- Header -->
+        <header class="flex flex-col md:flex-row justify-between items-center mb-6">
+            <div>
+                <h1 class="text-2xl lg:text-3xl font-bold text-white">Autonomous Vehicle Telemetry</h1>
+                <p class="text-sm text-gray-400">Real-time perception and prediction analysis</p>
+            </div>
+            <div class="flex items-center space-x-4 mt-4 md:mt-0">
+                <div class="flex items-center space-x-2">
+                    <span id="system-status-dot" class="status-dot bg-green-500"></span>
+                    <span id="system-status-text" class="text-sm font-medium text-green-400">All Systems Operational</span>
+                </div>
+                <div class="text-lg font-semibold bg-gray-900 px-4 py-1 rounded-md" id="clock"></div>
+            </div>
+        </header>
+
+        <!-- Main Dashboard Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            
+            <!-- Left Column -->
+            <div class="lg:col-span-2 flex flex-col gap-6">
+                <!-- Camera and Prediction View -->
+                <div class="card h-[400px] flex flex-col">
+                    <h2 class="text-lg font-semibold mb-2">Primary Camera Feed & Prediction Overlay</h2>
+                    <div class="flex-grow bg-gray-900 rounded-md overflow-hidden relative">
+                        <img src="https://placehold.co/800x450/000000/FFFFFF?text=Camera+Feed+Not+Available" onerror="this.onerror=null; this.src='https://placehold.co/800x450/000000/FFFFFF?text=Camera+Feed'" class="w-full h-full object-cover" alt="Camera Feed">
+                        <!-- Prediction overlay will be dynamically added here -->
+                        <div id="prediction-overlay" class="absolute top-0 left-0 w-full h-full">
+                           <!-- Example Bounding Box: 
+                           <div class="absolute border-2 border-cyan-400" style="left: 30%; top: 40%; width: 100px; height: 80px;">
+                               <span class="text-xs bg-cyan-400 text-black px-1">CAR [0.85]</span>
+                               <div class="absolute border-t-2 border-dashed border-cyan-400 w-20" style="left: 100%; top: 50%;"></div>
+                           </div> 
+                           -->
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- SLAM Map View -->
+                    <div class="card h-[350px] flex flex-col">
+                        <h2 class="text-lg font-semibold mb-2">SLAM - Localization Map</h2>
+                         <div class="flex-grow bg-gray-900 rounded-md p-2 relative">
+                            <img src="https://placehold.co/600x400/1a202c/4a5568?text=Map+Data" class="w-full h-full object-cover rounded-md opacity-30" alt="Map background">
+                            <canvas id="slam-canvas" class="absolute top-0 left-0 w-full h-full"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Perception - Radar View -->
+                    <div class="card h-[350px] flex flex-col items-center">
+                        <h2 class="text-lg font-semibold mb-2">Perception - Radar</h2>
+                        <div class="w-full h-full max-w-[280px] aspect-square flex items-center justify-center">
+                            <canvas id="radar-canvas" width="280" height="280"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="lg:col-span-1 flex flex-col gap-6">
+                <!-- Vehicle Vitals -->
+                <div class="card">
+                    <h2 class="text-lg font-semibold mb-4">Vehicle Vitals</h2>
+                    <div class="grid grid-cols-2 gap-4 text-center">
+                        <div>
+                           <div class="text-4xl font-bold text-cyan-400" id="speed-value">0</div>
+                           <div class="text-sm text-gray-400">Speed (km/h)</div>
+                        </div>
+                        <div>
+                           <div class="text-4xl font-bold text-green-400" id="acceleration-value">0.0</div>
+                           <div class="text-sm text-gray-400">Acceleration (m/s²)</div>
+                        </div>
+                    </div>
+                    <div class="mt-4 h-48"><canvas id="speed-chart"></canvas></div>
+                </div>
+                <!-- Sensor Status -->
+                <div class="card">
+                    <h2 class="text-lg font-semibold mb-4">Sensor Status</h2>
+                    <ul class="space-y-3">
+                        <li class="flex justify-between items-center">
+                            <span>Cameras</span>
+                            <span class="flex items-center space-x-2 text-sm" id="camera-status"><span class="status-dot bg-green-500"></span><span class="text-green-400">OK</span></span>
+                        </li>
+                        <li class="flex justify-between items-center">
+                            <span>Radar</span>
+                            <span class="flex items-center space-x-2 text-sm" id="radar-status"><span class="status-dot bg-green-500"></span><span class="text-green-400">OK</span></span>
+                        </li>
+                        <li class="flex justify-between items-center">
+                            <span>GPS</span>
+                            <span class="flex items-center space-x-2 text-sm" id="gps-status"><span class="status-dot bg-green-500"></span><span class="text-green-400">OK</span></span>
+                        </li>
+                        <li class="flex justify-between items-center">
+                            <span>IMU</span>
+                            <span class="flex items-center space-x-2 text-sm" id="imu-status"><span class="status-dot bg-green-500"></span><span class="text-green-400">OK</span></span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- GPS & IMU Data -->
+                <div class="card">
+                    <h2 class="text-lg font-semibold mb-4">GPS & IMU</h2>
+                    <div class="text-sm space-y-2">
+                        <p><strong>Lat:</strong> <span id="gps-lat">--</span></p>
+                        <p><strong>Lon:</strong> <span id="gps-lon">--</span></p>
+                        <hr class="border-gray-600 my-2">
+                        <p><strong>Pitch:</strong> <span id="imu-pitch">--</span>°</p>
+                        <p><strong>Roll:</strong> <span id="imu-roll">--</span>°</p>
+                        <p><strong>Yaw:</strong> <span id="imu-yaw">--</span>°</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- DOM ELEMENT SELECTORS ---
+        const speedValueEl = document.getElementById('speed-value');
+        const accelerationValueEl = document.getElementById('acceleration-value');
+        const gpsLatEl = document.getElementById('gps-lat');
+        const gpsLonEl = document.getElementById('gps-lon');
+        const imuPitchEl = document.getElementById('imu-pitch');
+        const imuRollEl = document.getElementById('imu-roll');
+        const imuYawEl = document.getElementById('imu-yaw');
+        const clockEl = document.getElementById('clock');
+        const predictionOverlayEl = document.getElementById('prediction-overlay');
+        const slamCanvas = document.getElementById('slam-canvas');
+        const radarCanvas = document.getElementById('radar-canvas');
+        const speedChartCanvas = document.getElementById('speed-chart').getContext('2d');
+
+        // --- MOCK DATA STATE & SIMULATION ---
+        let vehicleState = {
+            speed: 0,
+            acceleration: 0,
+            location: { lat: 19.0760, lon: 72.8777 },
+            orientation: { pitch: 0, roll: 0, yaw: 0 },
+            path: [],
+            detectedObjects: [],
+            predictedObjects: []
+        };
+
+        // --- SLAM CANVAS & PATH DRAWING ---
+        const slamCtx = slamCanvas.getContext('2d');
+        let slamPath = [];
+
+        function resizeSlamCanvas() {
+            const parent = slamCanvas.parentElement;
+            slamCanvas.width = parent.clientWidth;
+            slamCanvas.height = parent.clientHeight;
+        }
+
+        function drawSlam() {
+            const w = slamCanvas.width;
+            const h = slamCanvas.height;
+            slamCtx.clearRect(0, 0, w, h);
+
+            // Normalize path to fit canvas
+            if (slamPath.length === 0) return;
+
+            const minX = Math.min(...slamPath.map(p => p.x));
+            const maxX = Math.max(...slamPath.map(p => p.x));
+            const minY = Math.min(...slamPath.map(p => p.y));
+            const maxY = Math.max(...slamPath.map(p => p.y));
+            
+            const scaleX = w / (maxX - minX || 1);
+            const scaleY = h / (maxY - minY || 1);
+            const scale = Math.min(scaleX, scaleY) * 0.8;
+
+            const offsetX = (w - (maxX - minX) * scale) / 2;
+            const offsetY = (h - (maxY - minY) * scale) / 2;
+            
+            // Draw path
+            slamCtx.beginPath();
+            slamCtx.strokeStyle = '#22d3ee';
+            slamCtx.lineWidth = 2;
+            slamPath.forEach((point, i) => {
+                const canvasX = (point.x - minX) * scale + offsetX;
+                const canvasY = (point.y - minY) * scale + offsetY;
+                if (i === 0) {
+                    slamCtx.moveTo(canvasX, canvasY);
+                } else {
+                    slamCtx.lineTo(canvasX, canvasY);
+                }
+            });
+            slamCtx.stroke();
+
+            // Draw current position
+            const lastPoint = slamPath[slamPath.length - 1];
+            const lastX = (lastPoint.x - minX) * scale + offsetX;
+            const lastY = (lastPoint.y - minY) * scale + offsetY;
+            slamCtx.beginPath();
+            slamCtx.fillStyle = '#f87171';
+            slamCtx.arc(lastX, lastY, 5, 0, 2 * Math.PI);
+            slamCtx.fill();
+        }
+
+
+        // --- RADAR CANVAS DRAWING ---
+        const radarCtx = radarCanvas.getContext('2d');
+        
+        function drawRadar() {
+            const w = radarCanvas.width;
+            const h = radarCanvas.height;
+            const center = { x: w / 2, y: h / 2 };
+            const maxRange = w / 2;
+
+            radarCtx.clearRect(0, 0, w, h);
+
+            // Draw concentric circles
+            radarCtx.strokeStyle = '#374151';
+            [0.25, 0.5, 0.75, 1].forEach(radius => {
+                radarCtx.beginPath();
+                radarCtx.arc(center.x, center.y, maxRange * radius, 0, 2 * Math.PI);
+                radarCtx.stroke();
+            });
+
+            // Draw vehicle
+            radarCtx.fillStyle = '#22d3ee';
+            radarCtx.fillRect(center.x - 5, center.y - 8, 10, 16);
+
+            // Draw detected objects
+            vehicleState.detectedObjects.forEach(obj => {
+                const distance = obj.distance * (maxRange / 50); // 50m max range
+                const angle = obj.angle * Math.PI / 180;
+                const x = center.x + distance * Math.sin(angle);
+                const y = center.y - distance * Math.cos(angle);
+                
+                radarCtx.beginPath();
+                radarCtx.fillStyle = obj.type === 'car' ? '#f87171' : '#facc15';
+                radarCtx.arc(x, y, 4, 0, 2 * Math.PI);
+                radarCtx.fill();
+            });
+        }
+
+
+        // --- SPEED CHART ---
+        const speedChart = new Chart(speedChartCanvas, {
+            type: 'line',
+            data: {
+                labels: Array(30).fill(''),
+                datasets: [{
+                    label: 'Speed (km/h)',
+                    data: Array(30).fill(0),
+                    borderColor: '#22d3ee',
+                    backgroundColor: 'rgba(34, 211, 238, 0.1)',
+                    borderWidth: 2,
+                    pointRadius: 0,
+                    tension: 0.4,
+                    fill: true,
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: { display: false },
+                    y: { 
+                        beginAtZero: true, 
+                        max: 100,
+                        grid: { color: '#374151' },
+                        ticks: { color: '#9ca3af'}
+                    }
+                },
+                plugins: { legend: { display: false } }
+            }
+        });
+
+        function updateSpeedChart(newSpeed) {
+            speedChart.data.datasets[0].data.push(newSpeed);
+            speedChart.data.datasets[0].data.shift();
+            speedChart.update('none');
+        }
+        
+
+        // --- DATA SIMULATION LOGIC ---
+        function simulateData() {
+            // Simulate speed and acceleration
+            const speedChange = (Math.random() - 0.4) * 5;
+            const newSpeed = Math.max(0, Math.min(90, vehicleState.speed + speedChange));
+            vehicleState.acceleration = (newSpeed - vehicleState.speed) / 3.6; // Convert km/h change to m/s^2 (approx)
+            vehicleState.speed = newSpeed;
+
+            // Simulate location (simple dead reckoning)
+            const speedMetersPerSecond = vehicleState.speed / 3.6;
+            const distance = speedMetersPerSecond * 0.5; // 0.5s interval
+            const bearing = vehicleState.orientation.yaw * Math.PI / 180;
+            const latRad = vehicleState.location.lat * Math.PI / 180;
+            const earthRadius = 6371e3; // meters
+
+            const newLatRad = Math.asin(Math.sin(latRad) * Math.cos(distance/earthRadius) + Math.cos(latRad) * Math.sin(distance/earthRadius) * Math.cos(bearing));
+            const newLonRad = (vehicleState.location.lon * Math.PI / 180) + Math.atan2(Math.sin(bearing) * Math.sin(distance/earthRadius) * Math.cos(latRad), Math.cos(distance/earthRadius) - Math.sin(latRad) * Math.sin(newLatRad));
+            
+            vehicleState.location.lat = newLatRad * 180 / Math.PI;
+            vehicleState.location.lon = newLonRad * 180 / Math.PI;
+
+            // Simulate orientation
+            vehicleState.orientation.yaw = (vehicleState.orientation.yaw + (Math.random() - 0.5) * 2) % 360;
+            vehicleState.orientation.pitch = (Math.random() - 0.5) * 2;
+            vehicleState.orientation.roll = (Math.random() - 0.5) * 1;
+            
+            // Update slam path
+            const lastPoint = slamPath.length > 0 ? slamPath[slamPath.length - 1] : { x: 0, y: 0 };
+            const newSlamX = lastPoint.x + distance * Math.sin(bearing);
+            const newSlamY = lastPoint.y - distance * Math.cos(bearing);
+            slamPath.push({ x: newSlamX, y: newSlamY });
+            if (slamPath.length > 200) slamPath.shift();
+
+            // Simulate detected objects for radar
+            vehicleState.detectedObjects = [];
+            if (Math.random() > 0.3) {
+                 vehicleState.detectedObjects.push({ id: 1, type: 'car', distance: 20 + Math.random() * 10, angle: -15 + Math.random() * 5 });
+            }
+            if (Math.random() > 0.6) {
+                 vehicleState.detectedObjects.push({ id: 2, type: 'pedestrian', distance: 15 + Math.random() * 5, angle: 25 + Math.random() * 10 });
+            }
+            if (Math.random() > 0.8) {
+                 vehicleState.detectedObjects.push({ id: 3, type: 'car', distance: 30 + Math.random() * 10, angle: 5 + Math.random() * 5 });
+            }
+
+            // Simulate prediction for camera overlay
+            vehicleState.predictedObjects = [];
+             if (Math.random() > 0.2) {
+                 vehicleState.predictedObjects.push({
+                     id: 1, type: 'CAR', confidence: 0.92,
+                     box: { x: 25 + Math.random()*10, y: 45, w: 15, h: 12 },
+                     path: [{x: 40, y: 50}, {x:55, y:52}]
+                 });
+             }
+             if (Math.random() > 0.7) {
+                 vehicleState.predictedObjects.push({
+                     id: 2, type: 'PERSON', confidence: 0.81,
+                     box: { x: 60 + Math.random()*5, y: 50, w: 5, h: 15 },
+                     path: [{x: 65, y: 50}, {x:70, y:49}]
+                 });
+             }
+        }
+
+
+        // --- UI UPDATE FUNCTIONS ---
+        function updateUI() {
+            // Vitals
+            speedValueEl.textContent = vehicleState.speed.toFixed(0);
+            accelerationValueEl.textContent = vehicleState.acceleration.toFixed(1);
+
+            // GPS & IMU
+            gpsLatEl.textContent = vehicleState.location.lat.toFixed(6);
+            gpsLonEl.textContent = vehicleState.location.lon.toFixed(6);
+            imuPitchEl.textContent = vehicleState.orientation.pitch.toFixed(2);
+            imuRollEl.textContent = vehicleState.orientation.roll.toFixed(2);
+            imuYawEl.textContent = vehicleState.orientation.yaw.toFixed(2);
+
+            // Clock
+            clockEl.textContent = new Date().toLocaleTimeString();
+
+            // Prediction Overlay
+            predictionOverlayEl.innerHTML = '';
+            vehicleState.predictedObjects.forEach(obj => {
+                const boxDiv = document.createElement('div');
+                boxDiv.className = 'absolute border-2 border-cyan-400';
+                boxDiv.style.left = `${obj.box.x}%`;
+                boxDiv.style.top = `${obj.box.y}%`;
+                boxDiv.style.width = `${obj.box.w}%`;
+                boxDiv.style.height = `${obj.box.h}%`;
+
+                const labelSpan = document.createElement('span');
+                labelSpan.className = 'text-xs bg-cyan-400 text-black px-1 absolute -top-5 left-0';
+                labelSpan.textContent = `${obj.type} [${obj.confidence.toFixed(2)}]`;
+                
+                const pathSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+                pathSvg.setAttribute('class', 'absolute top-0 left-0 w-full h-full overflow-visible');
+                const polyline = document.createElementNS("http://www.w3.org/2000/svg", "polyline");
+                
+                let points = `${obj.box.x + obj.box.w/2},${obj.box.y + obj.box.h/2} `;
+                obj.path.forEach(p => points += `${p.x},${p.y} `);
+
+                // This is a simplified path drawing logic, a real one would be more complex
+                const pathDiv = document.createElement('div');
+                pathDiv.className = 'absolute border-t-2 border-dashed border-cyan-400';
+                pathDiv.style.width = '50px';
+                pathDiv.style.left = `${obj.box.w}%`;
+                pathDiv.style.top = `${obj.box.h / 2}%`;
+                pathDiv.style.transform = `translate(${obj.box.x}%, -50%)`;
+
+                boxDiv.appendChild(labelSpan);
+                boxDiv.appendChild(pathDiv); // Simplified path representation
+                predictionOverlayEl.appendChild(boxDiv);
+            });
+
+            // Update chart
+            updateSpeedChart(vehicleState.speed);
+            
+            // Draw canvases
+            drawSlam();
+            drawRadar();
+        }
+
+        // --- INITIALIZATION and MAIN LOOP ---
+        window.addEventListener('resize', resizeSlamCanvas);
+
+        function initialize() {
+            resizeSlamCanvas();
+            // Start the simulation loop
+            setInterval(() => {
+                simulateData();
+                updateUI();
+            }, 500);
+            
+            // Initial render
+            updateUI();
+        }
+
+        initialize();
+    </script>
+</body>
+</html>
+

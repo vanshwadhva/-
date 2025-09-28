@@ -28,11 +28,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         }
         /* Custom CSS for hero background image */
         .hero-background {
-            background-image: url('image.png'); /* Original background image */
+            background-image: url('image.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            background-attachment: fixed; /* Makes the background fixed while scrolling */
+            background-attachment: scroll; /* iOS Safari doesn't support fixed background reliably */
+            -webkit-background-size: cover; /* Ensure iOS compatibility */
         }
 
         /* Responsive adjustments for grids and sections */
@@ -184,7 +185,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <p class="text-lg text-gray-700 max-w-2xl mx-auto leading-relaxed mb-6">
                 Interested in learning more about स्वशासन or exploring partnership opportunities? Reach out to us!
             </p>
-            <p class="text-xl font-semibold text-blue-700">Email: <a href="mailto:contact@svashasan.shop" class="hover:underline">contact@svashasan.shop</a></p>
+            <p class="text-xl font-semibold text-blue-700">Email: <a href="mailto:info@svashasan.com" class="hover:underline">info@svashasan.com</a></p>
         </div>
     </section>
 

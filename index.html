@@ -36,6 +36,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             -webkit-background-size: cover; /* Ensure iOS compatibility */
         }
 
+        /* Scrolling animation for the team section */
+        .scrolling-wrapper {
+            -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        }
+
+        @keyframes scroll {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+        .animate-scroll {
+            animation: scroll 40s linear infinite;
+        }
+
         /* Responsive adjustments for grids and sections */
         @media (max-width: 768px) {
             .container {
@@ -177,9 +191,88 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
         </div>
     </section>
+    
+    <!-- Team Section -->
+    <section id="team" class="bg-gray-100 hover:bg-gray-200 transition-colors duration-300 cursor-pointer">
+        <a href="team.html" class="block py-20">
+            <div class="container mx-auto text-center">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Meet Our Innovators</h2>
+                <p class="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed mb-12 px-4">
+                    A glimpse of the minds driving the future of mobility.
+                </p>
+                <div class="scrolling-wrapper relative w-full overflow-hidden">
+                    <div class="animate-scroll flex w-max">
+                        <!-- Original 6 profiles -->
+                        <div class="flex-shrink-0 w-64 mx-4 text-center">
+                            <img src="Vansh_Profile_photo.jpg" alt="Vansh Wadhwa" class="w-40 h-40 mx-auto rounded-full object-cover shadow-lg mb-4">
+                            <h3 class="text-xl font-semibold text-gray-800">Vansh Wadhwa</h3>
+                            <p class="text-gray-600">Founder & CEO</p>
+                        </div>
+                        <div class="flex-shrink-0 w-64 mx-4 text-center">
+                            <img src="somnath_profile_photo.png" alt="Somnath Banerjee" class="w-40 h-40 mx-auto rounded-full object-cover shadow-lg mb-4">
+                            <h3 class="text-xl font-semibold text-gray-800">Somnath Banerjee</h3>
+                            <p class="text-gray-600">Director, Promoter</p>
+                        </div>
+                        <div class="flex-shrink-0 w-64 mx-4 text-center">
+                            <img src="Vivin_Profile_photo.jpg" alt="Vivin Richard" class="w-40 h-40 mx-auto rounded-full object-cover shadow-lg mb-4">
+                            <h3 class="text-xl font-semibold text-gray-800">Vivin Richard</h3>
+                            <p class="text-gray-600">Lead Designer</p>
+                        </div>
+                        <div class="flex-shrink-0 w-64 mx-4 text-center">
+                            <img src="pradnya_profile_photo.jpeg" alt="Pradnya Naik" class="w-40 h-40 mx-auto rounded-full object-cover shadow-lg mb-4">
+                            <h3 class="text-xl font-semibold text-gray-800">Pradnya Naik</h3>
+                            <p class="text-gray-600">Robotics and AI Engineer</p>
+                        </div>
+                        <div class="flex-shrink-0 w-64 mx-4 text-center">
+                            <img src="Narendhar_Profile_photo.png" alt="Narendhar Reddy" class="w-40 h-40 mx-auto rounded-full object-cover shadow-lg mb-4">
+                            <h3 class="text-xl font-semibold text-gray-800">Narendhar Reddy</h3>
+                            <p class="text-gray-600">Embedded Systems Engineer</p>
+                        </div>
+                        <div class="flex-shrink-0 w-64 mx-4 text-center">
+                            <img src="Anshuman_Profile_photo.jpeg" alt="Anshuman Phadke" class="w-40 h-40 mx-auto rounded-full object-cover shadow-lg mb-4">
+                            <h3 class="text-xl font-semibold text-gray-800">Anshuman Phadke</h3>
+                            <p class="text-gray-600">Lead ADAS Engineer</p>
+                        </div>
+
+                        <!-- Duplicated 6 profiles for seamless loop -->
+                        <div class="flex-shrink-0 w-64 mx-4 text-center">
+                            <img src="Vansh_Profile_photo.jpg" alt="Vansh Wadhwa" class="w-40 h-40 mx-auto rounded-full object-cover shadow-lg mb-4">
+                            <h3 class="text-xl font-semibold text-gray-800">Vansh Wadhwa</h3>
+                            <p class="text-gray-600">Founder & CEO</p>
+                        </div>
+                        <div class="flex-shrink-0 w-64 mx-4 text-center">
+                           <img src="somnath_profile_photo.png" alt="Somnath Banerjee" class="w-40 h-40 mx-auto rounded-full object-cover shadow-lg mb-4">
+                            <h3 class="text-xl font-semibold text-gray-800">Somnath Banerjee</h3>
+                            <p class="text-gray-600">Director, Promoter</p>
+                        </div>
+                        <div class="flex-shrink-0 w-64 mx-4 text-center">
+                            <img src="Vivin_Profile_photo.jpg" alt="Vivin Richard" class="w-40 h-40 mx-auto rounded-full object-cover shadow-lg mb-4">
+                            <h3 class="text-xl font-semibold text-gray-800">Vivin Richard</h3>
+                            <p class="text-gray-600">Lead Designer</p>
+                        </div>
+                        <div class="flex-shrink-0 w-64 mx-4 text-center">
+                            <img src="pradnya_profile_photo.jpeg" alt="Pradnya Naik" class="w-40 h-40 mx-auto rounded-full object-cover shadow-lg mb-4">
+                            <h3 class="text-xl font-semibold text-gray-800">Pradnya Naik</h3>
+                            <p class="text-gray-600">Robotics and AI Engineer</p>
+                        </div>
+                        <div class="flex-shrink-0 w-64 mx-4 text-center">
+                            <img src="Narendhar_Profile_photo.png" alt="Narendhar Reddy" class="w-40 h-40 mx-auto rounded-full object-cover shadow-lg mb-4">
+                            <h3 class="text-xl font-semibold text-gray-800">Narendhar Reddy</h3>
+                            <p class="text-gray-600">Embedded Systems Engineer</p>
+                        </div>
+                        <div class="flex-shrink-0 w-64 mx-4 text-center">
+                            <img src="Anshuman_Profile_photo.jpeg" alt="Anshuman Phadke" class="w-40 h-40 mx-auto rounded-full object-cover shadow-lg mb-4">
+                            <h3 class="text-xl font-semibold text-gray-800">Anshuman Phadke</h3>
+                            <p class="text-gray-600">Lead ADAS Engineer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </section>
 
     <!-- Contact Us Section -->
-    <section id="contact" class="py-20 bg-gray-100">
+    <section id="contact" class="py-20 bg-white">
         <div class="container mx-auto px-4 md:px-6 text-center">
             <h2 class="text-4xl font-bold text-gray-800 mb-8">Contact Us</h2>
             <p class="text-lg text-gray-700 max-w-2xl mx-auto leading-relaxed mb-6">
@@ -221,12 +314,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             }
         });
     </script>
-    
-    <div class="fixed bottom-4 right-4 z-50">
-        <a href="https://svashasan.com/view-demo.html" class="bg-gray-200 hover:bg-gray-300 text-gray-800 text-sm py-2 px-4 rounded-lg shadow-lg border border-gray-300 transition-colors">
-            View Telemetry
-        </a>
-    </div>
-    
 </body>
 </html>
+

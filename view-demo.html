@@ -164,17 +164,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 });
             }
 
-            // Fullscreen script
+            // Fullscreen script (iPhone & Safari compatible)
             const fullscreenButton = document.getElementById('fullscreen-button');
             const iframe = document.getElementById('telemetry-iframe');
 
             if (fullscreenButton && iframe) {
                 fullscreenButton.addEventListener('click', () => {
-                    if (iframe.requestFullscreen) {
+                    // For iPhone Safari, open fullscreen-like view using a new tab
+                    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
+                    if (isIOS) {
+                        // Open iframe src in the same tab (simulating fullscreen)
+                        window.location.href = iframe.src;
+                    } else if (iframe.requestFullscreen) {
                         iframe.requestFullscreen();
-                    } else if (iframe.webkitRequestFullscreen) { /* Safari */
+                    } else if (iframe.webkitRequestFullscreen) {
                         iframe.webkitRequestFullscreen();
-                    } else if (iframe.msRequestFullscreen) { /* IE11 */
+                    } else if (iframe.msRequestFullscreen) {
                         iframe.msRequestFullscreen();
                     }
                 });

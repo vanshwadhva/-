@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to स्वशासन</title>
+    <link rel="icon" type="image/png" href="2.png" sizes="32x32">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-N89XZGM4');</script>
+    <!-- End Google Tag Manager -->
+    <style>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'],
+                        calibri: ['Calibri', 'sans-serif'],
+                    },
+                }
+            }
+        }
+        /* Animation for form transitions */
+        .form-container {
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-gray-50">
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N89XZGM4"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    
+    <!-- Header Section -->
+    <header class="sticky top-0 left-0 right-0 z-50 bg-white bg-opacity-80 backdrop-blur-md py-4 shadow-sm">
+        <div class="container mx-auto flex items-center justify-between px-4 md:px-6">
+            <a href="index.html" class="text-3xl font-semibold text-gray-800 font-calibri flex-shrink-0 hover:text-gray-900 transition-colors duration-200">स्वशासन</a>
+            <nav class="hidden md:flex flex-grow justify-center">
+                <ul class="flex space-x-6 text-gray-600 font-medium">
+                    <li><a href="index.html#about" class="hover:text-gray-900 hover:font-bold transition-all duration-200">About Us</a></li>
+                    <li><a href="index.html#features" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Features</a></li>
+                    <li><a href="index.html#contact" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Contact</a></li>
+                    <li><a href="blog.html" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Blog</a></li>
+                    <li><a href="survey.html" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Survey</a></li>
+                    <li><a href="developer-platform.html" class="hover:text-gray-900 hover:font-bold transition-all duration-200">API</a></li>
+                    <li><a href="model-performance.html" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Models</a></li>
+                </ul>
+            </nav>
+            <div class="flex items-center space-x-4 header-right-group ml-auto">
+                <a href="onboarding.html" class="text-blue-600 transition-colors duration-200 cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-circle"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="10" r="3"/><path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662"/></svg>
+                </a>
+                <button id="menu-button" class="md:hidden text-gray-600 hover:text-gray-900 focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 right-0 bg-white bg-opacity-95 backdrop-blur-md shadow-md py-4">
+            <ul class="flex flex-col items-center space-y-4 text-gray-800 font-medium">
+                 <li><a href="index.html#about" class="hover:text-gray-900 hover:font-bold">About Us</a></li>
+                <li><a href="index.html#features" class="hover:text-gray-900 hover:font-bold">Features</a></li>
+                <li><a href="index.html#contact" class="hover:text-gray-900 hover:font-bold">Contact</a></li>
+                <li><a href="blog.html" class="hover:text-gray-900 hover:font-bold">Blog</a></li>
+                <li><a href="survey.html" class="hover:text-gray-900 hover:font-bold">Survey</a></li>
+                <li><a href="developer-platform.html" class="hover:text-gray-900 hover:font-bold">API</a></li>
+                <li><a href="model-performance.html" class="hover:text-gray-900 hover:font-bold">Models</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main class="flex items-center justify-center min-h-screen py-24 px-4">
+        <div class="relative w-full max-w-md" style="min-height: 650px;">
+            <!-- Login Form Container -->
+            <div id="login-form-container" class="form-container absolute w-full">
+                <div class="bg-white p-8 rounded-xl shadow-lg">
+                    <h2 class="text-3xl font-bold text-center text-gray-800 mb-6">Welcome Back</h2>
+                    <form action="#" method="POST">
+                        <div class="mb-4">
+                            <label for="login-email" class="block text-gray-700 text-sm font-bold mb-2">Email Address</label>
+                            <input type="email" id="login-email" name="email" class="w-full px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-shadow" placeholder="you@example.com" required>
+                        </div>
+                        <div class="mb-6">
+                            <label for="login-password" class="block text-gray-700 text-sm font-bold mb-2">Password</label>
+                            <div class="relative">
+                                <input type="password" id="login-password" name="password" class="w-full px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-shadow pr-12" placeholder="••••••••" required>
+                                <button type="button" id="toggle-login-password" tabindex="-1" class="absolute inset-y-0 right-0 px-3 flex items-center text-gray-500 hover:text-gray-700 focus:outline-none" aria-label="Toggle password visibility">
+                                    <svg id="login-password-eye" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between mb-6">
+                            <a href="#" class="text-sm text-blue-600 hover:underline">Forgot Password?</a>
+                        </div>
+                        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition-all duration-300 transform hover:scale-105">
+                            Login
+                        </button>
+                    </form>
+                    <div class="my-6 flex items-center">
+                        <div class="flex-grow border-t border-gray-300"></div>
+                        <span class="px-4 text-sm text-gray-500">or continue with</span>
+                        <div class="flex-grow border-t border-gray-300"></div>
+                    </div>
+                    <div class="flex justify-center space-x-4">
+                        <a href="#" class="p-2 border rounded-full hover:bg-gray-100 transition-colors" title="Continue with Google">
+                            <img src="google_logo.png" alt="Google" width="20" height="20" class="rounded-full object-contain">
+                        </a>
+                        <a href="#" class="p-2 border rounded-full hover:bg-gray-100 transition-colors" title="Continue with Microsoft">
+                            <img src="microsoft_logo.png" alt="Microsoft" width="20" height="20" class="rounded-full object-contain">
+                        </a>
+                        <a href="#" class="p-2 border rounded-full hover:bg-gray-100 transition-colors" title="Continue with Apple">
+                            <img src="apple_logo.png" alt="Apple" width="20" height="20" class="rounded-full object-contain">
+                        </a>
+                    </div>
+                    <p class="text-center text-gray-600 text-sm mt-6">
+                        Don't have an account? 
+                        <a href="#" id="show-signup" class="text-blue-600 hover:underline font-bold">Sign Up</a>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Signup Form Container -->
+            <div id="signup-form-container" class="form-container absolute w-full opacity-0 scale-95 hidden">
+                <div class="bg-white p-8 rounded-xl shadow-lg">
+                    <h2 class="text-3xl font-bold text-center text-gray-800 mb-6">Create Your Account</h2>
+                    <form action="#" method="POST">
+                        <div class="mb-4">
+                            <label for="signup-name" class="block text-gray-700 text-sm font-bold mb-2">Full Name</label>
+                            <input type="text" id="signup-name" name="name" class="w-full px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-shadow" placeholder="John Doe" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="signup-email" class="block text-gray-700 text-sm font-bold mb-2">Email Address</label>
+                            <input type="email" id="signup-email" name="email" class="w-full px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-shadow" placeholder="you@example.com" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="signup-phone" class="block text-gray-700 text-sm font-bold mb-2">Phone Number</label>
+                            <input type="tel" id="signup-phone" name="phone" class="w-full px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-shadow" placeholder="+1 (555) 123-4567">
+                        </div>
+                        <div class="mb-4">
+                            <label for="signup-password" class="block text-gray-700 text-sm font-bold mb-2">Password</label>
+                            <div class="relative">
+                                <input type="password" id="signup-password" name="password" class="w-full px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-shadow pr-12" placeholder="Minimum 8 characters" required>
+                                <button type="button" id="toggle-signup-password" tabindex="-1" class="absolute inset-y-0 right-0 px-3 flex items-center text-gray-500 hover:text-gray-700 focus:outline-none" aria-label="Toggle password visibility">
+                                    <svg id="signup-password-eye" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition-all duration-300 transform hover:scale-105">
+                            Sign Up
+                        </button>
+                    </form>
+                    <div class="my-6 flex items-center">
+                        <div class="flex-grow border-t border-gray-300"></div>
+                        <span class="px-4 text-sm text-gray-500">or sign up with</span>
+                        <div class="flex-grow border-t border-gray-300"></div>
+                    </div>
+                    <div class="flex justify-center space-x-4">
+                        <a href="#" class="p-2 border rounded-full hover:bg-gray-100 transition-colors" title="Sign up with Google">
+                            <img src="google_logo.png" alt="Google" width="20" height="20" class="rounded-full object-contain">
+                        </a>
+                        <a href="#" class="p-2 border rounded-full hover:bg-gray-100 transition-colors" title="Sign up with Microsoft">
+                            <img src="microsoft_logo.png" alt="Microsoft" width="20" height="20" class="rounded-full object-contain">
+                        </a>
+                        <a href="#" class="p-2 border rounded-full hover:bg-gray-100 transition-colors" title="Sign up with Apple">
+                            <img src="apple_logo.png" alt="Apple" width="20" height="20" class="rounded-full object-contain">
+                        </a>
+                    </div>
+                    <p class="text-center text-gray-600 text-sm mt-6">
+                        Already have an account? 
+                        <a href="#" id="show-login" class="text-blue-600 hover:underline font-bold">Login</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6 text-center">
+        <div class="container mx-auto px-4 md:px-6">
+            <p>&copy; 2025 स्वशासन. All Rights Reserved.</p>
+            <p class="mt-2 text-sm space-x-2">
+                <a href="privacy-policy.html" class="hover:underline">Privacy Policy</a>
+                <span>|</span>
+                <a href="terms-of-use.html" class="hover:underline">Terms & Conditions</a>
+                <span>|</span>
+                <a href="cookie-policy.html" class="hover:underline">Cookie Policy</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile menu toggle
+            const menuButton = document.getElementById('menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (menuButton && mobileMenu) {
+                menuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+
+            // Form switching logic
+            const loginForm = document.getElementById('login-form-container');
+            const signupForm = document.getElementById('signup-form-container');
+            const showSignupLinks = document.querySelectorAll('#show-signup');
+            const showLoginLinks = document.querySelectorAll('#show-login');
+
+            const switchForms = (hide, show) => {
+                hide.classList.add('opacity-0', 'scale-95');
+                setTimeout(() => {
+                    hide.classList.add('hidden');
+                    show.classList.remove('hidden');
+                    setTimeout(() => {
+                        show.classList.remove('opacity-0', 'scale-95');
+                    }, 20);
+                }, 300);
+            };
+
+            showSignupLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    switchForms(loginForm, signupForm);
+                });
+            });
+
+            showLoginLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    switchForms(signupForm, loginForm);
+                });
+            });
+
+            // Password visibility toggle
+            function setupPasswordToggle(inputId, toggleBtnId, eyeIconId) {
+                const input = document.getElementById(inputId);
+                const toggleBtn = document.getElementById(toggleBtnId);
+                const eyeIcon = document.getElementById(eyeIconId);
+                if (input && toggleBtn && eyeIcon) {
+                    let visible = false;
+                    toggleBtn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        visible = !visible;
+                        input.type = visible ? 'text' : 'password';
+                        // Optionally, swap eye icon
+                        if (visible) {
+                            eyeIcon.innerHTML = `
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.477 0-8.268-2.943-9.542-7a9.956 9.956 0 012.042-3.368M6.2 6.2A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.542 7a9.958 9.958 0 01-4.043 5.03M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3l18 18" />
+                            `;
+                        } else {
+                            eyeIcon.innerHTML = `
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                            `;
+                        }
+                    });
+                }
+            }
+            setupPasswordToggle('login-password', 'toggle-login-password', 'login-password-eye');
+            setupPasswordToggle('signup-password', 'toggle-signup-password', 'signup-password-eye');
+        });
+    </script>
+</body>
+</html>
+

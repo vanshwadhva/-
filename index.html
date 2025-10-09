@@ -50,6 +50,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             animation: scroll 40s linear infinite;
         }
 
+        /* Hide scrollbar for achievements container */
+        .achievements-container::-webkit-scrollbar {
+            display: none;
+        }
+        .achievements-container {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        
+        /* Full-screen mobile menu styles */
+        #mobile-menu {
+            transition: opacity 0.3s ease-in-out;
+        }
+
+
         /* Responsive adjustments for grids and sections */
         @media (max-width: 768px) {
             .container {
@@ -118,16 +133,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </button>
             </div>
         </div>
-        <!-- Mobile Navigation Overlay -->
-        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 right-0 bg-white bg-opacity-95 backdrop-blur-md shadow-md py-4">
-            <ul class="flex flex-col items-center space-y-4 text-gray-800 font-medium">
-                <li><a href="#about" class="hover:text-gray-900 hover:font-bold transition-all duration-200">About Us</a></li>
-                    <li><a href="#features" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Features</a></li>
-                    <li><a href="#contact" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Contact</a></li>
-                    <li><a href="blog.html" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Blog</a></li>
-                    <li><a href="survey.html" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Survey</a></li>
-                    <li><a href="developer-platform.html" class="hover:text-gray-900 hover:font-bold transition-all duration-200">API</a></li>
-                    <li><a href="model-performance.html" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Models</a></li> <!-- New link -->
+        <!-- Mobile Navigation Overlay (Full Screen) -->
+        <div id="mobile-menu" class="hidden fixed inset-0 bg-white z-50 flex flex-col items-center justify-center opacity-0">
+             <button id="close-menu-button" class="absolute top-6 right-6 text-gray-600 hover:text-gray-900">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+            </button>
+            <ul class="flex flex-col items-center space-y-8 text-gray-800 text-2xl font-medium">
+                <li><a href="#about" class="hover:text-blue-600 transition-colors">About Us</a></li>
+                <li><a href="#features" class="hover:text-blue-600 transition-colors">Features</a></li>
+                <li><a href="#contact" class="hover:text-blue-600 transition-colors">Contact</a></li>
+                <li><a href="blog.html" class="hover:text-blue-600 transition-colors">Blog</a></li>
+                <li><a href="survey.html" class="hover:text-blue-600 transition-colors">Survey</a></li>
+                <li><a href="developer-platform.html" class="hover:text-blue-600 transition-colors">API</a></li>
+                <li><a href="model-performance.html" class="hover:text-blue-600 transition-colors">Models</a></li>
             </ul>
         </div>
     </header>
@@ -209,17 +227,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <p class="text-gray-600">Founder & CEO</p>
                         </div>
                         <div class="flex-shrink-0 w-64 mx-4 text-center">
-                            <img src="Somnath_Profile_photo.jpg" alt="Somnath Banerjee" class="w-40 h-40 mx-auto rounded-full object-cover shadow-lg mb-4">
+                            <img src="somnath_profile_photo.png" alt="Somnath Banerjee" class="w-40 h-40 mx-auto rounded-full object-cover shadow-lg mb-4">
                             <h3 class="text-xl font-semibold text-gray-800">Somnath Banerjee</h3>
                             <p class="text-gray-600">Director, Promoter</p>
                         </div>
                         <div class="flex-shrink-0 w-64 mx-4 text-center">
                             <img src="Vivin_Profile_photo.jpg" alt="Vivin Richard" class="w-40 h-40 mx-auto rounded-full object-cover shadow-lg mb-4">
                             <h3 class="text-xl font-semibold text-gray-800">Vivin Richard</h3>
-                            <p class="text-gray-600">Lead UI, UX Designer</p>
+                            <p class="text-gray-600">Lead Designer</p>
                         </div>
                         <div class="flex-shrink-0 w-64 mx-4 text-center">
-                            <img src="Pradnya_Profile_photo.jpg" alt="Pradnya Naik" class="w-40 h-40 mx-auto rounded-full object-cover shadow-lg mb-4">
+                            <img src="pradnya_profile_photo.jpeg" alt="Pradnya Naik" class="w-40 h-40 mx-auto rounded-full object-cover shadow-lg mb-4">
                             <h3 class="text-xl font-semibold text-gray-800">Pradnya Naik</h3>
                             <p class="text-gray-600">Robotics and AI Engineer</p>
                         </div>
@@ -229,7 +247,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <p class="text-gray-600">Embedded Systems Engineer</p>
                         </div>
                         <div class="flex-shrink-0 w-64 mx-4 text-center">
-                            <img src="Anshuman_Profile_photo.png" alt="Anshuman Phadke" class="w-40 h-40 mx-auto rounded-full object-cover shadow-lg mb-4">
+                            <img src="Anshuman_Profile_photo.jpeg" alt="Anshuman Phadke" class="w-40 h-40 mx-auto rounded-full object-cover shadow-lg mb-4">
                             <h3 class="text-xl font-semibold text-gray-800">Anshuman Phadke</h3>
                             <p class="text-gray-600">Lead ADAS Engineer</p>
                         </div>
@@ -241,7 +259,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <p class="text-gray-600">Founder & CEO</p>
                         </div>
                         <div class="flex-shrink-0 w-64 mx-4 text-center">
-                            <img src="Somnath_Profile_photo.jpg?loop=2" alt="Somnath Banerjee" class="w-40 h-40 mx-auto rounded-full object-cover shadow-lg mb-4">
+                           <img src="somnath_profile_photo.png?loop=2" alt="Somnath Banerjee" class="w-40 h-40 mx-auto rounded-full object-cover shadow-lg mb-4">
                             <h3 class="text-xl font-semibold text-gray-800">Somnath Banerjee</h3>
                             <p class="text-gray-600">Director, Promoter</p>
                         </div>
@@ -251,7 +269,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <p class="text-gray-600">Lead Designer</p>
                         </div>
                         <div class="flex-shrink-0 w-64 mx-4 text-center">
-                            <img src="Pradnya_Profile_photo.jpg?loop=2" alt="Pradnya Naik" class="w-40 h-40 mx-auto rounded-full object-cover shadow-lg mb-4">
+                            <img src="pradnya_profile_photo.jpeg?loop=2" alt="Pradnya Naik" class="w-40 h-40 mx-auto rounded-full object-cover shadow-lg mb-4">
                             <h3 class="text-xl font-semibold text-gray-800">Pradnya Naik</h3>
                             <p class="text-gray-600">Robotics and AI Engineer</p>
                         </div>
@@ -261,7 +279,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <p class="text-gray-600">Embedded Systems Engineer</p>
                         </div>
                         <div class="flex-shrink-0 w-64 mx-4 text-center">
-                            <img src="Anshuman_Profile_photo.png?loop=2" alt="Anshuman Phadke" class="w-40 h-40 mx-auto rounded-full object-cover shadow-lg mb-4">
+                            <img src="Anshuman_Profile_photo.jpeg?loop=2" alt="Anshuman Phadke" class="w-40 h-40 mx-auto rounded-full object-cover shadow-lg mb-4">
                             <h3 class="text-xl font-semibold text-gray-800">Anshuman Phadke</h3>
                             <p class="text-gray-600">Lead ADAS Engineer</p>
                         </div>
@@ -271,8 +289,51 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </a>
     </section>
 
+    <!-- Achievements Section -->
+    <section id="achievements" class="py-20 bg-white">
+        <div class="container mx-auto px-4 md:px-6 text-center">
+            <h2 class="text-4xl font-bold text-gray-800 mb-12">Achievements</h2>
+            <div class="relative max-w-4xl mx-auto">
+                <!-- Scrollable container -->
+                <div id="achievements-container" class="achievements-container flex overflow-x-auto snap-x snap-mandatory scroll-smooth">
+                    <!-- Achievement 1: NVIDIA -->
+                    <div class="flex-shrink-0 w-full snap-center flex flex-col md:flex-row items-center justify-center gap-8 bg-gray-50 p-10 rounded-lg shadow-md">
+                        <div class="w-48 h-24 flex items-center justify-center">
+                            <img src="NVIDIA_logo.png" alt="NVIDIA Logo" class="max-w-full max-h-full object-contain">
+                        </div>
+                        <div class="text-left">
+                            <h3 class="text-3xl font-bold text-gray-800">NVIDIA Inception Program</h3>
+                            <p class="text-lg text-gray-700 mt-2">
+                                We are proud to be accepted into the NVIDIA Inception Program, nurturing startups revolutionizing industries with advancements in AI and data sciences.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Achievement 2: Pillai College -->
+                    <div class="flex-shrink-0 w-full snap-center flex flex-col md:flex-row items-center justify-center gap-8 bg-gray-50 p-10 rounded-lg shadow-md">
+                        <div class="w-48 h-24 flex items-center justify-center">
+                            <img src="PCE_logo.png" alt="Pillai College of Engineering Logo" class="max-w-full max-h-full object-contain">
+                        </div>
+                        <div class="text-left">
+                            <h3 class="text-3xl font-bold text-gray-800">Svashasan x PCE Partnership</h3>
+                            <p class="text-lg text-gray-700 mt-2">
+                                We have partnered with Pillai College of Engineering for computational resources and access to their High-Performance Computing (HPC) Lab.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Navigation Buttons -->
+                <button id="scroll-left" class="absolute top-1/2 left-0 -translate-y-1/2 -translate-x-12 bg-white p-2 rounded-full shadow-md hover:bg-gray-100 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+                </button>
+                <button id="scroll-right" class="absolute top-1/2 right-0 -translate-y-1/2 translate-x-12 bg-white p-2 rounded-full shadow-md hover:bg-gray-100 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Us Section -->
-    <section id="contact" class="py-20 bg-white">
+    <section id="contact" class="py-20 bg-gray-100">
         <div class="container mx-auto px-4 md:px-6 text-center">
             <h2 class="text-4xl font-bold text-gray-800 mb-8">Contact Us</h2>
             <p class="text-lg text-gray-700 max-w-2xl mx-auto leading-relaxed mb-6">
@@ -307,19 +368,77 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         document.addEventListener('DOMContentLoaded', () => {
             const menuButton = document.getElementById('menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
+            const closeMenuButton = document.getElementById('close-menu-button');
+            const body = document.body;
 
-            if (menuButton && mobileMenu) {
-                menuButton.addEventListener('click', () => {
-                    mobileMenu.classList.toggle('hidden');
-                });
+            const openMenu = () => {
+                mobileMenu.classList.remove('hidden');
+                setTimeout(() => {
+                    mobileMenu.classList.remove('opacity-0');
+                    body.style.overflow = 'hidden';
+                }, 10);
+            };
+            
+            const closeMenu = () => {
+                mobileMenu.classList.add('opacity-0');
+                body.style.overflow = '';
+                setTimeout(() => {
+                    mobileMenu.classList.add('hidden');
+                }, 300);
+            };
+
+            if (menuButton && mobileMenu && closeMenuButton) {
+                menuButton.addEventListener('click', openMenu);
+                closeMenuButton.addEventListener('click', closeMenu);
 
                 mobileMenu.querySelectorAll('a').forEach(link => {
-                    link.addEventListener('click', () => {
-                        mobileMenu.classList.add('hidden');
-                    });
+                    link.addEventListener('click', closeMenu);
                 });
+            }
+
+            // Achievements Slider Logic
+            const container = document.getElementById('achievements-container');
+            const scrollLeftBtn = document.getElementById('scroll-left');
+            const scrollRightBtn = document.getElementById('scroll-right');
+            let autoScrollInterval;
+
+            const startAutoScroll = () => {
+                autoScrollInterval = setInterval(() => {
+                    if (container.scrollLeft + container.clientWidth >= container.scrollWidth) {
+                        container.scrollTo({ left: 0, behavior: 'smooth' });
+                    } else {
+                        container.scrollBy({ left: container.clientWidth, behavior: 'smooth' });
+                    }
+                }, 3000);
+            };
+
+            const stopAutoScroll = () => {
+                clearInterval(autoScrollInterval);
+            };
+            
+            const resetAutoScroll = () => {
+                stopAutoScroll();
+                startAutoScroll();
+            };
+
+            if (container && scrollLeftBtn && scrollRightBtn) {
+                scrollLeftBtn.addEventListener('click', () => {
+                    container.scrollBy({ left: -container.clientWidth, behavior: 'smooth' });
+                    resetAutoScroll();
+                });
+
+                scrollRightBtn.addEventListener('click', () => {
+                    container.scrollBy({ left: container.clientWidth, behavior: 'smooth' });
+                    resetAutoScroll();
+                });
+
+                container.addEventListener('mouseenter', stopAutoScroll);
+                container.addEventListener('mouseleave', startAutoScroll);
+
+                startAutoScroll();
             }
         });
     </script>
 </body>
 </html>
+

@@ -26,6 +26,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 }
             }
         }
+        
+        /* Fix for horizontal overflow */
+        html, body {
+            overflow-x: hidden;
+        }
+
         /* Custom CSS for hero background image */
         .hero-background {
             background-image: url('image.png');
@@ -84,6 +90,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 flex-direction: column;
                 gap: 0.5rem;
             }
+            /* Adjust achievement buttons to prevent overflow */
+            #scroll-left {
+                left: 0.5rem;
+                transform: translateY(-50%);
+            }
+            #scroll-right {
+                right: 0.5rem;
+                transform: translateY(-50%);
+            }
         }
     </style>
     <!-- Twitter Meta Tags -->
@@ -127,7 +142,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     </svg>
                 </a>
                 <!-- Hamburger/Close Menu Button for mobile -->
-                <button id="menu-button" class="md:hidden text-gray-600 hover:text-gray-900 focus:outline-none z-50">
+                <button id="menu-button" class="md:hidden text-gray-600 hover:text-gray-900 focus:outline-none z-60 relative">
                      <svg id="menu-open-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu">
                         <line x1="4" x2="20" y1="12" y2="12"></line>
                         <line x1="4" x2="20" y1="6" y2="6"></line>
@@ -324,10 +339,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     </div>
                 </div>
                 <!-- Navigation Buttons -->
-                <button id="scroll-left" class="absolute top-1/2 left-0 -translate-y-1/2 -translate-x-12 bg-white p-2 rounded-full shadow-md hover:bg-gray-100 transition-colors">
+                <button id="scroll-left" class="absolute top-1/2 left-0 -translate-y-1/2 bg-white p-2 rounded-full shadow-md hover:bg-gray-100 transition-colors">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
                 </button>
-                <button id="scroll-right" class="absolute top-1/2 right-0 -translate-y-1/2 translate-x-12 bg-white p-2 rounded-full shadow-md hover:bg-gray-100 transition-colors">
+                <button id="scroll-right" class="absolute top-1/2 right-0 -translate-y-1/2 bg-white p-2 rounded-full shadow-md hover:bg-gray-100 transition-colors">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
                 </button>
             </div>
@@ -390,7 +405,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 } else {
                     // Open menu
                     mobileMenu.classList.remove('hidden');
-                     menuOpenIcon.classList.add('hidden');
+                    menuOpenIcon.classList.add('hidden');
                     menuCloseIcon.classList.remove('hidden');
                     setTimeout(() => {
                         mobileMenu.classList.remove('opacity-0');

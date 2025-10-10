@@ -62,15 +62,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         /* Full-screen mobile menu styles */
         #mobile-menu {
             transition: opacity 0.3s ease-in-out;
+            padding-left: 2.5rem; /* ~40px padding on the left */
+        }
+        #mobile-menu ul {
+            text-align: left;
+            width: 100%;
         }
 
 
         /* Responsive adjustments for grids and sections */
         @media (max-width: 768px) {
-            .container {
-                width: 95%;
-                padding: 10px;
-            }
             .header-nav-items {
                 flex-direction: column;
                 align-items: center;
@@ -100,8 +101,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
     <!-- Header Section -->
     <header class="fixed top-0 left-0 right-0 z-50 bg-white bg-opacity-80 backdrop-blur-md py-4 shadow-sm">
-        <div class="container mx-auto flex items-center justify-between px-4 md:px-6">
-            <!-- "स्वशासन" text as a link to home -->
+        <div class="container mx-auto flex items-center justify-between px-4 sm:px-6">
+            <!-- Logo -->
             <a href="index.html" class="flex-shrink-0">
                 <img src="2.png" alt="Svashasan Logo" class="h-10 w-auto object-contain">
             </a>
@@ -113,11 +114,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <li><a href="blog.html" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Blog</a></li>
                     <li><a href="survey.html" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Survey</a></li>
                     <li><a href="developer-platform.html" class="hover:text-gray-900 hover:font-bold transition-all duration-200">API</a></li>
-                    <li><a href="model-performance.html" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Models</a></li><!-- New link -->
+                    <li><a href="model-performance.html" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Models</a></li>
                 </ul>
             </nav>
             <div class="flex items-center space-x-4 header-right-group ml-auto">
-                <!-- Profile Icon (SVG) - Opens Onboarding -->
+                <!-- Profile Icon -->
                 <a href="onboarding.html" class="text-gray-600 hover:text-gray-900 transition-colors duration-200 cursor-pointer">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-circle">
                         <circle cx="12" cy="12" r="10"/>
@@ -125,32 +126,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662"/>
                     </svg>
                 </a>
-                <!-- Hamburger menu for mobile -->
-                <button id="menu-button" class="md:hidden text-gray-600 hover:text-gray-900 focus:outline-none">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu">
+                <!-- Hamburger/Close Menu Button for mobile -->
+                <button id="menu-button" class="md:hidden text-gray-600 hover:text-gray-900 focus:outline-none z-50">
+                     <svg id="menu-open-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu">
                         <line x1="4" x2="20" y1="12" y2="12"></line>
                         <line x1="4" x2="20" y1="6" y2="6"></line>
                         <line x1="4" x2="20" y1="18" y2="18"></line>
                     </svg>
+                    <svg id="menu-close-icon" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
                 </button>
             </div>
         </div>
-        <!-- Mobile Navigation Overlay (Full Screen) -->
-        <div id="mobile-menu" class="hidden fixed inset-0 bg-white z-50 flex flex-col items-center justify-center opacity-0">
-             <button id="close-menu-button" class="absolute top-6 right-6 text-gray-600 hover:text-gray-900">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
-            </button>
-            <ul class="flex flex-col items-center space-y-8 text-gray-800 text-2xl font-medium">
-                <li><a href="#about" class="hover:text-blue-600 transition-colors">About Us</a></li>
-                <li><a href="#features" class="hover:text-blue-600 transition-colors">Features</a></li>
-                <li><a href="#contact" class="hover:text-blue-600 transition-colors">Contact</a></li>
-                <li><a href="blog.html" class="hover:text-blue-600 transition-colors">Blog</a></li>
-                <li><a href="survey.html" class="hover:text-blue-600 transition-colors">Survey</a></li>
-                <li><a href="developer-platform.html" class="hover:text-blue-600 transition-colors">API</a></li>
-                <li><a href="model-performance.html" class="hover:text-blue-600 transition-colors">Models</a></li>
-            </ul>
-        </div>
     </header>
+
+    <!-- Mobile Navigation Overlay (Full Screen) -->
+    <div id="mobile-menu" class="hidden fixed inset-0 bg-white z-40 flex flex-col justify-center items-start opacity-0">
+        <ul class="flex flex-col space-y-8 text-gray-800 text-3xl font-semibold">
+            <li><a href="#about" class="hover:text-gray-500 transition-colors">About Us</a></li>
+            <li><a href="#features" class="hover:text-gray-500 transition-colors">Features</a></li>
+            <li><a href="#contact" class="hover:text-gray-500 transition-colors">Contact</a></li>
+            <li><a href="blog.html" class="hover:text-gray-500 transition-colors">Blog</a></li>
+            <li><a href="survey.html" class="hover:text-gray-500 transition-colors">Survey</a></li>
+            <li><a href="developer-platform.html" class="hover:text-gray-500 transition-colors">API</a></li>
+            <li><a href="model-performance.html" class="hover:text-gray-500 transition-colors">Models</a></li>
+        </ul>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero-background relative h-screen flex items-center justify-center text-white text-center">
@@ -370,33 +370,43 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         document.addEventListener('DOMContentLoaded', () => {
             const menuButton = document.getElementById('menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
-            const closeMenuButton = document.getElementById('close-menu-button');
+            const menuOpenIcon = document.getElementById('menu-open-icon');
+            const menuCloseIcon = document.getElementById('menu-close-icon');
             const body = document.body;
 
-            const openMenu = () => {
-                mobileMenu.classList.remove('hidden');
-                setTimeout(() => {
-                    mobileMenu.classList.remove('opacity-0');
-                    body.style.overflow = 'hidden';
-                }, 10);
+            const toggleMenu = () => {
+                const isMenuOpen = !mobileMenu.classList.contains('hidden');
+                
+                if (isMenuOpen) {
+                    // Close menu
+                    mobileMenu.classList.add('opacity-0');
+                    body.style.overflow = '';
+                    menuOpenIcon.classList.remove('hidden');
+                    menuCloseIcon.classList.add('hidden');
+                    setTimeout(() => {
+                        mobileMenu.classList.add('hidden');
+                    }, 300);
+
+                } else {
+                    // Open menu
+                    mobileMenu.classList.remove('hidden');
+                     menuOpenIcon.classList.add('hidden');
+                    menuCloseIcon.classList.remove('hidden');
+                    setTimeout(() => {
+                        mobileMenu.classList.remove('opacity-0');
+                        body.style.overflow = 'hidden';
+                    }, 10);
+                }
             };
             
-            const closeMenu = () => {
-                mobileMenu.classList.add('opacity-0');
-                body.style.overflow = '';
-                setTimeout(() => {
-                    mobileMenu.classList.add('hidden');
-                }, 300);
-            };
-
-            if (menuButton && mobileMenu && closeMenuButton) {
-                menuButton.addEventListener('click', openMenu);
-                closeMenuButton.addEventListener('click', closeMenu);
+            if (menuButton && mobileMenu) {
+                menuButton.addEventListener('click', toggleMenu);
 
                 mobileMenu.querySelectorAll('a').forEach(link => {
-                    link.addEventListener('click', closeMenu);
+                    link.addEventListener('click', toggleMenu);
                 });
             }
+
 
             // Achievements Slider Logic
             const container = document.getElementById('achievements-container');
@@ -443,3 +453,4 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </script>
 </body>
 </html>
+

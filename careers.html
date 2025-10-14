@@ -30,6 +30,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             overflow: hidden;
             transition: max-height 0.5s ease-in-out, margin-top 0.5s ease-in-out;
         }
+        #mobile-menu {
+            transition: opacity 0.3s ease-in-out;
+        }
     </style>
 </head>
 <body class="font-sans text-gray-800 bg-gray-50">
@@ -60,9 +63,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <a href="onboarding.html" id="profile-link" class="text-gray-600 hover:text-gray-900 transition-colors duration-200 cursor-pointer">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-circle"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="10" r="3"/><path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662"/></svg>
                 </a>
+                 <!-- Hamburger menu for mobile -->
+                <button id="menu-button" class="md:hidden text-gray-600 hover:text-gray-900 focus:outline-none z-60 relative">
+                     <svg id="menu-open-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu">
+                        <line x1="4" x2="20" y1="12" y2="12"></line>
+                        <line x1="4" x2="20" y1="6" y2="6"></line>
+                        <line x1="4" x2="20" y1="18" y2="18"></line>
+                    </svg>
+                    <svg id="menu-close-icon" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                </button>
             </div>
         </div>
     </header>
+
+    <!-- Mobile Navigation Overlay (Full Screen) -->
+    <div id="mobile-menu" class="hidden fixed inset-0 bg-white z-50 flex flex-col justify-center items-start opacity-0 px-10">
+        <ul class="flex flex-col space-y-8 text-gray-800 text-3xl font-semibold">
+            <li><a href="index.html#about" class="hover:text-gray-500 transition-colors">About Us</a></li>
+            <li><a href="index.html#features" class="hover:text-gray-500 transition-colors">Features</a></li>
+            <li><a href="index.html#contact" class="hover:text-gray-500 transition-colors">Contact</a></li>
+            <li><a href="blog.html" class="hover:text-gray-500 transition-colors">Blog</a></li>
+            <li><a href="survey.html" class="hover:text-gray-500 transition-colors">Survey</a></li>
+            <li><a href="developer-platform.html" class="hover:text-gray-500 transition-colors">API</a></li>
+            <li><a href="model-performance.html" class="hover:text-gray-500 transition-colors">Models</a></li>
+        </ul>
+    </div>
+
 
     <main class="pt-20">
         <!-- Hero Section -->
@@ -83,7 +109,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     
                     <!-- Job Card 1 -->
                     <div class="job-card bg-white rounded-xl shadow-lg overflow-hidden transition-shadow hover:shadow-2xl">
-                        <img src="Autonomous.jpg" alt="Autonomous Systems" class="w-full h-56 object-cover">
+                        <img src="https://placehold.co/600x400/1D4ED8/FFFFFF?text=Autonomous+Systems" alt="Autonomous Systems" class="w-full h-56 object-cover">
                         <div class="p-6">
                             <h3 class="text-2xl font-bold text-gray-800">Autonomous Systems Engineer</h3>
                             <p class="text-gray-500 mt-1">Full-time | Navi Mumbai, IN</p>
@@ -113,7 +139,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
                     <!-- Job Card 2 -->
                     <div class="job-card bg-white rounded-xl shadow-lg overflow-hidden transition-shadow hover:shadow-2xl">
-                        <img src="Simulation.jpg" alt="Simulation" class="w-full h-56 object-cover">
+                        <img src="https://placehold.co/600x400/059669/FFFFFF?text=Simulation" alt="Simulation" class="w-full h-56 object-cover">
                         <div class="p-6">
                             <h3 class="text-2xl font-bold text-gray-800">Simulation & Test Engineer</h3>
                             <p class="text-gray-500 mt-1">Full-time | Navi Mumbai, IN</p>
@@ -143,7 +169,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
                     <!-- Job Card 3 -->
                     <div class="job-card bg-white rounded-xl shadow-lg overflow-hidden transition-shadow hover:shadow-2xl">
-                        <img src="Cybersecurity.jpg" alt="Cybersecurity" class="w-full h-56 object-cover">
+                        <img src="https://placehold.co/600x400/D97706/FFFFFF?text=Cybersecurity" alt="Cybersecurity" class="w-full h-56 object-cover">
                         <div class="p-6">
                             <h3 class="text-2xl font-bold text-gray-800">Cybersecurity Architect</h3>
                             <p class="text-gray-500 mt-1">Full-time | Navi Mumbai, IN</p>
@@ -173,7 +199,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
                     <!-- Job Card 4 -->
                     <div class="job-card bg-white rounded-xl shadow-lg overflow-hidden transition-shadow hover:shadow-2xl">
-                        <img src="Compliance.jpg" alt="Compliance" class="w-full h-56 object-cover">
+                        <img src="https://placehold.co/600x400/7C3AED/FFFFFF?text=Compliance" alt="Compliance" class="w-full h-56 object-cover">
                         <div class="p-6">
                             <h3 class="text-2xl font-bold text-gray-800">Regulatory & Compliance Specialist</h3>
                             <p class="text-gray-500 mt-1">Full-time | Navi Mumbai, IN</p>
@@ -210,13 +236,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <footer class="bg-gray-800 text-white py-6 text-center">
         <div class="container mx-auto px-4 md:px-6">
             <p>&copy; 2025 स्वशासन. All Rights Reserved.</p>
-            <p class="mt-2 text-sm space-x-2">
-                <a href="privacy-policy.html" class="hover:underline">Privacy Policy</a>
-                <span>|</span>
-                <a href="terms-of-use.html" class="hover:underline">Terms & Conditions</a>
-                <span>|</span>
-                <a href="cookie-policy.html" class="hover:underline">Cookie Policy</a>
-            </p>
         </div>
     </footer>
 
@@ -227,6 +246,43 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             if (profileLink) {
                 const isMobile = window.innerWidth < 768;
                 profileLink.href = isMobile ? 'login.html' : 'onboarding.html';
+            }
+
+            // Mobile Menu
+            const menuButton = document.getElementById('menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuOpenIcon = document.getElementById('menu-open-icon');
+            const menuCloseIcon = document.getElementById('menu-close-icon');
+            const body = document.body;
+
+            const toggleMenu = () => {
+                const isMenuOpen = !mobileMenu.classList.contains('hidden');
+                
+                if (isMenuOpen) {
+                    mobileMenu.classList.add('opacity-0');
+                    body.style.overflow = '';
+                    if(menuOpenIcon) menuOpenIcon.classList.remove('hidden');
+                    if(menuCloseIcon) menuCloseIcon.classList.add('hidden');
+                    setTimeout(() => {
+                        mobileMenu.classList.add('hidden');
+                    }, 300);
+
+                } else {
+                    mobileMenu.classList.remove('hidden');
+                    if(menuOpenIcon) menuOpenIcon.classList.add('hidden');
+                    if(menuCloseIcon) menuCloseIcon.classList.remove('hidden');
+                    setTimeout(() => {
+                        mobileMenu.classList.remove('opacity-0');
+                        body.style.overflow = 'hidden';
+                    }, 10);
+                }
+            };
+            
+            if (menuButton && mobileMenu) {
+                menuButton.addEventListener('click', toggleMenu);
+                mobileMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', toggleMenu);
+                });
             }
 
             // Job description toggle logic

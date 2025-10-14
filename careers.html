@@ -59,11 +59,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <li><a href="model-performance.html" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Models</a></li>
                 </ul>
             </nav>
-            <div class="flex items-center space-x-4">
+            <!-- Profile icon and menu button for mobile, always visible, aligned right -->
+            <div class="flex items-center space-x-2 md:space-x-4">
                 <a href="onboarding.html" id="profile-link" class="text-gray-600 hover:text-gray-900 transition-colors duration-200 cursor-pointer">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-circle"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="10" r="3"/><path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662"/></svg>
                 </a>
-                 <!-- Hamburger menu for mobile -->
+                <!-- Hamburger menu for mobile -->
                 <button id="menu-button" class="md:hidden text-gray-600 hover:text-gray-900 focus:outline-none z-60 relative">
                      <svg id="menu-open-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu">
                         <line x1="4" x2="20" y1="12" y2="12"></line>
@@ -77,8 +78,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </header>
 
     <!-- Mobile Navigation Overlay (Full Screen) -->
-    <div id="mobile-menu" class="hidden fixed inset-0 bg-white z-50 flex flex-col justify-center items-start opacity-0 px-10">
-        <ul class="flex flex-col space-y-8 text-gray-800 text-3xl font-semibold">
+    <div id="mobile-menu" class="hidden fixed inset-0 bg-white z-50 flex flex-col opacity-0 px-0">
+        <div class="w-full flex items-center justify-between px-4 py-4 md:hidden" style="min-height: 56px;">
+            <!-- Keep logo in top-left -->
+            <a href="index.html" class="flex-shrink-0">
+                <img src="2.png" alt="Svashasan Logo" class="h-10 w-auto object-contain">
+            </a>
+            <!-- Close button in top-right -->
+            <button id="mobile-menu-close" aria-label="Close menu" class="text-gray-600 hover:text-gray-900 focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+            </button>
+        </div>
+        <ul class="flex flex-col space-y-8 text-gray-800 text-3xl font-semibold px-10 pb-10">
             <li><a href="index.html#about" class="hover:text-gray-500 transition-colors">About Us</a></li>
             <li><a href="index.html#features" class="hover:text-gray-500 transition-colors">Features</a></li>
             <li><a href="index.html#contact" class="hover:text-gray-500 transition-colors">Contact</a></li>
@@ -253,6 +264,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             const mobileMenu = document.getElementById('mobile-menu');
             const menuOpenIcon = document.getElementById('menu-open-icon');
             const menuCloseIcon = document.getElementById('menu-close-icon');
+            const mobileMenuClose = document.getElementById('mobile-menu-close');
             const body = document.body;
 
             const toggleMenu = () => {
@@ -266,7 +278,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     setTimeout(() => {
                         mobileMenu.classList.add('hidden');
                     }, 300);
-
                 } else {
                     mobileMenu.classList.remove('hidden');
                     if(menuOpenIcon) menuOpenIcon.classList.add('hidden');
@@ -283,6 +294,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 mobileMenu.querySelectorAll('a').forEach(link => {
                     link.addEventListener('click', toggleMenu);
                 });
+            }
+            // Add close button logic for new close button inside menu
+            if (mobileMenuClose) {
+                mobileMenuClose.addEventListener('click', toggleMenu);
             }
 
             // Job description toggle logic

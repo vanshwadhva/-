@@ -99,6 +99,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 right: 0.5rem;
                 transform: translateY(-50%);
             }
+            /* Stack About images and text on mobile */
+            .about-subsection {
+                 grid-template-columns: 1fr;
+            }
+             .about-subsection > div:first-child { order: 1; } /* Image */
+             .about-subsection > div:last-child { order: 2; } /* Text */
+             
+             /* Reverse order for image-right layout on mobile */
+             .about-subsection.image-right > div:first-child { order: 2; } /* Text */
+             .about-subsection.image-right > div:last-child { order: 1; } /* Image */
         }
     </style>
     <!-- Twitter Meta Tags -->
@@ -192,6 +202,75 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 स्वशासन (Swa-shaasan) is pioneering the next generation of operating systems for electric vehicles. Our mission is to create an intuitive, efficient, and secure platform that enhances the driving experience and empowers users with seamless control over their vehicle's ecosystem. We believe in self-reliance and innovation to drive the future of mobility.
             </p>
         </div>
+
+        <!-- Added subsections within About -->
+        <div class="mt-16 max-w-full">
+             <!-- 1. Simulation Environment -->
+             <div class="grid grid-cols-1 md:grid-cols-2 about-subsection">
+                 <div class="relative min-h-[400px]">
+                    <img src="Simulation_Enviroment.jpg" alt="Custom Simulation Environment" class="w-full h-full object-cover">
+                 </div>
+                 <div class="bg-white p-8 md:p-12 text-left flex flex-col justify-center">
+                    <h3 class="text-3xl font-bold text-gray-800 mb-4">Advanced Simulation & Data Collection</h3>
+                    <p class="text-lg text-gray-600 leading-relaxed">
+                        To accelerate development and ensure robustness, we've built a custom, high-fidelity simulation environment. Here, our ego vehicle runs full self-driving scenarios continuously, allowing us to safely test algorithms under countless conditions, explore edge cases, and collect vast amounts of synthetic data crucial for training and validating our AI models.
+                    </p>
+                </div>
+             </div>
+
+             <!-- 2. Supervised Learning Model -->
+             <div class="grid grid-cols-1 md:grid-cols-2 about-subsection image-right">
+                 <div class="bg-white p-8 md:p-12 text-left flex flex-col justify-center">
+                    <h3 class="text-3xl font-bold text-gray-800 mb-4">Supervised Learning Core</h3>
+                    <p class="text-lg text-gray-600 leading-relaxed">
+                        At the heart of Svashasan OS lies a sophisticated supervised learning model. Trained on millions of miles of real-world driving data and augmented by our synthetic data, this model learns to interpret complex road scenarios, predict behavior of other road users, and make safe, human-like driving decisions. Continuous training ensures adaptation and improvement.
+                    </p>
+                 </div>
+                 <div class="relative min-h-[400px]">
+                    <img src="Supervised_Learning.webp" alt="Supervised Learning Model" class="w-full h-full object-cover">
+                 </div>
+             </div>
+
+             <!-- 3. Technology Stack -->
+              <div class="grid grid-cols-1 md:grid-cols-2 about-subsection">
+                 <div class="relative min-h-[400px]">
+                    <img src="Technology_Foundation.webp" alt="Technology Stack" class="w-full h-full object-cover">
+                 </div>
+                 <div class="bg-white p-8 md:p-12 text-left flex flex-col justify-center">
+                    <h3 class="text-3xl font-bold text-gray-800 mb-4">Our Technology Foundation</h3>
+                    <p class="text-lg text-gray-600 leading-relaxed">
+                        Our vision is powered by high-performance computing, advanced sensor fusion (LIDAR, RADAR, cameras), robust deep learning frameworks (TensorFlow, PyTorch), and scalable cloud infrastructure. Each component resonates with our goal: creating a reliable, efficient, and intelligent OS capable of handling the complexities of autonomous driving.
+                    </p>
+                </div>
+             </div>
+
+             <!-- 4. Safety Parameters & Metrics -->
+             <div class="grid grid-cols-1 md:grid-cols-2 about-subsection image-right">
+                 <div class="bg-white p-8 md:p-12 text-left flex flex-col justify-center">
+                    <h3 class="text-3xl font-bold text-gray-800 mb-4">Uncompromising Safety</h3>
+                    <p class="text-lg text-gray-600 leading-relaxed">
+                        Safety is paramount. Svashasan OS incorporates rigorous safety parameters and continuously monitors key performance metrics. This includes redundant systems checks, real-time risk assessment algorithms, and adherence to stringent automotive safety standards (like ISO 26262). Both simulated and real-world testing are used extensively to validate safety performance under diverse conditions.
+                    </p>
+                 </div>
+                 <div class="relative min-h-[400px]">
+                    <img src="Safety.jpg" alt="Safety Parameters and Metrics" class="w-full h-full object-cover">
+                 </div>
+             </div>
+
+             <!-- 5. Future Vision -->
+             <div class="grid grid-cols-1 md:grid-cols-2 about-subsection">
+                <div class="relative min-h-[400px]">
+                    <img src="V2V_Communication.jpeg" alt="Future V2V World" class="w-full h-full object-cover">
+                 </div>
+                <div class="bg-white p-8 md:p-12 text-left flex flex-col justify-center">
+                    <h3 class="text-3xl font-bold text-gray-800 mb-4">The Future: Connected & Autonomous</h3>
+                    <p class="text-lg text-gray-600 leading-relaxed">
+                        Imagine safer roads, smoother traffic, and productive commutes. This is the future enabled by full self-driving EVs powered by Svashasan OS. With Vehicle-to-Vehicle (V2V) communication, our cars form a collaborative network, sharing real-time insights to optimize routes and prevent accidents collectively, orchestrated by the central intelligence of Svashasan OS.
+                    </p>
+                 </div>
+             </div>
+        </div>
+        <!-- End of added subsections -->
     </section>
 
     <!-- Key Features Section -->
@@ -424,6 +503,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 });
             }
 
+            // Profile Link Logic - Already handled by profile.html
 
             // Achievements Slider Logic
             const container = document.getElementById('achievements-container');
@@ -432,7 +512,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             let autoScrollInterval;
 
             const startAutoScroll = () => {
+                // Ensure container exists before proceeding
+                if (!container) return; 
                 autoScrollInterval = setInterval(() => {
+                    if (!container) return; // Check again inside interval
                     if (container.scrollLeft + container.clientWidth >= container.scrollWidth) {
                         container.scrollTo({ left: 0, behavior: 'smooth' });
                     } else {
@@ -470,3 +553,4 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </script>
 </body>
 </html>
+

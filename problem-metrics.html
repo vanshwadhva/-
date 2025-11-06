@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Svashasan - Problem Metric</title>
+    <link rel="icon" type="image/png" href="2.png" sizes="32x32">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-N89XZGM4');</script>
+<style>
+    /* Custom Tailwind configuration for responsive fonts and shadows */
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'],
+                        calibri: ['Calibri', 'sans-serif'],
+                    },
+                }
+            }
+        }
+        
+        /* Fix for horizontal overflow */
+        html, body {
+            overflow-x: hidden;
+        }
+
+        /* Custom CSS for hero background image */
+        .hero-background {
+            background-image: url('image.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: scroll; /* iOS Safari doesn't support fixed background reliably */
+            -webkit-background-size: cover; /* Ensure iOS compatibility */
+        }
+
+        /* Scrolling animation for the team section */
+        .scrolling-wrapper {
+            -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        }
+
+        @keyframes scroll {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+        .animate-scroll {
+            animation: scroll 40s linear infinite;
+        }
+
+        /* Hide scrollbar for achievements container */
+        .achievements-container::-webkit-scrollbar {
+            display: none;
+        }
+        .achievements-container {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        
+        /* Full-screen mobile menu styles */
+        #mobile-menu {
+            transition: opacity 0.3s ease-in-out;
+            padding-left: 2.5rem; /* ~40px padding on the left */
+        }
+        #mobile-menu ul {
+            text-align: left;
+            width: 100%;
+        }
+
+
+        /* Responsive adjustments for grids and sections */
+        @media (max-width: 768px) {
+            .header-nav-items {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+            .header-right-icons {
+                margin-left: auto; /* Push icons to the right on small screens if nav stacks */
+            }
+            .footer-links {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            /* Adjust achievement buttons to prevent overflow */
+            #scroll-left {
+                left: 0.5rem;
+                transform: translateY(-50%);
+            }
+            #scroll-right {
+                right: 0.5rem;
+                transform: translateY(-50%);
+            }
+            /* Stack About images and text on mobile */
+            .about-subsection {
+                 grid-template-columns: 1fr;
+            }
+             .about-subsection > div:first-child { order: 1; } /* Image */
+             .about-subsection > div:last-child { order: 2; } /* Text */
+             
+             /* Reverse order for image-right layout on mobile */
+             .about-subsection.image-right > div:first-child { order: 2; } /* Text */
+             .about-subsection.image-right > div:last-child { order: 1; } /* Image */
+        }
+    </style>
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@svashasan">
+    <meta name="twitter:title" content="स्वशासन - The Future of EV OS">
+    <meta name="twitter:description" content="Svashasan is pioneering the next-gen electric vehicle operating system—intelligent, intuitive, and open for developers.">
+    <meta name="twitter:image" content="https://svashasan.com/image.jpeg">
+</head>
+<body class="font-sans text-gray-800">
+
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N89XZGM4"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<header class="fixed top-0 left-0 right-0 z-50 bg-white bg-opacity-80 backdrop-blur-md py-4 shadow-sm">
+        <div class="container mx-auto flex items-center justify-between px-4 sm:px-6">
+            <a href="index.html" class="flex-shrink-0">
+                <img src="2.png" alt="Svashasan Logo" class="h-10 w-auto object-contain">
+            </a>
+            <nav class="hidden md:flex flex-grow justify-center">
+                <ul class="flex space-x-6 text-gray-600 font-medium">
+                    <li><a href="index.html#about" class="hover:text-gray-900 hover:font-bold transition-all duration-200">About Us</a></li>
+                    <li><a href="index.html#features" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Features</a></li>
+                    <li><a href="index.html#contact" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Contact</a></li>
+                    <li><a href="blog.html" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Blog</a></li>
+                    <li><a href="survey.html" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Survey</a></li>
+                    <li><a href="developer-platform.html" class="hover:text-gray-900 hover:font-bold transition-all duration-200">API</a></li>
+                    <li><a href="model-performance.html" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Models</a></li>
+                </ul>
+            </nav>
+            <div class="flex items-center space-x-4 header-right-group ml-auto">
+                <a href="profile.html" class="text-gray-600 hover:text-gray-900 transition-colors duration-200 cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-circle">
+                        <circle cx="12" cy="12" r="10"/>
+                        <circle cx="12" cy="10" r="3"/>
+                        <path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662"/>
+                    </svg>
+                </a>
+                <button id="menu-button" class="md:hidden text-gray-600 hover:text-gray-900 focus:outline-none z-60 relative">
+                     <svg id="menu-open-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu">
+                        <line x1="4" x2="20" y1="12" y2="12"></line>
+                        <line x1="4" x2="20" y1="6" y2="6"></line>
+                        <line x1="4" x2="20" y1="18" y2="18"></line>
+                    </svg>
+                    <svg id="menu-close-icon" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div id="mobile-menu" class="hidden fixed inset-0 bg-white z-40 flex flex-col justify-center items-start opacity-0">
+        <ul class="flex flex-col space-y-8 text-gray-800 text-3xl font-semibold">
+            <li><a href="index.html#about" class="hover:text-gray-500 transition-colors">About Us</a></li>
+            <li><a href="index.html#features" class="hover:text-gray-500 transition-colors">Features</a></li>
+            <li><a href="index.html#contact" class="hover:text-gray-500 transition-colors">Contact</a></li>
+            <li><a href="blog.html" class="hover:text-gray-500 transition-colors">Blog</a></li>
+            <li><a href="survey.html" class="hover:text-gray-500 transition-colors">Survey</a></li>
+            <li><a href="developer-platform.html" class="hover:text-gray-500 transition-colors">API</a></li>
+            <li><a href="model-performance.html" class="hover:text-gray-500 transition-colors">Models</a></li>
+        </ul>
+    </div>
+
+    <main class="pt-24 pb-16 bg-gray-50 min-h-screen">
+        <div class="container mx-auto px-4 md:px-6">
+            <h1 class="text-4xl font-bold text-gray-800 mb-8 text-center">Problem Metric</h1>
+            
+            <p class="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed text-center mb-12">
+                Below is the embedded content from our models repository detailing the problem metric.
+            </p>
+
+            <div class="w-full h-[80vh] bg-white rounded-lg shadow-xl overflow-hidden border border-gray-200">
+                <iframe 
+                    src="https://svashasan.github.io/models/problem-metric" 
+                    class="w-full h-full" 
+                    title="Problem Metric Details" 
+                    frameborder="0">
+                    Your browser does not support iframes. Please visit <a href="https://svashasan.github.io/models/problem-metric">this link</a> directly.
+                </iframe>
+            </div>
+        </div>
+    </main>
+    <footer class="bg-gray-800 text-white py-6 text-center">
+        <div class="container mx-auto px-4 md:px-6">
+            <p>&copy; 2025 स्वशासन. All Rights Reserved.</p>
+            <p class="mt-2 text-sm space-x-2">
+                <a href="privacy-policy.html" class="hover:underline">Privacy Policy</a>
+                <span>|</span>
+                <a href="terms-of-use.html" class="hover:underline">Terms & Conditions</a>
+                <span>|</span>
+                <a href="cookie-policy.html" class="hover:underline">Cookie Policy</a>
+                <span>|</span>
+                <a href="careers.html" class="hover:underline">Careers</a>
+            </p>
+        </div>
+    </footer>
+    
+    <div class="fixed bottom-4 right-4 z-50">
+        <a href="view-demo.html" class="bg-gray-200 hover:bg-gray-300 text-gray-800 text-sm py-2 px-4 rounded-lg shadow-lg border border-gray-300 transition-colors">
+            View Telemetry
+        </a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuButton = document.getElementById('menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuOpenIcon = document.getElementById('menu-open-icon');
+            const menuCloseIcon = document.getElementById('menu-close-icon');
+            const body = document.body;
+
+            const toggleMenu = () => {
+                const isMenuOpen = !mobileMenu.classList.contains('hidden');
+                
+                if (isMenuOpen) {
+                    // Close menu
+                    mobileMenu.classList.add('opacity-0');
+                    body.style.overflow = '';
+                    menuOpenIcon.classList.remove('hidden');
+                    menuCloseIcon.classList.add('hidden');
+                    setTimeout(() => {
+                        mobileMenu.classList.add('hidden');
+                    }, 300);
+
+                } else {
+                    // Open menu
+                    mobileMenu.classList.remove('hidden');
+                    menuOpenIcon.classList.add('hidden');
+                    menuCloseIcon.classList.remove('hidden');
+                    setTimeout(() => {
+                        mobileMenu.classList.remove('opacity-0');
+                        body.style.overflow = 'hidden';
+                    }, 10);
+                }
+            };
+            
+            if (menuButton && mobileMenu) {
+                menuButton.addEventListener('click', toggleMenu);
+
+                mobileMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', toggleMenu);
+                });
+            }
+
+            // Profile Link Logic - Already handled by profile.html
+
+            // Achievements Slider Logic
+            // This script will run, but won't find the elements and will safely do nothing
+            // because of the 'if (container && ...)' check.
+            const container = document.getElementById('achievements-container');
+            const scrollLeftBtn = document.getElementById('scroll-left');
+            const scrollRightBtn = document.getElementById('scroll-right');
+            let autoScrollInterval;
+
+            const startAutoScroll = () => {
+                // Ensure container exists before proceeding
+                if (!container) return; 
+                autoScrollInterval = setInterval(() => {
+                    if (!container) return; // Check again inside interval
+                    if (container.scrollLeft + container.clientWidth >= container.scrollWidth) {
+                        container.scrollTo({ left: 0, behavior: 'smooth' });
+                    } else {
+                        container.scrollBy({ left: container.clientWidth, behavior: 'smooth' });
+                    }
+                }, 3000);
+            };
+
+            const stopAutoScroll = () => {
+                clearInterval(autoScrollInterval);
+            };
+            
+            const resetAutoScroll = () => {
+                stopAutoScroll();
+                startAutoScroll();
+            };
+
+            if (container && scrollLeftBtn && scrollRightBtn) {
+                scrollLeftBtn.addEventListener('click', () => {
+                    container.scrollBy({ left: -container.clientWidth, behavior: 'smooth' });
+                    resetAutoScroll();
+                });
+
+                scrollRightBtn.addEventListener('click', () => {
+                    container.scrollBy({ left: container.clientWidth, behavior: 'smooth' });
+                    resetAutoScroll();
+                });
+
+                container.addEventListener('mouseenter', stopAutoScroll);
+                container.addEventListener('mouseleave', startAutoScroll);
+
+                startAutoScroll();
+            }
+        });
+    </script>
+</body>
+</html>

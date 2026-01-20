@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Out | Svashasan Account</title>
+    <link rel="icon" type="image/png" href="2.png" sizes="32x32">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: { 'tesla-dark': '#171a20' }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="flex flex-col min-h-screen text-[#171a20]">
+
+    <header class="bg-white py-4 sticky top-0 z-50">
+        <div class="container mx-auto px-6 text-center">
+            <a href="index.html" class="inline-block"><img src="2.png" alt="Svashasan" class="h-6 w-auto"></a>
+        </div>
+    </header>
+
+    <main class="flex-grow flex flex-col items-center justify-center text-center px-4">
+        <h1 class="text-3xl font-semibold mb-4">Signed Out</h1>
+        <p class="text-gray-500 mb-8">You have been successfully signed out of your account.</p>
+        <a href="index.html" class="bg-[#171a20] text-white px-24 py-2.5 rounded text-sm font-medium hover:bg-opacity-90 transition-opacity">
+            Return to Home
+        </a>
+    </main>
+
+    <footer class="py-8 text-center text-xs text-gray-400">
+        Svashasan &copy; 2026
+    </footer>
+
+</body>
+</html>

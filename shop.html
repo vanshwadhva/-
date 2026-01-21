@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products | Svashasan</title>
+    <link rel="icon" type="image/png" href="2.png" sizes="32x32">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    colors: {
+                        'tesla-dark': '#171a20',
+                        'tesla-gray': '#393c41',
+                        'tesla-light-gray': '#f4f4f4',
+                        'tesla-blue': '#3e6ae1',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { color: #171a20; }
+        
+        /* Product Card Hover Effect */
+        .product-card .image-container img {
+            transition: transform 0.5s ease;
+        }
+        .product-card:hover .image-container img {
+            transform: scale(1.05);
+        }
+        
+        /* Custom Scrollbar for horizontal scrolling on mobile */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-white">
+
+    <!-- Header -->
+    <header id="main-header" class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 transition-all duration-300">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="svashasan.com" class="flex-shrink-0">
+                <img src="2.png" alt="Svashasan" class="h-6 w-auto object-contain">
+            </a>
+
+            <!-- Search / Cart (Right Side) -->
+            <div class="flex items-center space-x-6">
+                <!-- Search Icon -->
+                <button class="text-tesla-dark hover:text-gray-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                </button>
+                
+                <!-- Account -->
+                <a href="my-account.html" class="hidden md:block text-sm font-medium hover:underline">Account</a>
+                
+                <!-- Cart -->
+                <button class="relative text-tesla-dark hover:text-gray-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+                    <!-- Cart Badge -->
+                    <!-- <span class="absolute -top-1 -right-1 bg-tesla-blue text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center">0</span> -->
+                </button>
+
+                <!-- Mobile Menu Button -->
+                <button class="lg:hidden text-tesla-dark">
+                    <span class="text-sm font-medium bg-gray-100 px-3 py-2 rounded">Menu</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative pt-24 pb-12 lg:pt-32 lg:pb-20 px-6">
+        <div class="container mx-auto rounded-2xl overflow-hidden relative h-[500px] group">
+            <img src="Svashasan UI.png" alt="Svashasan UI" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+            
+            <div class="absolute bottom-0 left-0 p-8 md:p-16 w-full md:w-2/3 text-white">
+                <span class="uppercase tracking-widest text-xs font-semibold mb-2 block text-gray-300">New Release</span>
+                <h1 class="text-4xl md:text-5xl font-semibold mb-4">Svashasan OS v1.0</h1>
+                <p class="text-lg md:text-xl text-gray-200 mb-8 max-w-lg">The next evolution in autonomous driving software. Enhanced visuals, faster processing, and Level 4 autonomy ready.</p>
+                <div class="flex space-x-4">
+                    <button class="bg-white text-tesla-dark px-8 py-3 rounded text-sm font-medium hover:bg-gray-100 transition-colors">Order Now</button>
+                    <button class="bg-transparent border border-white text-white px-8 py-3 rounded text-sm font-medium hover:bg-white/10 transition-colors">Learn More</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Category Filter (Sticky) -->
+    <div class="sticky top-[60px] z-40 bg-white/95 backdrop-blur-sm border-b border-gray-100 mb-12">
+        <div class="container mx-auto px-6 overflow-x-auto hide-scrollbar">
+            <nav class="flex space-x-8 whitespace-nowrap py-4">
+                <a href="#vehicles" class="text-sm font-medium text-tesla-dark border-b-2 border-tesla-dark pb-1">Best Sellers</a>
+                <a href="#vehicles" class="text-sm font-medium text-gray-500 hover:text-tesla-dark transition-colors">Vehicles</a>
+                <a href="#charging" class="text-sm font-medium text-gray-500 hover:text-tesla-dark transition-colors">Charging</a>
+                <a href="#software" class="text-sm font-medium text-gray-500 hover:text-tesla-dark transition-colors">Software</a>
+                <a href="#apparel" class="text-sm font-medium text-gray-500 hover:text-tesla-dark transition-colors">Apparel</a>
+                <a href="#lifestyle" class="text-sm font-medium text-gray-500 hover:text-tesla-dark transition-colors">Lifestyle</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Product Grids -->
+    <main class="container mx-auto px-6 pb-24 space-y-24">
+
+        <!-- Vehicles Category -->
+        <section id="vehicles">
+            <div class="flex justify-between items-end mb-8">
+                <h2 class="text-2xl font-semibold text-tesla-dark">Vehicles</h2>
+                <a href="#" class="text-sm text-gray-500 hover:underline hover:text-tesla-dark">View All</a>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12">
+                
+                <!-- Product Card 1 -->
+                <div class="product-card group cursor-pointer">
+                    <div class="image-container bg-gray-100 rounded-lg h-[300px] overflow-hidden relative mb-4">
+                        <img src="Simulation_Enviroment.jpg" alt="Model S" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    </div>
+                    <h3 class="text-lg font-semibold text-tesla-dark">Svashasan Model Alpha</h3>
+                    <p class="text-sm text-gray-500 mt-1">From ₹ 3,500,000</p>
+                </div>
+
+                <!-- Product Card 2 -->
+                <div class="product-card group cursor-pointer">
+                    <div class="image-container bg-gray-100 rounded-lg h-[300px] overflow-hidden relative mb-4">
+                        <img src="Supervised_Learning.webp" alt="Model X" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    </div>
+                    <h3 class="text-lg font-semibold text-tesla-dark">Svashasan Model X</h3>
+                    <p class="text-sm text-gray-500 mt-1">From ₹ 4,200,000</p>
+                </div>
+
+                <!-- Product Card 3 -->
+                <div class="product-card group cursor-pointer">
+                    <div class="image-container bg-gray-100 rounded-lg h-[300px] overflow-hidden relative mb-4">
+                        <img src="Technology_Foundation.webp" alt="Cyber" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    </div>
+                    <h3 class="text-lg font-semibold text-tesla-dark">Svashasan Cyber</h3>
+                    <p class="text-sm text-gray-500 mt-1">Reserve Now</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Charging Category -->
+        <section id="charging">
+            <div class="flex justify-between items-end mb-8">
+                <h2 class="text-2xl font-semibold text-tesla-dark">Charging</h2>
+                <a href="#" class="text-sm text-gray-500 hover:underline hover:text-tesla-dark">View All</a>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12">
+                
+                <!-- Product Card -->
+                <div class="product-card group cursor-pointer">
+                    <div class="image-container bg-gray-50 rounded-lg h-[300px] overflow-hidden relative mb-4 flex items-center justify-center p-8">
+                        <img src="Svashasan Charger.png" alt="Svashasan Charger" class="w-full h-full object-contain">
+                    </div>
+                    <h3 class="text-lg font-semibold text-tesla-dark">Wall Connector</h3>
+                    <p class="text-sm text-gray-500 mt-1">₹ 45,000</p>
+                </div>
+
+                <!-- Product Card -->
+                <div class="product-card group cursor-pointer">
+                    <div class="image-container bg-gray-50 rounded-lg h-[300px] overflow-hidden relative mb-4 flex items-center justify-center p-8">
+                        <svg class="w-32 h-32 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-tesla-dark">Mobile Connector</h3>
+                    <p class="text-sm text-gray-500 mt-1">₹ 22,000</p>
+                </div>
+
+                <!-- Product Card -->
+                <div class="product-card group cursor-pointer">
+                    <div class="image-container bg-gray-50 rounded-lg h-[300px] overflow-hidden relative mb-4 flex items-center justify-center p-8">
+                        <svg class="w-32 h-32 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-tesla-dark">Cable Organizer</h3>
+                    <p class="text-sm text-gray-500 mt-1">₹ 2,500</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Lifestyle / Apparel -->
+        <section id="lifestyle">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Large Feature Card -->
+                <div class="bg-gray-100 rounded-2xl p-12 h-[500px] flex flex-col justify-between group overflow-hidden relative cursor-pointer">
+                    <img src="V2V_Communication.jpeg" alt="Apparel" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80">
+                    <div class="relative z-10">
+                        <h3 class="text-3xl font-semibold text-white drop-shadow-md">Men's Apparel</h3>
+                        <p class="text-white drop-shadow-md mt-2">Engineered for comfort.</p>
+                    </div>
+                    <div class="relative z-10">
+                        <button class="bg-white text-tesla-dark px-6 py-2 rounded text-sm font-medium hover:bg-gray-100 transition-colors">Shop Now</button>
+                    </div>
+                </div>
+
+                <div class="bg-gray-100 rounded-2xl p-12 h-[500px] flex flex-col justify-between group overflow-hidden relative cursor-pointer">
+                    <img src="accessories.png" alt="Accessories" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="relative z-10">
+                        <h3 class="text-3xl font-semibold text-tesla-dark">Accessories</h3>
+                        <p class="text-tesla-gray mt-2">Lifestyle products for the modern owner.</p>
+                    </div>
+                    <div class="relative z-10">
+                        <button class="bg-white border border-gray-300 text-tesla-dark px-6 py-2 rounded text-sm font-medium hover:bg-gray-100 transition-colors">Shop Accessories</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50 py-12 border-t border-gray-200 text-xs text-gray-500">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex flex-wrap justify-center gap-6 mb-4">
+                <a href="#" class="hover:text-tesla-dark transition-colors">Svashasan © 2026</a>
+                <a href="#" class="hover:text-tesla-dark transition-colors">Privacy & Legal</a>
+                <a href="#" class="hover:text-tesla-dark transition-colors">Vehicle Recalls</a>
+                <a href="#" class="hover:text-tesla-dark transition-colors">Contact</a>
+                <a href="#" class="hover:text-tesla-dark transition-colors">Careers</a>
+                <a href="#" class="hover:text-tesla-dark transition-colors">Get Newsletter</a>
+                <a href="#" class="hover:text-tesla-dark transition-colors">Locations</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

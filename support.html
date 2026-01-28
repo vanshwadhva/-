@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support - Svashasan</title>
+    <link rel="icon" type="image/png" href="2.png" sizes="32x32">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-N89XZGM4');</script>
+    <!-- End Google Tag Manager -->
+    <style>
+        /* Custom Tailwind configuration from index.html */
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'],
+                        calibri: ['Calibri', 'sans-serif'],
+                    },
+                }
+            }
+        }
+        
+        /* Fix for horizontal overflow */
+        html, body {
+            overflow-x: hidden;
+        }
+
+        /* Support Hero Background */
+        .support-hero {
+            background-image: url('image.png'); /* Using same image as index.html */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        /* Tesla-like Search Input Focus */
+        .search-input:focus {
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.3); /* Blue ring */
+        }
+        
+        /* Full-screen mobile menu styles */
+        #mobile-menu {
+            transition: opacity 0.3s ease-in-out;
+            padding-left: 2.5rem; 
+        }
+        #mobile-menu ul {
+            text-align: left;
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-white">
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N89XZGM4"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- Header Section (Identical to index.html) -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white bg-opacity-80 backdrop-blur-md py-4 shadow-sm">
+        <div class="container mx-auto flex items-center justify-between px-4 sm:px-6">
+            <!-- Logo -->
+            <a href="https://svashasan.com/" class="flex-shrink-0">
+                <img src="2.png" alt="Svashasan Logo" class="h-10 w-auto object-contain">
+            </a>
+            <nav class="hidden md:flex flex-grow justify-center">
+                <ul class="flex space-x-6 text-gray-600 font-medium">
+                    <li><a href="index.html#about" class="hover:text-gray-900 hover:font-bold transition-all duration-200">About Us</a></li>
+                    <li><a href="index.html#features" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Features</a></li>
+                    <li><a href="index.html#contact" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Contact</a></li>
+                    <li><a href="blog.html" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Blog</a></li>
+                    <li><a href="survey.html" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Survey</a></li>
+                    <li><a href="developer-platform.html" class="hover:text-gray-900 hover:font-bold transition-all duration-200">API</a></li>
+                    <li><a href="model-performance.html" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Models</a></li>
+                </ul>
+            </nav>
+            <div class="flex items-center space-x-4 header-right-group ml-auto">
+                <!-- Profile Icon -->
+                <a href="profile.html" class="text-gray-600 hover:text-gray-900 transition-colors duration-200 cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-circle">
+                        <circle cx="12" cy="12" r="10"/>
+                        <circle cx="12" cy="10" r="3"/>
+                        <path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662"/>
+                    </svg>
+                </a>
+                <!-- Hamburger/Close Menu Button for mobile -->
+                <button id="menu-button" class="md:hidden text-gray-600 hover:text-gray-900 focus:outline-none z-60 relative">
+                     <svg id="menu-open-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu">
+                        <line x1="4" x2="20" y1="12" y2="12"></line>
+                        <line x1="4" x2="20" y1="6" y2="6"></line>
+                        <line x1="4" x2="20" y1="18" y2="18"></line>
+                    </svg>
+                    <svg id="menu-close-icon" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Overlay (Full Screen) -->
+    <div id="mobile-menu" class="hidden fixed inset-0 bg-white z-40 flex flex-col justify-center items-start opacity-0">
+        <ul class="flex flex-col space-y-8 text-gray-800 text-3xl font-semibold">
+            <li><a href="index.html#about" class="hover:text-gray-500 transition-colors">About Us</a></li>
+            <li><a href="index.html#features" class="hover:text-gray-500 transition-colors">Features</a></li>
+            <li><a href="index.html#contact" class="hover:text-gray-500 transition-colors">Contact</a></li>
+            <li><a href="blog.html" class="hover:text-gray-500 transition-colors">Blog</a></li>
+            <li><a href="survey.html" class="hover:text-gray-500 transition-colors">Survey</a></li>
+            <li><a href="developer-platform.html" class="hover:text-gray-500 transition-colors">API</a></li>
+            <li><a href="model-performance.html" class="hover:text-gray-500 transition-colors">Models</a></li>
+        </ul>
+    </div>
+
+    <!-- Support Hero Section (Tesla UX) -->
+    <!-- Large visual background with central search bar -->
+    <section class="support-hero relative h-[50vh] min-h-[400px] flex flex-col items-center justify-center text-center">
+        <div class="absolute inset-0 bg-black bg-opacity-60"></div> <!-- Darker overlay for better text contrast -->
+        <div class="relative z-10 w-full max-w-2xl px-4">
+            <h1 class="text-3xl md:text-5xl font-bold text-white mb-8 tracking-wide">Support</h1>
+            
+            <!-- Search Bar -->
+            <div class="relative group">
+                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </div>
+                <input type="text" 
+                    class="search-input w-full py-4 pl-12 pr-4 rounded-xl text-gray-900 bg-white shadow-2xl text-lg transition-all duration-300 placeholder-gray-500" 
+                    placeholder="Search Support">
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- Visual Navigation / Feature Cards (Tesla UX) -->
+    <!-- Large, high-quality image cards for key support areas -->
+    <section class="py-20 bg-white border-t border-gray-100">
+        <div class="container mx-auto px-4 md:px-10">
+            <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">Visual Guides</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                
+                <!-- Card 1 -->
+                <a href="#" class="group block bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="Simulation_Enviroment.jpg" alt="Simulation Environment" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black bg-opacity-10 group-hover:bg-opacity-0 transition-opacity"></div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Video Walkthroughs</h3>
+                        <p class="text-gray-600 mb-4 text-sm leading-relaxed">Explore interactive videos designed to give you a more in-depth look at the Svashasan Simulation Environment and OS features.</p>
+                        <span class="text-sm font-semibold text-gray-900 underline group-hover:text-blue-600 transition-colors">Watch Videos</span>
+                    </div>
+                </a>
+
+                <!-- Card 2 -->
+                <a href="#" class="group block bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="Supervised_Learning.webp" alt="Supervised Learning" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black bg-opacity-10 group-hover:bg-opacity-0 transition-opacity"></div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Getting Started</h3>
+                        <p class="text-gray-600 mb-4 text-sm leading-relaxed">Learn the fundamentals of Svashasan OS. From setting up your driver profile to understanding supervised learning capabilities.</p>
+                        <span class="text-sm font-semibold text-gray-900 underline group-hover:text-blue-600 transition-colors">View Guide</span>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Categories Grid (Tesla UX) -->
+    <section class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4 md:px-10">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-7xl mx-auto">
+                
+                <!-- Column 1: Driver Support -->
+                <div class="flex flex-col items-start space-y-4">
+                    <h2 class="text-xl font-bold text-gray-900 mb-2">Vehicle Features</h2>
+                    <ul class="space-y-3 w-full">
+                        <li><a href="#" class="text-gray-600 hover:text-black hover:underline transition-all block text-sm">Autopilot & Supervised Learning</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-black hover:underline transition-all block text-sm">Software Updates</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-black hover:underline transition-all block text-sm">Smart Energy Management</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-black hover:underline transition-all block text-sm">Navigation & Maps</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-black hover:underline transition-all block text-sm">Security Features</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-black hover:underline transition-all block text-sm">Dashcam & Sentry Mode</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 2: Developer Platform -->
+                <div class="flex flex-col items-start space-y-4">
+                    <h2 class="text-xl font-bold text-gray-900 mb-2">Developer & API</h2>
+                    <ul class="space-y-3 w-full">
+                        <li><a href="#" class="text-gray-600 hover:text-black hover:underline transition-all block text-sm">API Documentation</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-black hover:underline transition-all block text-sm">SDK Downloads</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-black hover:underline transition-all block text-sm">Simulation Environment</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-black hover:underline transition-all block text-sm">Telemetry Data</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-black hover:underline transition-all block text-sm">App Development Guidelines</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Account & Account -->
+                <div class="flex flex-col items-start space-y-4">
+                    <h2 class="text-xl font-bold text-gray-900 mb-2">Account & Ordering</h2>
+                    <ul class="space-y-3 w-full">
+                        <li><a href="#" class="text-gray-600 hover:text-black hover:underline transition-all block text-sm">Svashasan Account</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-black hover:underline transition-all block text-sm">Manage Subscriptions</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-black hover:underline transition-all block text-sm">Ordering Svashasan OS</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-black hover:underline transition-all block text-sm">Invoices & Billing</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-black hover:underline transition-all block text-sm">Privacy & Data Requests</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact CTA Section -->
+    <section class="py-20 bg-white border-t border-gray-100">
+        <div class="container mx-auto px-4 text-center max-w-3xl">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6">Need more help?</h2>
+            <p class="text-gray-600 mb-8 leading-relaxed">
+                Sign in to your Svashasan account to view your specific vehicle diagnostics, submit support tickets, or chat with an agent.
+            </p>
+            <a href="mailto:inquiries@svashasan.com" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-12 rounded-full transition-all duration-300">
+                Contact Support
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer (Identical to index.html) -->
+    <footer class="bg-gray-800 text-white py-6 text-center">
+        <div class="container mx-auto px-4 md:px-6">
+            <p>&copy; 2025 स्वशासन. All Rights Reserved.</p>
+            <p class="mt-2 text-sm space-x-2">
+                <a href="privacy-policy.html" class="hover:underline">Privacy Policy</a>
+                <span>|</span>
+                <a href="terms-of-use.html" class="hover:underline">Terms & Conditions</a>
+                <span>|</span>
+                <a href="cookie-policy.html" class="hover:underline">Cookie Policy</a>
+                <span>|</span>
+                <a href="careers.html" class="hover:underline">Careers</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Mobile Menu (Identical logic to index.html) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuButton = document.getElementById('menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuOpenIcon = document.getElementById('menu-open-icon');
+            const menuCloseIcon = document.getElementById('menu-close-icon');
+            const body = document.body;
+
+            const toggleMenu = () => {
+                const isMenuOpen = !mobileMenu.classList.contains('hidden');
+                
+                if (isMenuOpen) {
+                    // Close menu
+                    mobileMenu.classList.add('opacity-0');
+                    body.style.overflow = '';
+                    menuOpenIcon.classList.remove('hidden');
+                    menuCloseIcon.classList.add('hidden');
+                    setTimeout(() => {
+                        mobileMenu.classList.add('hidden');
+                    }, 300);
+
+                } else {
+                    // Open menu
+                    mobileMenu.classList.remove('hidden');
+                    menuOpenIcon.classList.add('hidden');
+                    menuCloseIcon.classList.remove('hidden');
+                    setTimeout(() => {
+                        mobileMenu.classList.remove('opacity-0');
+                        body.style.overflow = 'hidden';
+                    }, 10);
+                }
+            };
+            
+            if (menuButton && mobileMenu) {
+                menuButton.addEventListener('click', toggleMenu);
+
+                mobileMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', toggleMenu);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

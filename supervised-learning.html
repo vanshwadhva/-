@@ -37,9 +37,10 @@
 
         /* Hero Background with Video/Image Fallback */
         .fsd-hero {
-            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('Supervised_Learning.webp');
+            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6));
             background-size: cover;
             background-position: center;
+            background-attachment: fixed;
         }
 
         /* Animation for text reveal */
@@ -127,16 +128,16 @@
         </div>
     </header>
 
-    <!-- Mobile Navigation Overlay (Exact replica) -->
-    <div id="mobile-menu" class="hidden fixed inset-0 bg-white z-40 flex flex-col justify-center items-start opacity-0">
-        <ul class="flex flex-col space-y-8 text-gray-800 text-3xl font-semibold">
-            <li><a href="index.html#about" class="hover:text-gray-500 transition-colors">About Us</a></li>
-            <li><a href="index.html#features" class="hover:text-gray-500 transition-colors">Features</a></li>
-            <li><a href="index.html#contact" class="hover:text-gray-500 transition-colors">Contact</a></li>
-            <li><a href="blog.html" class="hover:text-gray-500 transition-colors">Blog</a></li>
-            <li><a href="survey.html" class="hover:text-gray-500 transition-colors">Survey</a></li>
-            <li><a href="developer-platform.html" class="hover:text-gray-500 transition-colors">API</a></li>
-            <li><a href="model-performance.html" class="hover:text-gray-500 transition-colors">Models</a></li>
+    <!-- Mobile Navigation Overlay (copied from index.html) -->
+    <div id="mobile-menu" class="hidden fixed inset-0 bg-white z-40 flex flex-col justify-center items-center opacity-0 transition-opacity duration-300">
+        <ul class="flex flex-col space-y-10 text-gray-900 text-3xl font-bold items-center">
+            <li><a href="index.html#about" class="hover:text-svashasanBlue transition-colors duration-200">About Us</a></li>
+            <li><a href="index.html#features" class="hover:text-svashasanBlue transition-colors duration-200">Features</a></li>
+            <li><a href="index.html#contact" class="hover:text-svashasanBlue transition-colors duration-200">Contact</a></li>
+            <li><a href="blog.html" class="hover:text-svashasanBlue transition-colors duration-200">Blog</a></li>
+            <li><a href="survey.html" class="hover:text-svashasanBlue transition-colors duration-200">Survey</a></li>
+            <li><a href="developer-platform.html" class="hover:text-svashasanBlue transition-colors duration-200">API</a></li>
+            <li><a href="model-performance.html" class="hover:text-svashasanBlue transition-colors duration-200">Models</a></li>
         </ul>
     </div>
 
@@ -162,8 +163,8 @@
         
         <!-- Bottom Disclaimer -->
         <div class="absolute bottom-10 w-full text-center px-4">
-            <p class="text-xs text-gray-400 max-w-2xl mx-auto">
-                Current enabled features require active driver supervision and do not make the vehicle autonomous. The activation and use of these features are dependent on achieving reliability far in excess of human drivers as demonstrated by billions of miles of experience.
+            <p class="text-xs text-gray-600 max-w-2xl mx-auto px-4 py-3 drop-shadow-sm">
+                Current enabled features require active driver supervision and do not make the vehicle autonomous. Activation and use of these features depend on achieving reliability far in excess of human drivers, as demonstrated by billions of miles of real-world driving experience.
             </p>
         </div>
     </section>
@@ -208,7 +209,6 @@
                 <div class="w-full md:w-1/2">
                     <!-- Placeholder for specific feature visualization -->
                     <div class="w-full h-80 bg-gray-100 rounded-xl overflow-hidden shadow-2xl relative group">
-                        <img src="Supervised_Learning.webp" alt="Lane Change" class="w-full h-full object-cover">
                     </div>
                 </div>
                 <div class="w-full md:w-1/2 md:pr-10">
@@ -252,7 +252,6 @@
                     The system identifies stop signs and traffic lights and automatically slows your car to a stop on approach, with your active supervision. This is the foundation for city driving capabilities.
                 </p>
                 <div class="w-full h-64 bg-gray-800 rounded-lg overflow-hidden border border-gray-700 relative">
-                     <img src="Supervised_Learning.webp" class="w-full h-full object-cover opacity-60" alt="Traffic Control">
                      <div class="absolute inset-0 flex items-center justify-center">
                         <span class="bg-red-600 text-white px-4 py-1 rounded font-bold uppercase text-xs tracking-widest shadow-lg">Stop Sign Detected</span>
                      </div>
@@ -322,46 +321,42 @@
 
     <!-- Scripts (Exact replica from index.html) -->
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const menuButton = document.getElementById('menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const menuOpenIcon = document.getElementById('menu-open-icon');
-            const menuCloseIcon = document.getElementById('menu-close-icon');
-            const body = document.body;
+document.addEventListener('DOMContentLoaded', () => {
+    const menuButton = document.getElementById('menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuOpenIcon = document.getElementById('menu-open-icon');
+    const menuCloseIcon = document.getElementById('menu-close-icon');
+    const body = document.body;
 
-            const toggleMenu = () => {
-                const isMenuOpen = !mobileMenu.classList.contains('hidden');
-                
-                if (isMenuOpen) {
-                    // Close menu
-                    mobileMenu.classList.add('opacity-0');
-                    body.style.overflow = '';
-                    menuOpenIcon.classList.remove('hidden');
-                    menuCloseIcon.classList.add('hidden');
-                    setTimeout(() => {
-                        mobileMenu.classList.add('hidden');
-                    }, 300);
+    const toggleMenu = () => {
+        const isMenuOpen = !mobileMenu.classList.contains('hidden');
+        
+        if (isMenuOpen) {
+            mobileMenu.classList.add('opacity-0');
+            body.style.overflow = '';
+            menuOpenIcon.classList.remove('hidden');
+            menuCloseIcon.classList.add('hidden');
+            setTimeout(() => {
+                mobileMenu.classList.add('hidden');
+            }, 300);
+        } else {
+            mobileMenu.classList.remove('hidden');
+            menuOpenIcon.classList.add('hidden');
+            menuCloseIcon.classList.remove('hidden');
+            setTimeout(() => {
+                mobileMenu.classList.remove('opacity-0');
+                body.style.overflow = 'hidden';
+            }, 10);
+        }
+    };
 
-                } else {
-                    // Open menu
-                    mobileMenu.classList.remove('hidden');
-                    menuOpenIcon.classList.add('hidden');
-                    menuCloseIcon.classList.remove('hidden');
-                    setTimeout(() => {
-                        mobileMenu.classList.remove('opacity-0');
-                        body.style.overflow = 'hidden';
-                    }, 10);
-                }
-            };
-            
-            if (menuButton && mobileMenu) {
-                menuButton.addEventListener('click', toggleMenu);
-
-                mobileMenu.querySelectorAll('a').forEach(link => {
-                    link.addEventListener('click', toggleMenu);
-                });
-            }
+    if (menuButton && mobileMenu) {
+        menuButton.addEventListener('click', toggleMenu);
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', toggleMenu);
         });
+    }
+});
     </script>
 </body>
 </html>

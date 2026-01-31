@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autopilot & Supervised Learning - Svashasan</title>
+    <link rel="icon" type="image/png" href="2.png" sizes="32x32">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom Tailwind config matching existing pages */
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        svashasanBlue: '#2563eb',
+                        teslaDark: '#171a20',
+                    }
+                }
+            }
+        }
+        
+        html, body {
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Animation for text reveal */
+        .fade-in-up {
+            animation: fadeInUp 1s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-900 bg-white">
+
+    <!-- Header Section (Exact replica) -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white bg-opacity-80 backdrop-blur-md py-4 shadow-sm">
+        <div class="container mx-auto flex items-center justify-between px-4 sm:px-6">
+            <a href="index.html" class="flex-shrink-0">
+                <img src="2.png" alt="Svashasan Logo" class="h-10 w-auto object-contain">
+            </a>
+            <nav class="hidden md:flex flex-grow justify-center">
+                <ul class="flex space-x-6 text-gray-600 font-medium">
+                    <li><a href="index.html#about" class="hover:text-gray-900 transition-all duration-200">About Us</a></li>
+                    <li><a href="index.html#features" class="hover:text-gray-900 transition-all duration-200">Features</a></li>
+                    <li><a href="index.html#contact" class="hover:text-gray-900 transition-all duration-200">Contact</a></li>
+                    <li><a href="blog.html" class="hover:text-gray-900 transition-all duration-200">Blog</a></li>
+                    <li><a href="survey.html" class="hover:text-gray-900 transition-all duration-200">Survey</a></li>
+                    <li><a href="developer-platform.html" class="hover:text-gray-900 transition-all duration-200">API</a></li>
+                    <li><a href="model-performance.html" class="hover:text-gray-900 transition-all duration-200">Models</a></li>
+                </ul>
+            </nav>
+            <div class="flex items-center space-x-4 header-right-group ml-auto">
+                <a href="support.html" class="text-gray-600 hover:text-gray-900 transition-colors duration-200">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-help"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 1 1 5.82 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                </a>
+                <a href="profile.html" class="text-gray-600 hover:text-gray-900 transition-colors duration-200">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-circle"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="10" r="3"/><path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662"/></svg>
+                </a>
+                <button id="menu-button" class="md:hidden text-gray-600 hover:text-gray-900 focus:outline-none z-60 relative">
+                     <svg id="menu-open-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg>
+                     <svg id="menu-close-icon" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Overlay -->
+    <div id="mobile-menu" class="hidden fixed inset-0 bg-white z-40 flex flex-col justify-center items-center opacity-0 transition-opacity duration-300">
+        <ul class="flex flex-col space-y-10 text-gray-900 text-3xl font-bold items-center">
+            <li><a href="index.html#about" class="hover:text-svashasanBlue transition-colors duration-200">About Us</a></li>
+            <li><a href="index.html#features" class="hover:text-svashasanBlue transition-colors duration-200">Features</a></li>
+            <li><a href="blog.html" class="hover:text-svashasanBlue transition-colors duration-200">Blog</a></li>
+            <li><a href="survey.html" class="hover:text-svashasanBlue transition-colors duration-200">Survey</a></li>
+            <li><a href="model-performance.html" class="hover:text-svashasanBlue transition-colors duration-200">Models</a></li>
+        </ul>
+    </div>
+
+    <!-- MAIN CONTENT -->
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 bg-gray-50">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 fade-in-up">Autopilot & Supervised Learning</h1>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto fade-in-up" style="animation-delay: 0.1s;">
+                Moving beyond code to intelligence. Discover how our vehicles learn to navigate the world through billions of miles of real-world human driving data.
+            </p>
+        </div>
+    </section>
+
+    <!-- The Two Pillars -->
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+                <!-- Autopilot -->
+                <div class="space-y-6 fade-in-up" style="animation-delay: 0.2s;">
+                    <span class="text-svashasanBlue font-bold tracking-widest uppercase text-sm">Foundation</span>
+                    <h2 class="text-3xl font-bold">Standard Autopilot</h2>
+                    <p class="text-gray-600 leading-relaxed">
+                        Our baseline driver assistance system. Standard Autopilot enables your car to steer, accelerate, and brake automatically within its lane. It uses a combination of deep vision and ultrasonic sensing to provide a safety layer that is always active.
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <span class="mr-3 text-svashasanBlue mt-1">●</span>
+                            <span class="text-gray-700"><strong>Traffic-Aware Cruise Control:</strong> Matches speed to surrounding traffic.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="mr-3 text-svashasanBlue mt-1">●</span>
+                            <span class="text-gray-700"><strong>Autosteer:</strong> Assists in steering within a clearly marked lane.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Supervised Learning -->
+                <div class="space-y-6 fade-in-up" style="animation-delay: 0.3s;">
+                    <span class="text-svashasanBlue font-bold tracking-widest uppercase text-sm">The Evolution</span>
+                    <h2 class="text-3xl font-bold">Svashasan Pilot (Supervised)</h2>
+                    <p class="text-gray-600 leading-relaxed">
+                        Where traditional software meets Artificial Intelligence. Unlike rule-based systems, Svashasan Pilot is powered by end-to-end neural networks trained on high-quality driving data from our entire fleet.
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <span class="mr-3 text-svashasanBlue mt-1">●</span>
+                            <span class="text-gray-700"><strong>Neural Decision Making:</strong> The car doesn't follow "if-then" rules; it understands the intent of other road users.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="mr-3 text-svashasanBlue mt-1">●</span>
+                            <span class="text-gray-700"><strong>Contextual Awareness:</strong> Better handling of complex intersections, construction zones, and unpredictable weather.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Deep Dive: The Learning Process -->
+    <section class="py-24 bg-gray-900 text-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-bold mb-6">How It Learns</h2>
+                <p class="text-gray-400 text-lg">
+                    Supervised Learning is the process of training our AI models by showing them millions of examples of how the best human drivers react to specific scenarios.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-800 p-8 rounded-2xl border border-gray-700">
+                    <div class="text-svashasanBlue text-4xl font-bold mb-4">01</div>
+                    <h3 class="text-xl font-bold mb-3">Data Ingestion</h3>
+                    <p class="text-gray-400 text-sm">Anonymous driving clips are uploaded from the fleet when the AI's prediction differs from the human driver's action.</p>
+                </div>
+                <div class="bg-gray-800 p-8 rounded-2xl border border-gray-700">
+                    <div class="text-svashasanBlue text-4xl font-bold mb-4">02</div>
+                    <h3 class="text-xl font-bold mb-3">Auto-Labeling</h3>
+                    <p class="text-gray-400 text-sm">Our 4D labeling engine automatically identifies pedestrians, traffic lights, and road geometry across thousands of frames.</p>
+                </div>
+                <div class="bg-gray-800 p-8 rounded-2xl border border-gray-700">
+                    <div class="text-svashasanBlue text-4xl font-bold mb-4">03</div>
+                    <h3 class="text-xl font-bold mb-3">Training & Deployment</h3>
+                    <p class="text-gray-400 text-sm">The model is retrained on our supercomputing cluster and pushed back to vehicles via Over-the-Air (OTA) updates.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Supervision Section -->
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center gap-12">
+            <div class="w-full md:w-1/2">
+                <div class="aspect-video bg-gray-100 rounded-3xl overflow-hidden flex items-center justify-center relative">
+                    <div class="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent"></div>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-20 h-20 text-svashasanBlue opacity-20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                    </svg>
+                </div>
+            </div>
+            <div class="w-full md:w-1/2">
+                <h2 class="text-3xl font-bold mb-6">The Importance of Supervision</h2>
+                <p class="text-gray-600 mb-6 leading-relaxed">
+                    While the AI is capable of handling most maneuvers, "Supervised" means the driver remains responsible for the vehicle at all times. Our cabin-facing camera and steering wheel sensors ensure the driver is attentive and ready to take over if the environment becomes too complex.
+                </p>
+                <div class="p-4 bg-blue-50 border-l-4 border-svashasanBlue rounded-r-xl">
+                    <p class="text-svashasanBlue font-medium text-sm italic">
+                        "Driving is a collaborative effort between human intuition and machine precision."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section (Exact replica) -->
+    <footer class="bg-gray-800 text-white py-6 text-center">
+        <div class="container mx-auto px-4 md:px-6">
+            <p>&copy; 2026 स्वशासन. All Rights Reserved.</p>
+            <p class="mt-2 text-sm space-x-2">
+                <a href="privacy-policy.html" class="hover:underline">Privacy Policy</a>
+                <span>|</span>
+                <a href="terms-of-use.html" class="hover:underline">Terms & Conditions</a>
+                <span>|</span>
+                <a href="cookie-policy.html" class="hover:underline">Cookie Policy</a>
+                <span>|</span>
+                <a href="careers.html" class="hover:underline">Careers</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const menuButton = document.getElementById('menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuOpenIcon = document.getElementById('menu-open-icon');
+        const menuCloseIcon = document.getElementById('menu-close-icon');
+        const body = document.body;
+
+        const toggleMenu = () => {
+            const isMenuOpen = !mobileMenu.classList.contains('hidden');
+            
+            if (isMenuOpen) {
+                mobileMenu.classList.add('opacity-0');
+                body.style.overflow = '';
+                menuOpenIcon.classList.remove('hidden');
+                menuCloseIcon.classList.add('hidden');
+                setTimeout(() => {
+                    mobileMenu.classList.add('hidden');
+                }, 300);
+            } else {
+                mobileMenu.classList.remove('hidden');
+                menuOpenIcon.classList.add('hidden');
+                menuCloseIcon.classList.remove('hidden');
+                setTimeout(() => {
+                    mobileMenu.classList.remove('opacity-0');
+                    body.style.overflow = 'hidden';
+                }, 10);
+            }
+        };
+
+        if (menuButton && mobileMenu) {
+            menuButton.addEventListener('click', toggleMenu);
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', toggleMenu);
+            });
+        }
+    });
+    </script>
+</body>
+</html>

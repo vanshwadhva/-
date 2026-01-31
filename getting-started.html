@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Getting Started | Svashasan</title>
+    <link rel="icon" type="image/png" href="2.png" sizes="32x32">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    colors: {
+                        'tesla-dark': '#171a20',
+                        'tesla-gray': '#393c41',
+                        'tesla-light-gray': '#f4f4f4',
+                        'tesla-blue': '#3e6ae1',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { color: #171a20; }
+        .step-number {
+            font-feature-settings: "tnum";
+            font-variant-numeric: tabular-nums;
+        }
+        /* Mobile Menu Animation Styles */
+        #mobile-menu {
+            transition: opacity 0.3s ease-in-out;
+            padding-left: 2.5rem; 
+        }
+        #mobile-menu ul {
+            text-align: left;
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="bg-white">
+
+    <!-- Header Section (Matched to support.html) -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white bg-opacity-80 backdrop-blur-md py-4 shadow-sm">
+        <div class="container mx-auto flex items-center justify-between px-4 sm:px-6">
+            <!-- Logo -->
+            <a href="index.html" class="flex-shrink-0">
+                <img src="2.png" alt="Svashasan Logo" class="h-10 w-auto object-contain">
+            </a>
+            <nav class="hidden md:flex flex-grow justify-center">
+                <ul class="flex space-x-6 text-gray-600 font-medium">
+                    <li><a href="index.html#about" class="hover:text-gray-900 hover:font-bold transition-all duration-200">About Us</a></li>
+                    <li><a href="index.html#features" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Features</a></li>
+                    <li><a href="index.html#contact" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Contact</a></li>
+                    <li><a href="blog.html" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Blog</a></li>
+                    <li><a href="survey.html" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Survey</a></li>
+                    <li><a href="developer-platform.html" class="hover:text-gray-900 hover:font-bold transition-all duration-200">API</a></li>
+                    <li><a href="model-performance.html" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Models</a></li>
+                </ul>
+            </nav>
+            <div class="flex items-center space-x-4 header-right-group ml-auto">
+                <!-- Profile Icon -->
+                <a href="profile.html" class="text-gray-600 hover:text-gray-900 transition-colors duration-200 cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-circle">
+                        <circle cx="12" cy="12" r="10"/>
+                        <circle cx="12" cy="10" r="3"/>
+                        <path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662"/>
+                    </svg>
+                </a>
+                <!-- Hamburger/Close Menu Button for mobile -->
+                <button id="menu-button" class="md:hidden text-gray-600 hover:text-gray-900 focus:outline-none z-60 relative">
+                     <svg id="menu-open-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu">
+                        <line x1="4" x2="20" y1="12" y2="12"></line>
+                        <line x1="4" x2="20" y1="6" y2="6"></line>
+                        <line x1="4" x2="20" y1="18" y2="18"></line>
+                    </svg>
+                    <svg id="menu-close-icon" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Overlay (Full Screen) -->
+    <div id="mobile-menu" class="hidden fixed inset-0 bg-white z-40 flex flex-col justify-center items-start opacity-0">
+        <ul class="flex flex-col space-y-8 text-gray-800 text-3xl font-semibold">
+            <li><a href="index.html#about" class="hover:text-gray-500 transition-colors">About Us</a></li>
+            <li><a href="index.html#features" class="hover:text-gray-500 transition-colors">Features</a></li>
+            <li><a href="index.html#contact" class="hover:text-gray-500 transition-colors">Contact</a></li>
+            <li><a href="blog.html" class="hover:text-gray-500 transition-colors">Blog</a></li>
+            <li><a href="survey.html" class="hover:text-gray-500 transition-colors">Survey</a></li>
+            <li><a href="developer-platform.html" class="hover:text-gray-500 transition-colors">API</a></li>
+            <li><a href="model-performance.html" class="hover:text-gray-500 transition-colors">Models</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-16 px-6 bg-gray-50 border-b border-gray-200">
+        <div class="container mx-auto max-w-4xl text-center">
+            <span class="uppercase tracking-widest text-xs font-semibold text-gray-500 mb-4 block">New Owner Guide</span>
+            <h1 class="text-4xl md:text-5xl font-semibold mb-6 text-tesla-dark">Welcome to Svashasan</h1>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+                Get to know your vehicle and the Svashasan Operating System. Follow these steps to set up your profile, connect your app, and experience the future of autonomous driving.
+            </p>
+        </div>
+    </section>
+
+    <!-- Content Steps -->
+    <main class="container mx-auto px-6 py-20 max-w-6xl">
+
+        <!-- Step 1: Account & App -->
+        <div class="flex flex-col md:flex-row items-center gap-12 mb-24">
+            <div class="w-full md:w-1/2">
+                <div class="flex items-center mb-6">
+                    <span class="step-number flex items-center justify-center w-8 h-8 rounded-full bg-black text-white text-sm font-semibold mr-4">1</span>
+                    <h2 class="text-2xl font-semibold text-tesla-dark">Account Setup</h2>
+                </div>
+                <p class="text-gray-600 mb-6 leading-relaxed">
+                    Your Svashasan Account is the command center for your vehicle. Before taking delivery or starting your first drive, ensure your profile is complete.
+                </p>
+                <ul class="space-y-4 mb-8">
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 text-green-500 mr-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        <span class="text-sm text-gray-700">Download the Svashasan App</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 text-green-500 mr-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        <span class="text-sm text-gray-700">Add Payment Method for Charging</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 text-green-500 mr-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        <span class="text-sm text-gray-700">Upload Driver's License Documents</span>
+                    </li>
+                </ul>
+                <a href="profile.html" class="text-sm font-medium text-tesla-blue hover:text-blue-700 underline">Go to Account Settings &rarr;</a>
+            </div>
+            <div class="w-full md:w-1/2 h-[400px] bg-gray-100 rounded-xl overflow-hidden shadow-sm">
+                 <!-- Using Technology_Foundation image as placeholder for App UI representation -->
+                <img src="Technology_Foundation.webp" alt="Svashasan App Interface" class="w-full h-full object-cover">
+            </div>
+        </div>
+
+        <!-- Step 2: Vehicle Access -->
+        <div class="flex flex-col md:flex-row-reverse items-center gap-12 mb-24">
+            <div class="w-full md:w-1/2">
+                <div class="flex items-center mb-6">
+                    <span class="step-number flex items-center justify-center w-8 h-8 rounded-full bg-black text-white text-sm font-semibold mr-4">2</span>
+                    <h2 class="text-2xl font-semibold text-tesla-dark">Keys & Access</h2>
+                </div>
+                <p class="text-gray-600 mb-6 leading-relaxed">
+                    Your phone is your primary key. Using Bluetooth Low Energy (BLE), your vehicle detects you as you approach and automatically unlocks.
+                </p>
+                <div class="bg-gray-50 p-6 rounded-lg mb-6 border border-gray-100">
+                    <h3 class="font-medium text-tesla-dark mb-2">Setting up Phone Key</h3>
+                    <p class="text-sm text-gray-500">Open the App > Controls > Locks > Set Up Phone Key. Ensure Bluetooth is always enabled.</p>
+                </div>
+                <p class="text-sm text-gray-500">
+                    <strong>Note:</strong> Always carry your backup NFC Card provided in the glovebox.
+                </p>
+            </div>
+            <div class="w-full md:w-1/2 h-[400px] bg-gray-100 rounded-xl overflow-hidden shadow-sm">
+                <!-- Using Simulation Environment image as placeholder for Technical/Key setup -->
+                <img src="Simulation_Enviroment.jpg" alt="Phone Key Setup" class="w-full h-full object-cover">
+            </div>
+        </div>
+
+        <!-- Step 3: Autopilot -->
+        <div class="flex flex-col md:flex-row items-center gap-12">
+            <div class="w-full md:w-1/2">
+                <div class="flex items-center mb-6">
+                    <span class="step-number flex items-center justify-center w-8 h-8 rounded-full bg-black text-white text-sm font-semibold mr-4">3</span>
+                    <h2 class="text-2xl font-semibold text-tesla-dark">Autopilot & Safety</h2>
+                </div>
+                <p class="text-gray-600 mb-6 leading-relaxed">
+                    Svashasan OS is powered by our advanced Supervised Learning models. Before engaging Autopilot, familiarize yourself with the limitations.
+                </p>
+                <ul class="space-y-4 mb-8">
+                    <li class="flex items-start">
+                        <span class="w-1.5 h-1.5 bg-tesla-dark rounded-full mt-2 mr-3"></span>
+                        <span class="text-sm text-gray-700">Calibrate cameras by driving 20-50km on marked roads.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="w-1.5 h-1.5 bg-tesla-dark rounded-full mt-2 mr-3"></span>
+                        <span class="text-sm text-gray-700">Double pull the gear stalk to engage Traffic-Aware Cruise Control.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="w-1.5 h-1.5 bg-tesla-dark rounded-full mt-2 mr-3"></span>
+                        <span class="text-sm text-gray-700">Keep hands on the wheel at all times.</span>
+                    </li>
+                </ul>
+                <a href="model-performance.html" class="inline-block px-6 py-2 border border-black rounded text-sm font-medium hover:bg-black hover:text-white transition-colors">
+                    View Safety Metrics
+                </a>
+            </div>
+            <div class="w-full md:w-1/2 h-[400px] bg-gray-100 rounded-xl overflow-hidden shadow-sm">
+                <!-- Using Supervised Learning image as placeholder for Autopilot -->
+                <img src="Supervised_Learning.webp" alt="Autopilot Visualization" class="w-full h-full object-cover">
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Video Tutorials Section -->
+    <section class="bg-gray-900 text-white py-20">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <div>
+                    <h2 class="text-3xl font-semibold mb-2">Video Tutorials</h2>
+                    <p class="text-gray-400">Visual guides for every feature.</p>
+                </div>
+                <a href="#" class="text-sm font-medium text-white hover:text-gray-300 underline mt-4 md:mt-0">View All Videos</a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Video Card 1 -->
+                <div class="group cursor-pointer">
+                    <div class="relative h-48 bg-gray-800 rounded-lg overflow-hidden mb-4 border border-gray-700 group-hover:border-white transition-colors">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <svg class="w-12 h-12 text-white opacity-80 group-hover:opacity-100 transition-opacity" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg>
+                        </div>
+                    </div>
+                    <h3 class="font-medium text-lg">Meet Your Dashboard</h3>
+                    <p class="text-sm text-gray-400 mt-1">Touchscreen basics and gestures.</p>
+                </div>
+                
+                <!-- Video Card 2 -->
+                <div class="group cursor-pointer">
+                    <div class="relative h-48 bg-gray-800 rounded-lg overflow-hidden mb-4 border border-gray-700 group-hover:border-white transition-colors">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <svg class="w-12 h-12 text-white opacity-80 group-hover:opacity-100 transition-opacity" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg>
+                        </div>
+                    </div>
+                    <h3 class="font-medium text-lg">Charging 101</h3>
+                    <p class="text-sm text-gray-400 mt-1">Home charging and Supercharging.</p>
+                </div>
+
+                <!-- Video Card 3 -->
+                <div class="group cursor-pointer">
+                    <div class="relative h-48 bg-gray-800 rounded-lg overflow-hidden mb-4 border border-gray-700 group-hover:border-white transition-colors">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <svg class="w-12 h-12 text-white opacity-80 group-hover:opacity-100 transition-opacity" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg>
+                        </div>
+                    </div>
+                    <h3 class="font-medium text-lg">Driver Profiles</h3>
+                    <p class="text-sm text-gray-400 mt-1">Save seat, mirror, and wheel positions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white py-12 border-t border-gray-200 text-xs text-gray-500">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex flex-wrap justify-center gap-6 mb-4">
+                <a href="#" class="hover:text-tesla-dark transition-colors">Svashasan © 2026</a>
+                <a href="#" class="hover:text-tesla-dark transition-colors">Privacy & Legal</a>
+                <a href="#" class="hover:text-tesla-dark transition-colors">Vehicle Recalls</a>
+                <a href="#" class="hover:text-tesla-dark transition-colors">Contact</a>
+                <a href="#" class="hover:text-tesla-dark transition-colors">Careers</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts (Matching support.html) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuButton = document.getElementById('menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuOpenIcon = document.getElementById('menu-open-icon');
+            const menuCloseIcon = document.getElementById('menu-close-icon');
+            const body = document.body;
+
+            const toggleMenu = () => {
+                const isMenuOpen = !mobileMenu.classList.contains('hidden');
+                
+                if (isMenuOpen) {
+                    // Close menu
+                    mobileMenu.classList.add('opacity-0');
+                    body.style.overflow = '';
+                    menuOpenIcon.classList.remove('hidden');
+                    menuCloseIcon.classList.add('hidden');
+                    setTimeout(() => {
+                        mobileMenu.classList.add('hidden');
+                    }, 300);
+
+                } else {
+                    // Open menu
+                    mobileMenu.classList.remove('hidden');
+                    menuOpenIcon.classList.add('hidden');
+                    menuCloseIcon.classList.remove('hidden');
+                    setTimeout(() => {
+                        mobileMenu.classList.remove('opacity-0');
+                        body.style.overflow = 'hidden';
+                    }, 10);
+                }
+            };
+            
+            if (menuButton && mobileMenu) {
+                menuButton.addEventListener('click', toggleMenu);
+
+                mobileMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', toggleMenu);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

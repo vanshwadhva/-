@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capabilities & Metrics - Svashasan Pilot</title>
+    <link rel="icon" type="image/png" href="2.png" sizes="32x32">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        svashasanBlue: '#2563eb',
+                        teslaDark: '#171a20',
+                    }
+                }
+            }
+        }
+        
+        html, body {
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 1s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .chart-container {
+            position: relative;
+            height: 320px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-900 bg-white">
+
+    <!-- Header (Exact replica of supervised-learning.html) -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white bg-opacity-80 backdrop-blur-md py-4 shadow-sm">
+        <div class="container mx-auto flex items-center justify-between px-4 sm:px-6">
+            <a href="https://svashasan.com/" class="flex-shrink-0">
+                <img src="2.png" alt="Svashasan Logo" class="h-10 w-auto object-contain">
+            </a>
+            <nav class="hidden md:flex flex-grow justify-center">
+                <ul class="flex space-x-6 text-gray-600 font-medium">
+                    <li><a href="index.html#about" class="hover:text-gray-900 transition-all duration-200">About Us</a></li>
+                    <li><a href="index.html#features" class="hover:text-gray-900 transition-all duration-200">Features</a></li>
+                    <li><a href="index.html#contact" class="hover:text-gray-900 transition-all duration-200">Contact</a></li>
+                    <li><a href="blog.html" class="hover:text-gray-900 transition-all duration-200">Blog</a></li>
+                    <li><a href="survey.html" class="hover:text-gray-900 transition-all duration-200">Survey</a></li>
+                    <li><a href="developer-platform.html" class="hover:text-gray-900 transition-all duration-200">API</a></li>
+                    <li><a href="model-performance.html" class="hover:text-gray-900 transition-all duration-200">Models</a></li>
+                </ul>
+            </nav>
+            <div class="flex items-center space-x-4 header-right-group ml-auto">
+                <a href="https://svashasan.com/support" class="text-gray-600 hover:text-gray-900 transition-colors duration-200">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-help"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 1 1 5.82 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                </a>
+                <a href="profile.html" class="text-gray-600 hover:text-gray-900 transition-colors duration-200">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-circle"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="10" r="3"/><path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662"/></svg>
+                </a>
+                <button id="menu-button" class="md:hidden text-gray-600 hover:text-gray-900 focus:outline-none">
+                     <svg id="menu-open-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg>
+                     <svg id="menu-close-icon" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Overlay -->
+    <div id="mobile-menu" class="hidden fixed inset-0 bg-white z-40 flex flex-col justify-center items-center opacity-0 transition-opacity duration-300">
+        <ul class="flex flex-col space-y-10 text-gray-900 text-3xl font-bold items-center">
+            <li><a href="index.html#about" class="hover:text-svashasanBlue">About Us</a></li>
+            <li><a href="index.html#features" class="hover:text-svashasanBlue">Features</a></li>
+            <li><a href="index.html#contact" class="hover:text-svashasanBlue">Contact</a></li>
+            <li><a href="blog.html" class="hover:text-svashasanBlue">Blog</a></li>
+            <li><a href="survey.html" class="hover:text-svashasanBlue">Survey</a></li>
+            <li><a href="developer-platform.html" class="hover:text-svashasanBlue">API</a></li>
+            <li><a href="model-performance.html" class="hover:text-svashasanBlue">Models</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero -->
+    <section class="pt-32 pb-16 bg-white border-b border-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6 fade-in-up text-gray-900">Deployment Performance</h1>
+                <p class="text-xl text-gray-600 fade-in-up" style="animation-delay: 0.1s;">
+                    Validated real-world metrics from our campus deployment testing, covering SLAM localization, perception accuracy, and behavioral prediction.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Metrics Charts Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 text-center md:text-left">
+                
+                <!-- Perception & SLAM Metrics -->
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+                    <h3 class="text-2xl font-bold mb-2">Perception & SLAM</h3>
+                    <p class="text-sm text-gray-500 mb-8">Performance benchmarks for environmental understanding.</p>
+                    <div class="chart-container">
+                        <canvas id="perceptionChart"></canvas>
+                    </div>
+                    <div class="mt-8 grid grid-cols-2 gap-4">
+                        <div class="p-4 bg-gray-50 rounded-lg"> <!-- Less Round: rounded-lg -->
+                            <span class="block text-xs uppercase text-gray-400 font-bold mb-1">Localization Error</span>
+                            <span class="text-xl font-bold text-blue-600">0.1 - 0.3m</span>
+                        </div>
+                        <div class="p-4 bg-gray-50 rounded-lg"> <!-- Less Round: rounded-lg -->
+                            <span class="block text-xs uppercase text-gray-400 font-bold mb-1">Sensor Latency</span>
+                            <span class="text-xl font-bold text-blue-600">&lt;50ms</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trajectory Prediction Metrics -->
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+                    <h3 class="text-2xl font-bold mb-2">Behavioral Prediction</h3>
+                    <p class="text-sm text-gray-500 mb-8">Accuracy of multi-agent trajectory forecasting.</p>
+                    <div class="chart-container">
+                        <canvas id="predictionChart"></canvas>
+                    </div>
+                    <div class="mt-8 grid grid-cols-2 gap-4">
+                        <div class="p-4 bg-gray-50 rounded-lg"> <!-- Less Round: rounded-lg -->
+                            <span class="block text-xs uppercase text-gray-400 font-bold mb-1">MAE Distance</span>
+                            <span class="text-xl font-bold text-blue-600">&lt;0.5m</span>
+                        </div>
+                        <div class="p-4 bg-gray-50 rounded-lg"> <!-- Less Round: rounded-lg -->
+                            <span class="block text-xs uppercase text-gray-400 font-bold mb-1">Prediction Window</span>
+                            <span class="text-xl font-bold text-blue-600">5.0s</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Specifications Table -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 text-center text-gray-900">Technical Specifications</h2>
+            <div class="max-w-5xl mx-auto overflow-x-auto">
+                <table class="w-full text-left border-collapse bg-white border border-gray-100 rounded-3xl overflow-hidden shadow-sm">
+                    <thead>
+                        <tr class="border-b-2 border-gray-100">
+                            <th class="py-6 px-8 text-sm font-bold text-gray-400 uppercase tracking-widest">Metric</th>
+                            <th class="py-6 px-8 text-sm font-bold text-gray-400 uppercase tracking-widest">Target Benchmark</th>
+                            <th class="py-6 px-8 text-sm font-bold text-gray-400 uppercase tracking-widest">Implementation Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-gray-700">
+                        <tr class="border-b border-gray-50 hover:bg-gray-50 transition-colors">
+                            <td class="py-5 px-8 font-bold">Object Detection Accuracy</td>
+                            <td class="py-5 px-8 text-blue-600 font-semibold">&gt;90% Precision/Recall</td>
+                            <td class="py-5 px-8 text-sm">Achieved via camera + radar fusion pipelines.</td>
+                        </tr>
+                        <tr class="border-b border-gray-50 hover:bg-gray-50 transition-colors">
+                            <td class="py-5 px-8 font-bold">SLAM Map Update Rate</td>
+                            <td class="py-5 px-8 text-blue-600 font-semibold">10 Hz</td>
+                            <td class="py-5 px-8 text-sm">Real-time integration of GPS, IMU, and Vision.</td>
+                        </tr>
+                        <tr class="border-b border-gray-50 hover:bg-gray-50 transition-colors">
+                            <td class="py-5 px-8 font-bold">Collision Detection Rate</td>
+                            <td class="py-5 px-8 text-blue-600 font-semibold">&gt;95% Reliability</td>
+                            <td class="py-5 px-8 text-sm">Dynamic obstacle detection for campus safety.</td>
+                        </tr>
+                        <tr class="border-b border-gray-50 hover:bg-gray-50 transition-colors">
+                            <td class="py-5 px-8 font-bold">Multi-agent Prediction</td>
+                            <td class="py-5 px-8 text-blue-600 font-semibold">&gt;85% Accuracy</td>
+                            <td class="py-5 px-8 text-sm">Trajectories predicted for pedestrians and vehicles.</td>
+                        </tr>
+                        <tr class="border-b border-gray-50 hover:bg-gray-50 transition-colors">
+                            <td class="py-5 px-8 font-bold">Weather Robustness</td>
+                            <td class="py-5 px-8 text-blue-600 font-semibold">&gt;80% Reliability</td>
+                            <td class="py-5 px-8 text-sm">Maintained through Radar + IMU redundancy.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Active Safety Features Section (Bottom Most) -->
+    <section class="py-24 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold mb-4">Active Safety Features</h2>
+                    <p class="text-gray-600">Advanced protection systems built into the core of the Svashasan Pilot suite.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+                    <div class="p-6">
+                        <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-6"> <!-- Restored circular: rounded-full -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+                        </div>
+                        <h4 class="font-bold text-xl mb-3">Emergency Braking</h4>
+                        <p class="text-sm text-gray-500 leading-relaxed">The system applies the brakes automatically if a collision with a detected obstacle is imminent.</p>
+                    </div>
+                    <div class="p-6">
+                        <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-6"> <!-- Restored circular: rounded-full -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+                        </div>
+                        <h4 class="font-bold text-xl mb-3">Blind Spot Monitoring</h4>
+                        <p class="text-sm text-gray-500 leading-relaxed">Alerts the driver to vehicles in adjacent lanes that may not be visible in side mirrors or cameras.</p>
+                    </div>
+                    <div class="p-6">
+                        <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-6"> <!-- Restored circular: rounded-full -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                        </div>
+                        <h4 class="font-bold text-xl mb-3">Obstacle Awareness</h4>
+                        <p class="text-sm text-gray-500 leading-relaxed">Automatically limits acceleration if the system detects an object directly in the car’s travel path.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Exact replica of supervised-learning.html) -->
+    <footer class="bg-gray-800 text-white py-6 text-center">
+        <div class="container mx-auto px-4 md:px-6">
+            <p>&copy; 2026 स्वशासन. All Rights Reserved.</p>
+            <p class="mt-2 text-sm space-x-2">
+                <a href="privacy-policy.html" class="hover:underline">Privacy Policy</a>
+                <span>|</span>
+                <a href="terms-of-use.html" class="hover:underline">Terms & Conditions</a>
+                <span>|</span>
+                <a href="cookie-policy.html" class="hover:underline">Cookie Policy</a>
+                <span>|</span>
+                <a href="careers.html" class="hover:underline">Careers</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Header Toggle Logic
+            const menuButton = document.getElementById('menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuOpenIcon = document.getElementById('menu-open-icon');
+            const menuCloseIcon = document.getElementById('menu-close-icon');
+            const body = document.body;
+
+            const toggleMenu = () => {
+                const isMenuOpen = !mobileMenu.classList.contains('hidden');
+                if (isMenuOpen) {
+                    mobileMenu.classList.add('opacity-0');
+                    body.style.overflow = '';
+                    menuOpenIcon.classList.remove('hidden');
+                    menuCloseIcon.classList.add('hidden');
+                    setTimeout(() => mobileMenu.classList.add('hidden'), 300);
+                } else {
+                    mobileMenu.classList.remove('hidden');
+                    menuOpenIcon.classList.add('hidden');
+                    menuCloseIcon.classList.remove('hidden');
+                    setTimeout(() => {
+                        mobileMenu.classList.remove('opacity-0');
+                        body.style.overflow = 'hidden';
+                    }, 10);
+                }
+            };
+
+            if (menuButton) menuButton.addEventListener('click', toggleMenu);
+
+            // Perception & SLAM Chart
+            const ctxPerception = document.getElementById('perceptionChart').getContext('2d');
+            new Chart(ctxPerception, {
+                type: 'bar',
+                data: {
+                    // Straight words one below other achieved using nested arrays for labels
+                    labels: [['Obj', 'Detection'], ['Obj', 'Classification'], ['SLAM', 'Consistency'], ['Fusion', 'Latency'], ['Weather', 'Reliability']],
+                    datasets: [{
+                        label: 'Deployment Target %',
+                        data: [92, 88, 95, 98, 82],
+                        backgroundColor: '#2563eb',
+                        borderRadius: 8,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: { beginAtZero: true, max: 100, ticks: { callback: v => v + '%' } },
+                        x: { 
+                            ticks: { 
+                                // Prevent tilted labels
+                                minRotation: 0, 
+                                maxRotation: 0,
+                                autoSkip: false 
+                            } 
+                        }
+                    }
+                }
+            });
+
+            // Prediction Chart
+            const ctxPrediction = document.getElementById('predictionChart').getContext('2d');
+            new Chart(ctxPrediction, {
+                type: 'line',
+                data: {
+                    labels: ['0.5s', '1.0s', '2.0s', '3.0s', '4.0s', '5.0s'],
+                    datasets: [{
+                        label: 'Multi-agent Accuracy (%)',
+                        data: [99, 97, 94, 91, 87, 85],
+                        borderColor: '#2563eb',
+                        backgroundColor: 'rgba(37, 99, 235, 0.1)',
+                        fill: true,
+                        tension: 0.4,
+                        pointRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: { beginAtZero: true, max: 100, ticks: { callback: v => v + '%' } },
+                        x: { ticks: { minRotation: 0, maxRotation: 0 } }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capabilities - Svashasan Pilot</title>
+    <link rel="icon" type="image/png" href="2.png" sizes="32x32">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        svashasanBlue: '#2563eb',
+                        teslaDark: '#171a20',
+                    }
+                }
+            }
+        }
+        
+        html, body {
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 1s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .capability-card:hover img {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-900 bg-white">
+
+    <!-- Header (Consistent with supervised-learning.html) -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white bg-opacity-80 backdrop-blur-md py-4 shadow-sm">
+        <div class="container mx-auto flex items-center justify-between px-4 sm:px-6">
+            <a href="index.html" class="flex-shrink-0">
+                <img src="2.png" alt="Svashasan Logo" class="h-10 w-auto object-contain">
+            </a>
+            <nav class="hidden md:flex flex-grow justify-center">
+                <ul class="flex space-x-6 text-gray-600 font-medium">
+                    <li><a href="index.html#about" class="hover:text-gray-900 transition-all">About Us</a></li>
+                    <li><a href="index.html#features" class="hover:text-gray-900 transition-all">Features</a></li>
+                    <li><a href="index.html#contact" class="hover:text-gray-900 transition-all">Contact</a></li>
+                    <li><a href="blog.html" class="hover:text-gray-900 transition-all">Blog</a></li>
+                    <li><a href="survey.html" class="hover:text-gray-900 transition-all">Survey</a></li>
+                    <li><a href="developer-platform.html" class="hover:text-gray-900 transition-all">API</a></li>
+                    <li><a href="model-performance.html" class="hover:text-gray-900 transition-all">Models</a></li>
+                </ul>
+            </nav>
+            <div class="flex items-center space-x-4 ml-auto">
+                <a href="#" class="text-gray-600 hover:text-gray-900"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-help"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 1 1 5.82 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg></a>
+                <a href="profile.html" class="text-gray-600 hover:text-gray-900"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-circle"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="10" r="3"/><path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662"/></svg></a>
+                <button id="menu-button" class="md:hidden text-gray-600 focus:outline-none">
+                     <svg id="menu-open-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg>
+                     <svg id="menu-close-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Overlay -->
+    <div id="mobile-menu" class="hidden fixed inset-0 bg-white z-40 flex flex-col justify-center items-center opacity-0 transition-opacity duration-300">
+        <ul class="flex flex-col space-y-8 text-gray-900 text-2xl font-bold items-center">
+            <li><a href="index.html#about">About Us</a></li>
+            <li><a href="index.html#features">Features</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="survey.html">Survey</a></li>
+            <li><a href="model-performance.html">Models</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-16 bg-white">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6 fade-in-up">Capability Suite</h1>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto fade-in-up" style="animation-delay: 0.1s;">
+                Explore the technical maneuvers and intelligent decision-making that define the Svashasan Pilot experience.
+            </p>
+        </div>
+    </section>
+
+    <!-- Capabilities Grid -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                
+                <!-- City Driving -->
+                <div class="capability-card group">
+                    <div class="overflow-hidden rounded-2xl bg-gray-100 aspect-video mb-6">
+                        <img src="https://images.unsplash.com/photo-1519003300449-424ad040507b?q=80&w=2000&auto=format&fit=crop" alt="City Driving" class="w-full h-full object-cover transition-transform duration-500">
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">City Street Driving</h3>
+                    <p class="text-gray-600 leading-relaxed mb-4">
+                        Navigate complex urban environments with ease. The system identifies lane markings, curbs, and traffic flow to steer through tight corners and busy intersections.
+                    </p>
+                    <ul class="text-sm text-gray-500 space-y-1">
+                        <li>• Right and left-hand turns</li>
+                        <li>• Yielding to oncoming traffic</li>
+                        <li>• Roundabout navigation</li>
+                    </ul>
+                </div>
+
+                <!-- Object Detection -->
+                <div class="capability-card group">
+                    <div class="overflow-hidden rounded-2xl bg-gray-100 aspect-video mb-6">
+                        <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?q=80&w=2000&auto=format&fit=crop" alt="Object Detection" class="w-full h-full object-cover transition-transform duration-500">
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Vulnerable Road User Detection</h3>
+                    <p class="text-gray-600 leading-relaxed mb-4">
+                        Our vision-first approach provides 360-degree awareness of pedestrians, cyclists, and animals, predicting their movements to ensure safety.
+                    </p>
+                    <ul class="text-sm text-gray-500 space-y-1">
+                        <li>• Real-time distance estimation</li>
+                        <li>• Prediction of movement trajectories</li>
+                        <li>• Low-light vision enhancement</li>
+                    </ul>
+                </div>
+
+                <!-- Stop & Go -->
+                <div class="capability-card group">
+                    <div class="overflow-hidden rounded-2xl bg-gray-100 aspect-video mb-6">
+                        <img src="https://images.unsplash.com/photo-1545147422-793eaf52bc47?q=80&w=2000&auto=format&fit=crop" alt="Traffic Lights" class="w-full h-full object-cover transition-transform duration-500">
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Traffic Light & Sign Control</h3>
+                    <p class="text-gray-600 leading-relaxed mb-4">
+                        Seamlessly handles stops at red lights and stop signs. The vehicle waits for the light to turn green and confirms the path is clear before proceeding.
+                    </p>
+                    <ul class="text-sm text-gray-500 space-y-1">
+                        <li>• Recognition of flashing signals</li>
+                        <li>• Multi-way stop sign priority logic</li>
+                        <li>• Temporary construction signage detection</li>
+                    </ul>
+                </div>
+
+                <!-- Highway Autopilot -->
+                <div class="capability-card group">
+                    <div class="overflow-hidden rounded-2xl bg-gray-100 aspect-video mb-6">
+                        <img src="https://images.unsplash.com/photo-1503387762-592dea58ef21?q=80&w=2000&auto=format&fit=crop" alt="Highway Driving" class="w-full h-full object-cover transition-transform duration-500">
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Highway Navigation</h3>
+                    <p class="text-gray-600 leading-relaxed mb-4">
+                        Full-stack highway capability including merge assistance, lane centering, and high-speed cruise control that adapts to traffic density.
+                    </p>
+                    <ul class="text-sm text-gray-500 space-y-1">
+                        <li>• Adaptive cruise control (0-150 km/h)</li>
+                        <li>• Automatic overtaking of slow vehicles</li>
+                        <li>• Precision lane centering</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Safety Section -->
+    <section class="py-24 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold mb-4">Active Safety Features</h2>
+                    <p class="text-gray-600">Included standard with every Svashasan Pilot suite.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                    <div>
+                        <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+                        </div>
+                        <h4 class="font-bold mb-2">Emergency Braking</h4>
+                        <p class="text-sm text-gray-500">Automatic application of brakes if a collision is imminent.</p>
+                    </div>
+                    <div>
+                        <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+                        </div>
+                        <h4 class="font-bold mb-2">Blind Spot Monitoring</h4>
+                        <p class="text-sm text-gray-500">Visual and audible alerts when vehicles enter adjacent lanes.</p>
+                    </div>
+                    <div>
+                        <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                        </div>
+                        <h4 class="font-bold mb-2">Obstacle Awareness</h4>
+                        <p class="text-sm text-gray-500">Limits acceleration if an obstacle is detected in the travel path.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12 text-center">
+        <div class="container mx-auto px-4">
+            <p>&copy; 2026 स्वशासन. All Rights Reserved.</p>
+            <div class="mt-4 text-sm space-x-4 opacity-70">
+                <a href="privacy-policy.html" class="hover:underline">Privacy Policy</a>
+                <a href="terms-of-use.html" class="hover:underline">Terms</a>
+                <a href="careers.html" class="hover:underline">Careers</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuButton = document.getElementById('menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuOpenIcon = document.getElementById('menu-open-icon');
+            const menuCloseIcon = document.getElementById('menu-close-icon');
+            const body = document.body;
+
+            const toggleMenu = () => {
+                const isMenuOpen = !mobileMenu.classList.contains('hidden');
+                if (isMenuOpen) {
+                    mobileMenu.classList.add('opacity-0');
+                    body.style.overflow = '';
+                    menuOpenIcon.classList.remove('hidden');
+                    menuCloseIcon.classList.add('hidden');
+                    setTimeout(() => mobileMenu.classList.add('hidden'), 300);
+                } else {
+                    mobileMenu.classList.remove('hidden');
+                    menuOpenIcon.classList.add('hidden');
+                    menuCloseIcon.classList.remove('hidden');
+                    setTimeout(() => {
+                        mobileMenu.classList.remove('opacity-0');
+                        body.style.overflow = 'hidden';
+                    }, 10);
+                }
+            };
+
+            menuButton.addEventListener('click', toggleMenu);
+            mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', toggleMenu));
+        });
+    </script>
+</body>
+</html>

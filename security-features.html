@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Features - Svashasan</title>
+    <link rel="icon" type="image/png" href="2.png" sizes="32x32">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-N89XZGM4');</script>
+    <!-- End Google Tag Manager -->
+    <style>
+        /* Custom Tailwind config matching existing pages */
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        svashasanBlue: '#2563eb',
+                        teslaDark: '#171a20',
+                    }
+                }
+            }
+        }
+        
+        html, body {
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Animation for text reveal */
+        .fade-in-up {
+            animation: fadeInUp 1s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-900 bg-white">
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N89XZGM4"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- Header Section (Exact replica of index.html) -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white bg-opacity-80 backdrop-blur-md py-4 shadow-sm">
+        <div class="container mx-auto flex items-center justify-between px-4 sm:px-6">
+            <!-- Logo -->
+            <a href="index.html" class="flex-shrink-0">
+                <img src="2.png" alt="Svashasan Logo" class="h-10 w-auto object-contain">
+            </a>
+            <nav class="hidden md:flex flex-grow justify-center">
+                <ul class="flex space-x-6 text-gray-600 font-medium">
+                    <li><a href="index.html#about" class="hover:text-gray-900 transition-all duration-200">About Us</a></li>
+                    <li><a href="index.html#features" class="hover:text-gray-900 transition-all duration-200">Features</a></li>
+                    <li><a href="index.html#contact" class="hover:text-gray-900 transition-all duration-200">Contact</a></li>
+                    <li><a href="blog.html" class="hover:text-gray-900 transition-all duration-200">Blog</a></li>
+                    <li><a href="survey.html" class="hover:text-gray-900 transition-all duration-200">Survey</a></li>
+                    <li><a href="developer-platform.html" class="hover:text-gray-900 transition-all duration-200">API</a></li>
+                    <li><a href="model-performance.html" class="hover:text-gray-900 transition-all duration-200">Models</a></li>
+                </ul>
+            </nav>
+            <div class="flex items-center space-x-4 header-right-group ml-auto">
+                <a href="support.html" class="text-gray-600 hover:text-gray-900 transition-colors duration-200 cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                         viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                         class="lucide lucide-circle-help">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M9.09 9a3 3 0 1 1 5.82 1c0 2-3 3-3 3"></path>
+                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                    </svg>
+                </a>
+                <a href="profile.html" class="text-gray-600 hover:text-gray-900 transition-colors duration-200 cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-circle">
+                        <circle cx="12" cy="12" r="10"/>
+                        <circle cx="12" cy="10" r="3"/>
+                        <path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662"/>
+                    </svg>
+                </a>
+                <button id="menu-button" class="md:hidden text-gray-600 hover:text-gray-900 focus:outline-none z-60 relative">
+                     <svg id="menu-open-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap=\"round\" stroke-linejoin=\"round\" class="lucide lucide-menu">
+                        <line x1="4" x2="20" y1="12" y2="12"></line>
+                        <line x1="4" x2="20" y1="6" y2="6"></line>
+                        <line x1="4" x2="20" y1="18" y2="18"></line>
+                    </svg>
+                    <svg id="menu-close-icon" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Overlay (copied from index.html) -->
+    <div id="mobile-menu" class="hidden fixed inset-0 bg-white z-40 flex flex-col justify-center items-center opacity-0 transition-opacity duration-300">
+        <ul class="flex flex-col space-y-10 text-gray-900 text-3xl font-bold items-center">
+            <li><a href="index.html#about" class="hover:text-svashasanBlue transition-colors duration-200">About Us</a></li>
+            <li><a href="index.html#features" class="hover:text-svashasanBlue transition-colors duration-200">Features</a></li>
+            <li><a href="index.html#contact" class="hover:text-svashasanBlue transition-colors duration-200">Contact</a></li>
+            <li><a href="blog.html" class="hover:text-svashasanBlue transition-colors duration-200">Blog</a></li>
+            <li><a href="survey.html" class="hover:text-svashasanBlue transition-colors duration-200">Survey</a></li>
+            <li><a href="developer-platform.html" class="hover:text-svashasanBlue transition-colors duration-200">API</a></li>
+            <li><a href="model-performance.html" class="hover:text-svashasanBlue transition-colors duration-200">Models</a></li>
+        </ul>
+    </div>
+
+    <!-- MAIN CONTENT START -->
+
+    <!-- Hero Section -->
+    <section class="pt-40 pb-20 bg-gray-50 border-b border-gray-100">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 fade-in-up tracking-tight">Built for Your Peace of Mind</h1>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed fade-in-up" style="animation-delay: 0.1s;">
+                Svashasan is engineered to be the most secure vehicle on the road. From digital encryption to physical intrusion detection, your safety is our ultimate priority.
+            </p>
+        </div>
+    </section>
+
+    <!-- Feature Section 1: 360 Monitoring -->
+    <section class="py-24 bg-white overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center gap-16">
+                <div class="w-full md:w-1/2 fade-in-up">
+                    <div class="relative group">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-3xl blur opacity-25 group-hover:opacity-40 transition duration-1000 group-hover:duration-200"></div>
+                        <div class="relative bg-white rounded-3xl overflow-hidden shadow-2xl border border-gray-100">
+                            <div class="p-4 bg-gray-900 flex items-center justify-between text-white text-xs">
+                                <span class="flex items-center"><span class="w-2 h-2 bg-red-600 rounded-full mr-2 animate-pulse"></span> REC: SENTRY MODE ACTIVE</span>
+                                <span>CAM: REAR VIEW</span>
+                            </div>
+                            <div class="aspect-video bg-gray-800 flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 fade-in-up" style="animation-delay: 0.2s;">
+                    <span class="text-svashasanBlue font-bold tracking-widest uppercase text-sm mb-4 block">Always Watching</span>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">Guardian Mode</h2>
+                    <p class="text-gray-600 text-lg leading-relaxed mb-6">
+                        When parked, Svashasan uses its external cameras to monitor its surroundings 24/7. If a potential threat is detected, the car activates its alarm, records the event, and sends an instant alert to your mobile device.
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-svashasanBlue mr-3 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span class="text-gray-700"><strong>360° Vision:</strong> Multiple vantage points to capture every angle.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-svashasanBlue mr-3 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span class="text-gray-700"><strong>Dashcam:</strong> Automatic recording of all driving incidents.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature Section 2: Digital Fortress -->
+    <section class="py-24 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+                <!-- PIN to Drive -->
+                <div class="bg-white p-10 rounded-3xl border border-gray-100 shadow-sm fade-in-up" style="animation-delay: 0.1s;">
+                    <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-svashasanBlue" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8-8v4" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">PIN to Drive</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Prevent unauthorized use with an additional layer of security. Enter a unique 4-digit code on the touchscreen before your vehicle can be shifted out of park.</p>
+                </div>
+                <!-- Encryption -->
+                <div class="bg-white p-10 rounded-3xl border border-gray-100 shadow-sm fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-svashasanBlue" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">End-to-End Encryption</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Your data belongs to you. All communication between your vehicle, the Svashasan App, and our servers is secured with industry-leading AES-256 encryption.</p>
+                </div>
+                <!-- Digital Key -->
+                <div class="bg-white p-10 rounded-3xl border border-gray-100 shadow-sm fade-in-up" style="animation-delay: 0.3s;">
+                    <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-svashasanBlue" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Secure Mobile Access</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Unlock, precondition, and start your vehicle from anywhere. Our digital key uses proximity-based Bluetooth Low Energy (BLE) with rolling codes to prevent relay attacks.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Cabin Privacy -->
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-6 max-w-4xl text-center">
+            <h2 class="text-3xl md:text-5xl font-bold mb-8 fade-in-up">Privacy by Design</h2>
+            <p class="text-gray-600 text-lg leading-relaxed mb-10 fade-in-up" style="animation-delay: 0.1s;">
+                Our cabin cameras are disabled by default for all private vehicles. When enabled (for Autopilot monitoring), data is processed locally on the car's hardware and is never stored or transmitted unless you choose to share it with us to help improve safety for everyone.
+            </p>
+            <div class="inline-block p-4 bg-gray-50 border border-gray-200 rounded-2xl fade-in-up" style="animation-delay: 0.2s;">
+                <p class="text-sm font-medium text-gray-500 flex items-center">
+                    <svg class="w-4 h-4 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                    Certified GDPR & Data Privacy Compliant
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- OTA Section -->
+    <section class="py-24 bg-svashasanBlue text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <path d="M0 50 Q 25 45, 50 50 T 100 50" fill="none" stroke="white" stroke-width="0.5" />
+                <path d="M0 60 Q 25 55, 50 60 T 100 60" fill="none" stroke="white" stroke-width="0.5" />
+            </svg>
+        </div>
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <h2 class="text-3xl md:text-5xl font-bold mb-6">Always Up to Date</h2>
+            <p class="text-gray-900 text-lg mb-12 max-w-2xl mx-auto">
+                Cybersecurity threats evolve, and so does Svashasan. Our security team continuously monitors for vulnerabilities and deploys over-the-air security patches instantly, keeping your vehicle protected against the latest threats.
+            </p>
+            <a href="index.html#contact"
+               class="inline-block bg-blue-700 text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 px-12 py-4 rounded-xl font-bold transition-all duration-200 shadow-md hover:shadow-lg">
+               Contact Security Team
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer Section (Exact replica of index.html) -->
+    <footer class="bg-gray-800 text-white py-6 text-center">
+        <div class="container mx-auto px-4 md:px-6">
+            <p>&copy; 2026 स्वशासन. All Rights Reserved.</p>
+            <p class="mt-2 text-sm space-x-2">
+                <a href="https://svashasan.com/privacy-policy" class="hover:underline">Privacy Policy</a>
+                <span>|</span>
+                <a href="https://svashasan.com/terms-of-use" class="hover:underline">Terms & Conditions</a>
+                <span>|</span>
+                <a href="https://svashasan.com/cookie-policy" class="hover:underline">Cookie Policy</a>
+                <span>|</span>
+                <a href="https://svashasan.com/careers" class="hover:underline">Careers</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts (Exact replica from index.html) -->
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+    const menuButton = document.getElementById('menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuOpenIcon = document.getElementById('menu-open-icon');
+    const menuCloseIcon = document.getElementById('menu-close-icon');
+    const body = document.body;
+
+    const toggleMenu = () => {
+        const isMenuOpen = !mobileMenu.classList.contains('hidden');
+        
+        if (isMenuOpen) {
+            mobileMenu.classList.add('opacity-0');
+            body.style.overflow = '';
+            menuOpenIcon.classList.remove('hidden');
+            menuCloseIcon.classList.add('hidden');
+            setTimeout(() => {
+                mobileMenu.classList.add('hidden');
+            }, 300);
+        } else {
+            mobileMenu.classList.remove('hidden');
+            menuOpenIcon.classList.add('hidden');
+            menuCloseIcon.classList.remove('hidden');
+            setTimeout(() => {
+                mobileMenu.classList.remove('opacity-0');
+                body.style.overflow = 'hidden';
+            }, 10);
+        }
+    };
+
+    if (menuButton && mobileMenu) {
+        menuButton.addEventListener('click', toggleMenu);
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', toggleMenu);
+        });
+    }
+});
+    </script>
+</body>
+</html>

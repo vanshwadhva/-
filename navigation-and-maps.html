@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation & Maps - Svashasan</title>
+    <link rel="icon" type="image/png" href="2.png" sizes="32x32">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-N89XZGM4');</script>
+    <!-- End Google Tag Manager -->
+    <style>
+        /* Custom Tailwind config matching existing pages */
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        svashasanBlue: '#2563eb',
+                        teslaDark: '#171a20',
+                    }
+                }
+            }
+        }
+        
+        html, body {
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Animation for text reveal */
+        .fade-in-up {
+            animation: fadeInUp 1s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-900 bg-white">
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N89XZGM4"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- Header Section (Exact replica) -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white bg-opacity-80 backdrop-blur-md py-4 shadow-sm">
+        <div class="container mx-auto flex items-center justify-between px-4 sm:px-6">
+            <!-- Logo -->
+            <a href="index.html" class="flex-shrink-0">
+                <img src="2.png" alt="Svashasan Logo" class="h-10 w-auto object-contain">
+            </a>
+            <nav class="hidden md:flex flex-grow justify-center">
+                <ul class="flex space-x-6 text-gray-600 font-medium">
+                    <li><a href="index.html#about" class="hover:text-gray-900 transition-all duration-200">About Us</a></li>
+                    <li><a href="index.html#features" class="hover:text-gray-900 transition-all duration-200">Features</a></li>
+                    <li><a href="index.html#contact" class="hover:text-gray-900 transition-all duration-200">Contact</a></li>
+                    <li><a href="blog.html" class="hover:text-gray-900 transition-all duration-200">Blog</a></li>
+                    <li><a href="survey.html" class="hover:text-gray-900 transition-all duration-200">Survey</a></li>
+                    <li><a href="developer-platform.html" class="hover:text-gray-900 transition-all duration-200">API</a></li>
+                    <li><a href="model-performance.html" class="hover:text-gray-900 transition-all duration-200">Models</a></li>
+                </ul>
+            </nav>
+            <div class="flex items-center space-x-4 header-right-group ml-auto">
+                <a href="support.html" class="text-gray-600 hover:text-gray-900 transition-colors duration-200 cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                         viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                         class="lucide lucide-circle-help">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M9.09 9a3 3 0 1 1 5.82 1c0 2-3 3-3 3"></path>
+                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                    </svg>
+                </a>
+                <a href="profile.html" class="text-gray-600 hover:text-gray-900 transition-colors duration-200 cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-circle">
+                        <circle cx="12" cy="12" r="10"/>
+                        <circle cx="12" cy="10" r="3"/>
+                        <path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662"/>
+                    </svg>
+                </a>
+                <button id="menu-button" class="md:hidden text-gray-600 hover:text-gray-900 focus:outline-none z-60 relative">
+                     <svg id="menu-open-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu">
+                        <line x1="4" x2="20" y1="12" y2="12"></line>
+                        <line x1="4" x2="20" y1="6" y2="6"></line>
+                        <line x1="4" x2="20" y1="18" y2="18"></line>
+                    </svg>
+                    <svg id="menu-close-icon" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Overlay -->
+    <div id="mobile-menu" class="hidden fixed inset-0 bg-white z-40 flex flex-col justify-center items-center opacity-0 transition-opacity duration-300">
+        <ul class="flex flex-col space-y-10 text-gray-900 text-3xl font-bold items-center">
+            <li><a href="index.html#about" class="hover:text-svashasanBlue transition-colors duration-200">About Us</a></li>
+            <li><a href="index.html#features" class="hover:text-svashasanBlue transition-colors duration-200">Features</a></li>
+            <li><a href="index.html#contact" class="hover:text-svashasanBlue transition-colors duration-200">Contact</a></li>
+            <li><a href="blog.html" class="hover:text-svashasanBlue transition-colors duration-200">Blog</a></li>
+            <li><a href="survey.html" class="hover:text-svashasanBlue transition-colors duration-200">Survey</a></li>
+            <li><a href="developer-platform.html" class="hover:text-svashasanBlue transition-colors duration-200">API</a></li>
+            <li><a href="model-performance.html" class="hover:text-svashasanBlue transition-colors duration-200">Models</a></li>
+        </ul>
+    </div>
+
+    <!-- MAIN CONTENT START -->
+
+    <!-- Hero Section -->
+    <section class="pt-40 pb-20 bg-gray-50 border-b border-gray-100">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 fade-in-up tracking-tight">Intelligent Navigation</h1>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed fade-in-up" style="animation-delay: 0.1s;">
+                Svashasan reimagines how you interact with the world. Our navigation engine combines real-time data with proprietary 4D maps to ensure you always take the most efficient path.
+            </p>
+        </div>
+    </section>
+
+    <!-- Map Logic Section -->
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center gap-16">
+                <div class="w-full md:w-1/2 fade-in-up">
+                    <div class="rounded-3xl overflow-hidden shadow-2xl relative">
+                        <!-- Map Visual Placeholder -->
+                        <div class="bg-slate-900 aspect-square w-full relative flex items-center justify-center">
+                            <div class="absolute inset-0 opacity-30 bg-[radial-gradient(#2563eb_1px,transparent_1px)] [background-size:20px_20px]"></div>
+                            <div class="relative z-10 w-full px-8">
+                                <div class="h-1 bg-blue-500 w-3/4 rounded-full shadow-[0_0_15px_rgba(37,99,235,0.8)] mx-auto animate-pulse"></div>
+                                <div class="mt-4 flex justify-between text-blue-400 text-[10px] font-mono tracking-widest uppercase">
+                                    <span>Syncing Live Traffic</span>
+                                    <span>4D Map Active</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <span class="text-svashasanBlue font-bold tracking-widest uppercase text-sm mb-4 block">Proprietary Mapping</span>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">Beyond Traditional GPS</h2>
+                    <p class="text-gray-600 text-lg leading-relaxed mb-6">
+                        Svashasan doesn't just rely on standard satellite data. Our fleet creates a high-definition, living map of the road, identifying lane markings, stop lines, and vertical curbs with millimeter precision.
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="flex items-start">
+                            <div class="text-svashasanBlue mr-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Live Traffic</h4>
+                                <p class="text-sm text-gray-500">Real-time rerouting based on fleet data.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="text-svashasanBlue mr-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">4D Context</h4>
+                                <p class="text-sm text-gray-500">Understanding depth and elevation changes.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Smart Charging Section -->
+    <section class="py-24 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-bold mb-6">Seamless Energy Planning</h2>
+                <p class="text-gray-600 text-lg">Your car manages its own power. Enter your destination, and Svashasan will automatically plan a route including necessary charging stops based on real-time stall availability and your current battery health.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm text-center">
+                    <h3 class="font-bold text-xl mb-3">Automatic Preconditioning</h3>
+                    <p class="text-gray-500 text-sm">Your vehicle automatically warms the battery while navigating to a charger for maximum charge speed.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm text-center">
+                    <h3 class="font-bold text-xl mb-3">Stall Availability</h3>
+                    <p class="text-gray-500 text-sm">View real-time status of charging points along your route to avoid waiting times.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm text-center">
+                    <h3 class="font-bold text-xl mb-3">Range Intelligence</h3>
+                    <p class="text-gray-500 text-sm">Our AI accounts for wind, elevation, and temperature to give you the most accurate range estimate possible.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Offline Reliability -->
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row-reverse items-center gap-16">
+                <div class="w-full md:w-1/2 text-center md:text-left">
+                    <h2 class="text-3xl font-bold mb-6">Always Directional</h2>
+                    <p class="text-gray-600 text-lg leading-relaxed mb-8">
+                        Losing cellular signal shouldn't mean losing your way. Svashasan stores critical map data locally, allowing for uninterrupted navigation and route calculation even in the most remote areas.
+                    </p>
+                    <div class="inline-flex items-center px-4 py-2 bg-green-50 text-green-700 rounded-full text-sm font-medium">
+                        <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                        Offline Navigation Enabled
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 bg-gray-100 rounded-3xl aspect-video flex items-center justify-center overflow-hidden">
+                    <!-- Symbolic Offline Visual -->
+                    <div class="relative w-full h-full bg-slate-100 flex items-center justify-center">
+                        <div class="absolute w-3/4 h-3/4 bg-white rounded-lg shadow-lg rotate-3 flex items-center justify-center p-8">
+                            <div class="w-full h-full border-2 border-dashed border-gray-200 rounded flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 20l-5.447-2.724A2 2 0 013 15.483V6a2 2 0 011.236-1.847l7-3a2 2 0 011.528 0l7 3A2 2 0 0121 6v9.483a2 2 0 01-0.553 1.393L15 20m-3 0v-8" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section (Exact replica) -->
+    <footer class="bg-gray-800 text-white py-6 text-center">
+        <div class="container mx-auto px-4 md:px-6">
+            <p>&copy; 2026 स्वशासन. All Rights Reserved.</p>
+            <p class="mt-2 text-sm space-x-2">
+                <a href="privacy-policy.html" class="hover:underline">Privacy Policy</a>
+                <span>|</span>
+                <a href="terms-of-use.html" class="hover:underline">Terms & Conditions</a>
+                <span>|</span>
+                <a href="cookie-policy.html" class="hover:underline">Cookie Policy</a>
+                <span>|</span>
+                <a href="careers.html" class="hover:underline">Careers</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts (Exact replica) -->
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+    const menuButton = document.getElementById('menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuOpenIcon = document.getElementById('menu-open-icon');
+    const menuCloseIcon = document.getElementById('menu-close-icon');
+    const body = document.body;
+
+    const toggleMenu = () => {
+        const isMenuOpen = !mobileMenu.classList.contains('hidden');
+        
+        if (isMenuOpen) {
+            mobileMenu.classList.add('opacity-0');
+            body.style.overflow = '';
+            menuOpenIcon.classList.remove('hidden');
+            menuCloseIcon.classList.add('hidden');
+            setTimeout(() => {
+                mobileMenu.classList.add('hidden');
+            }, 300);
+        } else {
+            mobileMenu.classList.remove('hidden');
+            menuOpenIcon.classList.add('hidden');
+            menuCloseIcon.classList.remove('hidden');
+            setTimeout(() => {
+                mobileMenu.classList.remove('opacity-0');
+                body.style.overflow = 'hidden';
+            }, 10);
+        }
+    };
+
+    if (menuButton && mobileMenu) {
+        menuButton.addEventListener('click', toggleMenu);
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', toggleMenu);
+        });
+    }
+});
+    </script>
+</body>
+</html>

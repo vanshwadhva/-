@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy & Data Requests - Svashasan</title>
+    <link rel="icon" type="image/png" href="2.png" sizes="32x32">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        svashasanBlue: '#2563eb',
+                        teslaDark: '#171a20',
+                        brandNavy: '#1E1A4D'
+                    }
+                }
+            }
+        }
+        
+        html, body {
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 1s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .form-input:focus {
+            border-color: #1E1A4D;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-900 bg-white">
+
+    <!-- Header Section (Exact replica) -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white bg-opacity-80 backdrop-blur-md py-4 shadow-sm border-b border-gray-100">
+        <div class="container mx-auto flex items-center justify-between px-4 sm:px-6">
+            <a href="index.html" class="flex-shrink-0">
+                <img src="2.png" alt="Svashasan Logo" class="h-10 w-auto object-contain">
+            </a>
+            <nav class="hidden md:flex flex-grow justify-center">
+                <ul class="flex space-x-6 text-gray-600 font-medium">
+                    <li><a href="index.html#about" class="hover:text-gray-900 transition-all duration-200">About Us</a></li>
+                    <li><a href="index.html#features" class="hover:text-gray-900 transition-all duration-200">Features</a></li>
+                    <li><a href="index.html#contact" class="hover:text-gray-900 transition-all duration-200">Contact</a></li>
+                    <li><a href="blog.html" class="hover:text-gray-900 transition-all duration-200">Blog</a></li>
+                    <li><a href="survey.html" class="hover:text-gray-900 transition-all duration-200">Survey</a></li>
+                    <li><a href="developer-platform.html" class="hover:text-gray-900 transition-all duration-200">API</a></li>
+                    <li><a href="model-performance.html" class="hover:text-gray-900 transition-all duration-200">Models</a></li>
+                </ul>
+            </nav>
+            <div class="flex items-center space-x-4 header-right-group ml-auto">
+                <a href="support.html" class="text-gray-600 hover:text-gray-900 transition-colors duration-200">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-help"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 1 1 5.82 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                </a>
+                <a href="profile.html" class="text-gray-600 hover:text-gray-900 transition-colors duration-200">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-circle"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="10" r="3"/><path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662"/></svg>
+                </a>
+                <button id="menu-button" class="md:hidden text-gray-600 focus:outline-none">
+                     <svg id="menu-open-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Overlay -->
+    <div id="mobile-menu" class="hidden fixed inset-0 bg-white z-40 flex flex-col justify-center items-center opacity-0 transition-opacity duration-300">
+        <ul class="flex flex-col space-y-10 text-gray-900 text-3xl font-bold items-center">
+            <li><a href="index.html#about">About Us</a></li>
+            <li><a href="index.html#features">Features</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="survey.html">Survey</a></li>
+            <li><a href="model-performance.html">Models</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="pt-40 pb-20 bg-gray-50">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6 fade-in-up tracking-tight text-brandNavy">Privacy by Design</h1>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed fade-in-up" style="animation-delay: 0.1s;">
+                At Svashasan, we believe data privacy is as critical as vehicle safety. You have full control over what information you share and how your data is handled.
+            </p>
+        </div>
+    </section>
+
+    <!-- Data Principles -->
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+                <div>
+                    <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mx-auto mb-6 text-brandNavy">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Local by Default</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Dashcam and Sentry Mode footage is stored on your vehicle's local storage and is never transmitted to us unless you explicitly choose to share it.</p>
+                </div>
+                <div>
+                    <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mx-auto mb-6 text-brandNavy">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">End-to-End Encryption</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">All communication between your Svashasan app and the vehicle uses industry-leading encryption to prevent unauthorized access.</p>
+                </div>
+                <div>
+                    <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mx-auto mb-6 text-brandNavy">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">You Own Your Data</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">You can request a copy of your personal data or ask for the deletion of your account and associated data at any time.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Data Request Form -->
+    <section class="py-24 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="max-w-2xl mx-auto bg-white p-10 rounded-3xl shadow-sm border border-gray-100">
+                <h2 class="text-3xl font-bold mb-2 text-brandNavy">Data Management Request</h2>
+                <p class="text-gray-500 mb-8 text-sm">Submit a request to access, export, or delete your Svashasan data.</p>
+                
+                <form id="privacyForm" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">First Name</label>
+                            <input type="text" class="form-input" placeholder="John" required>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Last Name</label>
+                            <input type="text" class="form-input" placeholder="Doe" required>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Email Address</label>
+                        <input type="email" class="form-input" placeholder="john.doe@example.com" required>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Request Type</label>
+                        <select class="form-input appearance-none bg-white">
+                            <option>Request Data Export (Copy of my data)</option>
+                            <option>Request Data Deletion</option>
+                            <option>Privacy Question/Concern</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Vehicle VIN (Optional)</label>
+                        <input type="text" class="form-input" placeholder="Enter 17-digit VIN">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Message</label>
+                        <textarea class="form-input h-32 resize-none" placeholder="Provide additional context for your request..."></textarea>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <input type="checkbox" id="consent" class="w-4 h-4 rounded border-gray-300" required>
+                        <label for="consent" class="text-xs text-gray-500">I verify that I am the owner of this account and consent to the processing of this request.</label>
+                    </div>
+                    <button type="submit" class="w-full bg-brandNavy text-white font-bold py-4 rounded-xl hover:opacity-90 transition-opacity">Submit Request</button>
+                </form>
+                <div id="successMsg" class="hidden mt-6 p-4 bg-green-50 text-green-700 rounded-xl text-center text-sm">
+                    Your request has been submitted successfully. Our privacy team will review and respond within 30 days.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detailed Transparency Section -->
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto space-y-16">
+                <div>
+                    <h2 class="text-2xl font-bold mb-6 text-brandNavy">How we handle Fleet Learning data</h2>
+                    <p class="text-gray-600 leading-relaxed">
+                        To improve Autopilot and Full Self-Driving capabilities, Svashasan uses "fleet learning." Short video clips and sensor data may be uploaded to our servers to train neural networks. This data is <strong>fully anonymized</strong> and is not linked to your VIN or account unless a critical safety event is detected. You can opt-out of sharing this data at any time via your vehicle's touchscreen settings.
+                    </p>
+                </div>
+                <div>
+                    <h2 class="text-2xl font-bold mb-6 text-brandNavy">Sentry Mode and Dashcam Privacy</h2>
+                    <p class="text-gray-600 leading-relaxed">
+                        Camera footage is processed in real-time on your vehicle. We do not have access to your Dashcam or Sentry Mode recordings. These are stored on a USB drive plugged into the vehicle's glovebox or center console. The only exception is if you choose to "Share with Svashasan" specifically after a safety incident to help us understand model behavior.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Restored Footer Section (Previous Design) -->
+    <footer class="bg-gray-800 text-white py-6 text-center">
+        <div class="container mx-auto px-4 md:px-6">
+            <p>&copy; 2026 स्वशासन. All Rights Reserved.</p>
+            <p class="mt-2 text-sm space-x-2">
+                <a href="privacy-policy.html" class="hover:underline">Privacy Policy</a>
+                <span>|</span>
+                <a href="terms-of-use.html" class="hover:underline">Terms & Conditions</a>
+                <span>|</span>
+                <a href="cookie-policy.html" class="hover:underline">Cookie Policy</a>
+                <span>|</span>
+                <a href="careers.html" class="hover:underline">Careers</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const menuButton = document.getElementById('menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const body = document.body;
+
+        const toggleMenu = () => {
+            const isMenuOpen = !mobileMenu.classList.contains('hidden');
+            if (isMenuOpen) {
+                mobileMenu.classList.add('opacity-0');
+                body.style.overflow = '';
+                setTimeout(() => mobileMenu.classList.add('hidden'), 300);
+            } else {
+                mobileMenu.classList.remove('hidden');
+                setTimeout(() => {
+                    mobileMenu.classList.remove('opacity-0');
+                    body.style.overflow = 'hidden';
+                }, 10);
+            }
+        };
+
+        if (menuButton) menuButton.addEventListener('click', toggleMenu);
+
+        // Form Submission Simulation
+        const form = document.getElementById('privacyForm');
+        const successMsg = document.getElementById('successMsg');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            form.classList.add('opacity-50', 'pointer-events-none');
+            setTimeout(() => {
+                form.classList.add('hidden');
+                successMsg.classList.remove('hidden');
+            }, 1000);
+        });
+    });
+    </script>
+</body>
+</html>

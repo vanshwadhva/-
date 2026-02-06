@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Recalls - Svashasan</title>
+    <link rel="icon" type="image/png" href="2.png" sizes="32x32">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+     <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-N89XZGM4');</script>
+<!-- End Google Tag Manager -->
+    <style>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        svashasanBlue: '#2563eb',
+                        teslaDark: '#171a20',
+                        brandNavy: '#1E1A4D'
+                    }
+                }
+            }
+        }
+        
+        html, body {
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 1s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .recall-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .recall-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-input:focus {
+            border-color: #1E1A4D;
+            box-shadow: 0 0 0 2px rgba(30, 26, 77, 0.1);
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-900 bg-white">
+
+     <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N89XZGM4"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    <!-- Header Section (Exact replica) -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white bg-opacity-80 backdrop-blur-md py-4 shadow-sm border-b border-gray-100">
+        <div class="container mx-auto flex items-center justify-between px-4 sm:px-6">
+            <a href="index.html" class="flex-shrink-0">
+                <img src="2.png" alt="Svashasan Logo" class="h-10 w-auto object-contain">
+            </a>
+            <nav class="hidden md:flex flex-grow justify-center">
+                <ul class="flex space-x-6 text-gray-600 font-medium">
+                    <li><a href="index.html#about" class="hover:text-gray-900 transition-all duration-200">About Us</a></li>
+                    <li><a href="index.html#features" class="hover:text-gray-900 transition-all duration-200">Features</a></li>
+                    <li><a href="index.html#contact" class="hover:text-gray-900 transition-all duration-200">Contact</a></li>
+                    <li><a href="blog.html" class="hover:text-gray-900 transition-all duration-200">Blog</a></li>
+                    <li><a href="survey.html" class="hover:text-gray-900 transition-all duration-200">Survey</a></li>
+                    <li><a href="developer-platform.html" class="hover:text-gray-900 transition-all duration-200">API</a></li>
+                    <li><a href="model-performance.html" class="hover:text-gray-900 transition-all duration-200">Models</a></li>
+                </ul>
+            </nav>
+            <div class="flex items-center space-x-4 header-right-group ml-auto">
+                <a href="support.html" class="text-gray-600 hover:text-gray-900 transition-colors duration-200">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-help"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 1 1 5.82 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                </a>
+                <a href="profile.html" class="text-gray-600 hover:text-gray-900 transition-colors duration-200">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-circle"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="10" r="3"/><path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662"/></svg>
+                </a>
+                <button id="menu-button" class="md:hidden text-gray-600 focus:outline-none">
+                     <svg id="menu-open-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Overlay -->
+    <div id="mobile-menu" class="hidden fixed inset-0 bg-white z-40 flex flex-col justify-center items-center opacity-0 transition-opacity duration-300">
+        <ul class="flex flex-col space-y-10 text-gray-900 text-3xl font-bold items-center">
+            <li><a href="index.html#about">About Us</a></li>
+            <li><a href="index.html#features">Features</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="survey.html">Survey</a></li>
+            <li><a href="model-performance.html">Models</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="pt-40 pb-20 bg-gray-50 border-b border-gray-100">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6 fade-in-up tracking-tight text-brandNavy">Vehicle Recalls</h1>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed fade-in-up" style="animation-delay: 0.1s;">
+                At Svashasan, safety is our primary focus. We are committed to transparency and the continuous improvement of our fleet through hardware updates and Over-the-Air software fixes.
+            </p>
+        </div>
+    </section>
+
+    <!-- VIN Search Section -->
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-3xl mx-auto bg-white p-8 md:p-12 rounded-3xl shadow-lg border border-gray-100 fade-in-up">
+                <div class="text-center mb-10">
+                    <h2 class="text-2xl font-bold mb-4">Check Your Vehicle</h2>
+                    <p class="text-gray-500 text-sm">Enter your 17-character Vehicle Identification Number (VIN) to see if there are any open recalls for your specific vehicle.</p>
+                </div>
+                
+                <form id="vinSearchForm" class="space-y-6">
+                    <div class="relative">
+                        <input type="text" id="vinInput" maxlength="17" class="w-full px-6 py-4 bg-gray-50 border border-gray-200 rounded-xl outline-none search-input text-lg tracking-wider uppercase" placeholder="ENTER YOUR VIN" required>
+                        <div class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                        </div>
+                    </div>
+                    <button type="submit" class="w-full bg-brandNavy text-white font-bold py-4 rounded-xl hover:opacity-95 transition-opacity">Check for Recalls</button>
+                </form>
+                
+                <div id="searchResult" class="hidden mt-8 p-6 rounded-2xl text-center">
+                    <!-- Dynamic results will appear here -->
+                </div>
+
+                <div class="mt-8 pt-8 border-t border-gray-100 text-center">
+                    <p class="text-xs text-gray-400">Where is my VIN? Your VIN is located on the dashboard (viewable through the windshield) or on the driver's side door pillar.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recent Recalls List -->
+    <section class="py-24 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto mb-16 text-center">
+                <h2 class="text-3xl font-bold mb-4">Recent Safety Recalls</h2>
+                <p class="text-gray-600">Review the most recent fleet-wide safety notifications. Many are resolved instantly via software updates.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <!-- Recall 1 -->
+                <div class="recall-card bg-white p-8 rounded-3xl border border-gray-100 shadow-sm">
+                    <div class="flex items-center justify-between mb-6">
+                        <span class="bg-blue-50 text-brandNavy text-xs font-bold px-3 py-1 rounded-full uppercase">Software Fix</span>
+                        <span class="text-xs text-gray-400">Oct 14, 2025</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Autonomous Braking Logic Update</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-6">A specific edge case in heavy rain could lead to delayed braking activation. Resolved in software version 2025.42.1.</p>
+                    <div class="flex items-center text-xs font-bold text-green-600">
+                        <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                        Resolved via OTA Update
+                    </div>
+                </div>
+
+                <!-- Recall 2 -->
+                <div class="recall-card bg-white p-8 rounded-3xl border border-gray-100 shadow-sm">
+                    <div class="flex items-center justify-between mb-6">
+                        <span class="bg-orange-50 text-orange-700 text-xs font-bold px-3 py-1 rounded-full uppercase">Hardware Service</span>
+                        <span class="text-xs text-gray-400">Aug 22, 2025</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Ultrasonic Sensor Seal Inspection</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-6">Potential moisture ingress in rear ultrasonic sensors for early 2024 models. Requires physical inspection at a service center.</p>
+                    <a href="support.html" class="text-xs font-bold text-brandNavy hover:underline flex items-center">
+                        Schedule Service Appointment
+                        <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ / Essentials Section -->
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <h2 class="text-3xl font-bold mb-12 text-center text-brandNavy">Recall Essentials</h2>
+            
+            <div class="space-y-10">
+                <div class="flex gap-6">
+                    <div class="flex-shrink-0 w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center text-brandNavy">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M12 8v4\"/><path d=\"M12 16h.01\"/></svg>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg mb-2">Are recalls free?</h4>
+                        <p class="text-gray-500 text-sm leading-relaxed">Yes. All safety-related recall repairs are completed free of charge to the vehicle owner. This includes both physical hardware repairs and software-based solutions.</p>
+                    </div>
+                </div>
+
+                <div class="flex gap-6">
+                    <div class="flex-shrink-0 w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center text-brandNavy">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg mb-2">How do Over-the-Air (OTA) updates work?</h4>
+                        <p class="text-gray-500 text-sm leading-relaxed">Many recalls for Svashasan vehicles are resolved through software updates. Your vehicle will download the update via Wi-Fi or Cellular and prompt you to install it. No visit to a service center is required for these fixes.</p>
+                    </div>
+                </div>
+
+                <div class="flex gap-6">
+                    <div class="flex-shrink-0 w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center text-brandNavy">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg mb-2">How will I be notified?</h4>
+                        <p class="text-gray-500 text-sm leading-relaxed">If your vehicle is affected by a recall, Svashasan will notify you via the mobile app, in-car touchscreen, and through a formal letter sent to your registered mailing address.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section (Previous centered design) -->
+    <footer class="bg-gray-800 text-white py-6 text-center">
+        <div class="container mx-auto px-4 md:px-6">
+            <p>&copy; 2026 स्वशासन. All Rights Reserved.</p>
+            <p class="mt-2 text-sm space-x-2">
+                <a href="privacy-policy.html" class="hover:underline">Privacy Policy</a>
+                <span>|</span>
+                <a href="terms-of-use.html" class="hover:underline">Terms & Conditions</a>
+                <span>|</span>
+                <a href="cookie-policy.html" class="hover:underline">Cookie Policy</a>
+                <span>|</span>
+                <a href="careers.html" class="hover:underline">Careers</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const menuButton = document.getElementById('menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const body = document.body;
+
+        const toggleMenu = () => {
+            const isMenuOpen = !mobileMenu.classList.contains('hidden');
+            if (isMenuOpen) {
+                mobileMenu.classList.add('opacity-0');
+                body.style.overflow = '';
+                setTimeout(() => mobileMenu.classList.add('hidden'), 300);
+            } else {
+                mobileMenu.classList.remove('hidden');
+                setTimeout(() => {
+                    mobileMenu.classList.remove('opacity-0');
+                    body.style.overflow = 'hidden';
+                }, 10);
+            }
+        };
+
+        if (menuButton) menuButton.addEventListener('click', toggleMenu);
+
+        // VIN Search Logic Simulation
+        const form = document.getElementById('vinSearchForm');
+        const searchResult = document.getElementById('searchResult');
+        const vinInput = document.getElementById('vinInput');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const vin = vinInput.value.trim().toUpperCase();
+            
+            // Show loading state
+            searchResult.classList.remove('hidden', 'bg-red-50', 'text-red-700', 'bg-green-50', 'text-green-700');
+            searchResult.classList.add('bg-gray-50', 'text-gray-500');
+            searchResult.innerHTML = '<span class="flex items-center justify-center"><svg class="animate-spin h-5 w-5 mr-3" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Searching database...</span>';
+            
+            setTimeout(() => {
+                if (vin === "SVA1234567890ABCD") {
+                    // Mock: No recalls
+                    searchResult.classList.remove('bg-gray-50', 'text-gray-500');
+                    searchResult.classList.add('bg-green-50', 'text-green-700');
+                    searchResult.innerHTML = '<div class="font-bold mb-1">No Open Recalls Detected</div><p class="text-xs">Your vehicle is up to date with all safety requirements.</p>';
+                } else if (vin.length < 17) {
+                    searchResult.classList.remove('bg-gray-50', 'text-gray-500');
+                    searchResult.classList.add('bg-orange-50', 'text-orange-700');
+                    searchResult.innerHTML = '<div class="font-bold mb-1">Invalid VIN</div><p class="text-xs">Please enter a valid 17-character VIN.</p>';
+                } else {
+                    // Mock: One recall found
+                    searchResult.classList.remove('bg-gray-50', 'text-gray-500');
+                    searchResult.classList.add('bg-red-50', 'text-red-700');
+                    searchResult.innerHTML = '<div class="font-bold mb-1">1 Open Recall Found</div><p class="text-xs mb-3">Recall ID: SVA-25-001 (Braking Logic). Action required.</p><a href="support.html" class="inline-block bg-red-700 text-white px-4 py-2 rounded-lg font-bold text-xs mt-2">Schedule Fix</a>';
+                }
+            }, 1200);
+        });
+    });
+    </script>
+</body>
+</html>

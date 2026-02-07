@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newsroom - Svashasan Labs</title>
+    <link rel="icon" type="image/png" href="2.png" sizes="32x32">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        svashasanBlue: '#2563eb',
+                        teslaDark: '#171a20',
+                        brandNavy: '#1E1A4D'
+                    }
+                }
+            }
+        }
+        
+        html, body {
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            background-color: #f5f5f7; /* Apple-style soft background */
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Newsroom Card Hover Effects */
+        .news-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .news-card:hover {
+            transform: scale(1.01);
+            background-color: #ffffff;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+        }
+        .news-card img {
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .news-card:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Category Pill Styling */
+        .category-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: #6e6e73;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-900">
+
+    <!-- Header Section (Exact replica) -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white bg-opacity-80 backdrop-blur-md py-4 shadow-sm border-b border-gray-100">
+        <div class="container mx-auto flex items-center justify-between px-4 sm:px-6">
+            <a href="index.html" class="flex-shrink-0">
+                <img src="2.png" alt="Svashasan Logo" class="h-10 w-auto object-contain">
+            </a>
+            <nav class="hidden md:flex flex-grow justify-center">
+                <ul class="flex space-x-6 text-gray-600 font-medium">
+                    <li><a href="index.html#about" class="hover:text-gray-900 transition-all">About Us</a></li>
+                    <li><a href="index.html#features" class="hover:text-gray-900 transition-all">Features</a></li>
+                    <li><a href="index.html#contact" class="hover:text-gray-900 transition-all">Contact</a></li>
+                    <li><a href="blog.html" class="hover:text-gray-900 transition-all">Blog</a></li>
+                    <li><a href="survey.html" class="hover:text-gray-900 transition-all">Survey</a></li>
+                    <li><a href="developer-platform.html" class="hover:text-gray-900 transition-all">API</a></li>
+                    <li><a href="model-performance.html" class="hover:text-gray-900 transition-all">Models</a></li>
+                </ul>
+            </nav>
+            <div class="flex items-center space-x-4 header-right-group ml-auto">
+                <a href="support.html" class="text-gray-600 hover:text-gray-900 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-help"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 1 1 5.82 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                </a>
+                <a href="profile.html" class="text-gray-600 hover:text-gray-900 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-circle"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="10" r="3"/><path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662"/></svg>
+                </a>
+                <button id="menu-button" class="md:hidden text-gray-600 focus:outline-none">
+                     <svg id="menu-open-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="hidden fixed inset-0 bg-white z-40 flex flex-col justify-center items-center opacity-0 transition-opacity duration-300">
+        <ul class="flex flex-col space-y-10 text-gray-900 text-3xl font-bold items-center">
+            <li><a href="index.html#about">About Us</a></li>
+            <li><a href="index.html#features">Features</a></li>
+            <li><a href="labs-newsroom.html" class="text-svashasanBlue">Newsroom</a></li>
+            <li><a href="model-performance.html">Models</a></li>
+        </ul>
+    </div>
+
+    <!-- Newsroom Sub-Header -->
+    <div class="pt-24 bg-white">
+        <div class="container mx-auto px-6 py-6 flex items-center justify-between border-b border-gray-100">
+            <h1 class="text-2xl font-bold tracking-tight">Labs Newsroom</h1>
+            <div class="hidden md:flex space-x-6 text-sm font-medium text-gray-500">
+                <a href="#" class="text-gray-900">All News</a>
+                <a href="#" class="hover:text-gray-900">Research</a>
+                <a href="#" class="hover:text-gray-900">Updates</a>
+                <a href="#" class="hover:text-gray-900">Media Kit</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="bg-[#f5f5f7] pb-24">
+        
+        <!-- Hero Section: Featured Story -->
+        <section class="container mx-auto px-6 pt-12">
+            <div class="group cursor-pointer bg-white rounded-[28px] overflow-hidden flex flex-col md:flex-row shadow-sm hover:shadow-xl transition-shadow duration-500 fade-in-up">
+                <div class="w-full md:w-2/3 overflow-hidden h-[400px] md:h-[600px]">
+                    <img src="https://images.unsplash.com/photo-1555664424-778a1e5e1b48?auto=format&fit=crop&q=80&w=2000" alt="Supercomputing Cluster" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                </div>
+                <div class="w-full md:w-1/3 p-10 md:p-12 flex flex-col justify-center">
+                    <span class="category-label mb-4">Research & Training</span>
+                    <h2 class="text-3xl md:text-4xl font-bold leading-tight mb-6">Svashasan Labs unveils 'Param-1' supercomputing cluster for end-to-end training</h2>
+                    <p class="text-gray-500 mb-8 leading-relaxed">The new infrastructure doubles neural network training speed, accelerating the deployment of autonomous features across the fleet.</p>
+                    <span class="text-sm font-medium text-gray-400 uppercase tracking-widest">February 7, 2026</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- News Grid -->
+        <section class="container mx-auto px-6 pt-12">
+            <h3 class="text-2xl font-bold mb-10 fade-in-up">The Latest</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- News 1 -->
+                <div class="news-card bg-white rounded-[28px] overflow-hidden fade-in-up" style="animation-delay: 0.1s;">
+                    <div class="h-60 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=1000" alt="Simulation Environment" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-8">
+                        <span class="category-label mb-2 block">Simulation</span>
+                        <h4 class="text-xl font-bold mb-4 leading-snug">Svashasan Sim 4.0: Achieving photorealism in edge-case testing</h4>
+                        <div class="mt-8 flex items-center justify-between">
+                            <span class="text-xs text-gray-400 font-medium">Feb 02, 2026</span>
+                            <button class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-400 hover:text-gray-900 transition-colors">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- News 2 -->
+                <div class="news-card bg-white rounded-[28px] overflow-hidden fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="h-60 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1000" alt="Testing Facility" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-8">
+                        <span class="category-label mb-2 block">Company News</span>
+                        <h4 class="text-xl font-bold mb-4 leading-snug">Labs expands specialized testing facility in Southern India</h4>
+                        <div class="mt-8 flex items-center justify-between">
+                            <span class="text-xs text-gray-400 font-medium">Jan 28, 2026</span>
+                            <button class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-400 hover:text-gray-900 transition-colors">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- News 3 -->
+                <div class="news-card bg-white rounded-[28px] overflow-hidden fade-in-up" style="animation-delay: 0.3s;">
+                    <div class="h-60 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&q=80&w=1000" alt="Data Network" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-8">
+                        <span class="category-label mb-2 block">Open Science</span>
+                        <h4 class="text-xl font-bold mb-4 leading-snug">Contributing to Global Safety: Svashasan open-sources dataset</h4>
+                        <div class="mt-8 flex items-center justify-between">
+                            <span class="text-xs text-gray-400 font-medium">Jan 15, 2026</span>
+                            <button class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-400 hover:text-gray-900 transition-colors">+</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Archive Section -->
+        <section class="container mx-auto px-6 pt-24 text-center">
+            <a href="#" class="inline-flex items-center text-svashasanBlue font-bold text-lg hover:underline group">
+                Browse News Archive
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+            </a>
+        </section>
+
+    </main>
+
+    <!-- Footer Section (Exact replica) -->
+    <footer class="bg-gray-800 text-white py-6 text-center">
+        <div class="container mx-auto px-4 md:px-6">
+            <p>&copy; 2026 स्वशासन. All Rights Reserved.</p>
+            <p class="mt-2 text-sm space-x-2">
+                <a href="privacy-policy.html" class="hover:underline">Privacy Policy</a>
+                <span>|</span>
+                <a href="terms-of-use.html" class="hover:underline">Terms & Conditions</a>
+                <span>|</span>
+                <a href="cookie-policy.html" class="hover:underline">Cookie Policy</a>
+                <span>|</span>
+                <a href="careers.html" class="hover:underline">Careers</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const menuButton = document.getElementById('menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const body = document.body;
+
+        const toggleMenu = () => {
+            const isMenuOpen = !mobileMenu.classList.contains('hidden');
+            if (isMenuOpen) {
+                mobileMenu.classList.add('opacity-0');
+                body.style.overflow = '';
+                setTimeout(() => mobileMenu.classList.add('hidden'), 300);
+            } else {
+                mobileMenu.classList.remove('hidden');
+                setTimeout(() => {
+                    mobileMenu.classList.remove('opacity-0');
+                    body.style.overflow = 'hidden';
+                }, 10);
+            }
+        };
+
+        if (menuButton) menuButton.addEventListener('click', toggleMenu);
+    });
+    </script>
+</body>
+</html>

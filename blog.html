@@ -26,7 +26,7 @@
         html, body {
             overflow-x: hidden;
             scroll-behavior: smooth;
-            background-color: #f5f5f7; /* Apple-style soft background */
+            background-color: #f5f5f7;
         }
 
         .fade-in-up {
@@ -55,13 +55,34 @@
             transform: scale(1.05);
         }
 
-        /* Category Pill Styling */
         .category-label {
             font-size: 0.75rem;
             font-weight: 700;
             letter-spacing: 0.05em;
             text-transform: uppercase;
             color: #6e6e73;
+        }
+
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .sub-nav-active {
+            color: #000 !important;
+            border-bottom: 2px solid #000;
+        }
+
+        /* Media Kit Grid Item */
+        .asset-card:hover .overlay {
+            opacity: 1;
         }
     </style>
 </head>
@@ -70,7 +91,7 @@
     <!-- Header Section (Exact replica) -->
     <header class="fixed top-0 left-0 right-0 z-50 bg-white bg-opacity-80 backdrop-blur-md py-4 shadow-sm border-b border-gray-100">
         <div class="container mx-auto flex items-center justify-between px-4 sm:px-6">
-            <a href="https://svashasan.com/" class="flex-shrink-0">
+            <a href="index.html" class="flex-shrink-0">
                 <img src="2.png" alt="Svashasan Logo" class="h-10 w-auto object-contain">
             </a>
             <nav class="hidden md:flex flex-grow justify-center">
@@ -78,10 +99,10 @@
                     <li><a href="index.html#about" class="hover:text-gray-900 transition-all">About Us</a></li>
                     <li><a href="index.html#features" class="hover:text-gray-900 transition-all">Features</a></li>
                     <li><a href="index.html#contact" class="hover:text-gray-900 transition-all">Contact</a></li>
-                    <li><a href="https://svashasan.com/blog" class="hover:text-gray-900 transition-all">Blog</a></li>
-                    <li><a href="https://svashasan.com/survey" class="hover:text-gray-900 transition-all">Survey</a></li>
-                    <li><a href="https://svashasan.com/developer-platform" class="hover:text-gray-900 transition-all">API</a></li>
-                    <li><a href="https://svashasan.com/model-performance" class="hover:text-gray-900 transition-all">Models</a></li>
+                    <li><a href="blog.html" class="hover:text-gray-900 transition-all">Blog</a></li>
+                    <li><a href="survey.html" class="hover:text-gray-900 transition-all">Survey</a></li>
+                    <li><a href="developer-platform.html" class="hover:text-gray-900 transition-all">API</a></li>
+                    <li><a href="model-performance.html" class="hover:text-gray-900 transition-all">Models</a></li>
                 </ul>
             </nav>
             <div class="flex items-center space-x-4 header-right-group ml-auto">
@@ -100,110 +121,182 @@
 
     <!-- Mobile Menu Overlay -->
     <div id="mobile-menu" class="hidden fixed inset-0 bg-white z-40 flex flex-col justify-center items-center opacity-0 transition-opacity duration-300">
-        <ul class="flex flex-col space-y-10 text-gray-900 text-3xl font-bold items-center">
-            <li><a href="index.html#about" class="hover:text-gray-900 transition-all">About Us</a></li>
-            <li><a href="index.html#features" class="hover:text-gray-900 transition-all">Features</a></li>
-            <li><a href="index.html#contact" class="hover:text-gray-900 transition-all">Contact</a></li>
-            <li><a href="https://svashasan.com/blog" class="hover:text-gray-900 transition-all">Blog</a></li>
-            <li><a href="https://svashasan.com/survey" class="hover:text-gray-900 transition-all">Survey</a></li>
-            <li><a href="https://svashasan.com/developer-platform" class="hover:text-gray-900 transition-all">API</a></li>
-            <li><a href="https://svashasan.com/model-performance" class="hover:text-gray-900 transition-all">Models</a></li>
+        <ul class="flex flex-col space-y-10 text-gray-900 text-3xl font-bold items-center text-center">
+            <li><button data-target="news-view" class="mobile-nav-btn">All News</button></li>
+            <li><button data-target="research-view" class="mobile-nav-btn">Research</button></li>
+            <li><button data-target="updates-view" class="mobile-nav-btn">Updates</button></li>
+            <li><button data-target="media-kit-view" class="mobile-nav-btn">Media Kit</button></li>
+            <li><a href="index.html">Main Website</a></li>
         </ul>
     </div>
 
     <!-- Newsroom Sub-Header -->
-    <div class="pt-24 bg-white">
-        <div class="container mx-auto px-6 py-6 flex items-center justify-between border-b border-gray-100">
+    <div class="pt-24 bg-white sticky top-0 z-40 border-b border-gray-100 shadow-sm">
+        <div class="container mx-auto px-6 py-6 flex items-center justify-between">
             <h1 class="text-2xl font-bold tracking-tight">Labs Newsroom</h1>
-            <div class="hidden md:flex space-x-6 text-sm font-medium text-gray-500">
-                <a href="#" class="text-gray-900">All News</a>
-                <a href="#" class="hover:text-gray-900">Research</a>
-                <a href="#" class="hover:text-gray-900">Updates</a>
-                <a href="#" class="hover:text-gray-900">Media Kit</a>
+            <div class="hidden md:flex space-x-8 text-sm font-medium text-gray-500">
+                <button data-target="news-view" class="sub-nav-btn sub-nav-active pb-1 hover:text-gray-900 transition-colors">All News</button>
+                <button data-target="research-view" class="sub-nav-btn pb-1 hover:text-gray-900 transition-colors">Research</button>
+                <button data-target="updates-view" class="sub-nav-btn pb-1 hover:text-gray-900 transition-colors">Updates</button>
+                <button data-target="media-kit-view" class="sub-nav-btn pb-1 hover:text-gray-900 transition-colors">Media Kit</button>
             </div>
         </div>
     </div>
 
-    <!-- Main Content -->
+    <!-- Main Content Area -->
     <main class="bg-[#f5f5f7] pb-24">
         
-        <!-- Hero Section: Featured Story -->
-        <section class="container mx-auto px-6 pt-12">
-            <div class="group cursor-pointer bg-white rounded-[28px] overflow-hidden flex flex-col md:flex-row shadow-sm hover:shadow-xl transition-shadow duration-500 fade-in-up">
-                <div class="w-full md:w-2/3 overflow-hidden h-[400px] md:h-[600px]">
-                    <img src="https://images.unsplash.com/photo-1555664424-778a1e5e1b48?auto=format&fit=crop&q=80&w=2000" alt="Supercomputing Cluster" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                </div>
-                <div class="w-full md:w-1/3 p-10 md:p-12 flex flex-col justify-center">
-                    <span class="category-label mb-4">Research & Training</span>
-                    <h2 class="text-3xl md:text-4xl font-bold leading-tight mb-6">Svashasan Labs unveils 'Param-1' supercomputing cluster for end-to-end training</h2>
-                    <p class="text-gray-500 mb-8 leading-relaxed">The new infrastructure doubles neural network training speed, accelerating the deployment of autonomous features across the fleet.</p>
-                    <span class="text-sm font-medium text-gray-400 uppercase tracking-widest">February 7, 2026</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- News Grid -->
-        <section class="container mx-auto px-6 pt-12">
-            <h3 class="text-2xl font-bold mb-10 fade-in-up">The Latest</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                
-                <!-- News 1 -->
-                <div class="news-card bg-white rounded-[28px] overflow-hidden fade-in-up" style="animation-delay: 0.1s;">
-                    <div class="h-60 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=1000" alt="Simulation Environment" class="w-full h-full object-cover">
+        <!-- VIEW 1: ALL NEWS -->
+        <div id="news-view" class="tab-content active">
+            <section class="container mx-auto px-6 pt-12">
+                <div class="group cursor-pointer bg-white rounded-[28px] overflow-hidden flex flex-col md:flex-row shadow-sm hover:shadow-xl transition-shadow duration-500 fade-in-up">
+                    <div class="w-full md:w-2/3 overflow-hidden h-[400px] md:h-[600px]">
+                        <img src="https://images.unsplash.com/photo-1555664424-778a1e5e1b48?auto=format&fit=crop&q=80&w=2000" alt="Supercomputing Cluster" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                     </div>
-                    <div class="p-8">
-                        <span class="category-label mb-2 block">Simulation</span>
-                        <h4 class="text-xl font-bold mb-4 leading-snug">Svashasan Sim 4.0: Achieving photorealism in edge-case testing</h4>
-                        <div class="mt-8 flex items-center justify-between">
+                    <div class="w-full md:w-1/3 p-10 md:p-12 flex flex-col justify-center">
+                        <span class="category-label mb-4">Research & Training</span>
+                        <h2 class="text-3xl md:text-4xl font-bold leading-tight mb-6">Svashasan Labs unveils 'Param-1' supercomputing cluster</h2>
+                        <p class="text-gray-500 mb-8 leading-relaxed">The new infrastructure doubles neural network training speed, accelerating autonomous feature deployment.</p>
+                        <span class="text-sm font-medium text-gray-400 uppercase tracking-widest">February 7, 2026</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="container mx-auto px-6 pt-12">
+                <h3 class="text-2xl font-bold mb-10 fade-in-up">The Latest</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="news-card bg-white rounded-[28px] overflow-hidden fade-in-up" style="animation-delay: 0.1s;">
+                        <div class="h-60 overflow-hidden"><img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=1000" class="w-full h-full object-cover"></div>
+                        <div class="p-8">
+                            <span class="category-label mb-2 block">Simulation</span>
+                            <h4 class="text-xl font-bold mb-4 leading-snug">Svashasan Sim 4.0: Photorealistic edge-case testing</h4>
                             <span class="text-xs text-gray-400 font-medium">Feb 02, 2026</span>
-                            <button class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-400 hover:text-gray-900 transition-colors">+</button>
                         </div>
                     </div>
-                </div>
-
-                <!-- News 2 -->
-                <div class="news-card bg-white rounded-[28px] overflow-hidden fade-in-up" style="animation-delay: 0.2s;">
-                    <div class="h-60 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1000" alt="Testing Facility" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-8">
-                        <span class="category-label mb-2 block">Company News</span>
-                        <h4 class="text-xl font-bold mb-4 leading-snug">Labs expands specialized testing facility in Southern India</h4>
-                        <div class="mt-8 flex items-center justify-between">
+                    <div class="news-card bg-white rounded-[28px] overflow-hidden fade-in-up" style="animation-delay: 0.2s;">
+                        <div class="h-60 overflow-hidden"><img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1000" class="w-full h-full object-cover"></div>
+                        <div class="p-8">
+                            <span class="category-label mb-2 block">Expansion</span>
+                            <h4 class="text-xl font-bold mb-4 leading-snug">Labs expands testing facility in Southern India</h4>
                             <span class="text-xs text-gray-400 font-medium">Jan 28, 2026</span>
-                            <button class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-400 hover:text-gray-900 transition-colors">+</button>
                         </div>
                     </div>
-                </div>
-
-                <!-- News 3 -->
-                <div class="news-card bg-white rounded-[28px] overflow-hidden fade-in-up" style="animation-delay: 0.3s;">
-                    <div class="h-60 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&q=80&w=1000" alt="Data Network" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-8">
-                        <span class="category-label mb-2 block">Open Science</span>
-                        <h4 class="text-xl font-bold mb-4 leading-snug">Contributing to Global Safety: Svashasan open-sources dataset</h4>
-                        <div class="mt-8 flex items-center justify-between">
+                    <div class="news-card bg-white rounded-[28px] overflow-hidden fade-in-up" style="animation-delay: 0.3s;">
+                        <div class="h-60 overflow-hidden"><img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&q=80&w=1000" class="w-full h-full object-cover"></div>
+                        <div class="p-8">
+                            <span class="category-label mb-2 block">Open Science</span>
+                            <h4 class="text-xl font-bold mb-4 leading-snug">Contributing to Global Safety: Dataset Open-sourced</h4>
                             <span class="text-xs text-gray-400 font-medium">Jan 15, 2026</span>
-                            <button class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-400 hover:text-gray-900 transition-colors">+</button>
                         </div>
                     </div>
                 </div>
+            </section>
+        </div>
 
-            </div>
-        </section>
+        <!-- VIEW 2: RESEARCH -->
+        <div id="research-view" class="tab-content">
+            <section class="container mx-auto px-6 pt-12">
+                <div class="bg-brandNavy text-white rounded-[28px] p-12 md:p-20 flex flex-col items-center text-center fade-in-up shadow-2xl relative overflow-hidden">
+                    <div class="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,#fff_1px,transparent_1px)] [background-size:32px_32px]"></div>
+                    <span class="category-label text-blue-300 mb-6">Scientific Methodology</span>
+                    <h2 class="text-3xl md:text-5xl font-bold mb-6 max-w-3xl">Advancing Autonomy through Science</h2>
+                    <p class="text-blue-100 text-lg max-w-2xl mb-10 opacity-80">Our teams publish peer-reviewed research on robotics and temporal neural networks.</p>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <button class="bg-white text-brandNavy px-8 py-3 rounded-full font-bold hover:bg-blue-50 transition-all">Latest Whitepaper</button>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="container mx-auto px-6 pt-16">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white p-10 rounded-[28px] shadow-sm hover:shadow-md transition-all group">
+                        <span class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-6 block">Methodology</span>
+                        <h4 class="text-2xl font-bold mb-4 group-hover:text-svashasanBlue transition-colors">4D-Transformer Networks for Scene Reconstruction</h4>
+                        <p class="text-gray-500 mb-8">Evaluating zero-latency mapping via temporal lidar fusion.</p>
+                        <a href="#" class="text-svashasanBlue font-bold hover:underline">Download PDF →</a>
+                    </div>
+                    <div class="bg-white p-10 rounded-[28px] shadow-sm hover:shadow-md transition-all group">
+                        <span class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-6 block">Case study</span>
+                        <h4 class="text-2xl font-bold mb-4 group-hover:text-svashasanBlue transition-colors">Human-Model Alignment in Autonomous Maneuvers</h4>
+                        <p class="text-gray-500 mb-8">Mimicking defensive driving signatures for improved safety.</p>
+                        <a href="#" class="text-svashasanBlue font-bold hover:underline">Read Methodology →</a>
+                    </div>
+                </div>
+            </section>
+        </div>
 
-        <!-- Archive Section -->
-        <section class="container mx-auto px-6 pt-24 text-center">
-            <a href="#" class="inline-flex items-center text-svashasanBlue font-bold text-lg hover:underline group">
-                Browse News Archive
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-            </a>
-        </section>
+        <!-- VIEW 3: UPDATES (NEW) -->
+        <div id="updates-view" class="tab-content">
+            <section class="container mx-auto px-6 pt-12">
+                <h3 class="text-3xl font-bold mb-10">System Updates</h3>
+                <div class="space-y-6">
+                    <!-- Update Entry -->
+                    <div class="bg-white rounded-[28px] p-8 md:p-12 shadow-sm flex flex-col md:flex-row gap-8 items-start md:items-center justify-between border border-gray-50">
+                        <div>
+                            <div class="flex items-center gap-3 mb-3">
+                                <span class="bg-green-100 text-green-700 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-widest">Stable Release</span>
+                                <span class="text-xs text-gray-400 font-bold">VERSION 2026.5.12</span>
+                            </div>
+                            <h4 class="text-2xl font-bold mb-2">Enhancing Lateral Vision Precision</h4>
+                            <p class="text-gray-500 max-w-xl">Improving blind-spot detection accuracy by 14% using the new SV-1000 vision model.</p>
+                        </div>
+                        <button class="bg-gray-900 text-white px-8 py-3 rounded-full text-sm font-bold">Release Notes</button>
+                    </div>
+                    <!-- Update Entry -->
+                    <div class="bg-white rounded-[28px] p-8 md:p-12 shadow-sm flex flex-col md:flex-row gap-8 items-start md:items-center justify-between border border-gray-50">
+                        <div>
+                            <div class="flex items-center gap-3 mb-3">
+                                <span class="bg-blue-100 text-blue-700 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-widest">Fleet Stat</span>
+                                <span class="text-xs text-gray-400 font-bold">MILESTONE REACHED</span>
+                            </div>
+                            <h4 class="text-2xl font-bold mb-2">10 Million Kilometers Logged</h4>
+                            <p class="text-gray-500 max-w-xl">Our supervised pilot fleet has officially crossed a major data-gathering milestone.</p>
+                        </div>
+                        <span class="text-gray-400 font-bold italic">January 2026</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- VIEW 4: MEDIA KIT (NEW) -->
+        <div id="media-kit-view" class="tab-content">
+            <section class="container mx-auto px-6 pt-12">
+                <div class="max-w-4xl">
+                    <h3 class="text-4xl font-bold mb-6">Media Kit</h3>
+                    <p class="text-gray-500 text-lg mb-12">Download official brand assets, high-resolution photography, and leadership materials for press and media use.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Asset: Logos -->
+                    <div class="bg-white rounded-[28px] p-8 shadow-sm border border-gray-100">
+                        <div class="w-16 h-16 bg-gray-100 rounded-2xl flex items-center justify-center mb-6 text-brandNavy">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+                        </div>
+                        <h4 class="text-xl font-bold mb-2">Official Logos</h4>
+                        <p class="text-sm text-gray-500 mb-6">Vector and raster versions of the Svashasan Labs identities.</p>
+                        <a href="#" class="text-svashasanBlue font-bold text-sm">Download Assets (12MB)</a>
+                    </div>
+                    <!-- Asset: Fleet Photos -->
+                    <div class="bg-white rounded-[28px] p-8 shadow-sm border border-gray-100">
+                        <div class="w-16 h-16 bg-gray-100 rounded-2xl flex items-center justify-center mb-6 text-brandNavy">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
+                        </div>
+                        <h4 class="text-xl font-bold mb-2">Fleet Gallery</h4>
+                        <p class="text-sm text-gray-500 mb-6">Action shots of the campus deployment and sensor hardware.</p>
+                        <a href="#" class="text-svashasanBlue font-bold text-sm">Access Photo Stream</a>
+                    </div>
+                    <!-- Asset: Contact -->
+                    <div class="bg-white rounded-[28px] p-8 shadow-sm border border-gray-100">
+                        <div class="w-16 h-16 bg-gray-100 rounded-2xl flex items-center justify-center mb-6 text-brandNavy">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        </div>
+                        <h4 class="text-xl font-bold mb-2">Press Contact</h4>
+                        <p class="text-sm text-gray-500 mb-6">Inquiries for interviews or official statements.</p>
+                        <a href="mailto:press@svashasan.com" class="text-svashasanBlue font-bold text-sm">press@svashasan.com</a>
+                    </div>
+                </div>
+            </section>
+        </div>
 
     </main>
 
@@ -230,6 +323,7 @@
         const mobileMenu = document.getElementById('mobile-menu');
         const body = document.body;
 
+        // Mobile Menu Toggle
         const toggleMenu = () => {
             const isMenuOpen = !mobileMenu.classList.contains('hidden');
             if (isMenuOpen) {
@@ -246,6 +340,37 @@
         };
 
         if (menuButton) menuButton.addEventListener('click', toggleMenu);
+
+        // Tab Navigation Logic
+        const subNavBtns = document.querySelectorAll('.sub-nav-btn');
+        const mobileNavBtns = document.querySelectorAll('.mobile-nav-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        const switchTab = (targetId) => {
+            // Update Active Class on Desktop Nav
+            subNavBtns.forEach(btn => {
+                btn.classList.toggle('sub-nav-active', btn.getAttribute('data-target') === targetId);
+            });
+
+            // Update Tab Content Visibility
+            tabContents.forEach(content => {
+                content.classList.toggle('active', content.id === targetId);
+            });
+
+            // If mobile menu is open, close it
+            if (!mobileMenu.classList.contains('hidden')) toggleMenu();
+
+            // Scroll to the top of the content area
+            window.scrollTo({ top: 120, behavior: 'smooth' });
+        };
+
+        subNavBtns.forEach(btn => {
+            btn.addEventListener('click', () => switchTab(btn.getAttribute('data-target')));
+        });
+
+        mobileNavBtns.forEach(btn => {
+            btn.addEventListener('click', () => switchTab(btn.getAttribute('data-target')));
+        });
     });
     </script>
 </body>

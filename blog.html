@@ -122,11 +122,14 @@
     <!-- Mobile Menu Overlay -->
     <div id="mobile-menu" class="hidden fixed inset-0 bg-white z-40 flex flex-col justify-center items-center opacity-0 transition-opacity duration-300">
         <ul class="flex flex-col space-y-10 text-gray-900 text-3xl font-bold items-center text-center">
-            <li><button data-target="news-view" class="mobile-nav-btn">All News</button></li>
-            <li><button data-target="research-view" class="mobile-nav-btn">Research</button></li>
-            <li><button data-target="updates-view" class="mobile-nav-btn">Updates</button></li>
-            <li><button data-target="media-kit-view" class="mobile-nav-btn">Media Kit</button></li>
-            <li><a href="index.html">Main Website</a></li>
+             <li><a href="index.html#about" class="hover:text-gray-900 transition-all">About Us</a></li>
+                    <li><a href="index.html#features" class="hover:text-gray-900 transition-all">Features</a></li>
+                    <li><a href="index.html#contact" class="hover:text-gray-900 transition-all">Contact</a></li>
+                    <li><a href="blog.html" class="hover:text-gray-900 transition-all">Blog</a></li>
+                    <li><a href="survey.html" class="hover:text-gray-900 transition-all">Survey</a></li>
+                    <li><a href="developer-platform.html" class="hover:text-gray-900 transition-all">API</a></li>
+                    <li><a href="model-performance.html" class="hover:text-gray-900 transition-all">Models</a></li>
+                </ul>
         </ul>
     </div>
 
@@ -149,6 +152,7 @@
         <!-- VIEW 1: ALL NEWS -->
         <div id="news-view" class="tab-content active">
             <section class="container mx-auto px-6 pt-12">
+                <a href="https://svashasan.com/blog/svashasan-labs-unveils-param-1-supercomputing-cluster-for-end-to-end-training">
                 <div class="group cursor-pointer bg-white rounded-[28px] overflow-hidden flex flex-col md:flex-row shadow-sm hover:shadow-xl transition-shadow duration-500 fade-in-up">
                     <div class="w-full md:w-2/3 overflow-hidden h-[400px] md:h-[600px]">
                         <img src="https://images.unsplash.com/photo-1555664424-778a1e5e1b48?auto=format&fit=crop&q=80&w=2000" alt="Supercomputing Cluster" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
@@ -160,6 +164,7 @@
                         <span class="text-sm font-medium text-gray-400 uppercase tracking-widest">February 7, 2026</span>
                     </div>
                 </div>
+                </a>
             </section>
 
             <section class="container mx-auto px-6 pt-12">

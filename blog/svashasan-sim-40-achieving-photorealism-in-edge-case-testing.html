@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Svashasan Sim 4.0: Photorealistic edge-case testing - Svashasan</title>
+    <link rel="icon" type="image/png" href="2.png" sizes="32x32">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        svashasanBlue: '#2563eb',
+                        teslaDark: '#171a20',
+                        brandNavy: '#1E1A4D'
+                    }
+                }
+            }
+        }
+        
+        html, body {
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            background-color: #ffffff;
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Editorial spacing and typography */
+        .article-content p {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            color: #1d1d1f;
+            font-size: 1.125rem;
+        }
+
+        .article-content h2 {
+            font-size: 1.875rem;
+            font-weight: 700;
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            color: #1d1d1f;
+        }
+
+        blockquote {
+            border-left: 4px solid #2563eb;
+            padding-left: 1.5rem;
+            font-style: italic;
+            margin: 3rem 0;
+            font-size: 1.5rem;
+            color: #1d1d1f;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-900">
+
+    <!-- Header Section (Exact replica) -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white bg-opacity-80 backdrop-blur-md py-4 shadow-sm border-b border-gray-100">
+        <div class="container mx-auto flex items-center justify-between px-4 sm:px-6">
+            <a href="index.html" class="flex-shrink-0">
+                <img src="2.png" alt="Svashasan Logo" class="h-10 w-auto object-contain">
+            </a>
+            <nav class="hidden md:flex flex-grow justify-center">
+                <ul class="flex space-x-6 text-gray-600 font-medium">
+                    <li><a href="index.html#about" class="hover:text-gray-900 transition-all">About Us</a></li>
+                    <li><a href="index.html#features" class="hover:text-gray-900 transition-all">Features</a></li>
+                    <li><a href="index.html#contact" class="hover:text-gray-900 transition-all">Contact</a></li>
+                    <li><a href="blog.html" class="hover:text-gray-900 transition-all">Blog</a></li>
+                    <li><a href="survey.html" class="hover:text-gray-900 transition-all">Survey</a></li>
+                    <li><a href="developer-platform.html" class="hover:text-gray-900 transition-all">API</a></li>
+                    <li><a href="model-performance.html" class="hover:text-gray-900 transition-all">Models</a></li>
+                </ul>
+            </nav>
+            <div class="flex items-center space-x-4 header-right-group ml-auto">
+                <a href="support.html" class="text-gray-600 hover:text-gray-900 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-help"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 1 1 5.82 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                </a>
+                <a href="profile.html" class="text-gray-600 hover:text-gray-900 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-circle"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="10" r="3"/><path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662"/></svg>
+                </a>
+                <button id="menu-button" class="md:hidden text-gray-600 focus:outline-none">
+                     <svg id="menu-open-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div id="mobile-menu" class="hidden fixed inset-0 bg-white z-40 flex flex-col justify-center items-start px-8 opacity-0">
+        <a href="index.html" class="py-3 text-xl font-semibold text-gray-900">Home</a>
+        <a href="index.html#about" class="py-3 text-xl font-semibold text-gray-900">About Us</a>
+        <a href="index.html#features" class="py-3 text-xl font-semibold text-gray-900">Features</a>
+        <a href="blog.html" class="py-3 text-xl font-semibold text-gray-900">Blog</a>
+        <a href="support.html" class="py-3 text-xl font-semibold text-gray-900">Support</a>
+    </div>
+
+    <!-- Labs Newsroom Sub-Header (UX Anchor) -->
+    <div class="pt-24 bg-white border-b border-gray-100">
+        <div class="container mx-auto px-6 py-4 flex items-center">
+            <a href="labs-newsroom.html" class="text-sm font-bold text-gray-400 hover:text-gray-900 transition-colors">Labs Newsroom</a>
+            <span class="mx-3 text-gray-300">/</span>
+            <span class="text-sm font-medium text-gray-900">Research & Simulation</span>
+        </div>
+    </div>
+
+    <!-- Article Header -->
+    <article class="pt-12">
+        <div class="container mx-auto px-6 max-w-4xl text-center">
+            <span class="text-svashasanBlue font-bold tracking-widest uppercase text-xs mb-4 block fade-in-up">Simulation & Testing</span>
+            <h1 class="text-4xl md:text-6xl font-bold leading-[1.1] mb-8 fade-in-up text-gray-900">Svashasan Sim 4.0: Achieving photorealism in edge-case testing</h1>
+            <p class="text-sm font-bold text-gray-400 uppercase tracking-widest mb-12 fade-in-up">February 2, 2026</p>
+        </div>
+
+        <!-- Full-Width Hero Image -->
+        <div class="w-full max-w-[1440px] mx-auto px-0 md:px-6 mb-16 fade-in-up" style="animation-delay: 0.1s;">
+            <div class="aspect-[21/9] w-full overflow-hidden rounded-none md:rounded-[40px] shadow-2xl">
+                <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=2500" alt="Virtual Simulation Environment" class="w-full h-full object-cover">
+            </div>
+            <p class="mt-4 text-xs text-center text-gray-400">A frame from Svashasan Sim 4.0: Validating pedestrian crossing behavior in dynamic, low-light urban environments.</p>
+        </div>
+
+        <!-- Article Body -->
+        <div class="container mx-auto px-6 max-w-3xl article-content fade-in-up" style="animation-delay: 0.2s;">
+            <p class="font-bold text-lg leading-relaxed mb-10">
+                <span class="text-gray-900">BENGALURU, India</span> — Svashasan Labs today introduced Sim 4.0, a generational leap in autonomous vehicle simulation that utilizes Neural Radiance Fields (NeRFs) and real-world sensor data to create photorealistic virtual testing environments.
+            </p>
+
+            <p>
+                To achieve the safety levels required for unsupervised driving, autonomous systems must be exposed to "edge cases"—rare and dangerous scenarios that are difficult or unethical to replicate in the real world. Sim 4.0 allows Svashasan’s AI models to encounter these situations millions of times per day in a perfectly controlled, high-fidelity digital twin of the physical world.
+            </p>
+
+            <h2>Closing the Sim-to-Real Gap</h2>
+            <p>
+                Traditional simulation often suffers from the "sim-to-real gap," where neural networks behave differently in virtual environments than they do on actual roads due to subtle differences in lighting, texture, and sensor noise. Sim 4.0 solves this by using generative AI to "re-render" real-world driving footage into interactive 3D scenes. 
+            </p>
+
+            <blockquote>
+                "Sim 4.0 isn't just about better graphics; it's about physical accuracy. We are modeling everything from the way rain droplets distort camera lenses to the specific infrared signatures of different types of asphalt."
+                <cite class="block mt-4 not-italic text-sm font-bold text-gray-400 uppercase">— Vikram Mehra, Lead Simulation Engineer</cite>
+            </blockquote>
+
+            <h2>Massively Parallel Validation</h2>
+            <p>
+                Leveraging the newly activated <a href="param-1-unveiled.html" class="text-svashasanBlue hover:underline font-bold">Param-1 supercomputing cluster</a>, Svashasan can now run 50,000 simultaneous simulations. This allows our engineering team to validate every software update against a massive library of "stress tests" before a single line of code is pushed to the customer fleet.
+            </p>
+
+            <div class="my-16 overflow-hidden rounded-3xl bg-gray-100 p-2 shadow-inner">
+                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1600" alt="Code and Simulation" class="w-full h-auto rounded-2xl">
+                <p class="mt-4 text-xs px-4 text-gray-400 italic">Sim 4.0 integrates directly into the developer workflow, providing real-time feedback on model disengagements.</p>
+            </div>
+
+            <h2>Testing the Impossible</h2>
+            <p>
+                Whether it's a child running into the street from between parked cars or a semi-truck losing its load on a high-speed highway, Sim 4.0 can generate infinite variations of critical events. By training on these "impossible" scenarios, our vehicles develop a level of defensive driving intuition that exceeds human capability.
+            </p>
+            
+            <p>
+                The rollout of Sim 4.0 marks a pivotal moment for Svashasan Labs as we continue to define the gold standard for autonomous safety through rigorous, science-based validation.
+            </p>
+            
+            <div class="mt-20 pt-10 border-t border-gray-100 flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-0 sm:justify-between">
+                <div class="flex space-x-4">
+                    <button class="bg-gray-100 p-2 rounded-full hover:bg-gray-200 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+                    </button>
+                    <button class="bg-gray-100 px-4 py-2 rounded-full text-xs font-bold hover:bg-gray-200 transition-colors uppercase tracking-widest">Share Article</button>
+                </div>
+                <p class="text-xs text-gray-400">Media Inquiries: press@svashasan.com</p>
+            </div>
+        </div>
+    </article>
+
+    <!-- Related Stories (Apple-style UX) -->
+    <section class="bg-[#f5f5f7] py-24 mt-24">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <h3 class="text-2xl font-bold mb-10">Related News</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <a href="param-1-unveiled.html" class="group bg-white rounded-[28px] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc51?auto=format&fit=crop&q=80&w=1000" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-8">
+                        <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2 block">Research & Training</span>
+                        <h4 class="text-xl font-bold group-hover:text-svashasanBlue transition-colors">Svashasan Labs unveils 'Param-1' supercomputing cluster</h4>
+                    </div>
+                </a>
+                <a href="#" class="group bg-white rounded-[28px] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&q=80&w=1000" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-8">
+                        <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2 block">Open Science</span>
+                        <h4 class="text-xl font-bold group-hover:text-svashasanBlue transition-colors">Contributing to Global Safety: Dataset Open-sourced</h4>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section (Exact replica) -->
+    <footer class="bg-gray-800 text-white py-6 text-center">
+        <div class="container mx-auto px-4 md:px-6">
+            <p>&copy; 2026 स्वशासन. All Rights Reserved.</p>
+            <p class="mt-2 text-sm space-x-2">
+                <a href="privacy-policy.html" class="hover:underline">Privacy Policy</a>
+                <span>|</span>
+                <a href="terms-of-use.html" class="hover:underline">Terms & Conditions</a>
+                <span>|</span>
+                <a href="cookie-policy.html" class="hover:underline">Cookie Policy</a>
+                <span>|</span>
+                <a href="careers.html" class="hover:underline">Careers</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const menuButton = document.getElementById('menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const body = document.body;
+
+        if (menuButton && mobileMenu) {
+            menuButton.addEventListener('click', () => {
+                const isOpen = !mobileMenu.classList.contains('hidden');
+
+                if (isOpen) {
+                    mobileMenu.classList.add('opacity-0');
+                    body.style.overflow = '';
+                    setTimeout(() => mobileMenu.classList.add('hidden'), 300);
+                } else {
+                    mobileMenu.classList.remove('hidden');
+                    setTimeout(() => mobileMenu.classList.remove('opacity-0'), 10);
+                    body.style.overflow = 'hidden';
+                }
+            });
+
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('opacity-0');
+                    body.style.overflow = '';
+                    setTimeout(() => mobileMenu.classList.add('hidden'), 300);
+                });
+            });
+        }
+    });
+    </script>
+</body>
+</html>

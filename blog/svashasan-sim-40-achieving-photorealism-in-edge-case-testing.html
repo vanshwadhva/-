@@ -7,6 +7,13 @@
     <link rel="icon" type="image/png" href="2.png" sizes="32x32">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+     <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-N89XZGM4');</script>
+<!-- End Google Tag Manager -->
     <style>
         tailwind.config = {
             theme: {
@@ -67,7 +74,10 @@
     </style>
 </head>
 <body class="font-sans text-gray-900">
-
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N89XZGM4"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
     <!-- Header Section (Exact replica) -->
     <header class="fixed top-0 left-0 right-0 z-50 bg-white bg-opacity-80 backdrop-blur-md py-4 shadow-sm border-b border-gray-100">
         <div class="container mx-auto flex items-center justify-between px-4 sm:px-6">
@@ -173,7 +183,7 @@
             
             <div class="mt-20 pt-10 border-t border-gray-100 flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-0 sm:justify-between">
                 <div class="flex space-x-4">
-                    <button class="bg-gray-100 p-2 rounded-full hover:bg-gray-200 transition-colors">
+                    <button id="share-button" class="bg-gray-100 p-2 rounded-full hover:bg-gray-200 transition-colors" aria-label="Share article">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
                     </button>
                     <button class="bg-gray-100 px-4 py-2 rounded-full text-xs font-bold hover:bg-gray-200 transition-colors uppercase tracking-widest">Share Article</button>
@@ -253,6 +263,34 @@
                     body.style.overflow = '';
                     setTimeout(() => mobileMenu.classList.add('hidden'), 300);
                 });
+            });
+        }
+
+        // Share button logic
+        const shareButton = document.getElementById('share-button');
+
+        if (shareButton) {
+            shareButton.addEventListener('click', async () => {
+                const shareData = {
+                    title: document.title,
+                    text: 'Read this article from Svashasan Labs',
+                    url: window.location.href
+                };
+
+                if (navigator.share) {
+                    try {
+                        await navigator.share(shareData);
+                    } catch (err) {
+                        // user cancelled share
+                    }
+                } else {
+                    try {
+                        await navigator.clipboard.writeText(window.location.href);
+                        alert('Link copied to clipboard');
+                    } catch (err) {
+                        alert('Unable to copy link');
+                    }
+                }
             });
         }
     });

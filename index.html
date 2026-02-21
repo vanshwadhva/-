@@ -75,6 +75,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             width: 100%;
         }
 
+        /* FAQ Transition Logic */
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+            opacity: 0;
+        }
+        .faq-item.active .faq-content {
+            max-height: 500px;
+            opacity: 1;
+            padding-bottom: 2rem;
+        }
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
 
         /* Responsive adjustments for grids and sections */
         @media (max-width: 768px) {
@@ -195,10 +210,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <h1 class="text-5xl md:text-7xl font-bold mb-4">Svashasan OS</h1>
             <p class="text-xl md:text-2xl mb-8">The Future of Electric Vehicle Operating Systems</p>
             <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 justify-center">
-                <a href="request-demo.html" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-10 rounded-xl transition-all duration-300 shadow-lg">
+                <a href="https://svashasan.com/request-demo.html" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-10 rounded-xl transition-all duration-300 shadow-lg">
                     Request Demo
                 </a>
-                <a href="learn-more.html" class="inline-block bg-white bg-opacity-20 hover:bg-opacity-30 text-white font-bold py-3 px-10 rounded-xl transition-all duration-300 shadow-lg border border-white border-opacity-30">
+                <a href="https://svashasan.com/learn-more.html" class="inline-block bg-white bg-opacity-20 hover:bg-opacity-30 text-white font-bold py-3 px-10 rounded-xl transition-all duration-300 shadow-lg border border-white border-opacity-30">
                     Learn More
                 </a>
             </div>
@@ -214,9 +229,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </p>
         </div>
 
-        <!-- Added subsections within About -->
+        <!-- Subsections within About -->
         <div class="mt-16 max-w-full">
-             <!-- 1. Simulation Environment -->
              <div class="grid grid-cols-1 md:grid-cols-2 about-subsection">
                  <div class="relative min-h-[400px]">
                     <img src="Simulation_Enviroment.jpg" alt="Custom Simulation Environment" class="w-full h-full object-cover">
@@ -229,7 +243,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </div>
              </div>
 
-             <!-- 2. Supervised Learning Model -->
              <div class="grid grid-cols-1 md:grid-cols-2 about-subsection image-right">
                  <div class="bg-white p-8 md:p-12 text-left flex flex-col justify-center">
                     <h3 class="text-3xl font-bold text-gray-800 mb-4">Supervised Learning Core</h3>
@@ -242,7 +255,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                  </div>
              </div>
 
-             <!-- 3. Technology Stack -->
               <div class="grid grid-cols-1 md:grid-cols-2 about-subsection">
                  <div class="relative min-h-[400px]">
                     <img src="neural mesh network.png" alt="Technology Stack" class="w-full h-full object-cover">
@@ -255,7 +267,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </div>
              </div>
 
-             <!-- 4. Safety Parameters & Metrics -->
              <div class="grid grid-cols-1 md:grid-cols-2 about-subsection image-right">
                  <div class="bg-white p-8 md:p-12 text-left flex flex-col justify-center">
                     <h3 class="text-3xl font-bold text-gray-800 mb-4">Uncompromising Safety</h3>
@@ -268,7 +279,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                  </div>
              </div>
 
-             <!-- 5. Future Vision -->
              <div class="grid grid-cols-1 md:grid-cols-2 about-subsection">
                 <div class="relative min-h-[400px]">
                     <img src="v2v.png" alt="Future V2V World" class="w-full h-full object-cover">
@@ -281,7 +291,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                  </div>
              </div>
         </div>
-        <!-- End of added subsections -->
     </section>
 
     <!-- Key Features Section -->
@@ -327,7 +336,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </p>
                 <div class="scrolling-wrapper relative w-full overflow-hidden">
                     <div class="animate-scroll flex w-max">
-                        <!-- Original 6 profiles -->
                         <div class="flex-shrink-0 w-64 mx-4 text-center">
                             <img src="Vansh_Profile_photo.jpg" alt="Vansh Wadhwa" class="w-40 h-40 mx-auto rounded-full object-cover shadow-lg mb-4">
                             <h3 class="text-xl font-semibold text-gray-800">Vansh Wadhwa</h3>
@@ -348,7 +356,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <h3 class="text-xl font-semibold text-gray-800">Pradnya Naik</h3>
                             <p class="text-gray-600">Robotics and AI Engineer</p>
                         </div>
-                        <!-- Duplicated 6 profiles for seamless loop -->
                         <div class="flex-shrink-0 w-64 mx-4 text-center">
                             <img src="Vansh_Profile_photo.jpg?loop=2" alt="Vansh Wadhwa" class="w-40 h-40 mx-auto rounded-full object-cover shadow-lg mb-4">
                             <h3 class="text-xl font-semibold text-gray-800">Vansh Wadhwa</h3>
@@ -369,6 +376,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <h3 class="text-xl font-semibold text-gray-800">Pradnya Naik</h3>
                             <p class="text-gray-600">Robotics and AI Engineer</p>
                         </div>
+                        <div class="flex-shrink-0 w-64 mx-4 text-center">
+                            <img src="Anshuman_Profile_photo.png?loop=2" alt="Anshuman Phadke" class="w-40 h-40 mx-auto rounded-full object-cover shadow-lg mb-4">
+                            <h3 class="text-xl font-semibold text-gray-800">Anshuman Phadke</h3>
+                            <p class="text-gray-600">Lead ADAS Engineer</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -380,9 +392,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="container mx-auto px-4 md:px-6 text-center">
             <h2 class="text-4xl font-bold text-gray-800 mb-12">Achievements</h2>
             <div class="relative max-w-4xl mx-auto">
-                <!-- Scrollable container -->
                 <div id="achievements-container" class="achievements-container flex overflow-x-auto snap-x snap-mandatory scroll-smooth">
-                    <!-- Achievement 1: NVIDIA -->
                     <div class="flex-shrink-0 w-full snap-center flex flex-col md:flex-row items-center justify-center gap-8 bg-gray-50 p-10 rounded-lg shadow-md">
                         <div class="w-48 h-24 flex items-center justify-center">
                             <img src="NVIDIA_logo.png" alt="NVIDIA Logo" class="max-w-full max-h-full object-contain">
@@ -394,19 +404,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             </p>
                         </div>
                     </div>
-                    <!-- Achievement 2: DPIIT -->
-                    <div class="flex-shrink-0 w-full snap-center flex flex-col md:flex-row items-center justify-center gap-8 bg-gray-50 p-10 rounded-lg shadow-md">
-                        <div class="w-48 h-24 flex items-center justify-center">
-                            <img src="Startup_India_logo.png" alt="DPIIT Startup India Logo" class="max-w-full max-h-full object-contain">
-                        </div>
-                        <div class="text-left">
-                            <h3 class="text-3xl font-bold text-gray-800">DPIIT Recognition</h3>
-                            <p class="text-lg text-gray-700 mt-2">
-                                We are recognized by the Department for Promotion of Industry and Internal Trade (DPIIT) as a startup driving innovation in the EV ecosystem.
-                            </p>
-                        </div>
-                    </div> 
-                    <!-- Achievement 3: Pillai College -->
                     <div class="flex-shrink-0 w-full snap-center flex flex-col md:flex-row items-center justify-center gap-8 bg-gray-50 p-10 rounded-lg shadow-md">
                         <div class="w-48 h-24 flex items-center justify-center">
                             <img src="PCE_logo.png" alt="Pillai College of Engineering Logo" class="max-w-full max-h-full object-contain">
@@ -419,13 +416,141 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         </div>
                     </div>
                 </div>
-                <!-- Navigation Buttons -->
                 <button id="scroll-left" class="absolute top-1/2 left-0 -translate-y-1/2 bg-white p-2 rounded-full shadow-md hover:bg-gray-100 transition-colors">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
                 </button>
                 <button id="scroll-right" class="absolute top-1/2 right-0 -translate-y-1/2 bg-white p-2 rounded-full shadow-md hover:bg-gray-100 transition-colors">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
                 </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section (Clean & Minimalist) -->
+    <section id="faq" class="py-24 bg-gray-50">
+        <div class="container mx-auto px-4 md:px-6">
+            <h2 class="text-4xl font-bold text-gray-800 mb-16 text-center">Frequently Asked Questions</h2>
+            <div class="max-w-4xl mx-auto">
+                
+                <!-- FAQ Item 1 -->
+                <div class="faq-item border-b border-gray-200">
+                    <button class="faq-toggle w-full flex items-center justify-between py-6 text-left group focus:outline-none">
+                        <span class="text-xl font-semibold text-gray-800 group-hover:text-blue-600 transition-colors">What makes Svashasan OS different from other EV operating systems?</span>
+                        <div class="faq-icon-wrapper flex items-center justify-center ml-4">
+                            <svg class="faq-icon h-6 w-6 text-gray-400 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                            </svg>
+                        </div>
+                    </button>
+                    <div class="faq-content">
+                        <p class="text-lg text-gray-600 leading-relaxed max-w-3xl">
+                            Svashasan OS is built on a "Full-Stack Autonomy" philosophy. Unlike closed systems, our OS provides a hardware-agnostic layer that allows OEMs to integrate diverse sensors and motor controllers easily. Our focus on self-reliance (स्वशासन) means we prioritize on-edge processing for safety and open APIs for a customizable user experience.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="faq-item border-b border-gray-200">
+                    <button class="faq-toggle w-full flex items-center justify-between py-6 text-left group focus:outline-none">
+                        <span class="text-xl font-semibold text-gray-800 group-hover:text-blue-600 transition-colors">As an OEM, how easily can we integrate Svashasan OS into our existing hardware?</span>
+                        <div class="faq-icon-wrapper flex items-center justify-center ml-4">
+                            <svg class="faq-icon h-6 w-6 text-gray-400 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                            </svg>
+                        </div>
+                    </button>
+                    <div class="faq-content">
+                        <p class="text-lg text-gray-600 leading-relaxed max-w-3xl">
+                            Integration is streamlined through our modular architecture. We provide a comprehensive SDK and HAL (Hardware Abstraction Layer) that supports standard automotive protocols (CAN bus, LIN, etc.). OEMs can choose to implement the full OS or specific modules like our ADAS core or Smart Energy Management system.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="faq-item border-b border-gray-200">
+                    <button class="faq-toggle w-full flex items-center justify-between py-6 text-left group focus:outline-none">
+                        <span class="text-xl font-semibold text-gray-800 group-hover:text-blue-600 transition-colors">How does the OS handle driver data and privacy?</span>
+                        <div class="faq-icon-wrapper flex items-center justify-center ml-4">
+                            <svg class="faq-icon h-6 w-6 text-gray-400 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                            </svg>
+                        </div>
+                    </button>
+                    <div class="faq-content">
+                        <p class="text-lg text-gray-600 leading-relaxed max-w-3xl">
+                            Privacy is a core pillar. All sensitive telemetry data is processed locally on the vehicle's edge computer using encrypted enclaves. Users have granular control over what data is shared with the cloud for updates or analytics, adhering to global standards like GDPR and local Indian data protection norms.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="faq-item border-b border-gray-200">
+                    <button class="faq-toggle w-full flex items-center justify-between py-6 text-left group focus:outline-none">
+                        <span class="text-xl font-semibold text-gray-800 group-hover:text-blue-600 transition-colors">Does Svashasan OS support Level 2+ and Level 4 Autonomous driving?</span>
+                        <div class="faq-icon-wrapper flex items-center justify-center ml-4">
+                            <svg class="faq-icon h-6 w-6 text-gray-400 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                            </svg>
+                        </div>
+                    </button>
+                    <div class="faq-content">
+                        <p class="text-lg text-gray-600 leading-relaxed max-w-3xl">
+                            Yes. Our OS is designed to be scalable. While current iterations focus on advanced Level 2+ assistance (lane keeping, emergency braking, adaptive cruise), the underlying Neural Mesh Network architecture is built to support full Level 4 autonomy as regulatory frameworks and hardware capabilities evolve.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 5 -->
+                <div class="faq-item border-b border-gray-200">
+                    <button class="faq-toggle w-full flex items-center justify-between py-6 text-left group focus:outline-none">
+                        <span class="text-xl font-semibold text-gray-800 group-hover:text-blue-600 transition-colors">How are Over-The-Air (OTA) updates managed to ensure safety?</span>
+                        <div class="faq-icon-wrapper flex items-center justify-center ml-4">
+                            <svg class="faq-icon h-6 w-6 text-gray-400 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                            </svg>
+                        </div>
+                    </button>
+                    <div class="faq-content">
+                        <p class="text-lg text-gray-600 leading-relaxed max-w-3xl">
+                            Updates are delivered via a secure, multi-signature channel. We utilize a "Dual-Bank" system where the update is downloaded to a secondary partition and verified for integrity before the OS switches. Safety-critical updates are only applied when the vehicle is in a confirmed 'safe-state' (parked and charging).
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 6 -->
+                <div class="faq-item border-b border-gray-200">
+                    <button class="faq-toggle w-full flex items-center justify-between py-6 text-left group focus:outline-none">
+                        <span class="text-xl font-semibold text-gray-800 group-hover:text-blue-600 transition-colors">Is the developer platform open for third-party app integration?</span>
+                        <div class="faq-icon-wrapper flex items-center justify-center ml-4">
+                            <svg class="faq-icon h-6 w-6 text-gray-400 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                            </svg>
+                        </div>
+                    </button>
+                    <div class="faq-content">
+                        <p class="text-lg text-gray-600 leading-relaxed max-w-3xl">
+                            Absolutely. We believe an OS is only as good as its ecosystem. Our Developer Portal provides sandboxed APIs for infotainment, fleet management, and vehicle health monitoring. This allows OEMs to offer unique brand experiences and allows users to enjoy their favorite apps natively.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 7 -->
+                <div class="faq-item">
+                    <button class="faq-toggle w-full flex items-center justify-between py-6 text-left group focus:outline-none">
+                        <span class="text-xl font-semibold text-gray-800 group-hover:text-blue-600 transition-colors">What happens if the vehicle loses internet connectivity?</span>
+                        <div class="faq-icon-wrapper flex items-center justify-center ml-4">
+                            <svg class="faq-icon h-6 w-6 text-gray-400 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                            </svg>
+                        </div>
+                    </button>
+                    <div class="faq-content">
+                        <p class="text-lg text-gray-600 leading-relaxed max-w-3xl">
+                            Svashasan OS is designed for high availability. All core driving functions, safety protocols, and primary UI elements run locally on the vehicle's onboard computer. While features like live traffic or cloud streaming may be paused, the vehicle remains fully operational and safe without an active internet connection.
+                        </p>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -476,7 +601,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 const isMenuOpen = !mobileMenu.classList.contains('hidden');
                 
                 if (isMenuOpen) {
-                    // Close menu
                     mobileMenu.classList.add('opacity-0');
                     body.style.overflow = '';
                     menuOpenIcon.classList.remove('hidden');
@@ -486,7 +610,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     }, 300);
 
                 } else {
-                    // Open menu
                     mobileMenu.classList.remove('hidden');
                     menuOpenIcon.classList.add('hidden');
                     menuCloseIcon.classList.remove('hidden');
@@ -499,13 +622,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             
             if (menuButton && mobileMenu) {
                 menuButton.addEventListener('click', toggleMenu);
-
                 mobileMenu.querySelectorAll('a').forEach(link => {
                     link.addEventListener('click', toggleMenu);
                 });
             }
 
-            // Profile Link Logic - Already handled by profile.html
+            // FAQ Accordion Logic
+            const faqToggles = document.querySelectorAll('.faq-toggle');
+            faqToggles.forEach(toggle => {
+                toggle.addEventListener('click', () => {
+                    const faqItem = toggle.parentElement;
+                    const isActive = faqItem.classList.contains('active');
+
+                    // Close other items
+                    document.querySelectorAll('.faq-item').forEach(item => {
+                        if (item !== faqItem) item.classList.remove('active');
+                    });
+
+                    // Toggle current item
+                    faqItem.classList.toggle('active');
+                });
+            });
 
             // Achievements Slider Logic
             const container = document.getElementById('achievements-container');
@@ -514,10 +651,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             let autoScrollInterval;
 
             const startAutoScroll = () => {
-                // Ensure container exists before proceeding
                 if (!container) return; 
                 autoScrollInterval = setInterval(() => {
-                    if (!container) return; // Check again inside interval
+                    if (!container) return;
                     if (container.scrollLeft + container.clientWidth >= container.scrollWidth) {
                         container.scrollTo({ left: 0, behavior: 'smooth' });
                     } else {

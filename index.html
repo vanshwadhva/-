@@ -427,134 +427,120 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </section>
 
     <!-- FAQ Section (Clean & Minimalist) -->
-    <section id="faq" class="py-24 bg-gray-50">
-        <div class="container mx-auto px-4 md:px-6">
-            <h2 class="text-4xl font-bold text-gray-800 mb-16 text-center">Frequently Asked Questions</h2>
-            <div class="max-w-4xl mx-auto">
-                
-                <!-- FAQ Item 1 -->
-                <div class="faq-item border-b border-gray-200">
-                    <button class="faq-toggle w-full flex items-center justify-between py-6 text-left group focus:outline-none">
-                        <span class="text-xl font-semibold text-gray-800 group-hover:text-blue-600 transition-colors">What makes Svashasan OS different from other EV operating systems?</span>
-                        <div class="faq-icon-wrapper flex items-center justify-center ml-4">
-                            <svg class="faq-icon h-6 w-6 text-gray-400 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-                            </svg>
-                        </div>
-                    </button>
-                    <div class="faq-content">
-                        <p class="text-lg text-gray-600 leading-relaxed max-w-3xl">
-                            Svashasan OS is built on a "Full-Stack Autonomy" philosophy. Unlike closed systems, our OS provides a hardware-agnostic layer that allows OEMs to integrate diverse sensors and motor controllers easily. Our focus on self-reliance (स्वशासन) means we prioritize on-edge processing for safety and open APIs for a customizable user experience.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- FAQ Item 2 -->
-                <div class="faq-item border-b border-gray-200">
-                    <button class="faq-toggle w-full flex items-center justify-between py-6 text-left group focus:outline-none">
-                        <span class="text-xl font-semibold text-gray-800 group-hover:text-blue-600 transition-colors">As an OEM, how easily can we integrate Svashasan OS into our existing hardware?</span>
-                        <div class="faq-icon-wrapper flex items-center justify-center ml-4">
-                            <svg class="faq-icon h-6 w-6 text-gray-400 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-                            </svg>
-                        </div>
-                    </button>
-                    <div class="faq-content">
-                        <p class="text-lg text-gray-600 leading-relaxed max-w-3xl">
-                            Integration is streamlined through our modular architecture. We provide a comprehensive SDK and HAL (Hardware Abstraction Layer) that supports standard automotive protocols (CAN bus, LIN, etc.). OEMs can choose to implement the full OS or specific modules like our ADAS core or Smart Energy Management system.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- FAQ Item 3 -->
-                <div class="faq-item border-b border-gray-200">
-                    <button class="faq-toggle w-full flex items-center justify-between py-6 text-left group focus:outline-none">
-                        <span class="text-xl font-semibold text-gray-800 group-hover:text-blue-600 transition-colors">How does the OS handle driver data and privacy?</span>
-                        <div class="faq-icon-wrapper flex items-center justify-center ml-4">
-                            <svg class="faq-icon h-6 w-6 text-gray-400 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-                            </svg>
-                        </div>
-                    </button>
-                    <div class="faq-content">
-                        <p class="text-lg text-gray-600 leading-relaxed max-w-3xl">
-                            Privacy is a core pillar. All sensitive telemetry data is processed locally on the vehicle's edge computer using encrypted enclaves. Users have granular control over what data is shared with the cloud for updates or analytics, adhering to global standards like GDPR and local Indian data protection norms.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- FAQ Item 4 -->
-                <div class="faq-item border-b border-gray-200">
-                    <button class="faq-toggle w-full flex items-center justify-between py-6 text-left group focus:outline-none">
-                        <span class="text-xl font-semibold text-gray-800 group-hover:text-blue-600 transition-colors">Does Svashasan OS support Level 2+ and Level 4 Autonomous driving?</span>
-                        <div class="faq-icon-wrapper flex items-center justify-center ml-4">
-                            <svg class="faq-icon h-6 w-6 text-gray-400 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-                            </svg>
-                        </div>
-                    </button>
-                    <div class="faq-content">
-                        <p class="text-lg text-gray-600 leading-relaxed max-w-3xl">
-                            Yes. Our OS is designed to be scalable. While current iterations focus on advanced Level 2+ assistance (lane keeping, emergency braking, adaptive cruise), the underlying Neural Mesh Network architecture is built to support full Level 4 autonomy as regulatory frameworks and hardware capabilities evolve.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- FAQ Item 5 -->
-                <div class="faq-item border-b border-gray-200">
-                    <button class="faq-toggle w-full flex items-center justify-between py-6 text-left group focus:outline-none">
-                        <span class="text-xl font-semibold text-gray-800 group-hover:text-blue-600 transition-colors">How are Over-The-Air (OTA) updates managed to ensure safety?</span>
-                        <div class="faq-icon-wrapper flex items-center justify-center ml-4">
-                            <svg class="faq-icon h-6 w-6 text-gray-400 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-                            </svg>
-                        </div>
-                    </button>
-                    <div class="faq-content">
-                        <p class="text-lg text-gray-600 leading-relaxed max-w-3xl">
-                            Updates are delivered via a secure, multi-signature channel. We utilize a "Dual-Bank" system where the update is downloaded to a secondary partition and verified for integrity before the OS switches. Safety-critical updates are only applied when the vehicle is in a confirmed 'safe-state' (parked and charging).
-                        </p>
-                    </div>
-                </div>
-
-                <!-- FAQ Item 6 -->
-                <div class="faq-item border-b border-gray-200">
-                    <button class="faq-toggle w-full flex items-center justify-between py-6 text-left group focus:outline-none">
-                        <span class="text-xl font-semibold text-gray-800 group-hover:text-blue-600 transition-colors">Is the developer platform open for third-party app integration?</span>
-                        <div class="faq-icon-wrapper flex items-center justify-center ml-4">
-                            <svg class="faq-icon h-6 w-6 text-gray-400 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-                            </svg>
-                        </div>
-                    </button>
-                    <div class="faq-content">
-                        <p class="text-lg text-gray-600 leading-relaxed max-w-3xl">
-                            Absolutely. We believe an OS is only as good as its ecosystem. Our Developer Portal provides sandboxed APIs for infotainment, fleet management, and vehicle health monitoring. This allows OEMs to offer unique brand experiences and allows users to enjoy their favorite apps natively.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- FAQ Item 7 -->
-                <div class="faq-item">
-                    <button class="faq-toggle w-full flex items-center justify-between py-6 text-left group focus:outline-none">
-                        <span class="text-xl font-semibold text-gray-800 group-hover:text-blue-600 transition-colors">What happens if the vehicle loses internet connectivity?</span>
-                        <div class="faq-icon-wrapper flex items-center justify-center ml-4">
-                            <svg class="faq-icon h-6 w-6 text-gray-400 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-                            </svg>
-                        </div>
-                    </button>
-                    <div class="faq-content">
-                        <p class="text-lg text-gray-600 leading-relaxed max-w-3xl">
-                            Svashasan OS is designed for high availability. All core driving functions, safety protocols, and primary UI elements run locally on the vehicle's onboard computer. While features like live traffic or cloud streaming may be paused, the vehicle remains fully operational and safe without an active internet connection.
-                        </p>
-                    </div>
-                </div>
-
-            </div>
+    <!-- Strategic FAQ Section -->
+<section id="faq" class="py-24 bg-gray-50">
+    <div class="container mx-auto px-4 md:px-6">
+        <div class="max-w-4xl mx-auto text-center mb-16">
+            <h2 class="text-4xl font-bold text-gray-800 mb-4">Strategic FAQs</h2>
         </div>
-    </section>
+        
+        <div class="max-w-4xl mx-auto">
+            
+            <!-- 1 -->
+            <div class="faq-item border-b border-gray-200">
+                <button class="faq-toggle w-full flex items-center justify-between py-8 text-left group focus:outline-none">
+                    <span class="text-xl font-semibold text-gray-800 group-hover:text-blue-600 transition-colors">
+                        What is Svashasan OS and how is it different from existing EV software platforms?
+                    </span>
+                    <svg class="faq-icon h-6 w-6 text-gray-400 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                    </svg>
+                </button>
+                <div class="faq-content">
+                    <p class="text-lg text-gray-600 leading-relaxed max-w-3xl">
+                        Svashasan OS is a vehicle-level autonomous perception and control operating system, not just a UI layer. Unlike infotainment-focused platforms, we manage the critical interface between sensors and vehicle dynamics, providing a unified brain for autonomous EV operation.
+                    </p>
+                </div>
+            </div>
 
+            <!-- 2 -->
+            <div class="faq-item border-b border-gray-200">
+                <button class="faq-toggle w-full flex items-center justify-between py-8 text-left group focus:outline-none">
+                    <span class="text-xl font-semibold text-gray-800 group-hover:text-blue-600 transition-colors">
+                        Is Svashasan OS a full self-driving system or a modular autonomy stack?
+                    </span>
+                    <svg class="faq-icon h-6 w-6 text-gray-400 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                    </svg>
+                </button>
+                <div class="faq-content">
+                    <p class="text-lg text-gray-600 leading-relaxed max-w-3xl">
+                        We are an ADAS-first system that is inherently scalable. Our autonomy is embedded at the kernel level, supporting L2 assistance today with a roadmap designed to scale to L4. OEMs can deploy specific modules or the full stack.
+                    </p>
+                </div>
+            </div>
+
+            <!-- 3 -->
+            <div class="faq-item border-b border-gray-200">
+                <button class="faq-toggle w-full flex items-center justify-between py-8 text-left group focus:outline-none">
+                    <span class="text-xl font-semibold text-gray-800 group-hover:text-blue-600 transition-colors">
+                        How does Svashasan OS differ from Tesla’s software stack, Android Automotive, or QNX?
+                    </span>
+                    <svg class="faq-icon h-6 w-6 text-gray-400 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                    </svg>
+                </button>
+                <div class="faq-content">
+                    <p class="text-lg text-gray-600 leading-relaxed max-w-3xl">
+                        Tesla is vertically integrated and Android Automotive focuses on infotainment. QNX is a stable RTOS but not autonomy-native. Svashasan OS provides an autonomy-first kernel built specifically for OEM licensing.
+                    </p>
+                </div>
+            </div>
+
+            <!-- 4 -->
+            <div class="faq-item border-b border-gray-200">
+                <button class="faq-toggle w-full flex items-center justify-between py-8 text-left group focus:outline-none">
+                    <span class="text-xl font-semibold text-gray-800 group-hover:text-blue-600 transition-colors">
+                        Which markets is Svashasan OS initially targeting and why?
+                    </span>
+                    <svg class="faq-icon h-6 w-6 text-gray-400 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                    </svg>
+                </button>
+                <div class="faq-content">
+                    <p class="text-lg text-gray-600 leading-relaxed max-w-3xl">
+                        We are focusing on Singapore, Japan, and South Korea due to high EV adoption, strong regulatory clarity, and readiness for autonomous mobility pilots.
+                    </p>
+                </div>
+            </div>
+
+            <!-- 5 -->
+            <div class="faq-item border-b border-gray-200">
+                <button class="faq-toggle w-full flex items-center justify-between py-8 text-left group focus:outline-none">
+                    <span class="text-xl font-semibold text-gray-800 group-hover:text-blue-600 transition-colors">
+                        What is the Svashasan OEM licensing model?
+                    </span>
+                    <svg class="faq-icon h-6 w-6 text-gray-400 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                    </svg>
+                </button>
+                <div class="faq-content">
+                    <p class="text-lg text-gray-600 leading-relaxed max-w-3xl">
+                        We operate on a hardware-agnostic licensing model with per-vehicle royalties and optional revenue-sharing for connected services. White-label integrations are supported.
+                    </p>
+                </div>
+            </div>
+
+            <!-- 6 -->
+            <div class="faq-item border-b border-gray-200">
+                <button class="faq-toggle w-full flex items-center justify-between py-8 text-left group focus:outline-none">
+                    <span class="text-xl font-semibold text-gray-800 group-hover:text-blue-600 transition-colors">
+                        How does Svashasan OS ensure safety and compliance?
+                    </span>
+                    <svg class="faq-icon h-6 w-6 text-gray-400 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                    </svg>
+                </button>
+                <div class="faq-content">
+                    <p class="text-lg text-gray-600 leading-relaxed max-w-3xl">
+                        Our functional safety roadmap aligns with ISO 26262 standards and integrates cybersecurity-first architecture to meet international automotive regulations.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
     <!-- Contact Us Section -->
     <section id="contact" class="py-20 bg-gray-100">
         <div class="container mx-auto px-4 md:px-6 text-center">

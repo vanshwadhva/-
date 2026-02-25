@@ -7,26 +7,40 @@
     <link rel="icon" type="image/png" href="2.png" sizes="32x32">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-N89XZGM4');</script>
-<!-- End Google Tag Manager -->
-    <style>
-    /* Custom Tailwind configuration for responsive fonts and shadows */
+    <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'],
-                        calibri: ['Calibri', 'sans-serif'],
-                    },
+                        sans: [
+                            'system-ui',
+                            '-apple-system',
+                            'BlinkMacSystemFont',
+                            'Segoe UI',
+                            'Roboto',
+                            'Helvetica Neue',
+                            'Arial',
+                            'Noto Sans',
+                            'sans-serif',
+                            'Apple Color Emoji',
+                            'Segoe UI Emoji',
+                            'Segoe UI Symbol',
+                            'Noto Color Emoji'
+                        ],
+                        calibri: ['Calibri', 'sans-serif']
+                    }
                 }
             }
-        }
-        
+        };
+    </script>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-N89XZGM4');</script>
+    <!-- End Google Tag Manager -->
+    <style>
         /* Fix for horizontal overflow */
         html, body {
             overflow-x: hidden;
@@ -134,11 +148,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <meta name="twitter:image" content="https://svashasan.com/image.jpeg">
 </head>
 <body class="font-sans text-gray-800">
-
     <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N89XZGM4"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N89XZGM4"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <!-- Header Section -->
     <header class="fixed top-0 left-0 right-0 z-50 bg-white bg-opacity-80 backdrop-blur-md py-4 shadow-sm">
         <div class="container mx-auto flex items-center justify-between px-4 sm:px-6">
@@ -161,9 +176,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <!-- Help Icon -->
                 <a href="https://svashasan.com/support" class="text-gray-600 hover:text-gray-900 transition-colors duration-200 cursor-pointer">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                         viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                         class="lucide lucide-circle-help">
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-circle-help">
                         <circle cx="12" cy="12" r="10"></circle>
                         <path d="M9.09 9a3 3 0 1 1 5.82 1c0 2-3 3-3 3"></path>
                         <line x1="12" y1="17" x2="12.01" y2="17"></line>
@@ -179,7 +194,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </a>
                 <!-- Hamburger/Close Menu Button for mobile -->
                 <button id="menu-button" class="md:hidden text-gray-600 hover:text-gray-900 focus:outline-none z-60 relative">
-                     <svg id="menu-open-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu">
+                    <svg id="menu-open-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu">
                         <line x1="4" x2="20" y1="12" y2="12"></line>
                         <line x1="4" x2="20" y1="6" y2="6"></line>
                         <line x1="4" x2="20" y1="18" y2="18"></line>
@@ -228,68 +243,63 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 स्वशासन (Swa-shaasan) is pioneering the next generation of operating systems for electric vehicles. Our mission is to create an intuitive, efficient, and secure platform that enhances the driving experience and empowers users with seamless control over their vehicle's ecosystem. We believe in self-reliance and innovation to drive the future of mobility.
             </p>
         </div>
-
         <!-- Subsections within About -->
         <div class="mt-16 max-w-full">
-             <div class="grid grid-cols-1 md:grid-cols-2 about-subsection">
-                 <div class="relative min-h-[400px]">
+            <div class="grid grid-cols-1 md:grid-cols-2 about-subsection">
+                <div class="relative min-h-[400px]">
                     <img src="Simulation_Enviroment.jpg" alt="Custom Simulation Environment" class="w-full h-full object-cover">
-                 </div>
-                 <div class="bg-white p-8 md:p-12 text-left flex flex-col justify-center">
+                </div>
+                <div class="bg-white p-8 md:p-12 text-left flex flex-col justify-center">
                     <h3 class="text-3xl font-bold text-gray-800 mb-4">Advanced Simulation & Data Collection</h3>
                     <p class="text-lg text-gray-600 leading-relaxed">
                         To accelerate development and ensure robustness, we've built a custom, high-fidelity simulation environment. Here, our ego vehicle runs full self-driving scenarios continuously, allowing us to safely test algorithms under countless conditions, explore edge cases, and collect vast amounts of synthetic data crucial for training and validating our AI models.
                     </p>
                 </div>
-             </div>
-
-             <div class="grid grid-cols-1 md:grid-cols-2 about-subsection image-right">
-                 <div class="bg-white p-8 md:p-12 text-left flex flex-col justify-center">
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 about-subsection image-right">
+                <div class="bg-white p-8 md:p-12 text-left flex flex-col justify-center">
                     <h3 class="text-3xl font-bold text-gray-800 mb-4">Supervised Learning Core</h3>
                     <p class="text-lg text-gray-600 leading-relaxed">
                         At the heart of Svashasan OS lies a sophisticated supervised learning model. Trained on millions of miles of real-world driving data and augmented by our synthetic data, this model learns to interpret complex road scenarios, predict behavior of other road users, and make safe, human-like driving decisions. Continuous training ensures adaptation and improvement.
                     </p>
-                 </div>
-                 <div class="relative min-h-[400px]">
+                </div>
+                <div class="relative min-h-[400px]">
                     <img src="supervised-learningg.png" alt="Supervised Learning Model" class="w-full h-full object-cover">
-                 </div>
-             </div>
-
-              <div class="grid grid-cols-1 md:grid-cols-2 about-subsection">
-                 <div class="relative min-h-[400px]">
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 about-subsection">
+                <div class="relative min-h-[400px]">
                     <img src="neural mesh network.png" alt="Technology Stack" class="w-full h-full object-cover">
-                 </div>
-                 <div class="bg-white p-8 md:p-12 text-left flex flex-col justify-center">
+                </div>
+                <div class="bg-white p-8 md:p-12 text-left flex flex-col justify-center">
                     <h3 class="text-3xl font-bold text-gray-800 mb-4">Our Technology Foundation</h3>
                     <p class="text-lg text-gray-600 leading-relaxed">
                         Our vision is powered by high-performance computing, advanced sensor fusion (LIDAR, RADAR, cameras), robust deep learning frameworks (TensorFlow, PyTorch), and scalable cloud infrastructure. Each component resonates with our goal: creating a reliable, efficient, and intelligent OS capable of handling the complexities of autonomous driving.
                     </p>
                 </div>
-             </div>
-
-             <div class="grid grid-cols-1 md:grid-cols-2 about-subsection image-right">
-                 <div class="bg-white p-8 md:p-12 text-left flex flex-col justify-center">
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 about-subsection image-right">
+                <div class="bg-white p-8 md:p-12 text-left flex flex-col justify-center">
                     <h3 class="text-3xl font-bold text-gray-800 mb-4">Uncompromising Safety</h3>
                     <p class="text-lg text-gray-600 leading-relaxed">
                         Safety is paramount. Svashasan OS incorporates rigorous safety parameters and continuously monitors key performance metrics. This includes redundant systems checks, real-time risk assessment algorithms, and adherence to stringent automotive safety standards (like ISO 26262). Both simulated and real-world testing are used extensively to validate safety performance under diverse conditions.
                     </p>
-                 </div>
-                 <div class="relative min-h-[400px]">
+                </div>
+                <div class="relative min-h-[400px]">
                     <img src="uncompromised safety.png" alt="Safety Parameters and Metrics" class="w-full h-full object-cover">
-                 </div>
-             </div>
-
-             <div class="grid grid-cols-1 md:grid-cols-2 about-subsection">
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 about-subsection">
                 <div class="relative min-h-[400px]">
                     <img src="v2v.png" alt="Future V2V World" class="w-full h-full object-cover">
-                 </div>
+                </div>
                 <div class="bg-white p-8 md:p-12 text-left flex flex-col justify-center">
                     <h3 class="text-3xl font-bold text-gray-800 mb-4">The Future: Connected & Autonomous</h3>
                     <p class="text-lg text-gray-600 leading-relaxed">
                         Imagine safer roads, smoother traffic, and productive commutes. This is the future enabled by full self-driving EVs powered by Svashasan OS. With Vehicle-to-Vehicle (V2V) communication, our cars form a collaborative network, sharing real-time insights to optimize routes and prevent accidents collectively, orchestrated by the central intelligence of Svashasan OS.
                     </p>
-                 </div>
-             </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -318,14 +328,45 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <h3 class="text-2xl font-semibold text-gray-800 mb-3">Over-the-Air Updates</h3>
                     <p>Keep your OS up-to-date with the latest features and improvements.</p>
                 </div>
-                 <div class="feature-item bg-gray-50 p-6 rounded-lg shadow-md flex flex-col justify-between items-center text-center">
+                <div class="feature-item bg-gray-50 p-6 rounded-lg shadow-md flex flex-col justify-between items-center text-center">
                     <h3 class="text-2xl font-semibold text-gray-800 mb-3">Developer Friendly</h3>
                     <p>Open APIs for third-party app development and customization.</p>
                 </div>
             </div>
         </div>
     </section>
-    
+
+    <!-- Supervised Learning Section -->
+    <section id="supervised-learning" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="max-w-5xl mx-auto text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-800 mb-6">Supervised Learning Architecture</h2>
+                <p class="text-lg text-gray-700 leading-relaxed">
+                    Svashasan OS is powered by a deeply integrated supervised learning pipeline designed for real-time perception, prediction, and control. Our models are trained on structured multi-sensor datasets combining camera, LiDAR, RADAR, and telemetry inputs to enable high-confidence decision making in complex driving environments.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+                <div>
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">Data Pipeline</h3>
+                    <p class="text-gray-600 leading-relaxed mb-4">
+                        Raw sensor data is ingested, synchronized, labeled, and validated through our simulation and real-world testing stack. This ensures edge-case robustness and continuous model improvement.
+                    </p>
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4 mt-8">Model Training</h3>
+                    <p class="text-gray-600 leading-relaxed mb-4">
+                        We leverage high-performance compute clusters to train object detection, lane segmentation, behavior prediction, and path planning models. Continuous retraining enables adaptation to evolving road scenarios.
+                    </p>
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4 mt-8">Deployment Layer</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Optimized models are deployed directly into the autonomy kernel, enabling deterministic inference, low-latency execution, and safety-aligned fallback mechanisms.
+                    </p>
+                </div>
+                <div class="relative min-h-[350px]">
+                    <img src="supervised-learningg.png" alt="Supervised Learning Pipeline Visualization" class="w-full h-full object-cover rounded-lg shadow-lg">
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Team Section -->
     <section id="team" class="bg-gray-100 hover:bg-gray-200 transition-colors duration-300 cursor-pointer">
         <a href="team.html" class="block py-20">
@@ -362,7 +403,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <p class="text-gray-600">Founder & CEO</p>
                         </div>
                         <div class="flex-shrink-0 w-64 mx-4 text-center">
-                           <img src="Somnath_Profile_photo.jpg?loop=2" alt="Akash Banerjee" class="w-40 h-40 mx-auto rounded-full object-cover shadow-lg mb-4">
+                            <img src="Somnath_Profile_photo.jpg?loop=2" alt="Akash Banerjee" class="w-40 h-40 mx-auto rounded-full object-cover shadow-lg mb-4">
                             <h3 class="text-xl font-semibold text-gray-800">Akash Banerjee</h3>
                             <p class="text-gray-600">Director, Promoter</p>
                         </div>
@@ -415,7 +456,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             </p>
                         </div>
                     </div>
-
                     <div class="flex-shrink-0 w-full snap-center flex flex-col md:flex-row items-center justify-center gap-8 bg-gray-50 p-10 rounded-lg shadow-md mt-6 md:mt-0 md:ml-6">
                         <div class="w-48 h-24 flex items-center justify-center">
                             <img src="PCE_logo.png" alt="Pillai College of Engineering Logo" class="max-w-full max-h-full object-contain">
@@ -579,7 +619,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </p>
         </div>
     </footer>
-    
     <!-- Sticky Pop-up Button -->
     <div class="fixed bottom-4 right-4 z-50">
         <a href="https://svashasan.com/view-demo" class="bg-gray-200 hover:bg-gray-300 text-gray-800 text-sm py-2 px-4 rounded-lg shadow-lg border border-gray-300 transition-colors">

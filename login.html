@@ -273,8 +273,75 @@
             }
             setupPasswordToggle('login-password', 'toggle-login-password', 'login-password-eye');
             setupPasswordToggle('signup-password', 'toggle-signup-password', 'signup-password-eye');
+
+            // Connect signup form to backend API
+            const signupFormElement = document.querySelector("#signup-form-container form");
+            if (signupFormElement) {
+                signupFormElement.addEventListener("submit", async (e) => {
+                    e.preventDefault();
+
+                    const name = document.getElementById("signup-name").value;
+                    const email = document.getElementById("signup-email").value;
+                    const phone = document.getElementById("signup-phone").value;
+                    const password = document.getElementById("signup-password").value;
+
+                    try {
+                        const res = await fetch("http://localhost:5000/signup", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify({
+                                name,
+                                email,
+                                phone,
+                                password
+                            })
+                        });
+
+                        const data = await res.json();
+                        alert(data.message || "Signup successful");
+                    } catch (err) {
+                        alert("Error creating account");
+                    }
+                });
+            }
+
+            // Connect login form to backend API
+            const loginFormElement = document.querySelector("#login-form-container form");
+            if (loginFormElement) {
+                loginFormElement.addEventListener("submit", async (e) => {
+                    e.preventDefault();
+
+                    const email = document.getElementById("login-email").value;
+                    const password = document.getElementById("login-password").value;
+
+                    try {
+                        const res = await fetch("http://localhost:5000/login", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify({
+                                email,
+                                password
+                            })
+                        });
+
+                        const data = await res.json();
+
+                        if (data.token) {
+                            localStorage.setItem("svashasan_token", data.token);
+                            alert("Login successful");
+                        } else {
+                            alert(data.error || "Login failed");
+                        }
+                    } catch (err) {
+                        alert("Server error during login");
+                    }
+                });
+            }
         });
     </script>
 </body>
 </html>
-

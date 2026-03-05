@@ -57,7 +57,7 @@
                 </ul>
             </nav>
             <div class="flex items-center space-x-4 header-right-group ml-auto">
-                <a href="profile.html" class="text-grey-600 transition-colors duration-200 cursor-pointer">
+                <a href="#" id="profile-icon" class="text-grey-600 transition-colors duration-200 cursor-pointer">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-circle"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="10" r="3"/><path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662"/></svg>
                 </a>
                 <button id="menu-button" class="md:hidden text-gray-600 hover:text-gray-900 focus:outline-none">
@@ -205,12 +205,33 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // Enforce responsive access: desktop should use onboarding, mobile should use login
+            if (window.innerWidth >= 768) {
+                window.location.replace("https://svashasan.com/onboarding");
+                return;
+            }
             // Mobile menu toggle
             const menuButton = document.getElementById('menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
             if (menuButton && mobileMenu) {
                 menuButton.addEventListener('click', () => {
                     mobileMenu.classList.toggle('hidden');
+                });
+            }
+
+            // Profile icon responsive redirect
+            const profileIcon = document.getElementById('profile-icon');
+            if (profileIcon) {
+                profileIcon.addEventListener('click', (e) => {
+                    e.preventDefault();
+
+                    if (window.innerWidth < 768) {
+                        // Mobile users
+                        window.location.href = "https://svashasan.com/login";
+                    } else {
+                        // Desktop users
+                        window.location.href = "https://svashasan.com/onboarding";
+                    }
                 });
             }
 
@@ -300,8 +321,14 @@
                         });
 
                         const data = await res.json();
-                        alert("Account created successfully. Please login.");
-                        switchForms(signupForm, loginForm);
+
+if (data.token) {
+    localStorage.setItem("svashasan_token", data.token);
+    window.location.href = "https://svashasan.com/my-account";
+} else {
+    alert("Account created successfully. Please login.");
+    switchForms(signupForm, loginForm);
+}
                     } catch (err) {
                         alert("Error creating account");
                     }
@@ -333,7 +360,7 @@
 
                         if (data.token) {
                             localStorage.setItem("svashasan_token", data.token);
-                            window.location.href = "profile.html";
+                            window.location.href = "https://svashasan.com/my-account";
                         } else {
                             alert(data.error || "Login failed");
                         }

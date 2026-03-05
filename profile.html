@@ -1,57 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirecting...</title>
-            <a href="svashasan.com" class="flex-shrink-0">
-                <img src="2.png" alt="Svashasan Logo" class="h-10 w-auto object-contain">
-            </a>
-    <style>
-        body {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background-color: #f9fafb;
-            color: #374151;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+    try {
+
+        const token = localStorage.getItem("svashasan_token");
+
+        // If a valid token exists, go directly to dashboard
+        if (token && token !== "null" && token !== "undefined") {
+            window.location.replace("/my-account");
+            return;
         }
-        .container {
-            text-align: center;
+
+        // Detect mobile more reliably
+        const isMobile = window.matchMedia("(max-width: 767px)").matches;
+
+        if (isMobile) {
+            // Mobile → login
+            window.location.replace("/login");
+        } else {
+            // Desktop → onboarding
+            window.location.replace("/onboarding");
         }
-        .loader {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #3498db;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 20px;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-    </style>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Check the screen width
-            if (window.innerWidth < 768) {
-                // If it's a mobile device, redirect to login.html
-                window.location.replace('https://svashasan.com/login');
-            } else {
-                // If it's a desktop device, redirect to onboarding.html
-                window.location.replace('https://svashasan.com/onboarding');
-            }
-        });
-    </script>
-</head>
-<body>
-    <div class="container">
-        <div class="loader"></div>
-        <p>Redirecting you to the appropriate page...</p>
-    </div>
-</body>
-</html>
+
+    } catch (err) {
+        console.error("Profile router error:", err);
+        window.location.replace("/login");
+    }
+
+});
+</script>

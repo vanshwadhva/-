@@ -93,7 +93,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </nav>
             <div class="flex items-center space-x-4 header-right-group ml-auto">
                 <!-- Profile Icon (SVG) - Active on this page for Onboarding -->
-                <a href="onboarding.html" class="text-gray-600 hover:text-gray-900 transition-colors duration-200 cursor-pointer">
+                <a href="#" id="profile-icon" class="text-gray-600 hover:text-gray-900 transition-colors duration-200 cursor-pointer">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-circle">
                         <circle cx="12" cy="12" r="10"/>
                         <circle cx="12" cy="10" r="3"/>
@@ -126,8 +126,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <main class="py-8 mt-16 px-4 md:px-6"> <!-- Adjusted mt for fixed header -->
         <div class="container mx-auto">
             <h2 class="text-4xl font-bold text-gray-800 text-center mb-8">Onboarding Experience</h2>
-            <div class="iframe-container">
-                <iframe src="https://zingy-sable-c9c859.netlify.app/" title="Onboarding Experience" loading="lazy"></iframe>
+            <!-- QR Login Section -->
+            <div class="mt-10 flex flex-col items-center">
+                <h3 class="text-xl font-semibold mb-4 text-gray-700">Login using your phone</h3>
+                <p class="text-sm text-gray-500 mb-4 text-center max-w-md">
+                    Scan this QR code using your mobile device after logging in to instantly access your account on this desktop.
+                </p>
+                <div id="qr-code" class="bg-white p-4 rounded-lg shadow-md"></div>
             </div>
         </div>
     </main>
@@ -140,6 +145,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </footer>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // Redirect already logged-in users to dashboard
+            const existingToken = localStorage.getItem("svashasan_token");
+            if (existingToken) {
+                window.location.href = "https://svashasan.com/my-account";
+                return;
+            }
+
+            // Restrict page access based on device type
+            if (window.innerWidth < 768) {
+                // Mobile users should not access onboarding
+                window.location.replace("https://svashasan.com/login");
+                return;
+            }
             const menuButton = document.getElementById('menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
 
@@ -154,15 +172,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     });
                 });
             }
+
+            // Profile icon behavior for responsiveness
+            const profileIcon = document.getElementById('profile-icon');
+            if (profileIcon) {
+                profileIcon.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    if (window.innerWidth < 768) {
+                        window.location.href = "https://svashasan.com/login";
+                    } else {
+                        window.location.href = "https://svashasan.com/onboarding";
+                    }
+                });
+            }
         });
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-    <script>
-        const supabase = supabase.createClient(
-          "https://pxxwuguhhkenbzhfqjsp.supabase.co",
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB4eHd1Z3VoaGtlbmJ6aGZxanNwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTM0NDc5NjMsImV4cCI6MjA2OTAyMzk2M30.DSHT0Yoc70Lg8ekv6PFIs2I54e9sT-1iJz662C4VndI"
-        );
-      </script>
       <script>
         window.addEventListener('message', async (event) => {
           const { type, payload } = event.data || {};
@@ -170,11 +194,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       
           try {
             if (type === 'email-signup') {
-              const { error } = await supabase.auth.signUp({ email: payload.email, password: payload.password });
-              if (error) console.error('Signup failed:', error.message);
+              // Removed Supabase logic
             } else if (type === 'email-login') {
-              const { error } = await supabase.auth.signInWithPassword({ email: payload.email, password: payload.password });
-              if (error) console.error('Login failed:', error.message);
+              // Removed Supabase logic
             }
             // Add similar blocks for phone-otp, guest, QR, etc.
           } catch (err) {
@@ -182,5 +204,80 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           }
         });
       </script>
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+<script>
+// ===== Desktop QR Login System =====
+
+async function startQRLogin() {
+  try {
+
+    // STEP 7: Request a QR login session from backend
+    const res = await fetch("https://svashasan-auth-production.up.railway.app/qr-session", {
+      method: "POST"
+    });
+
+    const data = await res.json();
+
+    const session_id = data.session_id;
+
+    // STEP 6: Generate QR code
+    const qrContainer = document.getElementById("qr-code");
+
+    if (!qrContainer) {
+      console.error("QR container not found");
+      return;
+    }
+
+    qrContainer.innerHTML = "";
+
+    new QRCode(qrContainer, {
+      text: `https://svashasan.com/qr.html?session_id=${session_id}`,
+      width: 220,
+      height: 220
+    });
+
+    // Start checking if user authenticated
+    checkQRStatus(session_id);
+
+  } catch (err) {
+    console.error("QR session creation failed", err);
+  }
+}
+
+function checkQRStatus(session_id) {
+
+  const interval = setInterval(async () => {
+
+    try {
+
+      const res = await fetch(`https://svashasan-auth-production.up.railway.app/qr-status/${session_id}`);
+      const data = await res.json();
+
+      if (data.authenticated) {
+
+        clearInterval(interval);
+
+        localStorage.setItem("svashasan_token", data.token);
+        window.location.href = "https://svashasan.com/my-account";
+
+      }
+
+    } catch (err) {
+      console.error("QR polling error", err);
+    }
+
+  }, 2000);
+
+}
+
+// Start QR login when onboarding page loads (desktop only)
+window.addEventListener("DOMContentLoaded", () => {
+
+  if (window.innerWidth >= 768) {
+    startQRLogin();
+  }
+
+});
+</script>
 </body>
 </html>

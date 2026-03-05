@@ -58,6 +58,17 @@
 </head>
 <body class="flex flex-col min-h-screen">
 
+    <script>
+    // ===== Authentication Guard =====
+    // Prevent access to dashboard if user is not logged in
+    const token = localStorage.getItem("svashasan_token");
+
+    if (!token) {
+        // Redirect unauthenticated users to profile router
+        window.location.replace("https://svashasan.com/profile");
+    }
+    </script>
+
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N89XZGM4"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -67,7 +78,7 @@
     <header class="bg-white py-4 border-b border-gray-100 sticky top-0 z-50">
         <div class="container mx-auto px-6 flex justify-between items-center">
             <!-- Logo -->
-            <a href="https://svashasan.com/" class="flex-shrink-0">
+            <a href="index.html" class="flex-shrink-0">
                 <img src="2.png" alt="Svashasan Logo" class="h-10 w-auto object-contain">
             </a>
 
@@ -78,8 +89,8 @@
             
             <!-- Desktop Right Links (Optional, typically minimized on Account page) -->
             <nav class="hidden lg:flex space-x-6">
-                <a href="https://svashasan.com/" class="text-sm font-medium text-gray-500 hover:text-black transition-colors">Shop</a>
-                <a href="https://svashasan.com/" class="text-sm font-medium text-gray-500 hover:text-black transition-colors">Sign Out</a>
+                <a href="index.html" class="text-sm font-medium text-gray-500 hover:text-black transition-colors">Shop</a>
+                <a href="#" onclick="logout()" class="text-sm font-medium text-gray-500 hover:text-black transition-colors">Sign Out</a>
             </nav>
         </div>
     </header>
@@ -91,11 +102,11 @@
         </button>
         <div class="flex flex-col space-y-4">
             <a href="#" class="text-lg font-medium text-tesla-dark py-2 border-b border-gray-100">Dashboard</a>
-            <a href="https://svashasan.com/profile-setting" class="text-lg font-medium text-gray-500 py-2 border-b border-gray-100">Profile Settings</a>
-            <a href="https://svashasan.com/payment-method" class="text-lg font-medium text-gray-500 py-2 border-b border-gray-100">Payment Method</a>
-            <a href="https://svashasan.com/charging" class="text-lg font-medium text-gray-500 py-2 border-b border-gray-100">Charging</a>
-            <a href="https://svashasan.com/order-history" class="text-lg font-medium text-gray-500 py-2 border-b border-gray-100">Order History</a>
-            <a href="https://svashasan.com/sign-out" class="text-lg font-medium text-gray-500 py-2">Sign Out</a>
+            <a href="profile-setting.html" class="text-lg font-medium text-gray-500 py-2 border-b border-gray-100">Profile Settings</a>
+            <a href="payment-method.html" class="text-lg font-medium text-gray-500 py-2 border-b border-gray-100">Payment Method</a>
+            <a href="charging.html" class="text-lg font-medium text-gray-500 py-2 border-b border-gray-100">Charging</a>
+            <a href="order-history.html" class="text-lg font-medium text-gray-500 py-2 border-b border-gray-100">Order History</a>
+            <a href="#" onclick="logout()" class="text-lg font-medium text-gray-500 py-2">Sign Out</a>
         </div>
     </div>
 
@@ -110,23 +121,23 @@
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
                     <span class="text-sm">Dashboard</span>
                 </a>
-                <a href="https://svashasan.com/profile-setting" class="nav-link flex items-center space-x-3 px-3 py-2 rounded-md text-gray-500 hover:bg-gray-50 transition-colors">
+                <a href="profile-setting.html" class="nav-link flex items-center space-x-3 px-3 py-2 rounded-md text-gray-500 hover:bg-gray-50 transition-colors">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
                     <span class="text-sm">Profile Settings</span>
                 </a>
-                <a href="https://svashasan.com/payment-method" class="nav-link flex items-center space-x-3 px-3 py-2 rounded-md text-gray-500 hover:bg-gray-50 transition-colors">
+                <a href="payment-method.html" class="nav-link flex items-center space-x-3 px-3 py-2 rounded-md text-gray-500 hover:bg-gray-50 transition-colors">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
                     <span class="text-sm">Payment Method</span>
                 </a>
-                <a href="https://svashasan.com/charging" class="nav-link flex items-center space-x-3 px-3 py-2 rounded-md text-gray-500 hover:bg-gray-50 transition-colors">
+                <a href="charging.html" class="nav-link flex items-center space-x-3 px-3 py-2 rounded-md text-gray-500 hover:bg-gray-50 transition-colors">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                     <span class="text-sm">Charging</span>
                 </a>
-                <a href="https://svashasan.com/order-history" class="nav-link flex items-center space-x-3 px-3 py-2 rounded-md text-gray-500 hover:bg-gray-50 transition-colors">
+                <a href="order-history.html" class="nav-link flex items-center space-x-3 px-3 py-2 rounded-md text-gray-500 hover:bg-gray-50 transition-colors">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
                     <span class="text-sm">Order History</span>
                 </a>
-                <a href="https://svashasan.com/sign-out" class="nav-link flex items-center space-x-3 px-3 py-2 rounded-md text-gray-500 hover:bg-gray-50 transition-colors">
+                <a href="#" onclick="logout()" class="nav-link flex items-center space-x-3 px-3 py-2 rounded-md text-gray-500 hover:bg-gray-50 transition-colors">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
                     <span class="text-sm">Sign Out</span>
                 </a>
@@ -192,7 +203,7 @@
                             <p class="text-sm text-gray-500 mt-1">Add it to your account to access OTA updates and telemetry.</p>
                         </div>
                     </div>
-                    <a href="my-account.html" class="w-full md:w-auto text-center px-8 py-2 border border-black rounded text-sm font-medium hover:bg-black hover:text-white transition-colors inline-block">
+                    <a href="add-vehicle.html" class="w-full md:w-auto text-center px-8 py-2 border border-black rounded text-sm font-medium hover:bg-black hover:text-white transition-colors inline-block">
                         Add
                     </a>
                 </div>
@@ -228,8 +239,14 @@
             }
         }
 
-        mobileMenuBtn.addEventListener('click', toggleMenu);
-        closeMobileMenu.addEventListener('click', toggleMenu);
+        if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', toggleMenu);
+        if (closeMobileMenu) closeMobileMenu.addEventListener('click', toggleMenu);
+
+        // Logout function
+        function logout(){
+            localStorage.removeItem("svashasan_token");
+            window.location.replace("https://svashasan.com/profile");
+        }
     </script>
 </body>
 </html>

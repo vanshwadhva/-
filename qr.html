@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Confirm Login</title>
+</head>
+
+<body>
+
+<h2>Confirm Desktop Login</h2>
+
+<button onclick="confirmLogin()">Approve Login</button>
+
+<script>
+
+// Read session_id from query parameter (?session_id=...)
+const params = new URLSearchParams(window.location.search);
+const session_id = params.get("session_id");
+
+
+async function confirmLogin(){
+
+    try {
+
+        const token = localStorage.getItem("svashasan_token");
+
+        // User must be logged in on the phone to approve desktop login
+        if(!token){
+            alert("Please log in on your phone first.");
+            window.location.href = "/login";
+            return;
+        }
+
+        if(!session_id){
+            alert("Invalid QR session.");
+            return;
+        }
+
+        const res = await fetch("https://svashasan-auth-production.up.railway.app/qr-confirm",{
+            method:"POST",
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body:JSON.stringify({
+                session_id,
+                token
+            })
+        });
+
+        const data = await res.json();
+
+        if(res.ok){
+            alert("Desktop login approved. You can now return to your computer.");
+        }else{
+            alert(data.error || "Login approval failed.");
+        }
+
+    }catch(err){
+        console.error("QR confirmation error:",err);
+        alert("Something went wrong while approving login.");
+    }
+
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Svashasan Pilot (Full Self-Driving) - The Future of Driving</title>
+    <link rel="icon" type="image/png" href="2.png" sizes="32x32">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-N89XZGM4');</script>
+    <!-- End Google Tag Manager -->
+    <style>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        svashasanBlue: '#2563eb',
+                        teslaDark: '#171a20',
+                    }
+                }
+            }
+        }
+
+        html, body {
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 1s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up-delay-1 { animation-delay: 0.2s; }
+        .fade-in-up-delay-2 { animation-delay: 0.4s; }
+        .fade-in-up-delay-3 { animation-delay: 0.6s; }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #888; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #555; }
+
+        /* Animated counter */
+        .stat-number {
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* Glowing blue dot */
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4); }
+            50% { box-shadow: 0 0 0 8px rgba(37, 99, 235, 0); }
+        }
+        .pulse-dot {
+            animation: pulse-glow 2s infinite;
+        }
+
+        /* Horizontal scroll feature strip */
+        .feature-strip {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+        .feature-strip::-webkit-scrollbar { display: none; }
+        .feature-card {
+            scroll-snap-align: start;
+            flex-shrink: 0;
+        }
+
+        /* Road line animation */
+        @keyframes road-line {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100vh); }
+        }
+
+        /* Scan line for the viz section */
+        @keyframes scan {
+            0% { top: 0%; opacity: 1; }
+            95% { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+        }
+
+        /* Subtle shimmer for dark cards */
+        @keyframes shimmer {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+        .shimmer-border {
+            background: linear-gradient(90deg, #1e3a8a 0%, #3b82f6 25%, #1e3a8a 50%, #3b82f6 75%, #1e3a8a 100%);
+            background-size: 200% auto;
+            animation: shimmer 4s linear infinite;
+            padding: 1px;
+            border-radius: 1rem;
+        }
+
+        /* Scroll-triggered reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-32px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .reveal-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(32px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .reveal-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Timeline connector */
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, transparent, #2563eb, transparent);
+            transform: translateX(-50%);
+        }
+
+        /* Hero overlay gradient */
+        .hero-overlay {
+            background: linear-gradient(
+                to bottom,
+                rgba(0,0,0,0.1) 0%,
+                rgba(0,0,0,0.3) 40%,
+                rgba(0,0,0,0.55) 70%,
+                rgba(0,0,0,0.75) 100%
+            );
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-900 bg-white">
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N89XZGM4"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <!-- ═══════════════════════════════════════════════════
+         HEADER — Exact replica of index.html / supervised
+    ═══════════════════════════════════════════════════ -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white bg-opacity-80 backdrop-blur-md py-4 shadow-sm">
+        <div class="container mx-auto flex items-center justify-between px-4 sm:px-6">
+            <a href="https://svashasan.com/" class="flex-shrink-0">
+                <img src="2.png" alt="Svashasan Logo" class="h-10 w-auto object-contain">
+            </a>
+            <nav class="hidden md:flex flex-grow justify-center">
+                <ul class="flex space-x-6 text-gray-600 font-medium">
+                    <li><a href="index.html#about" class="hover:text-gray-900 hover:font-bold transition-all duration-200">About Us</a></li>
+                    <li><a href="index.html#features" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Features</a></li>
+                    <li><a href="index.html#contact" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Contact</a></li>
+                    <li><a href="https://svashasan.com/blog" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Blog</a></li>
+                    <li><a href="https://svashasan.com/survey" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Survey</a></li>
+                    <li><a href="https://svashasan.com/developer-platform" class="hover:text-gray-900 hover:font-bold transition-all duration-200">API</a></li>
+                    <li><a href="https://svashasan.com/model-performance" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Models</a></li>
+                </ul>
+            </nav>
+            <div class="flex items-center space-x-4 header-right-group ml-auto">
+                <a href="https://svashasan.com/support" class="text-gray-600 hover:text-gray-900 transition-colors duration-200 cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-help">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M9.09 9a3 3 0 1 1 5.82 1c0 2-3 3-3 3"></path>
+                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                    </svg>
+                </a>
+                <a href="profile.html" class="text-gray-600 hover:text-gray-900 transition-colors duration-200 cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-circle">
+                        <circle cx="12" cy="12" r="10"/>
+                        <circle cx="12" cy="10" r="3"/>
+                        <path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662"/>
+                    </svg>
+                </a>
+                <button id="menu-button" class="md:hidden text-gray-600 hover:text-gray-900 focus:outline-none z-60 relative">
+                    <svg id="menu-open-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu">
+                        <line x1="4" x2="20" y1="12" y2="12"></line>
+                        <line x1="4" x2="20" y1="6" y2="6"></line>
+                        <line x1="4" x2="20" y1="18" y2="18"></line>
+                    </svg>
+                    <svg id="menu-close-icon" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Overlay -->
+    <div id="mobile-menu" class="hidden fixed inset-0 bg-white z-40 flex flex-col justify-center items-center opacity-0 transition-opacity duration-300">
+        <ul class="flex flex-col space-y-10 text-gray-900 text-3xl font-bold items-center">
+            <li><a href="index.html#about" class="hover:text-gray-900 hover:font-bold transition-all duration-200">About Us</a></li>
+            <li><a href="index.html#features" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Features</a></li>
+            <li><a href="index.html#contact" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Contact</a></li>
+            <li><a href="https://svashasan.com/blog" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Blog</a></li>
+            <li><a href="https://svashasan.com/survey" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Survey</a></li>
+            <li><a href="https://svashasan.com/developer-platform" class="hover:text-gray-900 hover:font-bold transition-all duration-200">API</a></li>
+            <li><a href="https://svashasan.com/model-performance" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Models</a></li>
+        </ul>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════
+         HERO SECTION
+    ═══════════════════════════════════════════════════ -->
+    <section class="relative h-screen w-full flex items-center justify-center text-center overflow-hidden">
+        <!-- Background image -->
+        <img src="fsd.jpg" alt="Full Self-Driving Background"
+             class="absolute inset-0 w-full h-full object-cover"
+             onerror="this.style.display='none'">
+        <!-- Dark overlay with bottom gradient -->
+        <div class="hero-overlay absolute inset-0"></div>
+        <!-- Animated road lines for depth -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none opacity-10">
+            <div style="position:absolute;left:48%;width:3px;height:60px;background:white;animation:road-line 1.8s linear infinite;animation-delay:0s;"></div>
+            <div style="position:absolute;left:50%;width:3px;height:60px;background:white;animation:road-line 1.8s linear infinite;animation-delay:0.9s;"></div>
+            <div style="position:absolute;left:52%;width:3px;height:60px;background:white;animation:road-line 1.8s linear infinite;animation-delay:0.45s;"></div>
+        </div>
+
+        <div class="relative z-10 max-w-4xl px-4">
+            <!-- Badge removed -->
+            <h1 class="fade-in-up fade-in-up-delay-1 text-5xl md:text-7xl font-bold text-white mb-3 tracking-tight leading-tight">
+                Svashasan Pilot
+            </h1>
+            <p class="fade-in-up fade-in-up-delay-2 text-white text-opacity-90 text-2xl md:text-4xl font-light mb-6">
+                Full Self-Driving
+            </p>
+            <p class="fade-in-up fade-in-up-delay-3 text-gray-300 text-base md:text-lg mb-10 max-w-2xl mx-auto leading-relaxed">
+                The most advanced autonomous driving system ever built for public roads. Navigate the world end-to-end — from your driveway to your destination — with a level of confidence only billions of real-world miles can teach.
+            </p>
+
+            <div class="fade-in-up fade-in-up-delay-3 flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="https://svashasan.com/view-capabilities"
+                   class="bg-white text-black hover:bg-gray-200 font-semibold py-3 px-12 rounded-xl transition-colors duration-300 w-full sm:w-auto">
+                    Experience FSD
+                </a>
+                <a href="#"
+                   class="border-2 border-white text-white hover:bg-white hover:text-black font-semibold py-3 px-12 rounded-xl transition-colors duration-300 w-full sm:w-auto">
+                    Order Now
+                </a>
+            </div>
+        </div>
+
+        <!-- Bottom disclaimer -->
+        <div class="absolute bottom-10 w-full text-center px-4 z-10">
+            <p class="text-xs text-gray-400 max-w-2xl mx-auto">
+                Full Self-Driving features are subject to regulatory approval and regional availability. Always maintain situational awareness. Feature activation depends on real-world safety validation.
+            </p>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════
+         INTRO — The Big Statement
+    ═══════════════════════════════════════════════════ -->
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-6 max-w-4xl text-center reveal">
+            <p class="text-blue-600 font-bold tracking-widest text-xs uppercase mb-4">The Evolution is Here</p>
+            <h2 class="text-3xl md:text-5xl font-bold mb-6 text-gray-900 leading-tight">
+                Beyond Supervision.<br>Toward Autonomy.
+            </h2>
+            <p class="text-gray-500 text-lg leading-relaxed max-w-3xl mx-auto">
+                Svashasan Pilot (Full Self-Driving) is trained on billions of anonymised driving miles, edge cases, rare scenarios, and everything in between. It doesn't just follow the road — it understands it. Every intersection, every merging truck, every ambiguous pedestrian. Handled.
+            </p>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════
+         FEATURE 1: End-to-End City Navigation
+    ═══════════════════════════════════════════════════ -->
+    <section class="py-16 md:py-24 bg-gray-50 overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="w-full md:w-1/2 reveal-left">
+                    <div class="relative w-full h-80 md:h-96 bg-gray-200 rounded-2xl overflow-hidden shadow-2xl group">
+                        <img src="city-nav.png" alt="City Navigation"
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                             onerror="this.style.display='none'">
+                        <!-- Fallback visual if no image -->
+                        <div class="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-24 h-24 text-blue-500 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+                        </div>
+                        <!-- Overlay HUD label -->
+                        <div class="absolute top-4 left-4 bg-blue-600 bg-opacity-90 text-white text-xs font-bold px-3 py-1 rounded-full tracking-wider uppercase">
+                            City Mode Active
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 md:pl-10 reveal-right">
+                    <span class="text-blue-600 font-bold tracking-wider text-sm uppercase mb-2 block">Urban Intelligence</span>
+                    <h3 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900">Navigate Every Street</h3>
+                    <p class="text-gray-500 mb-8 leading-relaxed text-base">
+                        From the moment you enter your destination, Svashasan Pilot takes the wheel. It handles traffic lights, roundabouts, unprotected left turns, and pedestrian crossings — all with the same calm consistency, whether it's rush hour or a quiet Sunday morning.
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <span class="w-2.5 h-2.5 bg-blue-600 rounded-full mr-1 mt-1.5 flex-shrink-0 pulse-dot"></span>
+                            <div>
+                                <span class="font-semibold text-gray-800">Unprotected Turn Handling</span>
+                                <p class="text-sm text-gray-500 mt-0.5">Judges oncoming traffic speed and gap size with sub-second precision.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="w-2.5 h-2.5 bg-blue-600 rounded-full mr-1 mt-1.5 flex-shrink-0 pulse-dot"></span>
+                            <div>
+                                <span class="font-semibold text-gray-800">Traffic Signal Response</span>
+                                <p class="text-sm text-gray-500 mt-0.5">Reads lights, yield signs, and temporary construction signals reliably.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="w-2.5 h-2.5 bg-blue-600 rounded-full mr-1 mt-1.5 flex-shrink-0 pulse-dot"></span>
+                            <div>
+                                <span class="font-semibold text-gray-800">Dynamic Re-routing</span>
+                                <p class="text-sm text-gray-500 mt-0.5">Adapts to road closures, blocked lanes, and unexpected obstacles in real time.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════
+         FEATURE 2: Smart Summon (reversed layout)
+    ═══════════════════════════════════════════════════ -->
+    <section class="py-16 md:py-24 bg-white overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row-reverse items-center gap-12">
+                <div class="w-full md:w-1/2 reveal-right">
+                    <div class="relative w-full h-80 md:h-96 bg-gray-200 rounded-2xl overflow-hidden shadow-2xl group">
+                        <img src="smart-summon.png" alt="Smart Summon"
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                             onerror="this.style.display='none'">
+                        <div class="absolute inset-0 bg-gradient-to-br from-slate-900 to-blue-950 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-24 h-24 text-blue-400 opacity-40" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                        </div>
+                        <div class="absolute bottom-4 right-4 bg-white bg-opacity-90 text-gray-900 text-xs font-bold px-3 py-1.5 rounded-full tracking-wider uppercase shadow">
+                            📍 Coming to you
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 md:pr-10 reveal-left">
+                    <span class="text-blue-600 font-bold tracking-wider text-sm uppercase mb-2 block">Smart Summon</span>
+                    <h3 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900">Your Car Finds You</h3>
+                    <p class="text-gray-500 mb-6 leading-relaxed text-base">
+                        Step out of the mall, tap the app, and watch your vehicle navigate the parking lot on its own. Smart Summon threads through tight spaces, yields to pedestrians, and arrives at your exact location — rain, crowded carpark or otherwise.
+                    </p>
+                    <a href="#" class="inline-flex items-center gap-2 text-blue-600 font-semibold hover:text-blue-800 transition-colors duration-200">
+                        Learn about Smart Summon
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════
+         FEATURE 3: Autopark (normal layout)
+    ═══════════════════════════════════════════════════ -->
+    <section class="py-16 md:py-24 bg-gray-50 overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="w-full md:w-1/2 reveal-left">
+                    <div class="relative w-full h-80 md:h-96 bg-gray-200 rounded-2xl overflow-hidden shadow-2xl group">
+                        <img src="autopark.png" alt="Autopark"
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                             onerror="this.style.display='none'">
+                        <div class="absolute inset-0 bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-24 h-24 text-gray-400 opacity-40" fill="none" viewBox="0 0 24 24" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 17V7h4a3 3 0 010 6H9"/></svg>
+                        </div>
+                        <div class="absolute top-4 right-4 bg-green-500 bg-opacity-90 text-white text-xs font-bold px-3 py-1 rounded-full tracking-wider uppercase">
+                            ✓ Spot Detected
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 md:pl-10 reveal-right">
+                    <span class="text-blue-600 font-bold tracking-wider text-sm uppercase mb-2 block">Precision Parking</span>
+                    <h3 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900">Autopark</h3>
+                    <p class="text-gray-500 mb-6 leading-relaxed text-base">
+                        Parallel or perpendicular, tight or wide — Autopark scans the environment and maneuvers your vehicle into any viable spot with smooth, deliberate control. No frustration, no scraped bumpers, no circling the block twice.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-white rounded-xl p-4 shadow-sm border border-gray-100">
+                            <p class="font-bold text-gray-900 text-sm mb-1">Parallel Parking</p>
+                            <p class="text-xs text-gray-500">Tight urban spots, handled with millimeter accuracy.</p>
+                        </div>
+                        <div class="bg-white rounded-xl p-4 shadow-sm border border-gray-100">
+                            <p class="font-bold text-gray-900 text-sm mb-1">Perpendicular Parking</p>
+                            <p class="text-xs text-gray-500">Mall lots, garages and driveways — no sweat.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════
+         STATS — Dark Impact Section
+    ═══════════════════════════════════════════════════ -->
+    <section class="py-24 text-white relative overflow-hidden" style="background-color: #0a0f1e;">
+        <!-- Ambient glow -->
+        <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 70% 50% at 50% 50%, rgba(37,99,235,0.12) 0%, transparent 70%);"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16 reveal">
+                <p class="text-blue-400 font-bold tracking-widest text-xs uppercase mb-4">By the Numbers</p>
+                <h2 class="text-3xl md:text-5xl font-bold">Safety You Can Measure</h2>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                <div class="text-center reveal">
+                    <p class="stat-number text-5xl md:text-6xl font-bold text-white mb-2" id="stat-miles">0</p>
+                    <p class="text-blue-400 font-semibold text-sm uppercase tracking-widest mb-1">Billion Miles</p>
+                    <p class="text-gray-400 text-sm">Accumulated by our fleet in real-world conditions</p>
+                </div>
+                <div class="text-center reveal" style="transition-delay:0.15s">
+                    <p class="stat-number text-5xl md:text-6xl font-bold text-white mb-2" id="stat-safer">0<span class="text-blue-400">×</span></p>
+                    <p class="text-blue-400 font-semibold text-sm uppercase tracking-widest mb-1">Safer</p>
+                    <p class="text-gray-400 text-sm">Compared to average human-driven interventions</p>
+                </div>
+                <div class="text-center reveal" style="transition-delay:0.3s">
+                    <p class="stat-number text-5xl md:text-6xl font-bold text-white mb-2" id="stat-uptime">0<span class="text-blue-400">%</span></p>
+                    <p class="text-blue-400 font-semibold text-sm uppercase tracking-widest mb-1">OTA Coverage</p>
+                    <p class="text-gray-400 text-sm">Every improvement delivered wirelessly overnight</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════
+         ALWAYS ON — Attention Section
+    ═══════════════════════════════════════════════════ -->
+    <section class="py-24 bg-white overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center gap-16">
+                <div class="w-full md:w-1/2 reveal-left">
+                    <!-- Visual: Animated camera eye icon with scan line -->
+                    <div class="relative w-full h-80 rounded-2xl overflow-hidden bg-gray-950 shadow-2xl flex items-center justify-center">
+                        <div class="absolute inset-0 flex flex-col items-center justify-center gap-6 p-8">
+                            <!-- Camera ring -->
+                            <div class="relative flex items-center justify-center">
+                                <div class="w-24 h-24 rounded-full border-2 border-blue-500 border-opacity-40 flex items-center justify-center">
+                                    <div class="w-16 h-16 rounded-full border-2 border-blue-400 border-opacity-60 flex items-center justify-center">
+                                        <div class="w-8 h-8 bg-blue-600 rounded-full opacity-90"></div>
+                                    </div>
+                                </div>
+                                <div class="absolute inset-0 rounded-full border-t-2 border-blue-400"
+                                     style="animation: spin 3s linear infinite;"></div>
+                            </div>
+                            <!-- Scan line -->
+                            <div class="relative w-full h-20 overflow-hidden rounded-lg bg-gray-900">
+                                <div class="absolute w-full h-0.5 bg-blue-400 opacity-70"
+                                     style="animation: scan 2.5s ease-in-out infinite;"></div>
+                                <!-- Grid lines suggestion -->
+                                <div class="absolute inset-0 opacity-10" style="background-image: repeating-linear-gradient(0deg, transparent, transparent 9px, #60a5fa 9px, #60a5fa 10px), repeating-linear-gradient(90deg, transparent, transparent 9px, #60a5fa 9px, #60a5fa 10px);"></div>
+                                <p class="absolute bottom-2 right-3 text-blue-300 text-xs font-mono tracking-widest">SCAN ACTIVE</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 reveal-right">
+                    <span class="text-blue-600 font-bold tracking-wider text-sm uppercase mb-2 block">360° Awareness</span>
+                    <h3 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
+                        Always Attentive.<br>Never Distracted.
+                    </h3>
+                    <p class="text-gray-500 mb-6 leading-relaxed text-base">
+                        Cameras don't blink, get tired, or glance at a notification. Svashasan Pilot processes a full hemisphere of visual data sixty times per second — spotting the cyclist in the blind spot, the jaywalker stepping off the curb, the brake light two cars ahead. Every second, every drive.
+                    </p>
+                    <p class="text-gray-500 mb-8 leading-relaxed text-base">
+                        Over-the-air updates mean every Svashasan vehicle gets smarter with each passing week. The improvement never stops.
+                    </p>
+                    <a href="#" class="inline-flex items-center gap-2 text-blue-600 font-semibold hover:text-blue-800 transition-colors duration-200">
+                        View our Safety Report
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════
+         TRAINING DATA — Dark Scenario Section
+    ═══════════════════════════════════════════════════ -->
+    <section class="py-20 relative overflow-hidden text-white" style="background-color: #120b1f;">
+        <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 60% 60% at 30% 50%, rgba(88,28,235,0.1) 0%, transparent 70%);"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-3xl mx-auto text-center reveal">
+                <p class="text-purple-400 font-bold tracking-widest text-xs uppercase mb-4">Fleet Learning</p>
+                <h2 class="text-3xl md:text-5xl font-bold mb-8 leading-tight">
+                    Trained on<br>Once-in-a-Lifetime Scenarios
+                </h2>
+                <p class="text-gray-300 text-lg mb-12 leading-relaxed">
+                    The rarest driving edge cases — the kind a human might encounter once in a lifetime — our fleet collectively experiences thousands of times every day. That data feeds directly back into Svashasan Pilot, sharpening its responses to situations that haven't even happened to you yet.
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                    <div class="bg-white bg-opacity-5 border border-white border-opacity-10 rounded-2xl p-6 text-left hover:bg-opacity-10 transition-all duration-300">
+                        <div class="w-10 h-10 rounded-xl bg-purple-600 bg-opacity-30 flex items-center justify-center mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-purple-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+                        </div>
+                        <h4 class="font-bold text-white mb-2">Rare Event Recognition</h4>
+                        <p class="text-sm text-gray-400">Debris on highway, sudden swerves, emergency vehicle approaches.</p>
+                    </div>
+                    <div class="bg-white bg-opacity-5 border border-white border-opacity-10 rounded-2xl p-6 text-left hover:bg-opacity-10 transition-all duration-300">
+                        <div class="w-10 h-10 rounded-xl bg-blue-600 bg-opacity-30 flex items-center justify-center mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/></svg>
+                        </div>
+                        <h4 class="font-bold text-white mb-2">Adverse Conditions</h4>
+                        <p class="text-sm text-gray-400">Rain, fog, glare, night-time and low-visibility scenarios.</p>
+                    </div>
+                    <div class="bg-white bg-opacity-5 border border-white border-opacity-10 rounded-2xl p-6 text-left hover:bg-opacity-10 transition-all duration-300">
+                        <div class="w-10 h-10 rounded-xl bg-green-600 bg-opacity-30 flex items-center justify-center mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-green-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        </div>
+                        <h4 class="font-bold text-white mb-2">Continuous Updates</h4>
+                        <p class="text-sm text-gray-400">Model improvements deployed overnight via OTA — no service visit required.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════
+         FUTURE — Road to Full Autonomy
+    ═══════════════════════════════════════════════════ -->
+    <section class="py-24 bg-gray-50 overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <p class="text-blue-600 font-bold tracking-widest text-xs uppercase mb-4">What's Next</p>
+                <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mb-6">The Road to Full Autonomy</h2>
+                <p class="text-gray-500 text-lg leading-relaxed">
+                    Full Self-Driving (Supervised) is a significant step. But it's a waypoint on a longer journey toward a world where every Svashasan vehicle can navigate entirely on its own — freeing you completely.
+                </p>
+            </div>
+
+            <!-- Timeline / Journey -->
+            <div class="relative max-w-2xl mx-auto">
+                <div class="timeline-line hidden md:block"></div>
+                <div class="space-y-10">
+                    <!-- Step 1 -->
+                    <div class="flex flex-col md:flex-row items-start gap-6 reveal" style="transition-delay:0s">
+                        <div class="hidden md:flex flex-col items-center w-10 flex-shrink-0 mt-1">
+                            <div class="w-5 h-5 rounded-full bg-green-500 border-4 border-white shadow z-10"></div>
+                        </div>
+                        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex-1">
+                            <div class="flex items-center gap-3 mb-2">
+                                <span class="bg-green-100 text-green-700 text-xs font-bold px-2.5 py-0.5 rounded-full">Live</span>
+                                <h4 class="font-bold text-gray-900">Svashasan Pilot (Supervised)</h4>
+                            </div>
+                            <p class="text-sm text-gray-500">Handles all major driving tasks with active driver supervision. Available now.</p>
+                        </div>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="flex flex-col md:flex-row items-start gap-6 reveal" style="transition-delay:0.15s">
+                        <div class="hidden md:flex flex-col items-center w-10 flex-shrink-0 mt-1">
+                            <div class="w-5 h-5 rounded-full bg-blue-500 border-4 border-white shadow z-10 pulse-dot"></div>
+                        </div>
+                        <div class="bg-white rounded-2xl p-6 shadow-sm border border-blue-200 flex-1">
+                            <div class="flex items-center gap-3 mb-2">
+                                <span class="bg-blue-100 text-blue-700 text-xs font-bold px-2.5 py-0.5 rounded-full">You Are Here</span>
+                                <h4 class="font-bold text-gray-900">Svashasan Pilot (Full Self-Driving)</h4>
+                            </div>
+                            <p class="text-sm text-gray-500">End-to-end driving across city streets and highways. Supervised, but dramatically more capable.</p>
+                        </div>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="flex flex-col md:flex-row items-start gap-6 reveal" style="transition-delay:0.3s">
+                        <div class="hidden md:flex flex-col items-center w-10 flex-shrink-0 mt-1">
+                            <div class="w-5 h-5 rounded-full bg-gray-300 border-4 border-white shadow z-10"></div>
+                        </div>
+                        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex-1 opacity-75">
+                            <div class="flex items-center gap-3 mb-2">
+                                <span class="bg-gray-100 text-gray-500 text-xs font-bold px-2.5 py-0.5 rounded-full">Coming Soon</span>
+                                <h4 class="font-bold text-gray-600">Svashasan Pilot (Unsupervised)</h4>
+                            </div>
+                            <p class="text-sm text-gray-400">True door-to-door autonomy. No supervision required. The future we're building toward.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════
+         CTA — Final Call to Action
+    ═══════════════════════════════════════════════════ -->
+    <section class="py-24 bg-white text-center">
+        <div class="container mx-auto px-6 max-w-3xl reveal">
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+                Experience It for Yourself
+            </h2>
+            <p class="text-gray-500 text-lg mb-10 leading-relaxed">
+                Schedule a demo drive and sit in the driver's seat while Svashasan Pilot navigates your world. No commitment required — just the future of driving, available today.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#"
+                   class="bg-blue-600 text-white hover:bg-blue-700 font-semibold py-4 px-12 rounded-xl transition-colors duration-300 w-full sm:w-auto shadow-lg shadow-blue-600/20">
+                    Book a Demo Drive
+                </a>
+                <a href="https://svashasan.com/supervised-learning"
+                   class="border-2 border-gray-300 text-gray-700 hover:border-gray-900 hover:text-gray-900 font-semibold py-4 px-12 rounded-xl transition-colors duration-300 w-full sm:w-auto">
+                    View Supervised Pilot
+                </a>
+            </div>
+            <p class="text-xs text-gray-400 mt-8 max-w-xl mx-auto">
+                Full Self-Driving features require regulatory approval and vary by region. Driver supervision is required at all times. Feature availability and pricing subject to change.
+            </p>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════
+         FOOTER — Exact replica of index.html
+    ═══════════════════════════════════════════════════ -->
+    <footer class="bg-gray-800 text-white py-6 text-center">
+        <div class="container mx-auto px-4 md:px-6">
+            <p>&copy; 2026 स्वशासन. All Rights Reserved.</p>
+            <p class="mt-2 text-sm space-x-2">
+                <a href="privacy-policy.html" class="hover:underline">Privacy Policy</a>
+                <span>|</span>
+                <a href="terms-of-use.html" class="hover:underline">Terms & Conditions</a>
+                <span>|</span>
+                <a href="cookie-policy.html" class="hover:underline">Cookie Policy</a>
+                <span>|</span>
+                <a href="careers.html" class="hover:underline">Careers</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- ═══════════════════════════════════════════════════
+         SCRIPTS
+    ═══════════════════════════════════════════════════ -->
+    <script>
+    // ── Mobile Menu (exact replica) ──────────────────────
+    document.addEventListener('DOMContentLoaded', () => {
+        const menuButton = document.getElementById('menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuOpenIcon = document.getElementById('menu-open-icon');
+        const menuCloseIcon = document.getElementById('menu-close-icon');
+        const body = document.body;
+
+        const toggleMenu = () => {
+            const isMenuOpen = !mobileMenu.classList.contains('hidden');
+            if (isMenuOpen) {
+                mobileMenu.classList.add('opacity-0');
+                body.style.overflow = '';
+                menuOpenIcon.classList.remove('hidden');
+                menuCloseIcon.classList.add('hidden');
+                setTimeout(() => { mobileMenu.classList.add('hidden'); }, 300);
+            } else {
+                mobileMenu.classList.remove('hidden');
+                menuOpenIcon.classList.add('hidden');
+                menuCloseIcon.classList.remove('hidden');
+                setTimeout(() => {
+                    mobileMenu.classList.remove('opacity-0');
+                    body.style.overflow = 'hidden';
+                }, 10);
+            }
+        };
+
+        if (menuButton && mobileMenu) {
+            menuButton.addEventListener('click', toggleMenu);
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', toggleMenu);
+            });
+        }
+
+        // ── Scroll-triggered reveal ──────────────────────
+        const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+        revealEls.forEach(el => observer.observe(el));
+
+        // ── Animated counters ────────────────────────────
+        const counters = [
+            { id: 'stat-miles',  target: 12,  suffix: 'B', duration: 2000 },
+            { id: 'stat-safer',  target: 9,   suffix: '×', duration: 1800 },
+            { id: 'stat-uptime', target: 100, suffix: '%', duration: 2200 },
+        ];
+
+        const statsSection = document.querySelector('#stat-miles');
+        if (statsSection) {
+            const statsObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        counters.forEach(({ id, target, suffix, duration }) => {
+                            const el = document.getElementById(id);
+                            if (!el) return;
+                            let start = 0;
+                            const step = target / (duration / 16);
+                            const tick = () => {
+                                start = Math.min(start + step, target);
+                                const display = id === 'stat-miles'
+                                    ? start.toFixed(1)
+                                    : Math.floor(start);
+                                el.innerHTML = display + `<span class="text-blue-400">${suffix}</span>`;
+                                if (start < target) requestAnimationFrame(tick);
+                            };
+                            requestAnimationFrame(tick);
+                        });
+                        statsObserver.disconnect();
+                    }
+                });
+            }, { threshold: 0.4 });
+            statsObserver.observe(statsSection);
+        }
+    });
+
+    // ── Spin animation for camera ring (inline) ──────────
+    const style = document.createElement('style');
+    style.textContent = `@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }`;
+    document.head.appendChild(style);
+    </script>
+</body>
+</html>

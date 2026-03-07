@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to स्वशासन</title>
+    <title>Welcome to Svashasan OS</title>
     <link rel="icon" type="image/png" href="2.png" sizes="32x32">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -39,8 +39,8 @@
     <!-- End Google Tag Manager (noscript) -->
     
     <!-- Header Section -->
-    <header class="sticky top-0 left-0 right-0 z-50 bg-white bg-opacity-80 backdrop-blur-md py-4 shadow-sm">
-        <div class="container mx-auto flex items-center justify-between px-4 md:px-6">
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white bg-opacity-80 backdrop-blur-md py-4 shadow-sm">
+        <div class="container mx-auto flex items-center justify-between px-4 sm:px-6">
     <!-- "स्वशासन" logo as an image link -->
         <a href="https://svashasan.com" class="flex-shrink-0">
             <img src="2.png" alt="Svashasan Logo" class="h-10 w-auto object-contain">
@@ -57,28 +57,35 @@
                 </ul>
             </nav>
             <div class="flex items-center space-x-4 header-right-group ml-auto">
-                <a href="#" id="profile-icon" class="text-gray-600 transition-colors duration-200 cursor-pointer">
+                <a href="#" id="profile-icon" class="text-grey-600 transition-colors duration-200 cursor-pointer">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-circle"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="10" r="3"/><path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662"/></svg>
                 </a>
-                <button id="menu-button" class="md:hidden text-gray-600 hover:text-gray-900 focus:outline-none">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+                <button id="menu-button" class="md:hidden text-gray-600 hover:text-gray-900 focus:outline-none z-60 relative">
+                    <svg id="menu-open-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu">
+                        <line x1="4" x2="20" y1="12" y2="12"></line>
+                        <line x1="4" x2="20" y1="6" y2="6"></line>
+                        <line x1="4" x2="20" y1="18" y2="18"></line>
+                    </svg>
+                    <svg id="menu-close-icon" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
                 </button>
             </div>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 right-0 bg-white bg-opacity-95 backdrop-blur-md shadow-md py-4">
-            <ul class="flex flex-col items-center space-y-4 text-gray-800 font-medium">
-                 <li><a href="index.html#about" class="hover:text-gray-900 hover:font-bold">About Us</a></li>
-                <li><a href="index.html#features" class="hover:text-gray-900 hover:font-bold">Features</a></li>
-                <li><a href="index.html#contact" class="hover:text-gray-900 hover:font-bold">Contact</a></li>
-                <li><a href="blog.html" class="hover:text-gray-900 hover:font-bold">Blog</a></li>
-                <li><a href="survey.html" class="hover:text-gray-900 hover:font-bold">Survey</a></li>
-                <li><a href="developer-platform.html" class="hover:text-gray-900 hover:font-bold">API</a></li>
-                <li><a href="model-performance.html" class="hover:text-gray-900 hover:font-bold">Models</a></li>
-            </ul>
-        </div>
     </header>
+    <div id="mobile-menu" class="hidden fixed inset-0 bg-white z-40 flex flex-col justify-center items-center opacity-0 transition-opacity duration-300">
+        <ul class="flex flex-col space-y-10 text-gray-900 text-3xl font-bold items-center">
+            <li><a href="index.html#about" class="hover:text-gray-900 hover:font-bold transition-all duration-200">About Us</a></li>
+            <li><a href="index.html#features" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Features</a></li>
+            <li><a href="index.html#contact" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Contact</a></li>
+            <li><a href="https://svashasan.com/blog" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Blog</a></li>
+            <li><a href="https://svashasan.com/survey" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Survey</a></li>
+            <li><a href="https://svashasan.com/developer-platform" class="hover:text-gray-900 hover:font-bold transition-all duration-200">API</a></li>
+            <li><a href="https://svashasan.com/model-performance" class="hover:text-gray-900 hover:font-bold transition-all duration-200">Models</a></li>
+        </ul>
+    </div>
 
-    <main class="flex items-center justify-center min-h-screen py-24 px-4">
+    <main class="flex items-center justify-center min-h-screen py-16 px-4">
         <div class="relative w-full max-w-md" style="min-height: 650px;">
             <!-- Login Form Container -->
             <div id="login-form-container" class="form-container absolute w-full">
@@ -124,9 +131,12 @@
                             <img src="apple_logo.png" alt="Apple" width="20" height="20" class="rounded-full object-contain">
                         </a>
                     </div>
-                    <p class="text-center text-gray-600 text-sm mt-6">
+                    <p class="text-center text-gray-600 text-sm mt-6 mb-2">
                         Don't have an account? 
                         <a href="#" id="show-signup" class="text-blue-600 hover:underline font-bold">Sign Up</a>
+                    </p>
+                    <p class="text-center text-gray-500 text-xs px-2 py-2 bg-gray-50 rounded mt-4 border border-gray-100">
+                        📱 To login to Desktop, just use your phone's camera to scan the QR code displayed on your computer.
                     </p>
                 </div>
             </div>
@@ -143,10 +153,6 @@
                         <div class="mb-4">
                             <label for="signup-email" class="block text-gray-700 text-sm font-bold mb-2">Email Address</label>
                             <input type="email" id="signup-email" name="email" class="w-full px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-shadow" placeholder="you@example.com" required>
-                        </div>
-                        <div class="mb-4">
-                            <label for="signup-phone" class="block text-gray-700 text-sm font-bold mb-2">Phone Number</label>
-                            <input type="tel" id="signup-phone" name="phone" class="w-full px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-shadow" placeholder="+1 (555) 123-4567">
                         </div>
                         <div class="mb-4">
                             <label for="signup-password" class="block text-gray-700 text-sm font-bold mb-2">Password</label>
@@ -205,39 +211,56 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // If user already logged in, go straight to dashboard
-            const existingToken = localStorage.getItem("svashasan_token");
-            if (existingToken) {
-                window.location.href = "https://svashasan.com/my-account";
-                return;
-            }
-            // Enforce responsive access: desktop should use onboarding, mobile should use login
-            if (window.innerWidth >= 768) {
+            // Precise Mobile detection rules to prevent misdirection
+            const isMobile = /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
+            
+            if (!isMobile) {
+                // Desktops strictly use Onboarding
                 window.location.replace("https://svashasan.com/onboarding");
                 return;
             }
+
             // Mobile menu toggle
             const menuButton = document.getElementById('menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
+            const menuOpenIcon = document.getElementById('menu-open-icon');
+            const menuCloseIcon = document.getElementById('menu-close-icon');
+            const body = document.body;
+
+            const toggleMenu = () => {
+                const isMenuOpen = !mobileMenu.classList.contains('hidden');
+
+                if (isMenuOpen) {
+                    mobileMenu.classList.add('opacity-0');
+                    body.style.overflow = '';
+                    menuOpenIcon.classList.remove('hidden');
+                    menuCloseIcon.classList.add('hidden');
+                    setTimeout(() => {
+                        mobileMenu.classList.add('hidden');
+                    }, 300);
+                } else {
+                    mobileMenu.classList.remove('hidden');
+                    menuOpenIcon.classList.add('hidden');
+                    menuCloseIcon.classList.remove('hidden');
+                    setTimeout(() => {
+                        mobileMenu.classList.remove('opacity-0');
+                        body.style.overflow = 'hidden';
+                    }, 10);
+                }
+            };
+
             if (menuButton && mobileMenu) {
-                menuButton.addEventListener('click', () => {
-                    mobileMenu.classList.toggle('hidden');
+                menuButton.addEventListener('click', toggleMenu);
+                mobileMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', toggleMenu);
                 });
             }
 
-            // Profile icon responsive redirect
             const profileIcon = document.getElementById('profile-icon');
             if (profileIcon) {
                 profileIcon.addEventListener('click', (e) => {
                     e.preventDefault();
-
-                    if (window.innerWidth < 768) {
-                        // Mobile users
-                        window.location.href = "https://svashasan.com/login";
-                    } else {
-                        // Desktop users
-                        window.location.href = "https://svashasan.com/onboarding";
-                    }
+                    window.location.href = "https://svashasan.com/login";
                 });
             }
 
@@ -283,7 +306,6 @@
                         e.preventDefault();
                         visible = !visible;
                         input.type = visible ? 'text' : 'password';
-                        // Optionally, swap eye icon
                         if (visible) {
                             eyeIcon.innerHTML = `
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.477 0-8.268-2.943-9.542-7a9.956 9.956 0 012.042-3.368M6.2 6.2A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.542 7a9.958 9.958 0 01-4.043 5.03M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -301,6 +323,10 @@
             setupPasswordToggle('login-password', 'toggle-login-password', 'login-password-eye');
             setupPasswordToggle('signup-password', 'toggle-signup-password', 'signup-password-eye');
 
+            // Handle Smart Return Paths (e.g., coming from QR scan)
+            const urlParams = new URLSearchParams(window.location.search);
+            const returnTo = urlParams.get('return_to') || "https://svashasan.com/my-account";
+
             // Connect signup form to backend API
             const signupFormElement = document.querySelector("#signup-form-container form");
             if (signupFormElement) {
@@ -309,7 +335,6 @@
 
                     const name = document.getElementById("signup-name").value;
                     const email = document.getElementById("signup-email").value;
-                    const phone = document.getElementById("signup-phone").value;
                     const password = document.getElementById("signup-password").value;
 
                     try {
@@ -318,23 +343,18 @@
                             headers: {
                                 "Content-Type": "application/json"
                             },
-                            body: JSON.stringify({
-                                name,
-                                email,
-                                phone,
-                                password
-                            })
+                            body: JSON.stringify({ name, email, password })
                         });
 
                         const data = await res.json();
 
-if (data.token) {
-    localStorage.setItem("svashasan_token", data.token);
-    window.location.href = "https://svashasan.com/my-account";
-} else {
-    alert("Account created successfully. Please login.");
-    switchForms(signupForm, loginForm);
-}
+                        if (data.token) {
+                            // Direct Login via newly returned token
+                            localStorage.setItem("svashasan_token", data.token);
+                            window.location.href = returnTo;
+                        } else {
+                            alert(data.error || "Signup Failed");
+                        }
                     } catch (err) {
                         alert("Error creating account");
                     }
@@ -356,17 +376,14 @@ if (data.token) {
                             headers: {
                                 "Content-Type": "application/json"
                             },
-                            body: JSON.stringify({
-                                email,
-                                password
-                            })
+                            body: JSON.stringify({ email, password })
                         });
 
                         const data = await res.json();
 
                         if (data.token) {
                             localStorage.setItem("svashasan_token", data.token);
-                            window.location.href = "https://svashasan.com/my-account";
+                            window.location.href = returnTo;
                         } else {
                             alert(data.error || "Login failed");
                         }

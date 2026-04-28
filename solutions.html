@@ -144,9 +144,15 @@
     </div>
 
     <!-- Hero Section -->
-    <section
-        class="hero-video-placeholder h-[80vh] lg:h-screen flex items-center justify-center text-white text-center pt-16">
-        <div class="px-4">
+    <section class="relative h-[80vh] lg:h-screen flex items-center justify-center text-white text-center pt-16 overflow-hidden">
+        <!-- Background Video -->
+        <video autoplay loop muted playsinline class="absolute top-0 left-0 w-full h-full object-cover z-0">
+            <source src="self driving.mp4" type="video/mp4">
+        </video>
+        <!-- Dark Overlay -->
+        <div class="absolute inset-0 bg-black/50 z-10"></div>
+        
+        <div class="px-4 relative z-20">
             <h1 class="text-4xl md:text-6xl font-bold mb-6">Leading the evolution<br>from assisted to autonomous driving
             </h1>
             <h3 class="text-lg md:text-xl font-light max-w-4xl mx-auto opacity-90">

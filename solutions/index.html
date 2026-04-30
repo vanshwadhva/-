@@ -229,7 +229,7 @@
             <div class="grid grid-cols-1 lg:grid-cols-12 py-20 gap-10 pl-6 lg:pl-10">
                 <div class="lg:col-span-4 sticky-title">
                     <h3 class="text-4xl font-light mb-6">Svashasan OS<br>Basic</h3>
-                    <a href="#contact"
+                    <a href="https://svashasan.com/request-demo" target="_self"
                         class="inline-flex items-center border border-black rounded-full px-6 py-2 hover:bg-black hover:text-white transition">
                         Request Demo
                     </a>
@@ -302,7 +302,7 @@
             <div class="grid grid-cols-1 lg:grid-cols-12 py-20 gap-10 pl-6 lg:pl-10">
                 <div class="lg:col-span-4 sticky-title">
                     <h3 class="text-4xl font-light mb-6">Svashasan OS<br>Modular FSD</h3>
-                    <a href="#contact"
+                    <a href="https://svashasan.com/solutions/modules" target="_self"
                         class="inline-flex items-center border border-black rounded-full px-6 py-2 hover:bg-black hover:text-white transition">
                         Explore Modules
                     </a>
@@ -376,7 +376,7 @@
             <div class="grid grid-cols-1 lg:grid-cols-12 py-20 gap-10 pl-6 lg:pl-10">
                 <div class="lg:col-span-4 sticky-title">
                     <h3 class="text-4xl font-light mb-6">Svashasan OS<br>Elite</h3>
-                    <a href="#contact"
+                    <a href="https://svashasan.com/solutions/flagship-stack" target="_self"
                         class="inline-flex items-center border border-black rounded-full px-6 py-2 hover:bg-black hover:text-white transition">
                         Flagship Stack
                     </a>
@@ -433,10 +433,11 @@
     </div>
 
     <!-- Product Matrix Section -->
-    <section class="py-24 bg-white border-t border-gray-100">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold mb-12 text-center">Product Matrix</h2>
-            <div class="responsive-table">
+    <section class="py-24 bg-white border-t border-gray-100 hover:bg-gray-50 transition group cursor-pointer">
+        <a href="https://svashasan.com/solutions/plans" class="block w-full h-full">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold mb-12 text-center group-hover:text-mobileyeBlue transition">Product Matrix</h2>
+                <div class="responsive-table">
                 <table class="w-full border-collapse">
                     <thead>
                         <tr class="bg-gray-50">
@@ -505,7 +506,8 @@
                     </tbody>
                 </table>
             </div>
-        </div>
+            </div>
+        </a>
     </section>
 
     <!-- CTA Section -->
@@ -517,7 +519,7 @@
                 analytics suite, Svashasan OS provides a scalable path from assisted driving to self-governing mobility.
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="mailto:namaste@svashasan.com"
+                <a href="https://svashasan.com/request-demo"
                     class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-12 rounded-xl transition shadow-lg">Request
                     Demo</a>
                 <a href="#contact"
@@ -559,7 +561,9 @@
             toggle.addEventListener('click', () => {
                 const faqItem = toggle.parentElement;
                 faqItem.classList.toggle('active');
-                toggle.querySelector('span').textContent = faqItem.classList.contains('active') ? '-' : '+';
+                if (toggle.querySelector('span')) {
+                    toggle.querySelector('span').textContent = faqItem.classList.contains('active') ? '-' : '+';
+                }
             });
         });
 
@@ -567,7 +571,6 @@
         if (typeof lucide !== 'undefined') {
             lucide.createIcons();
         }
-        });
     </script>
 </body>
 

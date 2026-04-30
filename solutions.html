@@ -2,26 +2,39 @@
 <html lang="en">
 
 <head>
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-N89XZGM4');</script>
+    <!-- End Google Tag Manager -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Svashasan OS - Solutions Spectrum</title>
 
     <!-- Primary Meta Tags -->
     <meta name="title" content="Svashasan OS - Solutions Spectrum">
-    <meta name="description" content="Explore the broad spectrum of Svashasan solutions. From production-grade ADAS to modular highway autonomy, all the way to premium self-driving intelligence.">
+    <meta name="description"
+        content="Explore the broad spectrum of Svashasan solutions. From production-grade ADAS to modular highway autonomy, all the way to premium self-driving intelligence.">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://svashasan.com/models/solutions.html">
     <meta property="og:title" content="Svashasan OS - Solutions Spectrum">
-    <meta property="og:description" content="Explore the broad spectrum of Svashasan solutions. From production-grade ADAS to modular highway autonomy, all the way to premium self-driving intelligence.">
+    <meta property="og:description"
+        content="Explore the broad spectrum of Svashasan solutions. From production-grade ADAS to modular highway autonomy, all the way to premium self-driving intelligence.">
     <meta property="og:image" content="https://svashasan.com/models/Elite%20OS.webp">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://svashasan.com/models/solutions.html">
     <meta property="twitter:title" content="Svashasan OS - Solutions Spectrum">
-    <meta property="twitter:description" content="Explore the broad spectrum of Svashasan solutions. From production-grade ADAS to modular highway autonomy, all the way to premium self-driving intelligence.">
+    <meta property="twitter:description"
+        content="Explore the broad spectrum of Svashasan solutions. From production-grade ADAS to modular highway autonomy, all the way to premium self-driving intelligence.">
     <meta property="twitter:image" content="https://svashasan.com/models/Elite%20OS.webp">
 
     <link rel="icon" type="image/png" href="2.png" sizes="32x32">
@@ -96,11 +109,6 @@
         }
 
         /* Menu logic from index.html */
-        #mobile-menu {
-            transition: opacity 0.3s ease-in-out;
-            padding-left: 2.5rem;
-        }
-
         .faq-content {
             max-height: 0;
             overflow: hidden;
@@ -117,6 +125,12 @@
 </head>
 
 <body class="text-gray-800 bg-white">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N89XZGM4" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
 
     <!-- Header -->
     <header class="bg-white/80 backdrop-blur-md py-4 border-b border-gray-100 sticky top-0 z-50">
@@ -126,19 +140,13 @@
                 <img src="2.png" alt="Svashasan Logo" class="h-10 w-auto object-contain">
             </a>
 
-            <!-- Mobile Menu Toggle -->
-            <button id="mobile-menu-btn"
-                class="lg:hidden text-sm font-medium bg-gray-100 px-4 py-2 rounded text-tesla-dark">
-                Menu
-            </button>
-
-            <nav class="hidden lg:flex items-center space-x-8">
-                <div class="flex items-center space-x-4">
+            <nav class="flex items-center space-x-8">
+                <div class="flex items-center space-x-2 md:space-x-4">
                     <div class="relative flex items-center">
                         <i data-lucide="search"
                             class="w-4 h-4 text-gray-400 absolute left-2.5 top-1/2 -translate-y-1/2 pointer-events-none"></i>
                         <input id="search-input" type="text" placeholder="Search..."
-                            class="w-32 focus:w-48 pl-8 pr-3 py-1.5 bg-gray-50 border border-transparent focus:bg-white focus:border-gray-200 rounded-full text-sm transition-all duration-300 outline-none text-tesla-dark">
+                            class="w-28 sm:w-32 focus:w-40 sm:focus:w-48 pl-8 pr-3 py-1.5 bg-gray-50 border border-transparent focus:bg-white focus:border-gray-200 rounded-full text-sm transition-all duration-300 outline-none text-tesla-dark">
                     </div>
                     <a href="https://svashasan.com/support" target="_blank" class="flex items-center">
                         <i data-lucide="help-circle"
@@ -149,30 +157,20 @@
         </div>
     </header>
 
-    <!-- Mobile Nav Overlay -->
-    <div id="mobile-menu" class="hidden fixed inset-0 bg-white z-40 flex flex-col justify-center items-start opacity-0">
-        <ul class="flex flex-col space-y-8 text-gray-800 text-3xl font-semibold">
-            <li><a href="index.html#about">About Us</a></li>
-            <li><a href="index.html#features">Features</a></li>
-            <li><a href="index.html#contact">Contact</a></li>
-            <li><a href="https://svashasan.com/blog">Blog</a></li>
-            <li><a href="https://svashasan.com/survey">Survey</a></li>
-            <li><a href="https://svashasan.com/developer-platform">API</a></li>
-            <li><a href="https://svashasan.com/model-performance">Models</a></li>
-        </ul>
-    </div>
 
     <!-- Hero Section -->
-    <section class="relative h-[60vh] md:h-[80vh] lg:h-screen flex items-center justify-center text-white text-center pt-16 overflow-hidden bg-slate-900">
+    <section
+        class="relative h-[60vh] md:h-[80vh] lg:h-screen flex items-center justify-center text-white text-center pt-16 overflow-hidden bg-slate-900">
         <!-- Background Video -->
-        <video autoplay loop muted playsinline class="absolute top-0 left-0 w-full h-full object-cover object-center z-0">
+        <video autoplay loop muted playsinline
+            class="absolute top-0 left-0 w-full h-full object-cover object-center z-0">
             <source src="self driving.mp4" type="video/mp4">
         </video>
         <!-- Dark Overlay -->
         <div class="absolute inset-0 bg-black/50 z-10"></div>
-        
+
         <div class="px-4 relative z-20">
-            <h1 class="text-4xl md:text-6xl font-bold mb-6">Leading the evolution<br>from assisted to autonomous driving
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">Giving your vehicle a brain
             </h1>
             <h3 class="text-lg md:text-xl font-light max-w-4xl mx-auto opacity-90">
                 From production-grade ADAS to modular highway autonomy, all the way to premium self-driving intelligence
@@ -240,7 +238,9 @@
                     <div class="mb-12">
                         <img src="Basic ADAS.webp" class="w-full max-w-xl max-h-72 object-contain object-left mb-8"
                             alt="Basic ADAS">
-                        <h4 class="text-2xl font-bold mb-4">Production-Grade ADAS</h4>
+                        <h4 class="text-2xl font-bold mb-2">Production-Grade ADAS</h4>
+                        <p class="text-sm text-mobileyeBlue font-semibold mb-4">SAE L1/L2 essentials • 22 features (8
+                            MVP-tagged)</p>
                         <div class="flex flex-wrap gap-6 mb-6">
                             <div class="flex items-center gap-2 text-mobileyeBlue">
                                 <span class="text-sm font-bold">Front Camera & Radar Fusion</span>
@@ -252,7 +252,8 @@
                         <p class="text-lg text-gray-600 leading-relaxed mb-8">
                             Entry production suite for modern EVs. Packages the most commercially deployable ADAS and
                             safety functions into a clean, OEM-friendly offering focused on road safety, comfort, and
-                            regulatory readiness.
+                            regulatory readiness. Provides the core SAE L1/L2 essentials with MVP features designed for
+                            OEM standard fitment.
                         </p>
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -262,9 +263,9 @@
                                     <span>+</span>
                                 </button>
                                 <div class="faq-content px-4 text-sm text-gray-600">
-                                    Lane detection (front/rear/side), Traffic sign recognition,
-                                    Pedestrian/Cyclist/Animal detection, Drivable area mapping, and Traffic light
-                                    recognition.
+                                    360° lane detection (front/rear/side), Traffic sign recognition,
+                                    Pedestrian/Cyclist/Animal detection, Drivable area mapping, Traffic light
+                                    recognition, Lane boundary estimation, and Rear-view Camera (RVC).
                                 </div>
                             </div>
                             <div class="faq-item border border-gray-100 bg-gray-50 rounded-lg">
@@ -273,8 +274,20 @@
                                     <span>+</span>
                                 </button>
                                 <div class="faq-content px-4 text-sm text-gray-600">
-                                    Forward Collision Warning (FCW), AEB for all road users, Intersection assist, Blind
-                                    Spot Detection (BSD), and Rear Cross Traffic Braking.
+                                    Forward Collision Warning (FCW), AEB for all road users including car, pedestrian,
+                                    and cyclist, Intersection AEB, Blind Spot Detection (BSD), Rear Cross Traffic Alert
+                                    (RCTA), and Rear Cross Traffic Braking.
+                                </div>
+                            </div>
+                            <div class="faq-item border border-gray-100 bg-gray-50 rounded-lg md:col-span-2 mt-4">
+                                <button class="faq-toggle w-full p-4 text-left font-bold flex justify-between">
+                                    Foundational ADAS Software
+                                    <span>+</span>
+                                </button>
+                                <div class="faq-content px-4 text-sm text-gray-600">
+                                    Camera + Radar processing pipeline, Sensor fusion, Longitudinal and lateral vehicle
+                                    control, OTA updates, and Diagnostics logging for sensor failure detection. Includes
+                                    Lane Keeping Assist (LKA).
                                 </div>
                             </div>
                         </div>
@@ -298,7 +311,8 @@
                     <div class="mb-12">
                         <img src="Modular FSD.webp" class="w-full max-w-xl max-h-72 object-contain object-left mb-8"
                             alt="Modular FSD">
-                        <h4 class="text-2xl font-bold mb-4">The Bridge to Supervised Autonomy</h4>
+                        <h4 class="text-2xl font-bold mb-2">The Bridge to Supervised Autonomy</h4>
+                        <p class="text-sm text-mobileyeBlue font-semibold mb-4">Full L2+ autonomy • 44 features</p>
                         <div class="flex flex-wrap gap-6 mb-6">
                             <div class="flex items-center gap-2 text-mobileyeBlue">
                                 <span class="text-sm font-bold">L2++ Highway Pilot</span>
@@ -309,21 +323,48 @@
                         </div>
                         <p class="text-lg text-gray-600 leading-relaxed mb-8">
                             A modular suite for OEMs wanting to bridge the gap to hands-off driving. Adds highway
-                            autonomy, predictive map-based intelligence, and configurable autopilot modules.
+                            autonomy, predictive map-based intelligence, and configurable autopilot modules. Features a
+                            complete safety suite alongside parking and driver monitoring systems (DMS).
                         </p>
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                             <div class="p-6 bg-slate-900 text-white rounded-xl">
                                 <h5 class="text-blue-400 font-bold mb-2">Autopilot Module</h5>
                                 <p class="text-sm opacity-80">Automated highway merge/exit, hands-off operation on
-                                    controlled roads, and automated lane changes.</p>
+                                    controlled roads, Automated Lane Change (ALC), Level 2++ Highway Pilot, and Overtake
+                                    & Merge Assist.</p>
                             </div>
                             <div class="p-6 bg-slate-900 text-white rounded-xl">
                                 <h5 class="text-blue-400 font-bold mb-2">Full Suite Module</h5>
-                                <p class="text-sm opacity-80">Adds predictive curve assist, Urban Pilot modules, and L3
-                                    Traffic Jam Chauffeur capabilities.</p>
+                                <p class="text-sm opacity-80">Adds predictive curve assist, Urban Pilot modules, L3
+                                    Traffic Jam Chauffeur capabilities, Slope-aware ACC, and Map-based lane keeping.</p>
                             </div>
                         </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="faq-item border border-gray-100 bg-gray-50 rounded-lg">
+                                <button class="faq-toggle w-full p-4 text-left font-bold flex justify-between">
+                                    Advanced Safety & Parking
+                                    <span>+</span>
+                                </button>
+                                <div class="faq-content px-4 text-sm text-gray-600">
+                                    Lane Centering Control (LCC), Rear-end collision mitigation, Blind Spot Intervention
+                                    with corrective steering, Automated Parking, 360° Surround View, and Parking
+                                    Guidance.
+                                </div>
+                            </div>
+                            <div class="faq-item border border-gray-100 bg-gray-50 rounded-lg">
+                                <button class="faq-toggle w-full p-4 text-left font-bold flex justify-between">
+                                    Driver Monitoring (DMS)
+                                    <span>+</span>
+                                </button>
+                                <div class="faq-content px-4 text-sm text-gray-600">
+                                    Interior camera & sensor-based monitoring, Drowsiness detection (eye closure,
+                                    yawning), Distraction detection, Driver Readiness, and Cabin occupant detection.
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -344,7 +385,9 @@
                     <div class="mb-12">
                         <img src="Elite OS.webp" class="w-full max-w-xl max-h-72 object-contain object-left mb-8"
                             alt="Elite OS">
-                        <h4 class="text-2xl font-bold mb-4">Premium Intelligence & Resilience</h4>
+                        <h4 class="text-2xl font-bold mb-2">Premium Intelligence & Resilience</h4>
+                        <p class="text-sm text-mobileyeBlue font-semibold mb-4">SAE L3 urban & highway autonomy • 52
+                            features</p>
                         <div class="flex flex-wrap gap-6 mb-6">
                             <div class="flex items-center gap-2 text-mobileyeBlue">
                                 <span class="text-sm font-bold">Full FSD Stack</span>
@@ -355,18 +398,32 @@
                         </div>
                         <p class="text-lg text-gray-600 leading-relaxed mb-8">
                             Our most premium offering, combining the complete autonomy stack with advanced software
-                            infrastructure, OTA resilience, and smart vehicle analytics.
+                            infrastructure, OTA resilience, and smart vehicle analytics. Engineered for full SAE L3
+                            functionality with ASIL-D compliance and minimum risk maneuvering capabilities.
                         </p>
 
                         <div class="bg-gray-50 p-8 rounded-xl border border-gray-200">
-                            <h5 class="font-bold mb-4">Premium Intelligence Layer</h5>
+                            <h5 class="font-bold mb-4">Premium Intelligence & Autonomy Layer</h5>
                             <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-gray-700">
                                 <li class="flex items-center gap-2">✓ Smart travel analytics</li>
                                 <li class="flex items-center gap-2">✓ Battery consumption insights</li>
                                 <li class="flex items-center gap-2">✓ Real-time sensor diagnostics</li>
                                 <li class="flex items-center gap-2">✓ Fleet operational summaries</li>
-                                <li class="flex items-center gap-2">✓ Failure logging & maintenance</li>
                                 <li class="flex items-center gap-2">✓ OTA resilience backbone</li>
+                                <li class="flex items-center gap-2 font-medium text-mobileyeBlue">✓ Level 3 Traffic Jam
+                                    Chauffeur</li>
+                                <li class="flex items-center gap-2 font-medium text-mobileyeBlue">✓ Urban Pilot &
+                                    Intersection Mgmt</li>
+                                <li class="flex items-center gap-2 font-medium text-mobileyeBlue">✓ LiDAR pipeline &
+                                    DeepFusion</li>
+                                <li class="flex items-center gap-2 font-medium text-mobileyeBlue">✓ Full ASIL-D
+                                    compliance & fail-safe</li>
+                                <li class="flex items-center gap-2 font-medium text-mobileyeBlue">✓ Remote Parking
+                                    (app/key fob)</li>
+                                <li class="flex items-center gap-2 font-medium text-mobileyeBlue">✓ AUTOSAR Adaptive +
+                                    RTOS</li>
+                                <li class="flex items-center gap-2 font-medium text-mobileyeBlue">✓ Geofenced autonomous
+                                    zones</li>
                             </ul>
                         </div>
                     </div>
@@ -383,13 +440,20 @@
                 <table class="w-full border-collapse">
                     <thead>
                         <tr class="bg-gray-50">
-                            <th class="p-6 text-left border border-gray-200">Capability</th>
+                            <th class="p-6 text-left border border-gray-200">Capability / Metric</th>
                             <th class="p-6 text-center border border-gray-200">Basic</th>
                             <th class="p-6 text-center border border-gray-200 text-mobileyeBlue">Modular FSD</th>
                             <th class="p-6 text-center border border-gray-200 font-bold bg-blue-50">Elite</th>
                         </tr>
                     </thead>
                     <tbody>
+
+                        <tr>
+                            <td class="p-4 border border-gray-200 font-medium">Total Features</td>
+                            <td class="p-4 border border-gray-200 text-center">22 (8 MVP)</td>
+                            <td class="p-4 border border-gray-200 text-center">44</td>
+                            <td class="p-4 border border-gray-200 text-center bg-blue-50/50">52</td>
+                        </tr>
                         <tr>
                             <td class="p-4 border border-gray-200 font-medium">Core Perception & ADAS</td>
                             <td class="p-4 border border-gray-200 text-center">Yes</td>
@@ -403,7 +467,7 @@
                             <td class="p-4 border border-gray-200 text-center bg-blue-50/50">Yes</td>
                         </tr>
                         <tr>
-                            <td class="p-4 border border-gray-200 font-medium">Highway Autopilot</td>
+                            <td class="p-4 border border-gray-200 font-medium">Highway Autopilot (L2++)</td>
                             <td class="p-4 border border-gray-200 text-center text-gray-300">No</td>
                             <td class="p-4 border border-gray-200 text-center">Yes</td>
                             <td class="p-4 border border-gray-200 text-center bg-blue-50/50">Yes</td>
@@ -411,8 +475,26 @@
                         <tr>
                             <td class="p-4 border border-gray-200 font-medium">Urban Pilot Modules</td>
                             <td class="p-4 border border-gray-200 text-center text-gray-300">No</td>
-                            <td class="p-4 border border-gray-200 text-center italic">Optional</td>
+                            <td class="p-4 border border-gray-200 text-center italic text-gray-500">Optional</td>
                             <td class="p-4 border border-gray-200 text-center bg-blue-50/50">Yes</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 border border-gray-200 font-medium">Driver Monitoring System (DMS)</td>
+                            <td class="p-4 border border-gray-200 text-center text-gray-300">No</td>
+                            <td class="p-4 border border-gray-200 text-center">Yes</td>
+                            <td class="p-4 border border-gray-200 text-center bg-blue-50/50">Yes</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 border border-gray-200 font-medium">Automated & Remote Parking</td>
+                            <td class="p-4 border border-gray-200 text-center text-gray-300">No</td>
+                            <td class="p-4 border border-gray-200 text-center">Yes</td>
+                            <td class="p-4 border border-gray-200 text-center bg-blue-50/50">Yes</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 border border-gray-200 font-medium">LiDAR Pipeline & ASIL-D</td>
+                            <td class="p-4 border border-gray-200 text-center text-gray-300">No</td>
+                            <td class="p-4 border border-gray-200 text-center text-gray-300">No</td>
+                            <td class="p-4 border border-gray-200 text-center bg-blue-50/50 font-semibold">Yes</td>
                         </tr>
                         <tr>
                             <td class="p-4 border border-gray-200 font-medium">Smart Analytics & OTA</td>
@@ -469,48 +551,22 @@
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const menuButton = document.getElementById('menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const menuOpenIcon = document.getElementById('menu-open-icon');
-            const menuCloseIcon = document.getElementById('menu-close-icon');
-            const body = document.body;
+        const body = document.body;
 
-            const toggleMenu = () => {
-                const isMenuOpen = !mobileMenu.classList.contains('hidden');
-                if (isMenuOpen) {
-                    mobileMenu.classList.add('opacity-0');
-                    body.style.overflow = '';
-                    menuOpenIcon.classList.remove('hidden');
-                    menuCloseIcon.classList.add('hidden');
-                    setTimeout(() => mobileMenu.classList.add('hidden'), 300);
-                } else {
-                    mobileMenu.classList.remove('hidden');
-                    menuOpenIcon.classList.add('hidden');
-                    menuCloseIcon.classList.remove('hidden');
-                    setTimeout(() => {
-                        mobileMenu.classList.remove('opacity-0');
-                        body.style.overflow = 'hidden';
-                    }, 10);
-                }
-            };
-
-            if (menuButton) menuButton.addEventListener('click', toggleMenu);
-
-            // Solution Accordions Logic
-            const faqToggles = document.querySelectorAll('.faq-toggle');
-            faqToggles.forEach(toggle => {
-                toggle.addEventListener('click', () => {
-                    const faqItem = toggle.parentElement;
-                    faqItem.classList.toggle('active');
-                    toggle.querySelector('span').textContent = faqItem.classList.contains('active') ? '-' : '+';
-                });
+        // Solution Accordions Logic
+        const faqToggles = document.querySelectorAll('.faq-toggle');
+        faqToggles.forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const faqItem = toggle.parentElement;
+                faqItem.classList.toggle('active');
+                toggle.querySelector('span').textContent = faqItem.classList.contains('active') ? '-' : '+';
             });
+        });
 
-            // Initialize Lucide Icons
-            if (typeof lucide !== 'undefined') {
-                lucide.createIcons();
-            }
+        // Initialize Lucide Icons
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
         });
     </script>
 </body>

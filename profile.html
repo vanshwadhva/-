@@ -1,33 +1,31 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Redirecting...</title>
-    <script>
-        /**
-         * Profile Redirection Router
-         * This file acts as a traffic controller.
-         */
-        (function() {
-            // Detect device based on your existing 768px breakpoint
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+        try {
+
+            const token = localStorage.getItem("svashasan_token");
+
+            // If a valid token exists, go directly to dashboard
+            if (token && token !== "null" && token !== "undefined") {
+                window.location.replace("/my-account");
+                return;
+            }
+
+            // Detect mobile more reliably
             const isMobile = window.matchMedia("(max-width: 767px)").matches;
 
             if (isMobile) {
-                // Redirect mobile users to the login experience
-                window.location.replace("/login");
+                // Mobile → login
+                window.location.replace("https://svashasan.com/login");
             } else {
-                // Redirect desktop users to the onboarding experience
-                window.location.replace("/onboarding");
+                // Desktop → onboarding
+                window.location.replace("https://svashasan.com/onboarding");
             }
-        })();
-    </script>
-    <style>
-        body { background-color: #ffffff; font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-        .loader { border: 3px solid #f3f3f3; border-top: 3px solid #3498db; border-radius: 50%; width: 24px; height: 24px; animation: spin 1s linear infinite; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-    </style>
-</head>
-<body>
-    <!-- Small loader in case the redirect takes a fraction of a second -->
-    <div class="loader"></div>
-</body>
-</html>
+
+        } catch (err) {
+            console.error("Profile router error:", err);
+            window.location.replace("/login");
+        }
+
+    });
+</script>

@@ -150,7 +150,9 @@
             // Consistent device detection (matches profile.html router)
             const isMobile = window.matchMedia("(max-width: 767px)").matches;
 
-            if (!isMobile) {
+            const isLocal = window.location.protocol === 'file:';
+
+            if (!isMobile && !isLocal) {
                 // Desktop users → login only
                 window.location.replace("/login");
                 return;

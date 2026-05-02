@@ -1,31 +1,31 @@
 <script>
-document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', function () {
 
-    try {
+        try {
 
-        const token = localStorage.getItem("svashasan_token");
+            const token = localStorage.getItem("svashasan_token");
 
-        // If a valid token exists, go directly to dashboard
-        if (token && token !== "null" && token !== "undefined") {
-            window.location.replace("/my-account");
-            return;
-        }
+            // If a valid token exists, go directly to dashboard
+            if (token && token !== "null" && token !== "undefined") {
+                window.location.replace("/my-account");
+                return;
+            }
 
-        // Detect mobile more reliably
-        const isMobile = window.matchMedia("(max-width: 767px)").matches;
+            // Detect mobile more reliably
+            const isMobile = window.matchMedia("(max-width: 767px)").matches;
 
-        if (isMobile) {
-            // Mobile → login
+            if (isMobile) {
+                // Mobile → login
+                window.location.replace("/login");
+            } else {
+                // Desktop → onboarding
+                window.location.replace("/onboarding");
+            }
+
+        } catch (err) {
+            console.error("Profile router error:", err);
             window.location.replace("/login");
-        } else {
-            // Desktop → onboarding
-            window.location.replace("/onboarding");
         }
 
-    } catch (err) {
-        console.error("Profile router error:", err);
-        window.location.replace("/login");
-    }
-
-});
+    });
 </script>

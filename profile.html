@@ -7,32 +7,13 @@
 </head>
 <body>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            try {
-                const token = localStorage.getItem("svashasan_token");
+        const isMobile = window.matchMedia("(max-width: 767px)").matches;
 
-                // If a valid token exists, go directly to dashboard
-                if (token && token !== "null" && token !== "undefined") {
-                    window.location.replace("/my-account");
-                    return;
-                }
-
-                // Detect mobile more reliably now that viewport is set
-                const isMobile = window.matchMedia("(max-width: 767px)").matches || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-
-                if (isMobile) {
-                    // Mobile → login
-                    window.location.replace("https://svashasan.com/login");
-                } else {
-                    // Desktop → onboarding
-                    window.location.replace("https://svashasan.com/onboarding");
-                }
-
-            } catch (err) {
-                console.error("Profile router error:", err);
-                window.location.replace("/login");
-            }
-        });
+        if (isMobile) {
+            window.location.replace("https://svashasan.com/login");
+        } else {
+            window.location.replace("https://svashasan.com/onboarding");
+        }
     </script>
 </body>
 </html>

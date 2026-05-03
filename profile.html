@@ -1,31 +1,38 @@
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+</head>
+<body>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            try {
+                const token = localStorage.getItem("svashasan_token");
 
-        try {
+                // If a valid token exists, go directly to dashboard
+                if (token && token !== "null" && token !== "undefined") {
+                    window.location.replace("/my-account");
+                    return;
+                }
 
-            const token = localStorage.getItem("svashasan_token");
+                // Detect mobile more reliably now that viewport is set
+                const isMobile = window.matchMedia("(max-width: 767px)").matches || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
-            // If a valid token exists, go directly to dashboard
-            if (token && token !== "null" && token !== "undefined") {
-                window.location.replace("/my-account");
-                return;
+                if (isMobile) {
+                    // Mobile → login
+                    window.location.replace("https://svashasan.com/login");
+                } else {
+                    // Desktop → onboarding
+                    window.location.replace("https://svashasan.com/onboarding");
+                }
+
+            } catch (err) {
+                console.error("Profile router error:", err);
+                window.location.replace("/login");
             }
-
-            // Detect mobile more reliably
-            const isMobile = window.matchMedia("(max-width: 767px)").matches;
-
-            if (isMobile) {
-                // Mobile → login
-                window.location.replace("https://svashasan.com/login");
-            } else {
-                // Desktop → onboarding
-                window.location.replace("https://svashasan.com/onboarding");
-            }
-
-        } catch (err) {
-            console.error("Profile router error:", err);
-            window.location.replace("/login");
-        }
-
-    });
-</script>
+        });
+    </script>
+</body>
+</html>

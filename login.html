@@ -174,12 +174,13 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const convex = new Convex.ConvexClient(
-                "https://small-mongoose-950.convex.cloud"
+                "https://insightful-aardvark-136.convex.cloud"
             );
 
-            // If already logged in on mobile, redirect directly
-            const existingUserId = localStorage.getItem("userId");
-            if (existingUserId) {
+            // If already logged in, redirect directly
+            const existingLogin = localStorage.getItem("userLoggedIn");
+
+            if (existingLogin === "true") {
                 window.location.href = "https://svashasan.com/my-account";
                 return;
             }
@@ -318,11 +319,11 @@
                             password
                         });
 
-                        // Auto login immediately after signup
+                        localStorage.setItem("userLoggedIn", "true");
                         localStorage.setItem("userId", userId);
                         localStorage.setItem("userEmail", email);
 
-                        window.location.href = returnTo;
+                        window.location.href = "https://svashasan.com/my-account";
                     } catch (err) {
                         console.error(err);
                         alert(err.message || "Error creating account");
@@ -345,10 +346,11 @@
                             password
                         });
 
+                        localStorage.setItem("userLoggedIn", "true");
                         localStorage.setItem("userId", userId);
                         localStorage.setItem("userEmail", email);
 
-                        window.location.href = returnTo;
+                        window.location.href = "https://svashasan.com/my-account";
                     } catch (err) {
                         console.error(err);
                         alert(err.message || "Login failed");

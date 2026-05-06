@@ -171,16 +171,26 @@
         </div>
     </footer>
 
-    <script type="module">
-        import { ConvexHttpClient } from "https://esm.sh/convex/browser";
-        const convex = new ConvexHttpClient("https://small-mongoose-950.convex.cloud");
+    <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Precise Mobile detection rules to prevent misdirection
-            const isMobile = /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
+            const convex = new Convex.ConvexClient(
+                "https://small-mongoose-950.convex.cloud"
+            );
+
+            // If already logged in on mobile, redirect directly
+            const existingUserId = localStorage.getItem("userId");
+            if (existingUserId) {
+                window.location.href = "https://svashasan.com/my-account";
+                return;
+            }
+            // Consistent device detection (matches profile.html router)
+            const isMobile = window.matchMedia("(max-width: 767px)").matches;
             
-            if (!isMobile) {
-                // Desktops strictly use Onboarding
-                window.location.replace("https://svashasan.com/onboarding");
+            const isLocal = window.location.protocol === 'file:';
+            
+            if (!isMobile && !isLocal) {
+                // Desktop users → onboarding only
+                window.location.replace("/onboarding");
                 return;
             }
 
@@ -308,12 +318,14 @@
                             password
                         });
 
+                        // Auto login immediately after signup
                         localStorage.setItem("userId", userId);
+                        localStorage.setItem("userEmail", email);
+
                         window.location.href = returnTo;
-                        return;
                     } catch (err) {
                         console.error(err);
-                        alert(err.message);
+                        alert(err.message || "Error creating account");
                     }
                 });
             }
@@ -334,11 +346,12 @@
                         });
 
                         localStorage.setItem("userId", userId);
+                        localStorage.setItem("userEmail", email);
+
                         window.location.href = returnTo;
-                        return;
                     } catch (err) {
                         console.error(err);
-                        alert(err.message);
+                        alert(err.message || "Login failed");
                     }
                 });
             }

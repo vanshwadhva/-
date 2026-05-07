@@ -62,11 +62,21 @@
     <script>
     // ===== Authentication Guard =====
     // Prevent access to dashboard if user is not logged in
-    const token = localStorage.getItem("svashasan_token");
 
-    if (!token) {
-        // Redirect unauthenticated users to profile router
-        window.location.replace("https://svashasan.com/profile");
+    const isLoggedIn =
+        localStorage.getItem("userLoggedIn");
+
+    const userEmail =
+        localStorage.getItem("userEmail");
+
+    if (
+        isLoggedIn !== "true" ||
+        !userEmail
+    ) {
+        // Redirect unauthenticated users
+        window.location.replace(
+            "https://svashasan.com/login"
+        );
     }
     </script>
 

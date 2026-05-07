@@ -119,13 +119,49 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </nav>
             <div class="flex items-center space-x-4 header-right-group ml-auto">
                 <!-- Profile Icon (SVG) -->
-                <a href="onboarding.html" class="text-gray-600 hover:text-gray-900 transition-colors duration-200 cursor-pointer">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-circle">
-                        <circle cx="12" cy="12" r="10"/>
-                        <circle cx="12" cy="10" r="3"/>
-                        <path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662"/>
-                    </svg>
-                </a>
+                <!-- Profile Icon -->
+<a href="#" id="profile-link"
+    class="text-gray-600 hover:text-gray-900 transition-colors duration-200 cursor-pointer">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+        class="lucide lucide-user-circle">
+        <circle cx="12" cy="12" r="10" />
+        <circle cx="12" cy="10" r="3" />
+        <path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662" />
+    </svg>
+</a>
+
+<script>
+document.getElementById("profile-link").addEventListener("click", function (e) {
+    e.preventDefault();
+
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+    // Check if user already logged in
+    const userId = localStorage.getItem("userId");
+
+    // MOBILE FLOW
+    if (isMobile) {
+
+        // Logged in → my account
+        if (userId) {
+            window.location.href = "https://svashasan.com/my-account";
+        }
+
+        // Not logged in → login page
+        else {
+            window.location.href = "https://svashasan.com/login";
+        }
+    }
+
+    // DESKTOP FLOW
+    else {
+        window.location.href = "https://svashasan.com/onboarding";
+    }
+});
+</script>
+
                 <!-- Hamburger menu for mobile -->
                 <button id="menu-button" class="md:hidden text-gray-600 hover:text-gray-900 focus:outline-none">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu">

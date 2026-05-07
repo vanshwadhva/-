@@ -7,6 +7,7 @@
     <link rel="icon" type="image/png" href="2.png" sizes="32x32">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="convex-browser.js"></script>
     <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -164,20 +165,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
                             <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">First Name</label>
-                            <input type="text" class="form-input" placeholder="John" required>
+                            <input id="firstName" type="text" class="form-input" placeholder="John" required>
                         </div>
                         <div>
                             <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Last Name</label>
-                            <input type="text" class="form-input" placeholder="Doe" required>
+                            <input id="lastName" type="text" class="form-input" placeholder="Doe" required>
                         </div>
                     </div>
                     <div>
                         <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Email Address</label>
-                        <input type="email" class="form-input" placeholder="john.doe@example.com" required>
+                        <input id="email" type="email" class="form-input" placeholder="john.doe@example.com" required>
                     </div>
                     <div>
                         <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Request Type</label>
-                        <select class="form-input appearance-none bg-white">
+                        <select id="requestType" class="form-input appearance-none bg-white">
                             <option>Request Data Export (Copy of my data)</option>
                             <option>Request Data Deletion</option>
                             <option>Privacy Question/Concern</option>
@@ -185,11 +186,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     </div>
                     <div>
                         <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Vehicle VIN (Optional)</label>
-                        <input type="text" class="form-input" placeholder="Enter 17-digit VIN">
+                        <input id="vin" type="text" class="form-input" placeholder="Enter 17-digit VIN">
                     </div>
                     <div>
                         <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Message</label>
-                        <textarea class="form-input h-32 resize-none" placeholder="Provide additional context for your request..."></textarea>
+                        <textarea id="message" class="form-input h-32 resize-none" placeholder="Provide additional context for your request..."></textarea>
                     </div>
                     <div class="flex items-center space-x-3">
                         <input type="checkbox" id="consent" class="w-4 h-4 rounded border-gray-300" required>
@@ -280,17 +281,67 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         if (menuButton) menuButton.addEventListener('click', toggleMenu);
 
-        // Form Submission Simulation
+        // Convex Backend
+        const ConvexSDK =
+            window.convexBrowser ||
+            window.convex;
+
+        const convex =
+            new ConvexSDK.ConvexClient(
+                "https://quaint-manatee-725.convex.cloud"
+            );
+
         const form = document.getElementById('privacyForm');
         const successMsg = document.getElementById('successMsg');
 
-        form.addEventListener('submit', (e) => {
+        form.addEventListener('submit', async (e) => {
             e.preventDefault();
-            form.classList.add('opacity-50', 'pointer-events-none');
-            setTimeout(() => {
+
+            try {
+
+                await convex.mutation(
+                    "privacyRequests:createRequest",
+                    {
+                        firstName:
+                            document.getElementById('firstName').value.trim(),
+
+                        lastName:
+                            document.getElementById('lastName').value.trim(),
+
+                        email:
+                            document.getElementById('email').value
+                                .trim()
+                                .toLowerCase(),
+
+                        requestType:
+                            document.getElementById('requestType').value,
+
+                        vin:
+                            document.getElementById('vin').value.trim(),
+
+                        message:
+                            document.getElementById('message').value.trim(),
+
+                        createdAt:
+                            Date.now()
+                    }
+                );
+
                 form.classList.add('hidden');
                 successMsg.classList.remove('hidden');
-            }, 1000);
+
+            } catch (err) {
+
+                console.error(
+                    'Privacy Request Error:',
+                    err
+                );
+
+                alert(
+                    err?.message ||
+                    'Unable to submit request.'
+                );
+            }
         });
     });
     </script>

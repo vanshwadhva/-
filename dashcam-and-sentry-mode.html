@@ -114,13 +114,49 @@
                         <line x1="12" y1="17" x2="12.01" y2="17"></line>
                     </svg>
                 </a>
-                <a href="profile.html" class="text-gray-600 hover:text-gray-900 transition-colors duration-200 cursor-pointer">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-circle">
-                        <circle cx="12" cy="12" r="10"/>
-                        <circle cx="12" cy="10" r="3"/>
-                        <path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662"/>
-                    </svg>
-                </a>
+                <!-- Profile Icon -->
+<a href="#" id="profile-link"
+    class="text-gray-600 hover:text-gray-900 transition-colors duration-200 cursor-pointer">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+        class="lucide lucide-user-circle">
+        <circle cx="12" cy="12" r="10" />
+        <circle cx="12" cy="10" r="3" />
+        <path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662" />
+    </svg>
+</a>
+
+<script>
+document.getElementById("profile-link").addEventListener("click", function (e) {
+    e.preventDefault();
+
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+    // Check if user already logged in
+    const userId = localStorage.getItem("userId");
+
+    // MOBILE FLOW
+    if (isMobile) {
+
+        // Logged in → my account
+        if (userId) {
+            window.location.href = "https://svashasan.com/my-account";
+        }
+
+        // Not logged in → login page
+        else {
+            window.location.href = "https://svashasan.com/login";
+        }
+    }
+
+    // DESKTOP FLOW
+    else {
+        window.location.href = "https://svashasan.com/onboarding";
+    }
+});
+</script>
+
                 <button id="menu-button" class="md:hidden text-gray-600 hover:text-gray-900 focus:outline-none z-60 relative">
                      <svg id="menu-open-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu">
                         <line x1="4" x2="20" y1="12" y2="12"></line>

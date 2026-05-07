@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>स्वशासन - Survey</title>
+    <title>Survey</title>
      <link rel="icon" type="image/png" href="2.png" sizes="32x32">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -91,14 +91,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 </ul>
             </nav>
             <div class="flex items-center space-x-4 header-right-group ml-auto">
-                <!-- Profile Icon (SVG) -->
-                <a href="onboarding.html" class="text-gray-600 hover:text-gray-900 transition-colors duration-200 cursor-pointer">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-circle">
-                        <circle cx="12" cy="12" r="10"/>
-                        <circle cx="12" cy="10" r="3"/>
-                        <path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662"/>
-                    </svg>
-                </a>
+                 <!-- Profile Icon -->
+<a href="#" id="profile-link"
+    class="text-gray-600 hover:text-gray-900 transition-colors duration-200 cursor-pointer">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+        class="lucide lucide-user-circle">
+        <circle cx="12" cy="12" r="10" />
+        <circle cx="12" cy="10" r="3" />
+        <path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662" />
+    </svg>
+</a>
                 <button id="menu-button" class="md:hidden text-gray-600 hover:text-gray-900 focus:outline-none">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu">
                         <line x1="4" x2="20" y1="12" y2="12"></line>
@@ -132,19 +136,37 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </div>
     </section>
 
-    <!-- Footer (Consistent with Main Page) -->
-    <footer class="bg-gray-800 text-white py-6 text-center">
+    <!-- Footer -->
+    <footer class="bg-gray-200 text-gray-900 py-6 text-center border-t border-gray-300">
         <div class="container mx-auto px-4 md:px-6">
-            <p>&copy; 2026 Svashasan Labs All Rights Reserved.</p>
+            <p>2026 &copy; Svashasan Labs All Rights Reserved.</p>
             <p class="mt-2 text-sm space-x-2">
-                <a href="privacy-policy.html" class="hover:underline">Privacy Policy</a>
+                <a href="https://svashasan.com/privacy-policy" class="hover:underline">Privacy Policy</a>
                 <span>|</span>
-                <a href="terms.html" class="hover:underline">Terms & Conditions</a>
+                <a href="https://svashasan.com/terms-of-use." class="hover:underline">Terms & Conditions</a>
                 <span>|</span>
-                <a href="cookies.html" class="hover:underline">Cookie Policy</a>
-            </p>
-        </div>
-    </footer>
+                <a href="https://svashasan.com/cookie-policy" class="hover:underline">Cookie Policy</a>
+                <span>|</span>
+                <a href="https://svashasan.com/careers" class="hover:underline">Careers</a>
+          </p>
+          
+          <!-- Social Media Icons -->
+          <div class="flex justify-center items-center space-x-6 mt-4">
+            <a href="https://www.linkedin.com/company/svashasan/" class="text-gray-400 transition-colors p-2 rounded-full" title="LinkedIn">
+              <img src="linkedin.svg" alt="LinkedIn" class="w-6 h-6">
+            </a>
+            <a href="https://x.com/Svashasann" class="text-gray-400 transition-colors p-2 rounded-full" title="X (Twitter)">
+              <img src="twitter.svg" alt="Twitter" class="w-6 h-6">
+            </a>
+            <a href="https://www.youtube.com/@SvashasanLabs" class="text-gray-400 transition-colors p-2 rounded-full" title="YouTube">
+              <img src="youtube.svg" alt="YouTube" class="w-6 h-6">
+            </a>
+            <a href="https://github.com/Svashasan" class="text-gray-400 transition-colors p-2 rounded-full" title="GitHub">
+              <img src="github.svg" alt="GitHub" class="w-6 h-6">
+            </a>
+          </div>
+      </div>
+  </footer>
 
     <!-- Tally Embed Scripts - MUST be at the end of the body -->
     <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>

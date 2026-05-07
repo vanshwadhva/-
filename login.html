@@ -7,7 +7,7 @@
     <link rel="icon" type="image/png" href="2.png" sizes="32x32">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/convex@1.24.8/dist/browser.bundle.js"></script>
+    <script src="convex-browser.js"></script>
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -173,7 +173,18 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const convex = new Convex.ConvexClient(
+            // Initialize Convex client safely
+            const ConvexSDK =
+                window.convexBrowser ||
+                window.convex;
+
+            if (!ConvexSDK) {
+                console.error("Convex browser SDK failed to load");
+                alert("Unable to load login system. Please refresh the page.");
+                return;
+            }
+
+            const convex = new ConvexSDK.ConvexClient(
                 "https://insightful-aardvark-136.convex.cloud"
             );
 
@@ -314,19 +325,19 @@
 
                     try {
                         const userId = await convex.mutation("auth:signup", {
-                            name,
-                            email,
-                            password
+                            name: name.trim(),
+                            email: email.trim().toLowerCase(),
+                            password: password.trim()
                         });
 
                         localStorage.setItem("userLoggedIn", "true");
-                        localStorage.setItem("userId", userId);
-                        localStorage.setItem("userEmail", email);
+                        localStorage.setItem("userId", JSON.stringify(userId));
+                        localStorage.setItem("userEmail", email.trim().toLowerCase());
 
                         window.location.href = "https://svashasan.com/my-account";
                     } catch (err) {
-                        console.error(err);
-                        alert(err.message || "Error creating account");
+                        console.error("Signup Error:", err);
+                        alert(err?.message || "Unable to create account");
                     }
                 });
             }
@@ -342,18 +353,18 @@
 
                     try {
                         const userId = await convex.mutation("auth:login", {
-                            email,
-                            password
+                            email: email.trim().toLowerCase(),
+                            password: password.trim()
                         });
 
                         localStorage.setItem("userLoggedIn", "true");
-                        localStorage.setItem("userId", userId);
-                        localStorage.setItem("userEmail", email);
+                        localStorage.setItem("userId", JSON.stringify(userId));
+                        localStorage.setItem("userEmail", email.trim().toLowerCase());
 
                         window.location.href = "https://svashasan.com/my-account";
                     } catch (err) {
-                        console.error(err);
-                        alert(err.message || "Login failed");
+                        console.error("Login Error:", err);
+                        alert(err?.message || "Unable to login");
                     }
                 });
             }

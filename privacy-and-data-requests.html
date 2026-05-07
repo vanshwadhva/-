@@ -165,16 +165,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
                             <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">First Name</label>
-                            <input id="firstName" type="text" class="form-input" placeholder="John" required>
+                            <input id="firstName" type="text" class="form-input" placeholder="Ram" required>
                         </div>
                         <div>
                             <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Last Name</label>
-                            <input id="lastName" type="text" class="form-input" placeholder="Doe" required>
+                            <input id="lastName" type="text" class="form-input" placeholder="Kumar" required>
                         </div>
                     </div>
                     <div>
                         <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Email Address</label>
-                        <input id="email" type="email" class="form-input" placeholder="john.doe@example.com" required>
+                        <input id="email" type="email" class="form-input" placeholder="ram.kumar@example.com" required>
                     </div>
                     <div>
                         <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Request Type</label>
@@ -196,7 +196,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <input type="checkbox" id="consent" class="w-4 h-4 rounded border-gray-300" required>
                         <label for="consent" class="text-xs text-gray-500">I verify that I am the owner of this account and consent to the processing of this request.</label>
                     </div>
-                    <button type="submit" class="w-full bg-brandNavy text-white font-bold py-4 rounded-xl hover:opacity-90 transition-opacity">Submit Request</button>
+                    <div class="flex justify-center">
+                        <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-10 rounded-xl transition-all duration-300 shadow-lg w-auto min-w-[220px] text-center">
+                            Submit Request
+                        </button>
+                    </div>
                 </form>
                 <div id="successMsg" class="hidden mt-6 p-4 bg-green-50 text-green-700 rounded-xl text-center text-sm">
                     Your request has been submitted successfully. Our privacy team will review and respond within 30 days.
